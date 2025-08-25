@@ -372,7 +372,7 @@ License: For each use you must have a valid license purchased only from above li
                     <!--begin::Text-->
                     <div class="d-none d-lg-block text-white fs-base text-center">
                         In this kind of post, <a href="#" class="opacity-75-hover text-warning fw-bold me-1">the
-                            blogger.</a>
+                            blogger</a>
 
                         introduces a person they’ve interviewed <br> and provides some background information about
 
