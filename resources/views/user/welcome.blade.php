@@ -146,7 +146,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin::Menu link-->
                                             <a class="menu-link nav-link py-3 px-4 px-xxl-6" href="#kt_body"
                                                 data-kt-scroll-toggle="true" data-kt-drawer-dismiss="true">
-                                                Home </a>
+                                                Beranda </a>
                                             <!--end::Menu link-->
                                         </div>
                                         <!--end::Menu item-->
@@ -155,7 +155,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin::Menu link-->
                                             <a class="menu-link nav-link py-3 px-4 px-xxl-6" href="#how-it-works"
                                                 data-kt-scroll-toggle="true" data-kt-drawer-dismiss="true">
-                                                How it Works </a>
+                                                Studio </a>
                                             <!--end::Menu link-->
                                         </div>
                                         <!--end::Menu item-->
@@ -164,7 +164,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin::Menu link-->
                                             <a class="menu-link nav-link py-3 px-4 px-xxl-6" href="#achievements"
                                                 data-kt-scroll-toggle="true" data-kt-drawer-dismiss="true">
-                                                Achievements </a>
+                                                Galeri </a>
                                             <!--end::Menu link-->
                                         </div>
                                         <!--end::Menu item-->
@@ -173,7 +173,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin::Menu link-->
                                             <a class="menu-link nav-link py-3 px-4 px-xxl-6" href="#team"
                                                 data-kt-scroll-toggle="true" data-kt-drawer-dismiss="true">
-                                                Team </a>
+                                                Testimoni </a>
                                             <!--end::Menu link-->
                                         </div>
                                         <!--end::Menu item-->
@@ -182,7 +182,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin::Menu link-->
                                             <a class="menu-link nav-link py-3 px-4 px-xxl-6" href="#portfolio"
                                                 data-kt-scroll-toggle="true" data-kt-drawer-dismiss="true">
-                                                Portfolio </a>
+                                                Kontak Kami </a>
                                             <!--end::Menu link-->
                                         </div>
                                         <!--end::Menu item-->
@@ -191,7 +191,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin::Menu link-->
                                             <a class="menu-link nav-link py-3 px-4 px-xxl-6" href="#pricing"
                                                 data-kt-scroll-toggle="true" data-kt-drawer-dismiss="true">
-                                                Pricing </a>
+                                                Riwayat Booking </a>
                                             <!--end::Menu link-->
                                         </div>
                                         <!--end::Menu item-->
@@ -202,12 +202,15 @@ License: For each use you must have a valid license purchased only from above li
                             </div>
                             <!--end::Menu wrapper-->
 
-                            <!--begin::Toolbar-->
-                            <div class="flex-equal text-end ms-1">
-                                <a href="/metronic8/demo1/authentication/layouts/corporate/sign-in.html"
-                                    class="btn btn-success">Sign In</a>
-                            </div>
-                            <!--end::Toolbar-->
+                           <!--begin::Toolbar-->
+                    <div class="d-flex justify-content-end gap-2">
+             <a href="/metronic8/demo1/authentication/layouts/corporate/sign-in.html"
+       class="btn btn-success">Login</a>
+        <a href="/metronic8/demo1/authentication/layouts/corporate/sign-up.html"
+       class="btn btn-success">Register</a>
+</div>
+<!--end::Toolbar-->
+
                         </div>
                         <!--end::Wrapper-->
                     </div>
@@ -222,18 +225,18 @@ License: For each use you must have a valid license purchased only from above li
                     <div class="text-center mb-5 mb-lg-10 py-10 py-lg-20">
                         <!--begin::Title-->
                         <h1 class="text-white lh-base fw-bold fs-2x fs-lg-3x mb-15">
-                            Build An Outstanding Solutions <br>
-                            with
+                            Melodi Kreatif Studio <br>
+                        
 
                             <span
                                 style="background: linear-gradient(to right, #12CE5D 0%, #FFD80C 100%);-webkit-background-clip: text;-webkit-text-fill-color: transparent;">
-                                <span id="kt_landing_hero_text">The Best Theme Ever</span>
+                                <span id="kt_landing_hero_text">Berkarya, Bermusik, Berharmoni</span>
                             </span>
                         </h1>
                         <!--end::Title-->
 
                         <!--begin::Action-->
-                        <a href="/metronic8/demo1/index.html" class="btn btn-primary">Try Metronic</a>
+                        <a href="/metronic8/demo1/index.html" class="btn btn-primary">Jelajahi</a>
                         <!--end::Action-->
                     </div>
                     <!--end::Heading-->
@@ -340,14 +343,14 @@ License: For each use you must have a valid license purchased only from above li
                 <div class="text-center mb-17">
                     <!--begin::Title-->
                     <h3 class="fs-2hx text-gray-900 mb-5" id="how-it-works"
-                        data-kt-scroll-offset="{default: 100, lg: 150}">How it Works</h3>
+                        data-kt-scroll-offset="{default: 100, lg: 150}">Tentang Kami</h3>
                     <!--end::Title-->
 
                     <!--begin::Text-->
-                    <div class="fs-5 text-muted fw-bold">
+                    {{-- <div class="fs-5 text-muted fw-bold">
                         Save thousands to millions of bucks by using single tool <br>
                         for different amazing and great useful admin
-                    </div>
+                    </div> --}}
                     <!--end::Text-->
                 </div>
                 <!--end::Heading-->
@@ -371,7 +374,7 @@ License: For each use you must have a valid license purchased only from above li
 
                                 <!--begin::Title-->
                                 <div class="fs-5 fs-lg-3 fw-bold text-gray-900">
-                                    Jane Miller </div>
+                                    Alamat </div>
                                 <!--end::Title-->
                             </div>
                             <!--end::Heading-->
@@ -379,9 +382,8 @@ License: For each use you must have a valid license purchased only from above li
                             <!--begin::Description-->
                             <div class="fw-semibold fs-6 fs-lg-4 text-muted">
 
-                                Save thousands to millions of bucks <br>
-                                by using single tool for different <br>
-                                amazing and great
+                                Alamat, Jl. Harmoni Melody, Semarang <br>
+                                Jawa tengah, 53333 <br>
                             </div>
                             <!--end::Description-->
                         </div>
@@ -409,7 +411,7 @@ License: For each use you must have a valid license purchased only from above li
 
                                 <!--begin::Title-->
                                 <div class="fs-5 fs-lg-3 fw-bold text-gray-900">
-                                    Setup Your App </div>
+                                    Jam Kerja </div>
                                 <!--end::Title-->
                             </div>
                             <!--end::Heading-->
@@ -417,9 +419,8 @@ License: For each use you must have a valid license purchased only from above li
                             <!--begin::Description-->
                             <div class="fw-semibold fs-6 fs-lg-4 text-muted">
 
-                                Save thousands to millions of bucks <br>
-                                by using single tool for different <br>
-                                amazing and great
+                                Senin-Jumat: 09.00-22.00 <br>
+                                Sabtu-Minggu: Libur <br>
                             </div>
                             <!--end::Description-->
                         </div>
@@ -447,7 +448,7 @@ License: For each use you must have a valid license purchased only from above li
 
                                 <!--begin::Title-->
                                 <div class="fs-5 fs-lg-3 fw-bold text-gray-900">
-                                    Enjoy Nautica App </div>
+                                   Kontak </div>
                                 <!--end::Title-->
                             </div>
                             <!--end::Heading-->
@@ -455,9 +456,8 @@ License: For each use you must have a valid license purchased only from above li
                             <!--begin::Description-->
                             <div class="fw-semibold fs-6 fs-lg-4 text-muted">
 
-                                Save thousands to millions of bucks <br>
-                                by using single tool for different <br>
-                                amazing and great
+                                Phone: 085743645365 <br>
+                                email: melodikreatifstudio@gmail.com <br>
                             </div>
                             <!--end::Description-->
                         </div>
