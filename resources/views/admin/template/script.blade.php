@@ -1,6 +1,6 @@
 <!--begin::Javascript-->
 <script>
-    var hostUrl = "/metronic8/demo1/assets/";        </script>
+    var hostUrl = "{{ asset('')}}";        </script>
 
 <!--begin::Global Javascript Bundle(mandatory for all pages)-->
 <script src="{{ asset('plugins/global/plugins.bundle.js') }}"></script>

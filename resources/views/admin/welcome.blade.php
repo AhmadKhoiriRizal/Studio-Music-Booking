@@ -110,7 +110,8 @@ License: For each use you must have a valid license purchased only from above li
                                     class="menu-item here show menu-here-bg menu-lg-down-accordion me-0 me-lg-2">
                                     <!--begin:Menu link--><span class="menu-link"><span
                                             class="menu-title">Dashboards</span><span
-                                            class="menu-arrow d-lg-none"></span></span><!--end:Menu link--><!--begin:Menu sub-->
+                                            class="menu-arrow d-lg-none"></span></span><!--end:Menu link-->
+                                            {{-- <!--begin:Menu sub-->
                                     <div
                                         class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown p-0 w-100 w-lg-850px">
                                         <!--begin:Dashboards menu-->
@@ -513,13 +514,14 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--end:Row-->
                                         </div>
                                         <!--end:Dashboards menu-->
-                                    </div><!--end:Menu sub-->
+                                    </div><!--end:Menu sub--> --}}
                                 </div><!--end:Menu item--><!--begin:Menu item-->
                                 <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
                                     data-kt-menu-placement="bottom-start"
                                     class="menu-item menu-lg-down-accordion me-0 me-lg-2"><!--begin:Menu link--><span
                                         class="menu-link"><span class="menu-title">Pages</span><span
-                                            class="menu-arrow d-lg-none"></span></span><!--end:Menu link--><!--begin:Menu sub-->
+                                            class="menu-arrow d-lg-none"></span></span><!--end:Menu link-->
+                                            {{-- <!--begin:Menu sub-->
                                     <div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown p-0">
                                         <!--begin:Pages menu-->
                                         <div class="menu-active-bg px-4 px-lg-0">
@@ -1972,14 +1974,15 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--end:Tab content-->
                                         </div>
                                         <!--end:Pages menu-->
-                                    </div><!--end:Menu sub-->
+                                    </div><!--end:Menu sub--> --}}
                                 </div><!--end:Menu item--><!--begin:Menu item-->
                                 <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
                                     data-kt-menu-placement="bottom-start"
                                     class="menu-item menu-lg-down-accordion menu-sub-lg-down-indention me-0 me-lg-2">
                                     <!--begin:Menu link--><span class="menu-link"><span
                                             class="menu-title">Apps</span><span
-                                            class="menu-arrow d-lg-none"></span></span><!--end:Menu link--><!--begin:Menu sub-->
+                                            class="menu-arrow d-lg-none"></span></span><!--end:Menu link-->
+                                            {{-- <!--begin:Menu sub-->
                                     <div
                                         class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown px-lg-2 py-lg-4 w-lg-250px">
                                         <!--begin:Menu item-->
@@ -2701,13 +2704,14 @@ License: For each use you must have a valid license purchased only from above li
                                                             class="path6"></span></i></span><span
                                                     class="menu-title">Calendar</span></a><!--end:Menu link--></div>
                                         <!--end:Menu item-->
-                                    </div><!--end:Menu sub-->
+                                    </div><!--end:Menu sub--> --}}
                                 </div><!--end:Menu item--><!--begin:Menu item-->
                                 <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
                                     data-kt-menu-placement="bottom-start"
                                     class="menu-item menu-lg-down-accordion me-0 me-lg-2"><!--begin:Menu link--><span
                                         class="menu-link"><span class="menu-title">Layouts</span><span
-                                            class="menu-arrow d-lg-none"></span></span><!--end:Menu link--><!--begin:Menu sub-->
+                                            class="menu-arrow d-lg-none"></span></span><!--end:Menu link-->
+                                            {{-- <!--begin:Menu sub-->
                                     <div
                                         class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown p-0 w-100 w-lg-900px w-xxl-950px">
                                         <!--begin:Dashboards menu-->
@@ -2955,14 +2959,15 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--end:Row-->
                                         </div>
                                         <!--end:Dashboards menu-->
-                                    </div><!--end:Menu sub-->
+                                    </div><!--end:Menu sub--> --}}
                                 </div><!--end:Menu item--><!--begin:Menu item-->
                                 <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
                                     data-kt-menu-placement="bottom-start"
                                     class="menu-item menu-lg-down-accordion menu-sub-lg-down-indention me-0 me-lg-2">
                                     <!--begin:Menu link--><span class="menu-link"><span
                                             class="menu-title">Help</span><span
-                                            class="menu-arrow d-lg-none"></span></span><!--end:Menu link--><!--begin:Menu sub-->
+                                            class="menu-arrow d-lg-none"></span></span><!--end:Menu link-->
+                                            {{-- <!--begin:Menu sub-->
                                     <div
                                         class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown px-lg-2 py-lg-4 w-lg-200px">
                                         <!--begin:Menu item-->
@@ -2996,7 +3001,7 @@ License: For each use you must have a valid license purchased only from above li
                                                             class="path4"></span></i></span><span
                                                     class="menu-title">Changelog v8.3.1</span></a><!--end:Menu link-->
                                         </div><!--end:Menu item-->
-                                    </div><!--end:Menu sub-->
+                                    </div><!--end:Menu sub--> --}}
                                 </div><!--end:Menu item-->
                             </div>
                             <!--end::Menu-->
@@ -4290,7 +4295,7 @@ License: For each use you must have a valid license purchased only from above li
                                         </div>
                                         <!--end::Tab panel-->
 
-                                        <!--begin::Tab panel-->
+                                        {{-- <!--begin::Tab panel-->
                                         <div class="tab-pane fade show active" id="kt_topbar_notifications_2"
                                             role="tabpanel">
                                             <!--begin::Wrapper-->
@@ -4329,7 +4334,7 @@ License: For each use you must have a valid license purchased only from above li
                                             </div>
                                             <!--end::Wrapper-->
                                         </div>
-                                        <!--end::Tab panel-->
+                                        <!--end::Tab panel--> --}}
 
                                         <!--begin::Tab panel-->
                                         <div class="tab-pane fade" id="kt_topbar_notifications_3" role="tabpanel">
@@ -4636,7 +4641,7 @@ License: For each use you must have a valid license purchased only from above li
                             </div>
                             <!--end::Chat-->
 
-                            <!--begin::My apps links-->
+                            {{-- <!--begin::My apps links-->
                             <div class="app-navbar-item ms-1 ms-md-4">
                                 <!--begin::Menu wrapper-->
                                 <div class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary w-35px h-35px"
@@ -4972,7 +4977,7 @@ License: For each use you must have a valid license purchased only from above li
                                 </div>
                                 <!--end::My apps--> <!--end::Menu wrapper-->
                             </div>
-                            <!--end::My apps links-->
+                            <!--end::My apps links--> --}}
 
                             <!--begin::Theme mode-->
                             <div class="app-navbar-item ms-1 ms-md-4">
@@ -7411,7 +7416,7 @@ License: For each use you must have a valid license purchased only from above li
                             <div id="kt_app_content_container" class="app-container  container-fluid ">
                                 <!--begin::Row-->
                                 <div class="row g-5 gx-xl-10 mb-5 mb-xl-10">
-                                    {{-- <!--begin::Col-->
+                                    <!--begin::Col-->
                                     <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-3 mb-md-5 mb-xl-10">
                                         <!--begin::Card widget 20-->
                                         <div class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-end h-md-50 mb-5 mb-xl-10"
@@ -7531,7 +7536,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--end::Card body-->
                                         </div>
                                         <!--end::Card widget 7-->
-                                    </div> --}}
+                                    </div>
                                     <!--end::Col-->
 
                                     <!--begin::Col-->
@@ -7643,7 +7648,7 @@ License: For each use you must have a valid license purchased only from above li
                                         </div>
                                         <!--end::Card widget 17-->
 
-                                        {{-- <!--begin::List widget 26-->
+                                        <!--begin::List widget 26-->
                                         <div class="card card-flush h-lg-50">
                                             <!--begin::Header-->
                                             <div class="card-header pt-5">
@@ -7831,7 +7836,7 @@ License: For each use you must have a valid license purchased only from above li
                                             </div>
                                             <!--end::Body-->
                                         </div>
-                                        <!--end::LIst widget 26--> --}}
+                                        <!--end::LIst widget 26-->
 
 
 
