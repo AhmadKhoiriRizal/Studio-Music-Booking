@@ -25,3 +25,6 @@ Route::get('/signup', function () {
 Route::get('/riwayat-booking', function () {
     return view('user.booking.riwayat');
 });
+Route::get('/admin/beranda', function () {
+    return view('admin.welcome');
+});

@@ -14,6 +14,7 @@ License: For each use you must have a valid license purchased only from above li
 <!--begin::Head-->
 
 <head>
+    <title>Studio Musik - Riwayat Booking</title>
     @include('user.template.metadata')
 </head>
 <!--end::Head-->
@@ -73,44 +74,7 @@ License: For each use you must have a valid license purchased only from above li
 
             <!--begin::Wrapper-->
             <div class="landing-dark-bg">
-                <!--begin::Container-->
-                <div id="kt_app_footer" class="mb-0">
-                    <!--begin::Footer container-->
-                    <div
-                        class="app-container  container d-flex flex-column flex-md-row flex-center flex-md-stack py-3 ">
-                        <!--begin::Copyright-->
-                        <div class="text-dark order-2 order-md-1">
-                            <a href="/metronic8/demo1/landing.html">
-                                {{-- <img alt="Logo" src="/metronic8/demo1/assets/media/logos/landing.svg"
-                                    class="logo-default h-25px h-lg-30px"> --}}
-                                <img alt="Logo" src="/metronic8/demo1/assets/media/logos/landing-dark.svg"
-                                    class="logo-sticky h-20px h-lg-25px">
-                            </a>
-                            <span class="text-dark fw-bold">Studio</span>Musik©
-                            <a href="https://keenthemes.com" target="_blank"
-                                class="text-white text-hover-primary">Keenthemes</a>
-                        </div>
-                        <!--end::Copyright-->
-
-                        <!--begin::Menu-->
-                        <ul class="menu menu-white menu-hover-primary fw-semibold order-1">
-                            <li class="menu-item"><a href="https://keenthemes.com" target="_blank"
-                                    class="menu-link px-2">Facebook</a></li>
-
-                            <li class="menu-item"><a href="https://devs.keenthemes.com" target="_blank"
-                                    class="menu-link px-2">Instagram</a></li>
-
-                            <li class="menu-item"><a href="https://1.envato.market/EA4JP" target="_blank"
-                                    class="menu-link px-2">Tiktok</a></li>
-
-                            <li class="menu-item"><a href="https://1.envato.market/EA4JP" target="_blank"
-                                    class="menu-link px-2">WhatsApp</a></li>
-                        </ul>
-                        <!--end::Menu-->
-                    </div>
-                    <!--end::Footer container-->
-                </div>
-                <!--end::Container-->
+                @include('user.template.footer')
             </div>
             <!--end::Wrapper-->
         </div>
