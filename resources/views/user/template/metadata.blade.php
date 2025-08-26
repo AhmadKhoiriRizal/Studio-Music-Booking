@@ -1,4 +1,4 @@
-<title>Metronic - The World's #1 Selling Tailwind CSS &amp; Bootstrap Admin Template by KeenThemes</title>
+
 <meta charset="utf-8">
 <meta name="description" content="
             The most advanced Tailwind CSS &amp; Bootstrap 5 Admin Theme with 40 unique prebuilt layouts on Themeforest trusted by 100,000 beginners and professionals. Multi-demo,
@@ -38,7 +38,7 @@
 
 
 <!--begin::Global Stylesheets Bundle(mandatory for all pages)-->
-<link href="/metronic8/demo1/assets/css/style.bundle.css" rel="stylesheet" type="text/css">
+<link href="{{ asset('css/style.bundle.css') }}" rel="stylesheet" type="text/css">
 <!--end::Global Stylesheets Bundle-->
 <link rel="canonical" href="http://preview.keenthemes.comlanding.html" />
 {{--

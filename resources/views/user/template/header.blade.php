@@ -18,9 +18,9 @@
 
                                 <!--begin::Logo image-->
                                 <a href="/metronic8/demo1/landing.html">
-                                    <img alt="Logo" src="/metronic8/demo1/assets/media/logos/landing.svg"
+                                    <img alt="Logo" src="{{ asset('media/logos/landing.svg') }}"
                                         class="logo-default h-25px h-lg-30px">
-                                    <img alt="Logo" src="/metronic8/demo1/assets/media/logos/landing-dark.svg"
+                                    <img alt="Logo" src="{{ asset('media/logos/landing-dark.svg') }}"
                                         class="logo-sticky h-20px h-lg-25px">
                                 </a>
                                 <!--end::Logo image-->
@@ -104,9 +104,9 @@
 
                             <!--begin::Toolbar-->
                             <div class="d-flex justify-content-end gap-2">
-                                <a href="/metronic8/demo1/authentication/layouts/corporate/sign-in.html"
+                                <a href="/signin"
                                     class="btn btn-success">Login</a>
-                                <a href="/metronic8/demo1/authentication/layouts/corporate/sign-up.html"
+                                <a href="/signup"
                                     class="btn btn-success">Register</a>
                             </div>
                             <!--end::Toolbar-->
