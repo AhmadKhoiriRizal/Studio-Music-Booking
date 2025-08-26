@@ -14,74 +14,7 @@ License: For each use you must have a valid license purchased only from above li
 <!--begin::Head-->
 
 <head>
-    <title>Metronic - The World's #1 Selling Tailwind CSS &amp; Bootstrap Admin Template by KeenThemes</title>
-    <meta charset="utf-8">
-    <meta name="description" content="
-            The most advanced Tailwind CSS &amp; Bootstrap 5 Admin Theme with 40 unique prebuilt layouts on Themeforest trusted by 100,000 beginners and professionals. Multi-demo,
-            Dark Mode, RTL support and complete React, Angular, Vue, Asp.Net Core, Rails, Spring, Blazor, Django, Express.js, Node.js, Flask, Symfony &amp; Laravel versions.
-            Grab your copy now and get life-time updates for free.
-        ">
-    <meta name="keywords" content="
-            tailwind, tailwindcss, metronic, bootstrap, bootstrap 5, angular, VueJs, React, Asp.Net Core, Rails, Spring, Blazor, Django, Express.js,
-            Node.js, Flask, Symfony &amp; Laravel starter kits, admin themes, web design, figma, web development, free templates,
-            free admin themes, bootstrap theme, bootstrap template, bootstrap dashboard, bootstrap dak mode, bootstrap button,
-            bootstrap datepicker, bootstrap timepicker, fullcalendar, datatables, flaticon
-        ">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="og:locale" content="en_US">
-    <meta property="og:type" content="article">
-    <meta property="og:title"
-        content="Metronic - The World's #1 Selling Tailwind CSS &amp; Bootstrap Admin Template by KeenThemes">
-    <meta property="og:url" content="https://keenthemes.com/metronic">
-    <meta property="og:site_name" content="Metronic by Keenthemes">
-    {{-- <title>{{ $global_option->name }}</title>
-    <meta charset="utf-8" />
-    <meta name="description" content="{{$global_option->description}}" />
-    <meta name="keywords" content="{{$global_option->keywords}}" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content="{{ $global_option->name }}" />
-    <meta property="og:url" content="{{ url()->current() }}" />
-    <meta property="og:site_name" content="{{ $global_option->name }}" /> --}}
-    <link rel="canonical"
-        href="https://preview.keenthemes.com/metronic8/demo1/authentication/layouts/corporate/sign-in.html">
-    <link rel="shortcut icon" href="{{ asset('/media/logos/favicon.ico') }}">
-
-    <!--begin::Fonts(mandatory for all pages)-->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700"> <!--end::Fonts-->
-
-
-
-    <!--begin::Global Stylesheets Bundle(mandatory for all pages)-->
-    <link href="/metronic8/demo1/assets/css/style.bundle.css" rel="stylesheet" type="text/css">
-    <!--end::Global Stylesheets Bundle-->
-    <link rel="canonical" href="http://preview.keenthemes.comlanding.html" />
-    {{--
-    <link rel="shortcut icon" href="{{ asset($global_option->favicon) }}" /> --}}
-    <!--begin::Fonts(mandatory for all pages)-->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
-    <!--end::Fonts-->
-    <!--begin::Global Stylesheets Bundle(mandatory for all pages)-->
-    <link href="{{ asset('plugins/global/plugins_visitor.bundle.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('css/style_visitor.bundle.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('css/style.bundle.css') }}" rel="stylesheet" type="text/css">
-    <!--end::Global Stylesheets Bundle-->
-    <!-- Google tag (gtag.js) -->
-    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-52YZ3XGZJ6"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-52YZ3XGZJ6');
-    </script>
-    <script>
-        // Frame-busting to prevent site from being loaded within a frame without permission (click-jacking)
-        if (window.top != window.self) {
-            window.top.location.replace(window.self.location.href);
-        }
-    </script>
+    @include('user.template.metadata')
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -349,7 +282,7 @@ License: For each use you must have a valid license purchased only from above li
 
             <!--begin::Aside-->
             <div class="d-flex flex-lg-row-fluid w-lg-50 bgi-size-cover bgi-position-center order-1 order-lg-2"
-                style="background-image: url(/metronic8/demo1/assets/media/misc/auth-bg.png)">
+                style="background-image: url( {{ asset('media/misc/auth-bg.png')}}">
                 <!--begin::Content-->
                 <div class="d-flex flex-column flex-center py-7 py-lg-15 px-5 px-md-15 w-100">
                     <!--begin::Logo-->
@@ -398,52 +331,7 @@ License: For each use you must have a valid license purchased only from above li
         <path id="SvgjsPath1004" d="M0 0 "></path>
     </svg>
     <!--end::Container-->
-
-    <!--begin::Javascript-->
-    <script>
-        var hostUrl = "/metronic8/demo1/assets/";
-    </script>
-
-    <!--begin::Global Javascript Bundle(mandatory for all pages)-->
-    <script src="{{ asset('plugins/global/plugins.bundle.js') }}"></script>
-    <script src="{{ asset('js/scripts.bundle.js') }}"></script>
-    <!--end::Global Javascript Bundle-->
-
-    <!--begin::Vendors Javascript(used for this page only)-->
-    <script src="{{ asset('plugins/custom/fslightbox/fslightbox.bundle.js') }}"></script>
-    <script src="{{ asset('plugins/custom/typedjs/typedjs.bundle.js') }}"></script>
-    <!--end::Vendors Javascript-->
-
-    <!--begin::Custom Javascript(used for this page only)-->
-    <script src="{{ asset('js/custom/landing.js') }}"></script>
-    <script src="{{ asset('js/custom/pages/pricing/general.js') }}"></script>
-    <!--end::Custom Javascript-->
-    <!--end::Javascript-->
-
-
-    <svg id="SvgjsSvg1001" width="2" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1"
-        xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev"
-        style="overflow: hidden; top: -100%; left: -100%; position: absolute; opacity: 0;">
-        <defs id="SvgjsDefs1002"></defs>
-        <polyline id="SvgjsPolyline1003" points="0,0"></polyline>
-        <path id="SvgjsPath1004" d="M0 0 "></path>
-    </svg>
-    <!--begin::Global Javascript Bundle(mandatory for all pages)-->
-    <script src="{{ asset('plugins/global/plugins_visitor.bundle.js') }}"></script>
-    <script src="{{ asset('js/scripts.bundle.js') }}"></script>
-    <!--end::Global Javascript Bundle-->
-    <!--begin::Vendors Javascript(used for this page only)-->
-    <!--end::Vendors Javascript-->
-    <!--begin::Custom Javascript(used for this page only)-->
-    <script src="{{ asset('assets/js/widgets.bundle.js') }}"></script>
-    <script src="{{ asset('assets/js/custom/widgets.js') }}"></script>
-    <script src="{{ asset('assets/js/custom/apps/chat/chat.js') }}"></script>
-    <script src="{{ asset('assets/js/custom/utilities/modals/upgrade-plan.js') }}"></script>
-    <script src="{{ asset('assets/js/custom/utilities/modals/new-target.js') }}"></script>
-    <script src="{{ asset('assets/js/custom/utilities/modals/create-app.js') }}"></script>
-    <script src="{{ asset('assets/js/custom/utilities/modals/users-search.js') }}"></script>
-    <!--end::Custom Javascript-->
-    <!--end::Javascript-->
+    @include('user.template.script')
 </body>
 <!--end::Body-->
 
