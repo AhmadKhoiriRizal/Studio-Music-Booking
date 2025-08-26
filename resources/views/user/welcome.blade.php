@@ -369,7 +369,7 @@ License: For each use you must have a valid license purchased only from above li
                             <!--begin::Heading-->
                             <div class="d-flex flex-center mb-5">
                                 <!--begin::Badge-->
-                                <span class="badge badge-circle badge-light-success fw-bold p-5 me-3 fs-3">1</span>
+                                {{-- <span class="badge badge-circle badge-light-success fw-bold p-5 me-3 fs-3">1</span> --}}
                                 <!--end::Badge-->
 
                                 <!--begin::Title-->
@@ -406,7 +406,7 @@ License: For each use you must have a valid license purchased only from above li
                             <!--begin::Heading-->
                             <div class="d-flex flex-center mb-5">
                                 <!--begin::Badge-->
-                                <span class="badge badge-circle badge-light-success fw-bold p-5 me-3 fs-3">2</span>
+                                {{-- <span class="badge badge-circle badge-light-success fw-bold p-5 me-3 fs-3">2</span> --}}
                                 <!--end::Badge-->
 
                                 <!--begin::Title-->
@@ -443,7 +443,7 @@ License: For each use you must have a valid license purchased only from above li
                             <!--begin::Heading-->
                             <div class="d-flex flex-center mb-5">
                                 <!--begin::Badge-->
-                                <span class="badge badge-circle badge-light-success fw-bold p-5 me-3 fs-3">3</span>
+                                {{-- <span class="badge badge-circle badge-light-success fw-bold p-5 me-3 fs-3">3</span> --}}
                                 <!--end::Badge-->
 
                                 <!--begin::Title-->
@@ -535,33 +535,366 @@ License: For each use you must have a valid license purchased only from above li
                     <!--end::Slider-->
 
                     <!--begin::Slider button-->
-                    <button class="btn btn-icon btn-active-color-primary" id="kt_team_slider_prev1"
+                    {{-- <button class="btn btn-icon btn-active-color-primary" id="kt_team_slider_prev1"
                         aria-controls="tns1" tabindex="-1" data-controls="prev">
-                        <i class="ki-duotone ki-left fs-2x"></i> </button>
+                        <i class="ki-duotone ki-left fs-2x"></i> </button> --}}
                     <!--end::Slider button-->
 
                     <!--begin::Slider button-->
-                    <button class="btn btn-icon btn-active-color-primary" id="kt_team_slider_next1"
+                    {{-- <button class="btn btn-icon btn-active-color-primary" id="kt_team_slider_next1"
                         aria-controls="tns1" tabindex="-1" data-controls="next">
-                        <i class="ki-duotone ki-right fs-2x"></i> </button>
+                        <i class="ki-duotone ki-right fs-2x"></i> </button> --}}
                     <!--end::Slider button-->
                 </div>
                 <!--end::Product slider-->
 
+                <!--Studiooo-->
+                <!--begin::Wrapper-->
+            <div class="py-20 landing-dark-bg ">
+                <!--begin::Container-->
+                <div class="container">
+                    <!--begin::Plans-->
+                    <div class="d-flex flex-column container pt-lg-0">
+                        <!--begin::Heading-->
+                        <div class="mb-13 text-center">
+                            <h1 class="fs-2hx fw-bold text-white mb-5" id="pricing"
+                            
+                                data-kt-scroll-offset="{default: 100, lg: 100}">Paket Favotit Di Kelasnya</h1>
+                                
 
+                            {{-- <div class="text-gray-600 fw-semibold fs-5">
+                                Save thousands to millions of bucks by using single tool for different <br>
+                                amazing and outstanding cool and great useful admin
+                            </div>
+                        </div>
+                        <!--end::Heading-->
 
+                        <!--begin::Pricing-->
+                        <div class="text-center" id="kt_pricing">
+                            <!--begin::Nav group-->
+                            <div class="nav-group landing-dark-bg d-inline-flex mb-15" data-kt-buttons="true"
+                                style="border: 1px dashed #2B4666;" data-kt-initialized="1">
+                                <a href="#"
+                                    class="btn btn-color-gray-600 btn-active btn-active-success px-6 py-3 me-2 active"
+                                    data-kt-plan="month">
+                                    Monthly
+                                </a>
 
+                                <a href="#"
+                                    class="btn btn-color-gray-600 btn-active btn-active-success px-6 py-3"
+                                    data-kt-plan="annual">
+                                    Annual
+                                </a> --}}
+                            {{-- </div> --}}
+                            <!--end::Nav group-->
 
+                            <!--begin::Row-->
+                            <div class="row g-10">
+                                <!--begin::Col-->
+                                <div class="col-xl-4">
+                                    <div class="d-flex h-100 align-items-center">
+                                        <!--begin::Option-->
+                                        <div
+                                            class="w-100 d-flex flex-column flex-center rounded-3 bg-body py-15 px-10">
+                                            <!--begin::Heading-->
+                                            <div class="mb-7 text-center">
+                                                <!--begin::Title-->
+                                                <h1 class="text-gray-900 mb-5 fw-boldest">Basic Studio</h1>
+                                                <!--end::Title-->
 
+                                                <!--begin::Description-->
+                                                <div class="text-gray-500 fw-semibold mb-5">
+                                                    Solusi dasar untuk latihan musik.
+                                                </div>
+                                                <!--end::Description-->
 
+                                                <!--begin::Price-->
+                                                <div class="text-center">
+                                                    <span class="mb-2 text-primary">Rp</span>
 
+                                                    <span class="fs-3x fw-bold text-primary"
+                                                        data-kt-plan-price-month="99" data-kt-plan-price-annual="999">
+                                                        75.000 </span>
+
+                                                    <span class="fs-7 fw-semibold opacity-50"
+                                                        data-kt-plan-price-month="/ Mon"
+                                                        data-kt-plan-price-annual="/ Ann">
+                                                        / 1 Jam </span>
+                                                </div>
+                                                <!--end::Price-->
+                                            </div>
+                                            <!--end::Heading-->
+
+                                            <!--begin::Features-->
+                                            <div class="w-100 mb-10">
+                                                <!--begin::Item-->
+                                                <div class="d-flex flex-stack mb-5">
+                                                    <span class="fw-semibold fs-6 text-gray-800 text-start pe-3">
+                                                        Ruang akustik standar (maks 5 orang) </span>
+                                                    <i class="ki-duotone ki-check-circle fs-1 text-success"><span
+                                                            class="path1"></span><span class="path2"></span></i>
+                                                </div>
+                                                <!--end::Item-->
+                                                <!--begin::Item-->
+                                                <div class="d-flex flex-stack mb-5">
+                                                    <span class="fw-semibold fs-6 text-gray-800 text-start pe-3">
+                                                        Drum set + 1 gitar amp + 1 bass amp </span>
+                                                    <i class="ki-duotone ki-check-circle fs-1 text-success"><span
+                                                            class="path1"></span><span class="path2"></span></i>
+                                                </div>
+                                               <!--end::Item-->
+                                                <!--begin::Item-->
+                                                <div class="d-flex flex-stack mb-5">
+                                                    <span class="fw-semibold fs-6 text-gray-800 text-start pe-3">
+                                                        2 mic vokal + basic mixer </span>
+                                                    <i class="ki-duotone ki-check-circle fs-1 text-success"><span
+                                                            class="path1"></span><span class="path2"></span></i>
+                                                </div>
+                                                <!--end::Item-->
+                                                <!--begin::Item-->
+                                                <div class="d-flex flex-stack mb-5">
+                                                    <span class="fw-semibold fs-6 text-gray-800 text-start pe-3">
+                                                        Monitor ear/room standar </span>
+                                                    <i class="ki-duotone ki-check-circle fs-1 text-success"><span
+                                                            class="path1"></span><span class="path2"></span></i>
+                                                </div>
+                                                <!--end::Item-->
+                                                <!--begin::Item-->
+                                                <div class="d-flex flex-stack mb-5">
+                                                    <span class="fw-semibold fs-6 text-gray-800 text-start pe-3">
+                                                        Crew on-site </span>
+                                                    <i class="ki-duotone ki-check-circle fs-1 text-success"><span
+                                                            class="path1"></span><span class="path2"></span></i>
+                                                </div>
+                                                <!--end::Item-->
+
+                                            </div>
+                                            <!--end::Features-->
+
+                                            <!--begin::Select-->
+                                            <a href="#" class="btn btn-primary">Booking</a>
+                                            <!--end::Select-->
+                                        </div>
+                                        <!--end::Option-->
+                                    </div>
+                                </div>
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col-xl-4">
+                                    <div class="d-flex h-100 align-items-center">
+                                        <!--begin::Option-->
+                                        <div
+                                            class="w-100 d-flex flex-column flex-center rounded-3 bg-primary py-20 px-10">
+                                            <!--begin::Heading-->
+                                            <div class="mb-7 text-center">
+                                                <!--begin::Title-->
+                                                <h1 class="text-white mb-5 fw-boldest">Advance Studio</h1>
+                                                <!--end::Title-->
+
+                                                <!--begin::Description-->
+                                                <div class="text-white opacity-75 fw-semibold mb-5">
+                                                    Fleksibel dengan kualitas lebih baik
+                                                </div>
+                                                <!--end::Description-->
+
+                                                <!--begin::Price-->
+                                                <div class="text-center">
+                                                    <span class="mb-2 text-white">Rp</span>
+
+                                                    <span class="fs-3x fw-bold text-white"
+                                                        data-kt-plan-price-month="199"
+                                                        data-kt-plan-price-annual="1999">
+                                                        120.000 </span>
+
+                                                    <span class="fs-7 fw-semibold text-white opacity-75"
+                                                        data-kt-plan-price-month="/ Mon"
+                                                        data-kt-plan-price-annual="/ Ann">
+                                                        / 1 Jam </span>
+                                                </div>
+                                                <!--end::Price-->
+                                            </div>
+                                            <!--end::Heading-->
+
+                                            <!--begin::Features-->
+                                            <div class="w-100 mb-10">
+                                                <!--begin::Item-->
+                                                <div class="d-flex flex-stack mb-5">
+                                                    <span
+                                                        class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
+                                                       Ruang treated (maks 6–8 orang) </span>
+                                                    <i class="ki-duotone ki-check-circle fs-1 text-white"><span
+                                                            class="path1"></span><span class="path2"></span></i>
+                                                </div>
+                                                <!--end::Item-->
+                                                <!--begin::Item-->
+                                                <div class="d-flex flex-stack mb-5">
+                                                    <span
+                                                        class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
+                                                        Drum set + 2 gitar amp + 1 bass amp </span>
+                                                    <i class="ki-duotone ki-check-circle fs-1 text-white"><span
+                                                            class="path1"></span><span class="path2"></span></i>
+                                                </div>
+                                                <!--end::Item-->
+                                                <!--begin::Item-->
+                                                <div class="d-flex flex-stack mb-5">
+                                                    <span
+                                                        class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
+                                                        3–4 mic vokal + mixer 12–16 ch </span>
+                                                    <i class="ki-duotone ki-check-circle fs-1 text-white"><span
+                                                            class="path1"></span><span class="path2"></span></i>
+                                                </div>
+                                                <!--end::Item-->
+                                                <!--begin::Item-->
+                                                <div class="d-flex flex-stack mb-5">
+                                                    <span
+                                                        class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
+                                                        Monitor lebih jernih + DI box </span>
+                                                    <i class="ki-duotone ki-check-circle fs-1 text-white"><span
+                                                            class="path1"></span><span class="path2"></span></i>
+                                                </div>
+                                                <!--end::Item-->
+                                                <!--begin::Item-->
+                                                <div class="d-flex flex-stack mb-5">
+                                                    <span
+                                                        class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
+                                                        Rekam stereo rehearsal (mp3)</span>
+                                                    <i class="ki-duotone ki-check-circle fs-1 text-white"><span
+                                                            class="path1"></span><span class="path2"></span></i>
+                                                </div>
+                                                <!--end::Item-->
+
+                                            </div>
+                                            <!--end::Features-->
+
+                                            <!--begin::Select-->
+                                            <a href="#"
+                                                class="btn btn-color-primary btn-active-light-primary btn-light">Booking</a>
+                                            <!--end::Select-->
+                                        </div>
+                                        <!--end::Option-->
+                                    </div>
+                                </div>
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col-xl-4">
+                                    <div class="d-flex h-100 align-items-center">
+                                        <!--begin::Option-->
+                                        <div
+                                            class="w-100 d-flex flex-column flex-center rounded-3 bg-body py-15 px-10">
+                                            <!--begin::Heading-->
+                                            <div class="mb-7 text-center">
+                                                <!--begin::Title-->
+                                                <h1 class="text-gray-900 mb-5 fw-boldest">Premium Studio</h1>
+                                                <!--end::Title-->
+
+                                                <!--begin::Description-->
+                                                <div class="text-gray-500 fw-semibold mb-5">
+                                                    Perlengkapan premium untuk performa maksimal
+                                                </div>
+                                                <!--end::Description-->
+
+                                                <!--begin::Price-->
+                                                <div class="text-center">
+                                                    <span class="mb-2 text-primary">Rp</span>
+
+                                                    <span class="fs-3x fw-bold text-primary"
+                                                        data-kt-plan-price-month="999"
+                                                        data-kt-plan-price-annual="9999">
+                                                        180.000 </span>
+
+                                                    <span class="fs-7 fw-semibold opacity-50"
+                                                        data-kt-plan-price-month="/ Mon"
+                                                        data-kt-plan-price-annual="/ Ann">
+                                                        / 1 Jam </span>
+                                                </div>
+                                                <!--end::Price-->
+                                            </div>
+                                            <!--end::Heading-->
+
+                                            <!--begin::Features-->
+                                            <div class="w-100 mb-10">
+                                                <!--begin::Item-->
+                                                <div class="d-flex flex-stack mb-5">
+                                                    <span class="fw-semibold fs-6 text-gray-800 text-start pe-3">
+                                                        Ruang premium (maks 8–10 orang) </span>
+                                                    <i class="ki-duotone ki-check-circle fs-1 text-success"><span
+                                                            class="path1"></span><span class="path2"></span></i>
+                                                </div>
+                                                <!--end::Item-->
+                                                <!--begin::Item-->
+                                                <div class="d-flex flex-stack mb-5">
+                                                    <span class="fw-semibold fs-6 text-gray-800 text-start pe-3">
+                                                        Drum high-end + 2 gitar amp tabung + bass amp premium </span>
+                                                    <i class="ki-duotone ki-check-circle fs-1 text-success"><span
+                                                            class="path1"></span><span class="path2"></span></i>
+                                                </div>
+                                                <!--end::Item-->
+                                                <!--begin::Item-->
+                                                <div class="d-flex flex-stack mb-5">
+                                                    <span class="fw-semibold fs-6 text-gray-800 text-start pe-3">
+                                                        4–6 mic + condenser utk vokal </span>
+                                                    <i class="ki-duotone ki-check-circle fs-1 text-success"><span
+                                                            class="path1"></span><span class="path2"></span></i>
+                                                </div>
+                                                <!--end::Item-->
+                                                <!--begin::Item-->
+                                                <div class="d-flex flex-stack mb-5">
+                                                    <span class="fw-semibold fs-6 text-gray-800 text-start pe-3">
+                                                        Monitoring reference + in-ear (terbatas)</span>
+                                                    <i class="ki-duotone ki-check-circle fs-1 text-success"><span
+                                                            class="path1"></span><span class="path2"></span></i>
+                                                </div>
+                                                <!--end::Item-->
+                                                <!--begin::Item-->
+                                                <div class="d-flex flex-stack ">
+                                                    <span class="fw-semibold fs-6 text-gray-800 text-start pe-3">
+                                                        Multitrack rehearsal recording (stems) </span>
+                                                    <i class="ki-duotone ki-check-circle fs-1 text-success"><span
+                                                            class="path1"></span><span class="path2"></span></i>
+                                                </div>
+                                                <!--end::Item-->
+
+                                            </div>
+                                            <!--end::Features-->
+
+                                            <!--begin::Select-->
+                                            <a href="#" class="btn btn-primary">Booking</a>
+                                            <!--end::Select-->
+                                        </div>
+                                        <!--end::Option-->
+                                    </div>
+                                </div>
+                                <!--end::Col-->
+                            </div>
+                            <!--end::Row-->
+                        </div>
+                        <!--end::Pricing-->
+                    </div>
+                    <!--end::Plans-->
+                </div>
+                <!--end::Container-->
             </div>
+            <!--end::Wrapper-->
+
+            {{-- <!--begin::Curve bottom-->
+            <div class="landing-curve landing-dark-color ">
+                <svg viewBox="15 12 1470 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M0 11C3.93573 11.3356 7.85984 11.6689 11.7725 12H1488.16C1492.1 11.6689 1496.04 11.3356 1500 11V12H1488.16C913.668 60.3476 586.282 60.6117 11.7725 12H0V11Z"
+                        fill="currentColor"></path>
+                </svg>
+            </div> --}}
+            <!--end::Curve bottom-->
+        {{-- </div> --}}
+        <!--end::Studio Section-->
+
+            {{-- </div> --}}
             <!--end::Container-->
-        </div>
+        {{-- </div> --}}
         <!--end::How It Works Section-->
 
 
-        <!--begin::Statistics Section-->
+        {{-- <!--begin::Statistics Section-->
         <div class="mt-sm-n10">
             <!--begin::Curve top-->
             <div class="landing-curve landing-dark-color ">
@@ -682,34 +1015,34 @@ License: For each use you must have a valid license purchased only from above li
                         </div>
                         <!--end::Items-->
                     </div>
-                    <!--end::Statistics-->
+                    <!--end::Statistics--> --}}
 
                     <!--begin::Testimonial-->
-                    <div class="fs-2 fw-semibold text-muted text-center mb-3">
+                    {{-- <div class="fs-2 fw-semibold text-muted text-center mb-3">
                         <span class="fs-1 lh-1 text-gray-700">“</span>
 
                         When you care about your topic, you’ll write about it in a <br><span
                             class="text-gray-700 me-1">more powerful</span>, emotionally expressive way
 
                         <span class="fs-1 lh-1 text-gray-700">“</span>
-                    </div>
+                    </div> --}}
                     <!--end::Testimonial-->
 
                     <!--begin::Author-->
-                    <div class="fs-2 fw-semibold text-muted text-center">
+                    {{-- <div class="fs-2 fw-semibold text-muted text-center">
                         <a href="/metronic8/demo1/account/security.html" class="link-primary fs-4 fw-bold">Marcus
                             Levy,</a>
 
                         <span class="fs-4 fw-bold text-gray-600">KeenThemes CEO</span>
-                    </div>
+                    </div> --}}
                     <!--end::Author-->
-                </div>
+                {{-- </div> --}}
                 <!--end::Container-->
-            </div>
+            {{-- </div> --}}
             <!--end::Wrapper-->
 
             <!--begin::Curve bottom-->
-            <div class="landing-curve landing-dark-color ">
+            {{-- <div class="landing-curve landing-dark-color ">
                 <svg viewBox="15 12 1470 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M0 11C3.93573 11.3356 7.85984 11.6689 11.7725 12H1488.16C1492.1 11.6689 1496.04 11.3356 1500 11V12H1488.16C913.668 60.3476 586.282 60.6117 11.7725 12H0V11Z"
@@ -717,14 +1050,14 @@ License: For each use you must have a valid license purchased only from above li
                 </svg>
             </div>
             <!--end::Curve bottom-->
-        </div>
+        </div> --}}
         <!--end::Statistics Section-->
 
 
 
 
         <!--begin::Team Section-->
-        <div class="py-10 py-lg-20">
+        {{-- <div class="py-10 py-lg-20">
             <!--begin::Container-->
             <div class="container">
                 <!--begin::Heading-->
@@ -740,11 +1073,11 @@ License: For each use you must have a valid license purchased only from above li
                         integrate and test each extra feature creeps up and haunts most of us.
                     </div>
                     <!--end::Sub-title--->
-                </div>
+                </div> --}}
                 <!--end::Heading-->
 
                 <!--begin::Slider-->
-                <div class="tns tns-default tns-initiazlied" style="direction: ltr">
+                {{-- <div class="tns tns-default tns-initiazlied" style="direction: ltr">
                     <!--begin::Wrapper-->
                     <div class="tns-outer" id="tns2-ow">
                         <div class="tns-liveregion tns-visually-hidden" aria-live="polite" aria-atomic="true">slide
@@ -766,11 +1099,11 @@ License: For each use you must have a valid license purchased only from above li
                                         <!--begin::Photo-->
                                         <div class="octagon mx-auto mb-5 d-flex w-200px h-200px bgi-no-repeat bgi-size-contain bgi-position-center"
                                             style="background-image:url('/metronic8/demo1/assets/media/avatars/300-20.jpg')">
-                                        </div>
+                                        </div> --}}
                                         <!--end::Photo-->
 
                                         <!--begin::Person-->
-                                        <div class="mb-0">
+                                        {{-- <div class="mb-0">
                                             <!--begin::Name-->
                                             <a href="#"
                                                 class="text-gray-900 fw-bold text-hover-primary fs-3">Anne Clarc</a>
@@ -788,10 +1121,10 @@ License: For each use you must have a valid license purchased only from above li
                                         <div class="octagon mx-auto mb-5 d-flex w-200px h-200px bgi-no-repeat bgi-size-contain bgi-position-center"
                                             style="background-image:url('/metronic8/demo1/assets/media/avatars/300-23.jpg')">
                                         </div>
-                                        <!--end::Photo-->
+                                        <!--end::Photo--> --}}
 
                                         <!--begin::Person-->
-                                        <div class="mb-0">
+                                        {{-- <div class="mb-0">
                                             <!--begin::Name-->
                                             <a href="#"
                                                 class="text-gray-900 fw-bold text-hover-primary fs-3">Ricky Hunt</a>
@@ -808,11 +1141,11 @@ License: For each use you must have a valid license purchased only from above li
                                         <!--begin::Photo-->
                                         <div class="octagon mx-auto mb-5 d-flex w-200px h-200px bgi-no-repeat bgi-size-contain bgi-position-center"
                                             style="background-image:url('/metronic8/demo1/assets/media/avatars/300-12.jpg')">
-                                        </div>
+                                        </div> --}}
                                         <!--end::Photo-->
 
                                         <!--begin::Person-->
-                                        <div class="mb-0">
+                                        {{-- <div class="mb-0">
                                             <!--begin::Name-->
                                             <a href="#"
                                                 class="text-gray-900 fw-bold text-hover-primary fs-3">Alice Wayde</a>
@@ -821,9 +1154,9 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin::Position-->
                                             <div class="text-muted fs-6 fw-semibold mt-1">Marketing Manager</div>
                                             <!--begin::Position-->
-                                        </div>
+                                        </div> --}}
                                         <!--end::Person-->
-                                    </div>
+                                    {{-- </div>
                                     <div class="text-center tns-item tns-slide-cloned" aria-hidden="true"
                                         tabindex="-1">
                                         <!--begin::Photo-->
@@ -844,10 +1177,10 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin::Position-->
                                         </div>
                                         <!--end::Person-->
-                                    </div>
+                                    </div> --}}
 
                                     <!--begin::Item-->
-                                    <div class="text-center tns-item tns-slide-active" id="tns2-item0">
+                                    {{-- <div class="text-center tns-item tns-slide-active" id="tns2-item0">
                                         <!--begin::Photo-->
                                         <div class="octagon mx-auto mb-5 d-flex w-200px h-200px bgi-no-repeat bgi-size-contain bgi-position-center"
                                             style="background-image:url('/metronic8/demo1/assets/media/avatars/300-1.jpg')">
@@ -866,10 +1199,10 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin::Position-->
                                         </div>
                                         <!--end::Person-->
-                                    </div>
+                                    </div> --}}
                                     <!--end::Item-->
                                     <!--begin::Item-->
-                                    <div class="text-center tns-item tns-slide-active" id="tns2-item1">
+                                    {{-- <div class="text-center tns-item tns-slide-active" id="tns2-item1">
                                         <!--begin::Photo-->
                                         <div class="octagon mx-auto mb-5 d-flex w-200px h-200px bgi-no-repeat bgi-size-contain bgi-position-center"
                                             style="background-image:url('/metronic8/demo1/assets/media/avatars/300-2.jpg')">
@@ -886,9 +1219,9 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin::Position-->
                                             <div class="text-muted fs-6 fw-semibold mt-1">Creative Director</div>
                                             <!--begin::Position-->
-                                        </div>
+                                        </div> --}}
                                         <!--end::Person-->
-                                    </div>
+                                    {{-- </div>
                                     <!--end::Item-->
                                     <!--begin::Item-->
                                     <div class="text-center tns-item tns-slide-active" id="tns2-item2">
@@ -903,10 +1236,10 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin::Name-->
                                             <a href="#"
                                                 class="text-gray-900 fw-bold text-hover-primary fs-3">David Nilson</a>
-                                            <!--end::Name-->
+                                            <!--end::Name--> --}}
 
                                             <!--begin::Position-->
-                                            <div class="text-muted fs-6 fw-semibold mt-1">Python Expert</div>
+                                            {{-- <div class="text-muted fs-6 fw-semibold mt-1">Python Expert</div>
                                             <!--begin::Position-->
                                         </div>
                                         <!--end::Person-->
@@ -926,10 +1259,10 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin::Name-->
                                             <a href="#"
                                                 class="text-gray-900 fw-bold text-hover-primary fs-3">Anne Clarc</a>
-                                            <!--end::Name-->
+                                            <!--end::Name--> --}}
 
                                             <!--begin::Position-->
-                                            <div class="text-muted fs-6 fw-semibold mt-1">Project Manager</div>
+                                            {{-- <div class="text-muted fs-6 fw-semibold mt-1">Project Manager</div>
                                             <!--begin::Position-->
                                         </div>
                                         <!--end::Person-->
@@ -988,10 +1321,10 @@ License: For each use you must have a valid license purchased only from above li
                                         <div class="octagon mx-auto mb-5 d-flex w-200px h-200px bgi-no-repeat bgi-size-contain bgi-position-center"
                                             style="background-image:url('/metronic8/demo1/assets/media/avatars/300-9.jpg')">
                                         </div>
-                                        <!--end::Photo-->
+                                        <!--end::Photo--> --}}
 
                                         <!--begin::Person-->
-                                        <div class="mb-0">
+                                        {{-- <div class="mb-0">
                                             <!--begin::Name-->
                                             <a href="#"
                                                 class="text-gray-900 fw-bold text-hover-primary fs-3">Carles Puyol</a>
@@ -1074,10 +1407,10 @@ License: For each use you must have a valid license purchased only from above li
                                         <div class="octagon mx-auto mb-5 d-flex w-200px h-200px bgi-no-repeat bgi-size-contain bgi-position-center"
                                             style="background-image:url('/metronic8/demo1/assets/media/avatars/300-20.jpg')">
                                         </div>
-                                        <!--end::Photo-->
+                                        <!--end::Photo--> --}}
 
                                         <!--begin::Person-->
-                                        <div class="mb-0">
+                                        {{-- <div class="mb-0">
                                             <!--begin::Name-->
                                             <a href="#"
                                                 class="text-gray-900 fw-bold text-hover-primary fs-3">Anne Clarc</a>
@@ -1092,11 +1425,11 @@ License: For each use you must have a valid license purchased only from above li
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <!--end::Wrapper-->
 
                     <!--begin::Button-->
-                    <button class="btn btn-icon btn-active-color-primary" id="kt_team_slider_prev"
+                    {{-- <button class="btn btn-icon btn-active-color-primary" id="kt_team_slider_prev"
                         aria-controls="tns2" tabindex="-1" data-controls="prev">
                         <i class="ki-duotone ki-left fs-2x"></i> </button>
                     <!--end::Button-->
@@ -1110,11 +1443,10 @@ License: For each use you must have a valid license purchased only from above li
                 <!--end::Slider-->
             </div>
             <!--end::Container-->
-        </div>
+        </div> --}}
         <!--end::Team Section-->
 
-
-        <!--begin::Projects Section-->
+        <!--begin:: Daftar Paket Section-->
         <div class="mb-lg-n15 position-relative z-index-2">
             <!--begin::Container-->
             <div class="container">
@@ -1126,7 +1458,7 @@ License: For each use you must have a valid license purchased only from above li
                         <div class="text-center mb-5 mb-lg-10">
                             <!--begin::Title-->
                             <h3 class="fs-2hx text-gray-900 mb-5" id="portfolio"
-                                data-kt-scroll-offset="{default: 100, lg: 250}">Our Projects</h3>
+                                data-kt-scroll-offset="{default: 100, lg: 250}">Daftar Paket</h3>
                             <!--end::Title-->
                         </div>
                         <!--end::Heading-->
@@ -1139,25 +1471,377 @@ License: For each use you must have a valid license purchased only from above li
                                     <a class="nav-link text-gray-500 text-active-primary px-3 px-lg-6 active"
                                         href="#" data-bs-toggle="tab"
                                         data-bs-target="#kt_landing_projects_latest" aria-selected="true"
-                                        role="tab">Latest</a>
+                                        role="tab">Semua</a>
                                 </li>
 
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link text-gray-500 text-active-primary px-3 px-lg-6" href="#"
                                         data-bs-toggle="tab" data-bs-target="#kt_landing_projects_web_design"
-                                        aria-selected="false" tabindex="-1" role="tab">Web Design</a>
+                                        aria-selected="false" tabindex="-1" role="tab">Low</a>
                                 </li>
 
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link text-gray-500 text-active-primary px-3 px-lg-6" href="#"
                                         data-bs-toggle="tab" data-bs-target="#kt_landing_projects_mobile_apps"
-                                        aria-selected="false" tabindex="-1" role="tab">Mobile Apps</a>
+                                        aria-selected="false" tabindex="-1" role="tab">Middle</a>
                                 </li>
 
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link text-gray-500 text-active-primary px-3 px-lg-6" href="#"
                                         data-bs-toggle="tab" data-bs-target="#kt_landing_projects_development"
-                                        aria-selected="false" tabindex="-1" role="tab">Development</a>
+                                        aria-selected="false" tabindex="-1" role="tab">Max</a>
+                                </li>
+                            </ul>
+                            <!--end::Tabs-->
+                        </div>
+                        <!--end::Tabs wrapper-->
+
+                         <!--begin::Row-->
+                            <div class="row g-10">
+                                
+                                <!--begin::Col-->
+                                <div class="col-xl-4">
+                                    <div class="d-flex h-100 align-items-center">
+                                        <!--begin::Option-->
+                                        <div
+                                            class="w-100 d-flex flex-column flex-center rounded-3 bg-primary py-20 px-10">
+                                            <!--begin::Heading-->
+                                            <!-- Foto dengan ukuran tetap -->
+                                <div class="d-flex justify-content-center mb-3" style="margin-top: -20px;">
+                              <img src="{{ asset('media/studio/studiom1.jpg') }}" 
+                              class="img-fluid" 
+                            alt="Paket 1"
+                            style="width: 300px; height: 300px; object-fit: cover; border-radius:10px;">
+                            </div>
+
+
+                                            
+                    <div class="d-flex justify-content-between align-items-center text-white mb-5">
+                     <!-- Left: Nama Paket & Deskripsi -->
+                    <div>
+                        <h2 class="fw-bold text-white" style="font-size: 20px; margin-bottom: 8px;">Paket 1</h2>
+                        <div class="opacity-75" style="font-size: 10px;">
+                        Basic Studio
+                         </div>
+                    </div>
+
+                  <!-- Right: Harga -->
+                 <div class="text-end">
+                 <span style="font-size: 16px;">Rp</span>
+                 <span class="fw-bold" style="font-size: 15px; margin-left: 4px;">120.000</span>
+                <div style="font-size: 14px; opacity: 0.7;">/ 1 Jam</div>
+                </div>
+            </div>
+
+
+                                            <!--begin::Features-->
+                                            <div class="w-100 mb-10">
+                                                <!--begin::Item-->
+                                                <div class="d-flex flex-stack mb-5">
+                                                    <span
+                                                        class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
+                                                       Ruang treated (maks 6–8 orang) </span>
+                                                    <i class="ki-duotone ki-check-circle fs-1 text-white"><span
+                                                            class="path1"></span><span class="path2"></span></i>
+                                                </div>
+                                                <!--end::Item-->
+                                                <!--begin::Item-->
+                                                <div class="d-flex flex-stack mb-5">
+                                                    <span
+                                                        class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
+                                                        Drum set + 2 gitar amp + 1 bass amp </span>
+                                                    <i class="ki-duotone ki-check-circle fs-1 text-white"><span
+                                                            class="path1"></span><span class="path2"></span></i>
+                                                </div>
+                                                <!--end::Item-->
+                                                <!--begin::Item-->
+                                                <div class="d-flex flex-stack mb-5">
+                                                    <span
+                                                        class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
+                                                        3–4 mic vokal + mixer 12–16 ch </span>
+                                                    <i class="ki-duotone ki-check-circle fs-1 text-white"><span
+                                                            class="path1"></span><span class="path2"></span></i>
+                                                </div>
+                                                <!--end::Item-->
+                                                <!--begin::Item-->
+                                                <div class="d-flex flex-stack mb-5">
+                                                    <span
+                                                        class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
+                                                        Monitor lebih jernih + DI box </span>
+                                                    <i class="ki-duotone ki-check-circle fs-1 text-white"><span
+                                                            class="path1"></span><span class="path2"></span></i>
+                                                </div>
+                                                <!--end::Item-->
+                                                <!--begin::Item-->
+                                                <div class="d-flex flex-stack mb-5">
+                                                    <span
+                                                        class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
+                                                        Rekam stereo rehearsal (mp3)</span>
+                                                    <i class="ki-duotone ki-check-circle fs-1 text-white"><span
+                                                            class="path1"></span><span class="path2"></span></i>
+                                                </div>
+                                                <!--end::Item-->
+
+                                            </div>
+                                            <!--end::Features-->
+
+                                            <!--begin::Select-->
+                                            <a href="#"
+                                                class="btn btn-color-primary btn-active-light-primary btn-light">Booking</a>
+                                            <!--end::Select-->
+                                        </div>
+                                        <!--end::Option-->
+                                    </div>
+                                </div>
+                                <!--end::Col-->
+                                
+                                <!--begin::Col-->
+                                <div class="col-xl-4">
+                                    <div class="d-flex h-100 align-items-center">
+                                        <!--begin::Option-->
+                                        <div
+                                            class="w-100 d-flex flex-column flex-center rounded-3 bg-primary py-20 px-10">
+                                            <!--begin::Heading-->
+
+                                            <!-- Foto dengan ukuran tetap -->
+                                <div class="d-flex justify-content-center mb-3" style="margin-top: -20px;">
+                              <img src="{{ asset('media/studio/studiom1.jpg') }}" 
+                              class="img-fluid" 
+                            alt="Paket 1"
+                            style="width: 300px; height: 300px; object-fit: cover; border-radius:10px;">
+                            </div>
+
+
+                                            
+                    <div class="d-flex justify-content-between align-items-center text-white mb-5">
+                     <!-- Left: Nama Paket & Deskripsi -->
+                    <div>
+                        <h2 class="fw-bold text-white" style="font-size: 20px; margin-bottom: 8px;">Paket 1</h2>
+                        <div class="opacity-75" style="font-size: 10px;">
+                        Basic Studio
+                         </div>
+                    </div>
+
+                  <!-- Right: Harga -->
+                 <div class="text-end">
+                 <span style="font-size: 16px;">Rp</span>
+                 <span class="fw-bold" style="font-size: 15px; margin-left: 4px;">120.000</span>
+                <div style="font-size: 14px; opacity: 0.7;">/ 1 Jam</div>
+                </div>
+            </div>
+                                            
+
+                                            <!--begin::Features-->
+                                            <div class="w-100 mb-10">
+                                                <!--begin::Item-->
+                                                <div class="d-flex flex-stack mb-5">
+                                                    <span
+                                                        class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
+                                                       Ruang treated (maks 6–8 orang) </span>
+                                                    <i class="ki-duotone ki-check-circle fs-1 text-white"><span
+                                                            class="path1"></span><span class="path2"></span></i>
+                                                </div>
+                                                <!--end::Item-->
+                                                <!--begin::Item-->
+                                                <div class="d-flex flex-stack mb-5">
+                                                    <span
+                                                        class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
+                                                        Drum set + 2 gitar amp + 1 bass amp </span>
+                                                    <i class="ki-duotone ki-check-circle fs-1 text-white"><span
+                                                            class="path1"></span><span class="path2"></span></i>
+                                                </div>
+                                                <!--end::Item-->
+                                                <!--begin::Item-->
+                                                <div class="d-flex flex-stack mb-5">
+                                                    <span
+                                                        class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
+                                                        3–4 mic vokal + mixer 12–16 ch </span>
+                                                    <i class="ki-duotone ki-check-circle fs-1 text-white"><span
+                                                            class="path1"></span><span class="path2"></span></i>
+                                                </div>
+                                                <!--end::Item-->
+                                                <!--begin::Item-->
+                                                <div class="d-flex flex-stack mb-5">
+                                                    <span
+                                                        class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
+                                                        Monitor lebih jernih + DI box </span>
+                                                    <i class="ki-duotone ki-check-circle fs-1 text-white"><span
+                                                            class="path1"></span><span class="path2"></span></i>
+                                                </div>
+                                                <!--end::Item-->
+                                                <!--begin::Item-->
+                                                <div class="d-flex flex-stack mb-5">
+                                                    <span
+                                                        class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
+                                                        Rekam stereo rehearsal (mp3)</span>
+                                                    <i class="ki-duotone ki-check-circle fs-1 text-white"><span
+                                                            class="path1"></span><span class="path2"></span></i>
+                                                </div>
+                                                <!--end::Item-->
+
+                                            </div>
+                                            <!--end::Features-->
+
+                                            <!--begin::Select-->
+                                            <a href="#"
+                                                class="btn btn-color-primary btn-active-light-primary btn-light">Booking</a>
+                                            <!--end::Select-->
+                                        </div>
+                                        <!--end::Option-->
+                                    </div>
+                                </div>
+                                <!--end::Col-->
+                                
+                                <!--begin::Col-->
+                                <div class="col-xl-4">
+                                    <div class="d-flex h-100 align-items-center">
+                                        <!--begin::Option-->
+                                        <div
+                                            class="w-100 d-flex flex-column flex-center rounded-3 bg-primary py-20 px-10">
+                                            <!--begin::Heading-->
+                                            <!-- Foto dengan ukuran tetap -->
+                                <div class="d-flex justify-content-center mb-3" style="margin-top: -20px;">
+                              <img src="{{ asset('media/studio/studiom1.jpg') }}" 
+                              class="img-fluid" 
+                            alt="Paket 1"
+                            style="width: 300px; height: 300px; object-fit: cover; border-radius:10px;">
+                            </div>
+
+
+                                            
+                    <div class="d-flex justify-content-between align-items-center text-white mb-5">
+                     <!-- Left: Nama Paket & Deskripsi -->
+                    <div>
+                        <h2 class="fw-bold text-white" style="font-size: 20px; margin-bottom: 8px;">Paket 1</h2>
+                        <div class="opacity-75" style="font-size: 10px;">
+                        Basic Studio
+                         </div>
+                    </div>
+
+                  <!-- Right: Harga -->
+                 <div class="text-end">
+                 <span style="font-size: 16px;">Rp</span>
+                 <span class="fw-bold" style="font-size: 15px; margin-left: 4px;">120.000</span>
+                <div style="font-size: 14px; opacity: 0.7;">/ 1 Jam</div>
+                </div>
+            </div>
+
+                                            <!--begin::Features-->
+                                            <div class="w-100 mb-10">
+                                                <!--begin::Item-->
+                                                <div class="d-flex flex-stack mb-5">
+                                                    <span
+                                                        class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
+                                                       Ruang treated (maks 6–8 orang) </span>
+                                                    <i class="ki-duotone ki-check-circle fs-1 text-white"><span
+                                                            class="path1"></span><span class="path2"></span></i>
+                                                </div>
+                                                <!--end::Item-->
+                                                <!--begin::Item-->
+                                                <div class="d-flex flex-stack mb-5">
+                                                    <span
+                                                        class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
+                                                        Drum set + 2 gitar amp + 1 bass amp </span>
+                                                    <i class="ki-duotone ki-check-circle fs-1 text-white"><span
+                                                            class="path1"></span><span class="path2"></span></i>
+                                                </div>
+                                                <!--end::Item-->
+                                                <!--begin::Item-->
+                                                <div class="d-flex flex-stack mb-5">
+                                                    <span
+                                                        class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
+                                                        3–4 mic vokal + mixer 12–16 ch </span>
+                                                    <i class="ki-duotone ki-check-circle fs-1 text-white"><span
+                                                            class="path1"></span><span class="path2"></span></i>
+                                                </div>
+                                                <!--end::Item-->
+                                                <!--begin::Item-->
+                                                <div class="d-flex flex-stack mb-5">
+                                                    <span
+                                                        class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
+                                                        Monitor lebih jernih + DI box </span>
+                                                    <i class="ki-duotone ki-check-circle fs-1 text-white"><span
+                                                            class="path1"></span><span class="path2"></span></i>
+                                                </div>
+                                                <!--end::Item-->
+                                                <!--begin::Item-->
+                                                <div class="d-flex flex-stack mb-5">
+                                                    <span
+                                                        class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
+                                                        Rekam stereo rehearsal (mp3)</span>
+                                                    <i class="ki-duotone ki-check-circle fs-1 text-white"><span
+                                                            class="path1"></span><span class="path2"></span></i>
+                                                </div>
+                                                <!--end::Item-->
+
+                                            </div>
+                                            <!--end::Features-->
+
+                                            <!--begin::Select-->
+                                            <a href="#"
+                                                class="btn btn-color-primary btn-active-light-primary btn-light">Booking</a>
+                                            <!--end::Select-->
+                                        </div>
+                                        <!--end::Option-->
+                                    </div>
+                                </div>
+                                <!--end::Col-->
+                            </div>
+                            <!--end::Row-->
+                        </div>
+                        <!--end::Pricing-->
+                    </div>
+                    <!--end::Plans-->
+                </div>
+                <!--end::Container-->
+            </div>
+            <!--end::Wrapper-->
+
+
+        <!--begin::Galeri Section-->
+        <div class="mb-lg-n15 position-relative z-index-2">
+            <!--begin::Container-->
+            <div class="container">
+                <!--begin::Card-->
+                <div class="card" style="filter: drop-shadow(0px 0px 40px rgba(68, 81, 96, 0.08))">
+                    <!--begin::Card body-->
+                    <div class="card-body p-lg-20">
+                        <!--begin::Heading-->
+                        <div class="text-center mb-5 mb-lg-10">
+                            <!--begin::Title-->
+                            <h3 class="fs-2hx text-gray-900 mb-5" id="portfolio"
+                                data-kt-scroll-offset="{default: 100, lg: 250}">Galeri</h3>
+                            <!--end::Title-->
+                        </div>
+                        <!--end::Heading-->
+
+                        <!--begin::Tabs wrapper-->
+                        <div class="d-flex flex-center mb-5 mb-lg-15">
+                            <!--begin::Tabs-->
+                            <ul class="nav border-transparent flex-center fs-5 fw-bold" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link text-gray-500 text-active-primary px-3 px-lg-6 active"
+                                        href="#" data-bs-toggle="tab"
+                                        data-bs-target="#kt_landing_projects_latest" aria-selected="true"
+                                        role="tab">Semua</a>
+                                </li>
+
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link text-gray-500 text-active-primary px-3 px-lg-6" href="#"
+                                        data-bs-toggle="tab" data-bs-target="#kt_landing_projects_web_design"
+                                        aria-selected="false" tabindex="-1" role="tab">Low</a>
+                                </li>
+
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link text-gray-500 text-active-primary px-3 px-lg-6" href="#"
+                                        data-bs-toggle="tab" data-bs-target="#kt_landing_projects_mobile_apps"
+                                        aria-selected="false" tabindex="-1" role="tab">Middle</a>
+                                </li>
+
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link text-gray-500 text-active-primary px-3 px-lg-6" href="#"
+                                        data-bs-toggle="tab" data-bs-target="#kt_landing_projects_development"
+                                        aria-selected="false" tabindex="-1" role="tab">Max</a>
                                 </li>
                             </ul>
                             <!--end::Tabs-->
@@ -1175,10 +1859,10 @@ License: For each use you must have a valid license purchased only from above li
                                         <!--begin::Item-->
                                         <a class="d-block card-rounded overlay h-lg-100"
                                             data-fslightbox="lightbox-projects"
-                                            href="/metronic8/demo1/assets/media/stock/600x600/img-23.jpg">
+                                            img src="{{ asset('media/studio/studiom1.jpg') }}">
                                             <!--begin::Image-->
                                             <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-lg-100 min-h-250px"
-                                                style="background-image:url('/metronic8/demo1/assets/media/stock/600x600/img-23.jpg')">
+                                                style="background-image:url('{{ asset('media-studio-studiom1.jpg') }}">
                                             </div>
                                             <!--end::Image-->
 
@@ -1602,11 +2286,11 @@ License: For each use you must have a valid license purchased only from above li
             </div>
             <!--end::Container-->
         </div>
-        <!--end::Projects Section-->
+        <!--end::Galeri Section-->
 
 
         <!--begin::Pricing Section-->
-        <div class="mt-sm-n20">
+        {{-- <div class="mt-sm-n20">
             <!--begin::Curve top-->
             <div class="landing-curve landing-dark-color ">
                 <svg viewBox="15 -1 1470 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1614,11 +2298,11 @@ License: For each use you must have a valid license purchased only from above li
                         d="M1 48C4.93573 47.6644 8.85984 47.3311 12.7725 47H1489.16C1493.1 47.3311 1497.04 47.6644 1501 48V47H1489.16C914.668 -1.34764 587.282 -1.61174 12.7725 47H1V48Z"
                         fill="currentColor"></path>
                 </svg>
-            </div>
+            </div> --}}
             <!--end::Curve top-->
 
             <!--begin::Wrapper-->
-            <div class="py-20 landing-dark-bg ">
+            {{-- <div class="py-20 landing-dark-bg ">
                 <!--begin::Container-->
                 <div class="container">
                     <!--begin::Plans-->
@@ -1644,9 +2328,9 @@ License: For each use you must have a valid license purchased only from above li
                                     class="btn btn-color-gray-600 btn-active btn-active-success px-6 py-3 me-2 active"
                                     data-kt-plan="month">
                                     Monthly
-                                </a>
+                                </a> --}}
 
-                                <a href="#"
+                                {{-- <a href="#"
                                     class="btn btn-color-gray-600 btn-active btn-active-success px-6 py-3"
                                     data-kt-plan="annual">
                                     Annual
@@ -1666,10 +2350,10 @@ License: For each use you must have a valid license purchased only from above li
                                             <div class="mb-7 text-center">
                                                 <!--begin::Title-->
                                                 <h1 class="text-gray-900 mb-5 fw-boldest">Startup</h1>
-                                                <!--end::Title-->
+                                                <!--end::Title--> --}}
 
                                                 <!--begin::Description-->
-                                                <div class="text-gray-500 fw-semibold mb-5">
+                                                {{-- <div class="text-gray-500 fw-semibold mb-5">
                                                     Best Settings for Startups
                                                 </div>
                                                 <!--end::Description-->
@@ -1688,11 +2372,11 @@ License: For each use you must have a valid license purchased only from above li
                                                         / Mon </span>
                                                 </div>
                                                 <!--end::Price-->
-                                            </div>
+                                            </div> --}}
                                             <!--end::Heading-->
 
                                             <!--begin::Features-->
-                                            <div class="w-100 mb-10">
+                                            {{-- <div class="w-100 mb-10">
                                                 <!--begin::Item-->
                                                 <div class="d-flex flex-stack mb-5">
                                                     <span class="fw-semibold fs-6 text-gray-800 text-start pe-3">
@@ -1707,10 +2391,10 @@ License: For each use you must have a valid license purchased only from above li
                                                         Up to 30 Project Integrations </span>
                                                     <i class="ki-duotone ki-check-circle fs-1 text-success"><span
                                                             class="path1"></span><span class="path2"></span></i>
-                                                </div>
+                                                </div> --}}
                                                 <!--end::Item-->
                                                 <!--begin::Item-->
-                                                <div class="d-flex flex-stack mb-5">
+                                                {{-- <div class="d-flex flex-stack mb-5">
                                                     <span class="fw-semibold fs-6 text-gray-800">
                                                         Keen Analytics Platform </span>
                                                     <i class="ki-duotone ki-cross-circle fs-1"><span
@@ -1723,10 +2407,10 @@ License: For each use you must have a valid license purchased only from above li
                                                         Targets Timelines &amp; Files </span>
                                                     <i class="ki-duotone ki-cross-circle fs-1"><span
                                                             class="path1"></span><span class="path2"></span></i>
-                                                </div>
+                                                </div> --}}
                                                 <!--end::Item-->
                                                 <!--begin::Item-->
-                                                <div class="d-flex flex-stack ">
+                                                {{-- <div class="d-flex flex-stack ">
                                                     <span class="fw-semibold fs-6 text-gray-800">
                                                         Unlimited Projects </span>
                                                     <i class="ki-duotone ki-cross-circle fs-1"><span
@@ -1740,9 +2424,9 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin::Select-->
                                             <a href="#" class="btn btn-primary">Select</a>
                                             <!--end::Select-->
-                                        </div>
+                                        </div> --}}
                                         <!--end::Option-->
-                                    </div>
+                                    {{-- </div>
                                 </div>
                                 <!--end::Col-->
                                 <!--begin::Col-->
@@ -1760,11 +2444,11 @@ License: For each use you must have a valid license purchased only from above li
                                                 <!--begin::Description-->
                                                 <div class="text-white opacity-75 fw-semibold mb-5">
                                                     Best Settings for Business
-                                                </div>
+                                                </div> --}}
                                                 <!--end::Description-->
 
                                                 <!--begin::Price-->
-                                                <div class="text-center">
+                                                {{-- <div class="text-center">
                                                     <span class="mb-2 text-white">$</span>
 
                                                     <span class="fs-3x fw-bold text-white"
@@ -1778,11 +2462,11 @@ License: For each use you must have a valid license purchased only from above li
                                                         / Mon </span>
                                                 </div>
                                                 <!--end::Price-->
-                                            </div>
+                                            </div> --}}
                                             <!--end::Heading-->
 
                                             <!--begin::Features-->
-                                            <div class="w-100 mb-10">
+                                            {{-- <div class="w-100 mb-10">
                                                 <!--begin::Item-->
                                                 <div class="d-flex flex-stack mb-5">
                                                     <span
@@ -1803,8 +2487,8 @@ License: For each use you must have a valid license purchased only from above li
                                                 <!--end::Item-->
                                                 <!--begin::Item-->
                                                 <div class="d-flex flex-stack mb-5">
-                                                    <span
-                                                        class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
+                                                    <span --}}
+                                                        {{-- class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
                                                         Keen Analytics Platform </span>
                                                     <i class="ki-duotone ki-check-circle fs-1 text-white"><span
                                                             class="path1"></span><span class="path2"></span></i>
@@ -1828,11 +2512,11 @@ License: For each use you must have a valid license purchased only from above li
                                                 </div>
                                                 <!--end::Item-->
 
-                                            </div>
+                                            </div> --}}
                                             <!--end::Features-->
 
                                             <!--begin::Select-->
-                                            <a href="#"
+                                            {{-- <a href="#"
                                                 class="btn btn-color-primary btn-active-light-primary btn-light">Select</a>
                                             <!--end::Select-->
                                         </div>
@@ -1844,8 +2528,8 @@ License: For each use you must have a valid license purchased only from above li
                                 <div class="col-xl-4">
                                     <div class="d-flex h-100 align-items-center">
                                         <!--begin::Option-->
-                                        <div
-                                            class="w-100 d-flex flex-column flex-center rounded-3 bg-body py-15 px-10">
+                                        <div --}}
+                                            {{-- class="w-100 d-flex flex-column flex-center rounded-3 bg-body py-15 px-10">
                                             <!--begin::Heading-->
                                             <div class="mb-7 text-center">
                                                 <!--begin::Title-->
@@ -1873,11 +2557,11 @@ License: For each use you must have a valid license purchased only from above li
                                                         / Mon </span>
                                                 </div>
                                                 <!--end::Price-->
-                                            </div>
+                                            </div> --}}
                                             <!--end::Heading-->
 
                                             <!--begin::Features-->
-                                            <div class="w-100 mb-10">
+                                            {{-- <div class="w-100 mb-10">
                                                 <!--begin::Item-->
                                                 <div class="d-flex flex-stack mb-5">
                                                     <span class="fw-semibold fs-6 text-gray-800 text-start pe-3">
@@ -1951,7 +2635,7 @@ License: For each use you must have a valid license purchased only from above li
             </div>
             <!--end::Curve bottom-->
         </div>
-        <!--end::Pricing Section-->
+        <!--end::Pricing Section--> --}}
 
 
 
@@ -1963,14 +2647,14 @@ License: For each use you must have a valid license purchased only from above li
                 <div class="text-center mb-17">
                     <!--begin::Title-->
                     <h3 class="fs-2hx text-gray-900 mb-5" id="clients"
-                        data-kt-scroll-offset="{default: 125, lg: 150}">What Our Clients Say</h3>
+                        data-kt-scroll-offset="{default: 125, lg: 150}">Testimoni</h3>
                     <!--end::Title-->
 
                     <!--begin::Description-->
-                    <div class="fs-5 text-muted fw-bold">
+                    {{-- <div class="fs-5 text-muted fw-bold">
                         Save thousands to millions of bucks by using single tool <br>
                         for different amazing and great useful admin
-                    </div>
+                    </div> --}}
                     <!--end::Description-->
                 </div>
                 <!--end::Heading-->
@@ -1983,41 +2667,42 @@ License: For each use you must have a valid license purchased only from above li
                         <div
                             class="d-flex flex-column justify-content-between h-lg-100 px-10 px-lg-0 pe-lg-10 mb-15 mb-lg-0">
                             <!--begin::Wrapper-->
+
+                            <div class="fs-2 fw-bold text-gray-900 mb-3">
+
+                                    Andi Pratama <br>
+                                    Premium Studio
+                                </div>
+
                             <div class="mb-7">
                                 <!--begin::Rating-->
                                 <div class="rating mb-6">
                                     <div class="rating-label me-2 checked">
-                                        <i class="ki-duotone ki-star fs-5"></i>
+                                        <i class="ki-duotone ki-star fs-1"></i>
                                     </div>
                                     <div class="rating-label me-2 checked">
-                                        <i class="ki-duotone ki-star fs-5"></i>
+                                        <i class="ki-duotone ki-star fs-1"></i>
                                     </div>
                                     <div class="rating-label me-2 checked">
-                                        <i class="ki-duotone ki-star fs-5"></i>
+                                        <i class="ki-duotone ki-star fs-1"></i>
                                     </div>
                                     <div class="rating-label me-2 checked">
-                                        <i class="ki-duotone ki-star fs-5"></i>
+                                        <i class="ki-duotone ki-star fs-1"></i>
                                     </div>
                                     <div class="rating-label me-2 checked">
-                                        <i class="ki-duotone ki-star fs-5"></i>
+                                        <i class="ki-duotone ki-star fs-1"></i>
                                     </div>
                                 </div>
                                 <!--end::Rating-->
 
-                                <!--begin::Title-->
-                                <div class="fs-2 fw-bold text-gray-900 mb-3">
-
-                                    This is by far the cleanest template <br>
-                                    and the most well structured
-                                </div>
-                                <!--end::Title-->
+                                
 
                                 <!--begin::Feedback-->
                                 <div class="text-gray-500 fw-semibold fs-4">
 
-                                    The most well thought out design theme I have ever used. The codes are up to
-                                    tandard. The css styles are very clean.
-                                    In fact the cleanest and the most up to standard I have ever seen.
+                                    Pengalaman latihan di studio ini bener-bener luar biasa. 
+                                    Alat-alat musiknya lengkap, kualitas sound system sangat baik,
+                                    dan ruangan juga kedap suara sehingga latihan jadi lebih fokus tanpa gangguan.
                                 </div>
                                 <!--end::Feedback-->
                             </div>
@@ -2026,19 +2711,19 @@ License: For each use you must have a valid license purchased only from above li
                             <!--begin::Author-->
                             <div class="d-flex align-items-center">
                                 <!--begin::Avatar-->
-                                <div class="symbol symbol-circle symbol-50px me-5">
+                                {{-- <div class="symbol symbol-circle symbol-50px me-5">
                                     <img src="/metronic8/demo1/assets/media/avatars/300-1.jpg" class=""
                                         alt="">
-                                </div>
+                                </div> --}}
                                 <!--end::Avatar-->
 
                                 <!--begin::Name-->
-                                <div class="flex-grow-1">
+                                {{-- <div class="flex-grow-1">
                                     <a href="#" class="text-gray-900 fw-bold text-hover-primary fs-6">Paul
                                         Miles</a>
 
                                     <span class="text-muted d-block fw-bold">Development Lead</span>
-                                </div>
+                                </div> --}}
                                 <!--end::Name-->
                             </div>
                             <!--end::Author-->
@@ -2056,62 +2741,60 @@ License: For each use you must have a valid license purchased only from above li
                         <div
                             class="d-flex flex-column justify-content-between h-lg-100 px-10 px-lg-0 pe-lg-10 mb-15 mb-lg-0">
                             <!--begin::Wrapper-->
+                             <div class="fs-2 fw-bold text-gray-900 mb-3">
+
+                                    Rizki Hidayat <br>
+                                    Basic Studio
+                                </div>
+
                             <div class="mb-7">
                                 <!--begin::Rating-->
                                 <div class="rating mb-6">
                                     <div class="rating-label me-2 checked">
-                                        <i class="ki-duotone ki-star fs-5"></i>
+                                        <i class="ki-duotone ki-star fs-1"></i>
                                     </div>
                                     <div class="rating-label me-2 checked">
-                                        <i class="ki-duotone ki-star fs-5"></i>
+                                        <i class="ki-duotone ki-star fs-1"></i>
                                     </div>
                                     <div class="rating-label me-2 checked">
-                                        <i class="ki-duotone ki-star fs-5"></i>
+                                        <i class="ki-duotone ki-star fs-1"></i>
                                     </div>
                                     <div class="rating-label me-2 checked">
-                                        <i class="ki-duotone ki-star fs-5"></i>
+                                        <i class="ki-duotone ki-star fs-1"></i>
                                     </div>
                                     <div class="rating-label me-2 checked">
-                                        <i class="ki-duotone ki-star fs-5"></i>
+                                        <i class="ki-duotone ki-star fs-1"></i>
                                     </div>
                                 </div>
                                 <!--end::Rating-->
 
-                                <!--begin::Title-->
-                                <div class="fs-2 fw-bold text-gray-900 mb-3">
-
-                                    This is by far the cleanest template <br>
-                                    and the most well structured
-                                </div>
-                                <!--end::Title-->
-
                                 <!--begin::Feedback-->
                                 <div class="text-gray-500 fw-semibold fs-4">
 
-                                    The most well thought out design theme I have ever used. The codes are up to
-                                    tandard. The css styles are very clean.
-                                    In fact the cleanest and the most up to standard I have ever seen.
+                                    Kemarin saya booking studio untuk latihan band secara mendadak.
+                                     Untungnya sistem booking di sini cepat banget dan tanpa ribet. 
+                                     Pas sampai, semua sudah siap: ruangan rapi, alat musik lengkap, dan sound sudah diatur dengan baik.
                                 </div>
                                 <!--end::Feedback-->
-                            </div>
+                            {{-- </div> --}}
                             <!--end::Wrapper-->
 
                             <!--begin::Author-->
-                            <div class="d-flex align-items-center">
+                            {{-- <div class="d-flex align-items-center">
                                 <!--begin::Avatar-->
                                 <div class="symbol symbol-circle symbol-50px me-5">
                                     <img src="/metronic8/demo1/assets/media/avatars/300-2.jpg" class=""
                                         alt="">
-                                </div>
+                                </div> --}}
                                 <!--end::Avatar-->
 
                                 <!--begin::Name-->
-                                <div class="flex-grow-1">
+                                {{-- <div class="flex-grow-1">
                                     <a href="#" class="text-gray-900 fw-bold text-hover-primary fs-6">Janya
                                         Clebert</a>
 
                                     <span class="text-muted d-block fw-bold">Development Lead</span>
-                                </div>
+                                </div> --}}
                                 <!--end::Name-->
                             </div>
                             <!--end::Author-->
@@ -2129,76 +2812,66 @@ License: For each use you must have a valid license purchased only from above li
                         <div
                             class="d-flex flex-column justify-content-between h-lg-100 px-10 px-lg-0 pe-lg-10 mb-15 mb-lg-0">
                             <!--begin::Wrapper-->
+                            <div class="fs-2 fw-bold text-gray-900 mb-3">
+
+                                    Budi Santoso <br>
+                                    Advance Studio
+                                </div>
+
                             <div class="mb-7">
                                 <!--begin::Rating-->
                                 <div class="rating mb-6">
                                     <div class="rating-label me-2 checked">
-                                        <i class="ki-duotone ki-star fs-5"></i>
+                                        <i class="ki-duotone ki-star fs-1"></i>
                                     </div>
                                     <div class="rating-label me-2 checked">
-                                        <i class="ki-duotone ki-star fs-5"></i>
+                                        <i class="ki-duotone ki-star fs-1"></i>
                                     </div>
                                     <div class="rating-label me-2 checked">
-                                        <i class="ki-duotone ki-star fs-5"></i>
+                                        <i class="ki-duotone ki-star fs-1"></i>
                                     </div>
                                     <div class="rating-label me-2 checked">
-                                        <i class="ki-duotone ki-star fs-5"></i>
+                                        <i class="ki-duotone ki-star fs-1"></i>
                                     </div>
                                     <div class="rating-label me-2 checked">
-                                        <i class="ki-duotone ki-star fs-5"></i>
+                                        <i class="ki-duotone ki-star fs-1"></i>
                                     </div>
                                 </div>
                                 <!--end::Rating-->
-
-                                <!--begin::Title-->
-                                <div class="fs-2 fw-bold text-gray-900 mb-3">
-
-                                    This is by far the cleanest template <br>
-                                    and the most well structured
-                                </div>
-                                <!--end::Title-->
-
+                        
                                 <!--begin::Feedback-->
                                 <div class="text-gray-500 fw-semibold fs-4">
 
-                                    The most well thought out design theme I have ever used. The codes are up to
-                                    tandard. The css styles are very clean.
-                                    In fact the cleanest and the most up to standard I have ever seen.
+                                   Sebagai orang yang sering latihan untuk persiapan event, saya bisa bilang kalau studio ini salah satu yang terbaik. 
+                                   Sound system benar-benar jernih, ruangan kedap suara, dan tata ruangnya sangat mendukung.
                                 </div>
                                 <!--end::Feedback-->
                             </div>
                             <!--end::Wrapper-->
 
                             <!--begin::Author-->
-                            <div class="d-flex align-items-center">
+                            {{-- <div class="d-flex align-items-center">
                                 <!--begin::Avatar-->
                                 <div class="symbol symbol-circle symbol-50px me-5">
                                     <img src="/metronic8/demo1/assets/media/avatars/300-16.jpg" class=""
                                         alt="">
-                                </div>
+                                </div> --}}
                                 <!--end::Avatar-->
 
                                 <!--begin::Name-->
-                                <div class="flex-grow-1">
+                                {{-- <div class="flex-grow-1">
                                     <a href="#" class="text-gray-900 fw-bold text-hover-primary fs-6">Steave
                                         Brown</a>
 
                                     <span class="text-muted d-block fw-bold">Development Lead</span>
-                                </div>
+                                </div> --}}
                                 <!--end::Name-->
                             </div>
                             <!--end::Author-->
                         </div>
                         <!--end::Testimonial-->
 
-
-
-                    </div>
-                    <!--end::Col-->
-                </div>
-                <!--end::Row-->
-
-                <!--begin::Highlight-->
+                {{-- <!--begin::Highlight-->
                 <div class="d-flex flex-stack flex-wrap flex-md-nowrap card-rounded shadow p-8 p-lg-12 mb-n5 mb-lg-n13"
                     style="background: linear-gradient(90deg, #20AA3E 0%, #03A588 100%);">
                     <!--begin::Content-->
@@ -2393,7 +3066,41 @@ License: For each use you must have a valid license purchased only from above li
                     </div>
                     <!--end::Row-->
                 </div>
-                <!--end::Container-->
+                <!--end::Container--> --}}
+
+                <footer class="bg-info py-4 w-100">
+  <div class="d-flex flex-column flex-md-row justify-content-between align-items-center px-5">
+    
+    <!-- Logo dan Nama -->
+    <div class="d-flex align-items-center mb-3 mb-md-0">
+      <div class="symbol symbol-40px me-3">
+        <img src="/media/logo.png" alt="logo" class="rounded-circle" style="width:35px;height:35px;">
+      </div>
+      <span class="fw-bold text-white fs-5">Melodi Kreatif Studio</span>
+    </div>
+
+    <!-- Hak Cipta -->
+    <div class="text-white mb-3 mb-md-0 fs-6">
+      © 2025 Melodi Kreatif Studio. All Rights Reserved.
+    </div>
+
+    <!-- Social Media -->
+    <div class="d-flex">
+      <a href="#" class="me-3 text-white d-flex align-items-center">
+        <i class="bi bi-facebook fs-3 me-1"></i> Facebook
+      </a>
+      <a href="#" class="me-3 text-white d-flex align-items-center">
+        <i class="bi bi-instagram fs-3 me-1"></i> Instagram
+      </a>
+      <a href="#" class="me-3 text-white d-flex align-items-center">
+        <i class="bi bi-tiktok fs-3 me-1"></i> Tiktok
+      </a>
+      <a href="#" class="text-white d-flex align-items-center">
+        <i class="bi bi-whatsapp fs-3 me-1"></i> WhatsApp
+      </a>
+    </div>
+  </div>
+</footer>
 
                 <!--begin::Javascript-->
                 <script>
