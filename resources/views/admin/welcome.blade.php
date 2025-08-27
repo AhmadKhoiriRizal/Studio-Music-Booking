@@ -2,7 +2,742 @@
 
 <head>
     <title>Metronic - The World's #1 Selling Tailwind CSS &amp; Bootstrap Admin Template by KeenThemes</title>
-    @include('admin.template.metadata')
+    <meta charset="utf-8">
+    <meta name="description" content="
+            The most advanced Tailwind CSS &amp; Bootstrap 5 Admin Theme with 40 unique prebuilt layouts on Themeforest trusted by 100,000 beginners and professionals. Multi-demo,
+            Dark Mode, RTL support and complete React, Angular, Vue, Asp.Net Core, Rails, Spring, Blazor, Django, Express.js, Node.js, Flask, Symfony &amp; Laravel versions.
+            Grab your copy now and get life-time updates for free.
+        ">
+    <meta name="keywords" content="
+            tailwind, tailwindcss, metronic, bootstrap, bootstrap 5, angular, VueJs, React, Asp.Net Core, Rails, Spring, Blazor, Django, Express.js,
+            Node.js, Flask, Symfony &amp; Laravel starter kits, admin themes, web design, figma, web development, free templates,
+            free admin themes, bootstrap theme, bootstrap template, bootstrap dashboard, bootstrap dak mode, bootstrap button,
+            bootstrap datepicker, bootstrap timepicker, fullcalendar, datatables, flaticon
+        ">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title"
+        content="Metronic - The World's #1 Selling Tailwind CSS &amp; Bootstrap Admin Template by KeenThemes">
+    <meta property="og:url" content="https://keenthemes.com/metronic">
+    <meta property="og:site_name" content="Metronic by Keenthemes">
+    <link rel="canonical" href="https://preview.keenthemes.com/metronic8/demo1/index.html">
+    <link rel="shortcut icon" href="{{ asset('media/logos/favicon.ico') }}">
+
+    <!--begin::Fonts(mandatory for all pages)-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700"> <!--end::Fonts-->
+
+    <!--begin::Vendor Stylesheets(used for this page only)-->
+    <link href="{{ asset('plugins/custom/fullcalendar/fullcalendar.bundle.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css">
+    <!--end::Vendor Stylesheets-->
+
+
+    <!--begin::Global Stylesheets Bundle(mandatory for all pages)-->
+    <link href="{{ asset('plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/style.bundle.css') }}" rel="stylesheet" type="text/css">
+    <!--end::Global Stylesheets Bundle-->
+
+    <!-- Google tag (gtag.js) -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-52YZ3XGZJ6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-52YZ3XGZJ6');
+    </script>
+    <script>
+        // Frame-busting to prevent site from being loaded within a frame without permission (click-jacking)
+        if (window.top != window.self) {
+            window.top.location.replace(window.self.location.href);
+        }
+    </script>
+    <style id="apexcharts-css">
+        @keyframes opaque {
+            0% {
+                opacity: 0
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        @keyframes resizeanim {
+
+            0%,
+            to {
+                opacity: 0
+            }
+        }
+
+        .apexcharts-canvas {
+            position: relative;
+            direction: ltr !important;
+            user-select: none
+        }
+
+        .apexcharts-canvas ::-webkit-scrollbar {
+            -webkit-appearance: none;
+            width: 6px
+        }
+
+        .apexcharts-canvas ::-webkit-scrollbar-thumb {
+            border-radius: 4px;
+            background-color: rgba(0, 0, 0, .5);
+            box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+            -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5)
+        }
+
+        .apexcharts-inner {
+            position: relative
+        }
+
+        .apexcharts-text tspan {
+            font-family: inherit
+        }
+
+        rect.legend-mouseover-inactive,
+        .legend-mouseover-inactive rect,
+        .legend-mouseover-inactive path,
+        .legend-mouseover-inactive circle,
+        .legend-mouseover-inactive line,
+        .legend-mouseover-inactive text.apexcharts-yaxis-title-text,
+        .legend-mouseover-inactive text.apexcharts-yaxis-label {
+            transition: .15s ease all;
+            opacity: .2
+        }
+
+        .apexcharts-legend-text {
+            padding-left: 15px;
+            margin-left: -15px;
+        }
+
+        .apexcharts-series-collapsed {
+            opacity: 0
+        }
+
+        .apexcharts-tooltip {
+            border-radius: 5px;
+            box-shadow: 2px 2px 6px -4px #999;
+            cursor: default;
+            font-size: 14px;
+            left: 62px;
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+            top: 20px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            white-space: nowrap;
+            z-index: 12;
+            transition: .15s ease all
+        }
+
+        .apexcharts-tooltip.apexcharts-active {
+            opacity: 1;
+            transition: .15s ease all
+        }
+
+        .apexcharts-tooltip.apexcharts-theme-light {
+            border: 1px solid #e3e3e3;
+            background: rgba(255, 255, 255, .96)
+        }
+
+        .apexcharts-tooltip.apexcharts-theme-dark {
+            color: #fff;
+            background: rgba(30, 30, 30, .8)
+        }
+
+        .apexcharts-tooltip * {
+            font-family: inherit
+        }
+
+        .apexcharts-tooltip-title {
+            padding: 6px;
+            font-size: 15px;
+            margin-bottom: 4px
+        }
+
+        .apexcharts-tooltip.apexcharts-theme-light .apexcharts-tooltip-title {
+            background: #eceff1;
+            border-bottom: 1px solid #ddd
+        }
+
+        .apexcharts-tooltip.apexcharts-theme-dark .apexcharts-tooltip-title {
+            background: rgba(0, 0, 0, .7);
+            border-bottom: 1px solid #333
+        }
+
+        .apexcharts-tooltip-text-goals-value,
+        .apexcharts-tooltip-text-y-value,
+        .apexcharts-tooltip-text-z-value {
+            display: inline-block;
+            margin-left: 5px;
+            font-weight: 600
+        }
+
+        .apexcharts-tooltip-text-goals-label:empty,
+        .apexcharts-tooltip-text-goals-value:empty,
+        .apexcharts-tooltip-text-y-label:empty,
+        .apexcharts-tooltip-text-y-value:empty,
+        .apexcharts-tooltip-text-z-value:empty,
+        .apexcharts-tooltip-title:empty {
+            display: none
+        }
+
+        .apexcharts-tooltip-text-goals-label,
+        .apexcharts-tooltip-text-goals-value {
+            padding: 6px 0 5px
+        }
+
+        .apexcharts-tooltip-goals-group,
+        .apexcharts-tooltip-text-goals-label,
+        .apexcharts-tooltip-text-goals-value {
+            display: flex
+        }
+
+        .apexcharts-tooltip-text-goals-label:not(:empty),
+        .apexcharts-tooltip-text-goals-value:not(:empty) {
+            margin-top: -6px
+        }
+
+        .apexcharts-tooltip-marker {
+            width: 12px;
+            height: 12px;
+            position: relative;
+            top: 0;
+            margin-right: 10px;
+            border-radius: 50%
+        }
+
+        .apexcharts-tooltip-series-group {
+            padding: 0 10px;
+            display: none;
+            text-align: left;
+            justify-content: left;
+            align-items: center
+        }
+
+        .apexcharts-tooltip-series-group.apexcharts-active .apexcharts-tooltip-marker {
+            opacity: 1
+        }
+
+        .apexcharts-tooltip-series-group.apexcharts-active,
+        .apexcharts-tooltip-series-group:last-child {
+            padding-bottom: 4px
+        }
+
+        .apexcharts-tooltip-y-group {
+            padding: 6px 0 5px
+        }
+
+        .apexcharts-custom-tooltip,
+        .apexcharts-tooltip-box {
+            padding: 4px 8px
+        }
+
+        .apexcharts-tooltip-boxPlot {
+            display: flex;
+            flex-direction: column-reverse
+        }
+
+        .apexcharts-tooltip-box>div {
+            margin: 4px 0
+        }
+
+        .apexcharts-tooltip-box span.value {
+            font-weight: 700
+        }
+
+        .apexcharts-tooltip-rangebar {
+            padding: 5px 8px
+        }
+
+        .apexcharts-tooltip-rangebar .category {
+            font-weight: 600;
+            color: #777
+        }
+
+        .apexcharts-tooltip-rangebar .series-name {
+            font-weight: 700;
+            display: block;
+            margin-bottom: 5px
+        }
+
+        .apexcharts-xaxistooltip,
+        .apexcharts-yaxistooltip {
+            opacity: 0;
+            pointer-events: none;
+            color: #373d3f;
+            font-size: 13px;
+            text-align: center;
+            border-radius: 2px;
+            position: absolute;
+            z-index: 10;
+            background: #eceff1;
+            border: 1px solid #90a4ae
+        }
+
+        .apexcharts-xaxistooltip {
+            padding: 9px 10px;
+            transition: .15s ease all
+        }
+
+        .apexcharts-xaxistooltip.apexcharts-theme-dark {
+            background: rgba(0, 0, 0, .7);
+            border: 1px solid rgba(0, 0, 0, .5);
+            color: #fff
+        }
+
+        .apexcharts-xaxistooltip:after,
+        .apexcharts-xaxistooltip:before {
+            left: 50%;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none
+        }
+
+        .apexcharts-xaxistooltip:after {
+            border-color: transparent;
+            border-width: 6px;
+            margin-left: -6px
+        }
+
+        .apexcharts-xaxistooltip:before {
+            border-color: transparent;
+            border-width: 7px;
+            margin-left: -7px
+        }
+
+        .apexcharts-xaxistooltip-bottom:after,
+        .apexcharts-xaxistooltip-bottom:before {
+            bottom: 100%
+        }
+
+        .apexcharts-xaxistooltip-top:after,
+        .apexcharts-xaxistooltip-top:before {
+            top: 100%
+        }
+
+        .apexcharts-xaxistooltip-bottom:after {
+            border-bottom-color: #eceff1
+        }
+
+        .apexcharts-xaxistooltip-bottom:before {
+            border-bottom-color: #90a4ae
+        }
+
+        .apexcharts-xaxistooltip-bottom.apexcharts-theme-dark:after,
+        .apexcharts-xaxistooltip-bottom.apexcharts-theme-dark:before {
+            border-bottom-color: rgba(0, 0, 0, .5)
+        }
+
+        .apexcharts-xaxistooltip-top:after {
+            border-top-color: #eceff1
+        }
+
+        .apexcharts-xaxistooltip-top:before {
+            border-top-color: #90a4ae
+        }
+
+        .apexcharts-xaxistooltip-top.apexcharts-theme-dark:after,
+        .apexcharts-xaxistooltip-top.apexcharts-theme-dark:before {
+            border-top-color: rgba(0, 0, 0, .5)
+        }
+
+        .apexcharts-xaxistooltip.apexcharts-active {
+            opacity: 1;
+            transition: .15s ease all
+        }
+
+        .apexcharts-yaxistooltip {
+            padding: 4px 10px
+        }
+
+        .apexcharts-yaxistooltip.apexcharts-theme-dark {
+            background: rgba(0, 0, 0, .7);
+            border: 1px solid rgba(0, 0, 0, .5);
+            color: #fff
+        }
+
+        .apexcharts-yaxistooltip:after,
+        .apexcharts-yaxistooltip:before {
+            top: 50%;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none
+        }
+
+        .apexcharts-yaxistooltip:after {
+            border-color: transparent;
+            border-width: 6px;
+            margin-top: -6px
+        }
+
+        .apexcharts-yaxistooltip:before {
+            border-color: transparent;
+            border-width: 7px;
+            margin-top: -7px
+        }
+
+        .apexcharts-yaxistooltip-left:after,
+        .apexcharts-yaxistooltip-left:before {
+            left: 100%
+        }
+
+        .apexcharts-yaxistooltip-right:after,
+        .apexcharts-yaxistooltip-right:before {
+            right: 100%
+        }
+
+        .apexcharts-yaxistooltip-left:after {
+            border-left-color: #eceff1
+        }
+
+        .apexcharts-yaxistooltip-left:before {
+            border-left-color: #90a4ae
+        }
+
+        .apexcharts-yaxistooltip-left.apexcharts-theme-dark:after,
+        .apexcharts-yaxistooltip-left.apexcharts-theme-dark:before {
+            border-left-color: rgba(0, 0, 0, .5)
+        }
+
+        .apexcharts-yaxistooltip-right:after {
+            border-right-color: #eceff1
+        }
+
+        .apexcharts-yaxistooltip-right:before {
+            border-right-color: #90a4ae
+        }
+
+        .apexcharts-yaxistooltip-right.apexcharts-theme-dark:after,
+        .apexcharts-yaxistooltip-right.apexcharts-theme-dark:before {
+            border-right-color: rgba(0, 0, 0, .5)
+        }
+
+        .apexcharts-yaxistooltip.apexcharts-active {
+            opacity: 1
+        }
+
+        .apexcharts-yaxistooltip-hidden {
+            display: none
+        }
+
+        .apexcharts-xcrosshairs,
+        .apexcharts-ycrosshairs {
+            pointer-events: none;
+            opacity: 0;
+            transition: .15s ease all
+        }
+
+        .apexcharts-xcrosshairs.apexcharts-active,
+        .apexcharts-ycrosshairs.apexcharts-active {
+            opacity: 1;
+            transition: .15s ease all
+        }
+
+        .apexcharts-ycrosshairs-hidden {
+            opacity: 0
+        }
+
+        .apexcharts-selection-rect {
+            cursor: move
+        }
+
+        .svg_select_boundingRect,
+        .svg_select_points_rot {
+            pointer-events: none;
+            opacity: 0;
+            visibility: hidden
+        }
+
+        .apexcharts-selection-rect+g .svg_select_boundingRect,
+        .apexcharts-selection-rect+g .svg_select_points_rot {
+            opacity: 0;
+            visibility: hidden
+        }
+
+        .apexcharts-selection-rect+g .svg_select_points_l,
+        .apexcharts-selection-rect+g .svg_select_points_r {
+            cursor: ew-resize;
+            opacity: 1;
+            visibility: visible
+        }
+
+        .svg_select_points {
+            fill: #efefef;
+            stroke: #333;
+            rx: 2
+        }
+
+        .apexcharts-svg.apexcharts-zoomable.hovering-zoom {
+            cursor: crosshair
+        }
+
+        .apexcharts-svg.apexcharts-zoomable.hovering-pan {
+            cursor: move
+        }
+
+        .apexcharts-menu-icon,
+        .apexcharts-pan-icon,
+        .apexcharts-reset-icon,
+        .apexcharts-selection-icon,
+        .apexcharts-toolbar-custom-icon,
+        .apexcharts-zoom-icon,
+        .apexcharts-zoomin-icon,
+        .apexcharts-zoomout-icon {
+            cursor: pointer;
+            width: 20px;
+            height: 20px;
+            line-height: 24px;
+            color: #6e8192;
+            text-align: center
+        }
+
+        .apexcharts-menu-icon svg,
+        .apexcharts-reset-icon svg,
+        .apexcharts-zoom-icon svg,
+        .apexcharts-zoomin-icon svg,
+        .apexcharts-zoomout-icon svg {
+            fill: #6e8192
+        }
+
+        .apexcharts-selection-icon svg {
+            fill: #444;
+            transform: scale(.76)
+        }
+
+        .apexcharts-theme-dark .apexcharts-menu-icon svg,
+        .apexcharts-theme-dark .apexcharts-pan-icon svg,
+        .apexcharts-theme-dark .apexcharts-reset-icon svg,
+        .apexcharts-theme-dark .apexcharts-selection-icon svg,
+        .apexcharts-theme-dark .apexcharts-toolbar-custom-icon svg,
+        .apexcharts-theme-dark .apexcharts-zoom-icon svg,
+        .apexcharts-theme-dark .apexcharts-zoomin-icon svg,
+        .apexcharts-theme-dark .apexcharts-zoomout-icon svg {
+            fill: #f3f4f5
+        }
+
+        .apexcharts-canvas .apexcharts-reset-zoom-icon.apexcharts-selected svg,
+        .apexcharts-canvas .apexcharts-selection-icon.apexcharts-selected svg,
+        .apexcharts-canvas .apexcharts-zoom-icon.apexcharts-selected svg {
+            fill: #008ffb
+        }
+
+        .apexcharts-theme-light .apexcharts-menu-icon:hover svg,
+        .apexcharts-theme-light .apexcharts-reset-icon:hover svg,
+        .apexcharts-theme-light .apexcharts-selection-icon:not(.apexcharts-selected):hover svg,
+        .apexcharts-theme-light .apexcharts-zoom-icon:not(.apexcharts-selected):hover svg,
+        .apexcharts-theme-light .apexcharts-zoomin-icon:hover svg,
+        .apexcharts-theme-light .apexcharts-zoomout-icon:hover svg {
+            fill: #333
+        }
+
+        .apexcharts-menu-icon,
+        .apexcharts-selection-icon {
+            position: relative
+        }
+
+        .apexcharts-reset-icon {
+            margin-left: 5px
+        }
+
+        .apexcharts-menu-icon,
+        .apexcharts-reset-icon,
+        .apexcharts-zoom-icon {
+            transform: scale(.85)
+        }
+
+        .apexcharts-zoomin-icon,
+        .apexcharts-zoomout-icon {
+            transform: scale(.7)
+        }
+
+        .apexcharts-zoomout-icon {
+            margin-right: 3px
+        }
+
+        .apexcharts-pan-icon {
+            transform: scale(.62);
+            position: relative;
+            left: 1px;
+            top: 0
+        }
+
+        .apexcharts-pan-icon svg {
+            fill: #fff;
+            stroke: #6e8192;
+            stroke-width: 2
+        }
+
+        .apexcharts-pan-icon.apexcharts-selected svg {
+            stroke: #008ffb
+        }
+
+        .apexcharts-pan-icon:not(.apexcharts-selected):hover svg {
+            stroke: #333
+        }
+
+        .apexcharts-toolbar {
+            position: absolute;
+            z-index: 11;
+            max-width: 176px;
+            text-align: right;
+            border-radius: 3px;
+            padding: 0 6px 2px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center
+        }
+
+        .apexcharts-menu {
+            background: #fff;
+            position: absolute;
+            top: 100%;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            padding: 3px;
+            right: 10px;
+            opacity: 0;
+            min-width: 110px;
+            transition: .15s ease all;
+            pointer-events: none
+        }
+
+        .apexcharts-menu.apexcharts-menu-open {
+            opacity: 1;
+            pointer-events: all;
+            transition: .15s ease all
+        }
+
+        .apexcharts-menu-item {
+            padding: 6px 7px;
+            font-size: 12px;
+            cursor: pointer
+        }
+
+        .apexcharts-theme-light .apexcharts-menu-item:hover {
+            background: #eee
+        }
+
+        .apexcharts-theme-dark .apexcharts-menu {
+            background: rgba(0, 0, 0, .7);
+            color: #fff
+        }
+
+        @media screen and (min-width:768px) {
+            .apexcharts-canvas:hover .apexcharts-toolbar {
+                opacity: 1
+            }
+        }
+
+        .apexcharts-canvas .apexcharts-element-hidden,
+        .apexcharts-datalabel.apexcharts-element-hidden,
+        .apexcharts-hide .apexcharts-series-points {
+            opacity: 0;
+        }
+
+        .apexcharts-hidden-element-shown {
+            opacity: 1;
+            transition: 0.25s ease all;
+        }
+
+        .apexcharts-datalabel,
+        .apexcharts-datalabel-label,
+        .apexcharts-datalabel-value,
+        .apexcharts-datalabels,
+        .apexcharts-pie-label {
+            cursor: default;
+            pointer-events: none
+        }
+
+        .apexcharts-pie-label-delay {
+            opacity: 0;
+            animation-name: opaque;
+            animation-duration: .3s;
+            animation-fill-mode: forwards;
+            animation-timing-function: ease
+        }
+
+        .apexcharts-radialbar-label {
+            cursor: pointer;
+        }
+
+        .apexcharts-annotation-rect,
+        .apexcharts-area-series .apexcharts-area,
+        .apexcharts-area-series .apexcharts-series-markers .apexcharts-marker.no-pointer-events,
+        .apexcharts-gridline,
+        .apexcharts-line,
+        .apexcharts-line-series .apexcharts-series-markers .apexcharts-marker.no-pointer-events,
+        .apexcharts-point-annotation-label,
+        .apexcharts-radar-series path:not(.apexcharts-marker),
+        .apexcharts-radar-series polygon,
+        .apexcharts-toolbar svg,
+        .apexcharts-tooltip .apexcharts-marker,
+        .apexcharts-xaxis-annotation-label,
+        .apexcharts-yaxis-annotation-label,
+        .apexcharts-zoom-rect {
+            pointer-events: none
+        }
+
+        .apexcharts-tooltip-active .apexcharts-marker {
+            transition: .15s ease all
+        }
+
+        .resize-triggers {
+            animation: 1ms resizeanim;
+            visibility: hidden;
+            opacity: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden
+        }
+
+        .contract-trigger:before,
+        .resize-triggers,
+        .resize-triggers>div {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0
+        }
+
+        .resize-triggers>div {
+            height: 100%;
+            width: 100%;
+            background: #eee;
+            overflow: auto
+        }
+
+        .contract-trigger:before {
+            overflow: hidden;
+            width: 200%;
+            height: 200%
+        }
+
+        .apexcharts-bar-goals-markers {
+            pointer-events: none
+        }
+
+        .apexcharts-bar-shadows {
+            pointer-events: none
+        }
+
+        .apexcharts-rangebar-goals-markers {
+            pointer-events: none
+        }
+    </style>
 </head>
 <!--end::Head-->
 
@@ -43,1426 +778,8 @@
         <!--begin::Page-->
         <div class="app-page  flex-column flex-column-fluid " id="kt_app_page">
 
-
-
-
             <!--begin::Header-->
-            <div id="kt_app_header" class="app-header " data-kt-sticky="true"
-                data-kt-sticky-activate="{default: true, lg: true}" data-kt-sticky-name="app-header-minimize"
-                data-kt-sticky-offset="{default: '200px', lg: '0'}" data-kt-sticky-animation="false" style="">
-
-                <!--begin::Header container-->
-                <div class="app-container  container-fluid d-flex align-items-stretch justify-content-between "
-                    id="kt_app_header_container">
-
-                    <!--begin::Sidebar mobile toggle-->
-                    <div class="d-flex align-items-center d-lg-none ms-n3 me-1 me-md-2" title="Show sidebar menu">
-                        <div class="btn btn-icon btn-active-color-primary w-35px h-35px"
-                            id="kt_app_sidebar_mobile_toggle">
-                            <i class="ki-duotone ki-abstract-14 fs-2 fs-md-1"><span class="path1"></span><span
-                                    class="path2"></span></i>
-                        </div>
-                    </div>
-                    <!--end::Sidebar mobile toggle-->
-
-
-                    <!--begin::Mobile logo-->
-                    <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
-                        <a href="/metronic8/demo1/index.html" class="d-lg-none">
-                            <img alt="Logo" src="{{ asset('media/logos/default-small.svg') }}" class="h-30px">
-                        </a>
-                    </div>
-                    <!--end::Mobile logo-->
-
-                    <!--begin::Header wrapper-->
-                    <div class="d-flex align-items-stretch justify-content-between flex-lg-grow-1"
-                        id="kt_app_header_wrapper">
-                        <div class="app-header-menu app-header-mobile-drawer align-items-stretch" data-kt-drawer="true"
-                            data-kt-drawer-name="app-header-menu" data-kt-drawer-activate="{default: true, lg: false}"
-                            data-kt-drawer-overlay="true" data-kt-drawer-width="250px" data-kt-drawer-direction="end"
-                            data-kt-drawer-toggle="#kt_app_header_menu_toggle" data-kt-swapper="true"
-                            data-kt-swapper-mode="{default: 'append', lg: 'prepend'}"
-                            data-kt-swapper-parent="{default: '#kt_app_body', lg: '#kt_app_header_wrapper'}" style="">
-                            <!--begin::Menu-->
-                            <div class="
-            menu
-            menu-rounded
-            menu-column
-            menu-lg-row
-            my-5
-            my-lg-0
-            align-items-stretch
-            fw-semibold
-            px-2 px-lg-0
-        " id="kt_app_header_menu" data-kt-menu="true">
-                                <!--end:Menu item--><!--begin:Menu item-->
-                                <!--end:Dashboards menu-->
-                            </div><!--end:Menu sub-->
-                        </div>
-                    </div>
-
-                    <!--begin::Menu wrapper-->
-
-                    <!--end::Menu wrapper-->
-
-
-                    <!--begin::Navbar-->
-                    <div class="app-navbar flex-shrink-0">
-                        <!--begin::Search-->
-                        <div class="app-navbar-item align-items-stretch ms-1 ms-md-4">
-
-                            <!--begin::Search-->
-                            <div id="kt_header_search" class="header-search d-flex align-items-stretch"
-                                data-kt-search-keypress="true" data-kt-search-min-length="2"
-                                data-kt-search-enter="enter" data-kt-search-layout="menu" data-kt-menu-trigger="auto"
-                                data-kt-menu-overflow="false" data-kt-menu-permanent="true"
-                                data-kt-menu-placement="bottom-end" data-kt-search="true">
-
-                                <!--begin::Search toggle-->
-                                <div class="d-flex align-items-center" data-kt-search-element="toggle"
-                                    id="kt_header_search_toggle">
-                                    <div
-                                        class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary w-35px h-35px">
-                                        <i class="ki-duotone ki-magnifier fs-2"><span class="path1"></span><span
-                                                class="path2"></span></i>
-                                    </div>
-                                </div>
-                                <!--end::Search toggle-->
-
-                                <!--begin::Menu-->
-                                <div data-kt-search-element="content"
-                                    class="menu menu-sub menu-sub-dropdown p-7 w-325px w-md-375px" data-kt-menu="true">
-                                    <!--begin::Wrapper-->
-                                    <div data-kt-search-element="wrapper">
-                                        <!--begin::Form-->
-                                        <form data-kt-search-element="form" class="w-100 position-relative mb-3"
-                                            autocomplete="off">
-                                            <!--begin::Icon-->
-                                            <i
-                                                class="ki-duotone ki-magnifier fs-2 text-gray-500 position-absolute top-50 translate-middle-y ms-0"><span
-                                                    class="path1"></span><span class="path2"></span></i>
-                                            <!--end::Icon-->
-
-                                            <!--begin::Input-->
-                                            <input type="text"
-                                                class="search-input  form-control form-control-flush ps-10"
-                                                name="search" value="" placeholder="Search..."
-                                                data-kt-search-element="input">
-                                            <!--end::Input-->
-
-                                            <!--begin::Spinner-->
-                                            <span
-                                                class="search-spinner  position-absolute top-50 end-0 translate-middle-y lh-0 d-none me-1"
-                                                data-kt-search-element="spinner">
-                                                <span
-                                                    class="spinner-border h-15px w-15px align-middle text-gray-500"></span>
-                                            </span>
-                                            <!--end::Spinner-->
-
-                                            <!--begin::Reset-->
-                                            <span
-                                                class="search-reset  btn btn-flush btn-active-color-primary position-absolute top-50 end-0 translate-middle-y lh-0 d-none"
-                                                data-kt-search-element="clear">
-                                                <i class="ki-duotone ki-cross fs-2 fs-lg-1 me-0"><span
-                                                        class="path1"></span><span class="path2"></span></i> </span>
-                                            <!--end::Reset-->
-
-                                            <!--begin::Toolbar-->
-                                            <div class="position-absolute top-50 end-0 translate-middle-y"
-                                                data-kt-search-element="toolbar">
-                                                <!--begin::Preferences toggle-->
-                                                <div data-kt-search-element="preferences-show"
-                                                    class="btn btn-icon w-20px btn-sm btn-active-color-primary me-1"
-                                                    data-bs-toggle="tooltip" aria-label="Show search preferences"
-                                                    data-bs-original-title="Show search preferences"
-                                                    data-kt-initialized="1">
-                                                    <i class="ki-duotone ki-setting-2 fs-2"><span
-                                                            class="path1"></span><span class="path2"></span></i>
-                                                </div>
-                                                <!--end::Preferences toggle-->
-
-                                                <!--begin::Advanced search toggle-->
-                                                <div data-kt-search-element="advanced-options-form-show"
-                                                    class="btn btn-icon w-20px btn-sm btn-active-color-primary"
-                                                    data-bs-toggle="tooltip" aria-label="Show more search options"
-                                                    data-bs-original-title="Show more search options"
-                                                    data-kt-initialized="1">
-                                                    <i class="ki-duotone ki-down fs-2"></i>
-                                                </div>
-                                                <!--end::Advanced search toggle-->
-                                            </div>
-                                            <!--end::Toolbar-->
-                                        </form>
-                                        <!--end::Form-->
-
-                                        <!--begin::Separator-->
-                                        <div class="separator border-gray-200 mb-6"></div>
-                                        <!--end::Separator-->
-                                        <!--begin::Recently viewed-->
-                                        <div data-kt-search-element="results" class="d-none">
-                                            <!--begin::Items-->
-                                            <div class="scroll-y mh-200px mh-lg-350px">
-                                                <!--begin::Category title-->
-                                                <h3 class="fs-5 text-muted m-0  pb-5"
-                                                    data-kt-search-element="category-title">
-                                                    Users </h3>
-                                                <!--end::Category title-->
-
-
-
-
-                                                <!--begin::Item-->
-                                                <a href="#"
-                                                    class="d-flex text-gray-900 text-hover-primary align-items-center mb-5">
-                                                    <!--begin::Symbol-->
-                                                    <div class="symbol symbol-40px me-4">
-                                                        <img src="{{ asset('media/avatars/300-6.jpg') }}" alt="">
-                                                    </div>
-                                                    <!--end::Symbol-->
-
-                                                    <!--begin::Title-->
-                                                    <div class="d-flex flex-column justify-content-start fw-semibold">
-                                                        <span class="fs-6 fw-semibold">Karina Clark</span>
-                                                        <span class="fs-7 fw-semibold text-muted">Marketing
-                                                            Manager</span>
-                                                    </div>
-                                                    <!--end::Title-->
-                                                </a>
-                                                <!--end::Item-->
-
-
-
-                                                <!--begin::Item-->
-                                                <a href="#"
-                                                    class="d-flex text-gray-900 text-hover-primary align-items-center mb-5">
-                                                    <!--begin::Symbol-->
-                                                    <div class="symbol symbol-40px me-4">
-                                                        <img src="{{ asset('media/avatars/300-2.jpg') }}" alt="">
-                                                    </div>
-                                                    <!--end::Symbol-->
-
-                                                    <!--begin::Title-->
-                                                    <div class="d-flex flex-column justify-content-start fw-semibold">
-                                                        <span class="fs-6 fw-semibold">Olivia Bold</span>
-                                                        <span class="fs-7 fw-semibold text-muted">Software
-                                                            Engineer</span>
-                                                    </div>
-                                                    <!--end::Title-->
-                                                </a>
-                                                <!--end::Item-->
-
-
-
-                                                <!--begin::Item-->
-                                                <a href="#"
-                                                    class="d-flex text-gray-900 text-hover-primary align-items-center mb-5">
-                                                    <!--begin::Symbol-->
-                                                    <div class="symbol symbol-40px me-4">
-                                                        <img src="{{ asset('media/avatars/300-9.jpg') }}" alt="">
-                                                    </div>
-                                                    <!--end::Symbol-->
-
-                                                    <!--begin::Title-->
-                                                    <div class="d-flex flex-column justify-content-start fw-semibold">
-                                                        <span class="fs-6 fw-semibold">Ana Clark</span>
-                                                        <span class="fs-7 fw-semibold text-muted">UI/UX Designer</span>
-                                                    </div>
-                                                    <!--end::Title-->
-                                                </a>
-                                                <!--end::Item-->
-
-
-
-                                                <!--begin::Item-->
-                                                <a href="#"
-                                                    class="d-flex text-gray-900 text-hover-primary align-items-center mb-5">
-                                                    <!--begin::Symbol-->
-                                                    <div class="symbol symbol-40px me-4">
-                                                        <img src="{{ asset('media/avatars/300-14.jpg') }}" alt="">
-                                                    </div>
-                                                    <!--end::Symbol-->
-
-                                                    <!--begin::Title-->
-                                                    <div class="d-flex flex-column justify-content-start fw-semibold">
-                                                        <span class="fs-6 fw-semibold">Nick Pitola</span>
-                                                        <span class="fs-7 fw-semibold text-muted">Art Director</span>
-                                                    </div>
-                                                    <!--end::Title-->
-                                                </a>
-                                                <!--end::Item-->
-
-
-
-                                                <!--begin::Item-->
-                                                <a href="#"
-                                                    class="d-flex text-gray-900 text-hover-primary align-items-center mb-5">
-                                                    <!--begin::Symbol-->
-                                                    <div class="symbol symbol-40px me-4">
-                                                        <img src="{{ asset('media/avatars/300-11.jpg') }}" alt="">
-                                                    </div>
-                                                    <!--end::Symbol-->
-
-                                                    <!--begin::Title-->
-                                                    <div class="d-flex flex-column justify-content-start fw-semibold">
-                                                        <span class="fs-6 fw-semibold">Edward Kulnic</span>
-                                                        <span class="fs-7 fw-semibold text-muted">System
-                                                            Administrator</span>
-                                                    </div>
-                                                    <!--end::Title-->
-                                                </a>
-                                                <!--end::Item-->
-                                                <!--begin::Category title-->
-                                                <h3 class="fs-5 text-muted m-0 pt-5 pb-5"
-                                                    data-kt-search-element="category-title">
-                                                    Customers </h3>
-                                                <!--end::Category title-->
-
-
-
-                                                <!--begin::Item-->
-                                                <a href="#"
-                                                    class="d-flex text-gray-900 text-hover-primary align-items-center mb-5">
-                                                    <!--begin::Symbol-->
-                                                    <div class="symbol symbol-40px me-4">
-                                                        <span class="symbol-label bg-light">
-                                                            <img class="w-20px h-20px"
-                                                                src="{{ asset('media/svg/brand-logos/volicity-9.svg') }}"
-                                                                alt="">
-                                                        </span>
-                                                    </div>
-                                                    <!--end::Symbol-->
-
-                                                    <!--begin::Title-->
-                                                    <div class="d-flex flex-column justify-content-start fw-semibold">
-                                                        <span class="fs-6 fw-semibold">Company Rbranding</span>
-                                                        <span class="fs-7 fw-semibold text-muted">UI Design</span>
-                                                    </div>
-                                                    <!--end::Title-->
-                                                </a>
-                                                <!--end::Item-->
-
-
-
-                                                <!--begin::Item-->
-                                                <a href="#"
-                                                    class="d-flex text-gray-900 text-hover-primary align-items-center mb-5">
-                                                    <!--begin::Symbol-->
-                                                    <div class="symbol symbol-40px me-4">
-                                                        <span class="symbol-label bg-light">
-                                                            <img class="w-20px h-20px"
-                                                                src="{{ asset('media/svg/brand-logos/tvit.svg') }}"
-                                                                alt="">
-                                                        </span>
-                                                    </div>
-                                                    <!--end::Symbol-->
-
-                                                    <!--begin::Title-->
-                                                    <div class="d-flex flex-column justify-content-start fw-semibold">
-                                                        <span class="fs-6 fw-semibold">Company Re-branding</span>
-                                                        <span class="fs-7 fw-semibold text-muted">Web Development</span>
-                                                    </div>
-                                                    <!--end::Title-->
-                                                </a>
-                                                <!--end::Item-->
-
-
-
-                                                <!--begin::Item-->
-                                                <a href="#"
-                                                    class="d-flex text-gray-900 text-hover-primary align-items-center mb-5">
-                                                    <!--begin::Symbol-->
-                                                    <div class="symbol symbol-40px me-4">
-                                                        <span class="symbol-label bg-light">
-                                                            <img class="w-20px h-20px"
-                                                                src="{{ asset('media/svg/misc/infography.svg') }}"
-                                                                alt="">
-                                                        </span>
-                                                    </div>
-                                                    <!--end::Symbol-->
-
-                                                    <!--begin::Title-->
-                                                    <div class="d-flex flex-column justify-content-start fw-semibold">
-                                                        <span class="fs-6 fw-semibold">Business Analytics App</span>
-                                                        <span class="fs-7 fw-semibold text-muted">Administration</span>
-                                                    </div>
-                                                    <!--end::Title-->
-                                                </a>
-                                                <!--end::Item-->
-
-
-
-                                                <!--begin::Item-->
-                                                <a href="#"
-                                                    class="d-flex text-gray-900 text-hover-primary align-items-center mb-5">
-                                                    <!--begin::Symbol-->
-                                                    <div class="symbol symbol-40px me-4">
-                                                        <span class="symbol-label bg-light">
-                                                            <img class="w-20px h-20px"
-                                                                src="{{ asset('media/svg/brand-logos/leaf.svg') }}"
-                                                                alt="">
-                                                        </span>
-                                                    </div>
-                                                    <!--end::Symbol-->
-
-                                                    <!--begin::Title-->
-                                                    <div class="d-flex flex-column justify-content-start fw-semibold">
-                                                        <span class="fs-6 fw-semibold">EcoLeaf App Launch</span>
-                                                        <span class="fs-7 fw-semibold text-muted">Marketing</span>
-                                                    </div>
-                                                    <!--end::Title-->
-                                                </a>
-                                                <!--end::Item-->
-
-
-
-                                                <!--begin::Item-->
-                                                <a href="#"
-                                                    class="d-flex text-gray-900 text-hover-primary align-items-center mb-5">
-                                                    <!--begin::Symbol-->
-                                                    <div class="symbol symbol-40px me-4">
-                                                        <span class="symbol-label bg-light">
-                                                            <img class="w-20px h-20px"
-                                                                src="{{ asset('media/svg/brand-logos/tower.svg') }}"
-                                                                alt="">
-                                                        </span>
-                                                    </div>
-                                                    <!--end::Symbol-->
-
-                                                    <!--begin::Title-->
-                                                    <div class="d-flex flex-column justify-content-start fw-semibold">
-                                                        <span class="fs-6 fw-semibold">Tower Group Website</span>
-                                                        <span class="fs-7 fw-semibold text-muted">Google Adwords</span>
-                                                    </div>
-                                                    <!--end::Title-->
-                                                </a>
-                                                <!--end::Item-->
-
-                                                <!--begin::Category title-->
-                                                <h3 class="fs-5 text-muted m-0 pt-5 pb-5"
-                                                    data-kt-search-element="category-title">
-                                                    Projects </h3>
-                                                <!--end::Category title-->
-
-
-                                                <!--begin::Item-->
-                                                <a href="#"
-                                                    class="d-flex text-gray-900 text-hover-primary align-items-center mb-5">
-                                                    <!--begin::Symbol-->
-                                                    <div class="symbol symbol-40px me-4">
-                                                        <span class="symbol-label bg-light">
-                                                            <i class="ki-duotone ki-notepad fs-2 text-primary"><span
-                                                                    class="path1"></span><span
-                                                                    class="path2"></span><span
-                                                                    class="path3"></span><span
-                                                                    class="path4"></span><span class="path5"></span></i>
-                                                        </span>
-                                                    </div>
-                                                    <!--end::Symbol-->
-
-                                                    <!--begin::Title-->
-                                                    <div class="d-flex flex-column">
-                                                        <span class="fs-6 fw-semibold">Si-Fi Project by AU Themes</span>
-                                                        <span class="fs-7 fw-semibold text-muted">#45670</span>
-                                                    </div>
-                                                    <!--end::Title-->
-                                                </a>
-                                                <!--end::Item-->
-
-
-
-                                                <!--begin::Item-->
-                                                <a href="#"
-                                                    class="d-flex text-gray-900 text-hover-primary align-items-center mb-5">
-                                                    <!--begin::Symbol-->
-                                                    <div class="symbol symbol-40px me-4">
-                                                        <span class="symbol-label bg-light">
-                                                            <i class="ki-duotone ki-frame fs-2 text-primary"><span
-                                                                    class="path1"></span><span
-                                                                    class="path2"></span><span
-                                                                    class="path3"></span><span class="path4"></span></i>
-                                                        </span>
-                                                    </div>
-                                                    <!--end::Symbol-->
-
-                                                    <!--begin::Title-->
-                                                    <div class="d-flex flex-column">
-                                                        <span class="fs-6 fw-semibold">Shopix Mobile App Planning</span>
-                                                        <span class="fs-7 fw-semibold text-muted">#45690</span>
-                                                    </div>
-                                                    <!--end::Title-->
-                                                </a>
-                                                <!--end::Item-->
-
-
-
-                                                <!--begin::Item-->
-                                                <a href="#"
-                                                    class="d-flex text-gray-900 text-hover-primary align-items-center mb-5">
-                                                    <!--begin::Symbol-->
-                                                    <div class="symbol symbol-40px me-4">
-                                                        <span class="symbol-label bg-light">
-                                                            <i class="ki-duotone ki-message-text-2 fs-2 text-primary"><span
-                                                                    class="path1"></span><span
-                                                                    class="path2"></span><span class="path3"></span></i>
-                                                        </span>
-                                                    </div>
-                                                    <!--end::Symbol-->
-
-                                                    <!--begin::Title-->
-                                                    <div class="d-flex flex-column">
-                                                        <span class="fs-6 fw-semibold">Finance Monitoring SAAS
-                                                            Discussion</span>
-                                                        <span class="fs-7 fw-semibold text-muted">#21090</span>
-                                                    </div>
-                                                    <!--end::Title-->
-                                                </a>
-                                                <!--end::Item-->
-
-
-
-                                                <!--begin::Item-->
-                                                <a href="#"
-                                                    class="d-flex text-gray-900 text-hover-primary align-items-center mb-5">
-                                                    <!--begin::Symbol-->
-                                                    <div class="symbol symbol-40px me-4">
-                                                        <span class="symbol-label bg-light">
-                                                            <i class="ki-duotone ki-profile-circle fs-2 text-primary"><span
-                                                                    class="path1"></span><span
-                                                                    class="path2"></span><span class="path3"></span></i>
-                                                        </span>
-                                                    </div>
-                                                    <!--end::Symbol-->
-
-                                                    <!--begin::Title-->
-                                                    <div class="d-flex flex-column">
-                                                        <span class="fs-6 fw-semibold">Dashboard Analitics Launch</span>
-                                                        <span class="fs-7 fw-semibold text-muted">#34560</span>
-                                                    </div>
-                                                    <!--end::Title-->
-                                                </a>
-                                                <!--end::Item-->
-
-
-                                            </div>
-                                            <!--end::Items-->
-                                        </div>
-                                        <!--end::Recently viewed-->
-                                        <!--begin::Recently viewed-->
-                                        <div class="mb-5" data-kt-search-element="main">
-                                            <!--begin::Heading-->
-                                            <div class="d-flex flex-stack fw-semibold mb-4">
-                                                <!--begin::Label-->
-                                                <span class="text-muted fs-6 me-2">Recently Searched:</span>
-                                                <!--end::Label-->
-
-                                            </div>
-                                            <!--end::Heading-->
-
-                                            <!--begin::Items-->
-                                            <div class="scroll-y mh-200px mh-lg-325px">
-                                                <!--begin::Item-->
-                                                <div class="d-flex align-items-center mb-5">
-                                                    <!--begin::Symbol-->
-                                                    <div class="symbol symbol-40px me-4">
-                                                        <span class="symbol-label bg-light">
-                                                            <i class="ki-duotone ki-laptop fs-2 text-primary"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </span>
-                                                    </div>
-                                                    <!--end::Symbol-->
-
-                                                    <!--begin::Title-->
-                                                    <div class="d-flex flex-column">
-                                                        <a href="#"
-                                                            class="fs-6 text-gray-800 text-hover-primary fw-semibold">BoomApp
-                                                            by Keenthemes</a>
-                                                        <span class="fs-7 text-muted fw-semibold">#45789</span>
-                                                    </div>
-                                                    <!--end::Title-->
-                                                </div>
-                                                <!--end::Item-->
-                                                <!--begin::Item-->
-                                                <div class="d-flex align-items-center mb-5">
-                                                    <!--begin::Symbol-->
-                                                    <div class="symbol symbol-40px me-4">
-                                                        <span class="symbol-label bg-light">
-                                                            <i class="ki-duotone ki-chart-simple fs-2 text-primary"><span
-                                                                    class="path1"></span><span
-                                                                    class="path2"></span><span
-                                                                    class="path3"></span><span class="path4"></span></i>
-                                                        </span>
-                                                    </div>
-                                                    <!--end::Symbol-->
-
-                                                    <!--begin::Title-->
-                                                    <div class="d-flex flex-column">
-                                                        <a href="#"
-                                                            class="fs-6 text-gray-800 text-hover-primary fw-semibold">"Kept
-                                                            API Project Meeting</a>
-                                                        <span class="fs-7 text-muted fw-semibold">#84050</span>
-                                                    </div>
-                                                    <!--end::Title-->
-                                                </div>
-                                                <!--end::Item-->
-                                                <!--begin::Item-->
-                                                <div class="d-flex align-items-center mb-5">
-                                                    <!--begin::Symbol-->
-                                                    <div class="symbol symbol-40px me-4">
-                                                        <span class="symbol-label bg-light">
-                                                            <i class="ki-duotone ki-chart fs-2 text-primary"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </span>
-                                                    </div>
-                                                    <!--end::Symbol-->
-
-                                                    <!--begin::Title-->
-                                                    <div class="d-flex flex-column">
-                                                        <a href="#"
-                                                            class="fs-6 text-gray-800 text-hover-primary fw-semibold">"KPI
-                                                            Monitoring App Launch</a>
-                                                        <span class="fs-7 text-muted fw-semibold">#84250</span>
-                                                    </div>
-                                                    <!--end::Title-->
-                                                </div>
-                                                <!--end::Item-->
-                                                <!--begin::Item-->
-                                                <div class="d-flex align-items-center mb-5">
-                                                    <!--begin::Symbol-->
-                                                    <div class="symbol symbol-40px me-4">
-                                                        <span class="symbol-label bg-light">
-                                                            <i class="ki-duotone ki-chart-line-down fs-2 text-primary"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </span>
-                                                    </div>
-                                                    <!--end::Symbol-->
-
-                                                    <!--begin::Title-->
-                                                    <div class="d-flex flex-column">
-                                                        <a href="#"
-                                                            class="fs-6 text-gray-800 text-hover-primary fw-semibold">Project
-                                                            Reference FAQ</a>
-                                                        <span class="fs-7 text-muted fw-semibold">#67945</span>
-                                                    </div>
-                                                    <!--end::Title-->
-                                                </div>
-                                                <!--end::Item-->
-                                                <!--begin::Item-->
-                                                <div class="d-flex align-items-center mb-5">
-                                                    <!--begin::Symbol-->
-                                                    <div class="symbol symbol-40px me-4">
-                                                        <span class="symbol-label bg-light">
-                                                            <i class="ki-duotone ki-sms fs-2 text-primary"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </span>
-                                                    </div>
-                                                    <!--end::Symbol-->
-
-                                                    <!--begin::Title-->
-                                                    <div class="d-flex flex-column">
-                                                        <a href="#"
-                                                            class="fs-6 text-gray-800 text-hover-primary fw-semibold">"FitPro
-                                                            App Development</a>
-                                                        <span class="fs-7 text-muted fw-semibold">#84250</span>
-                                                    </div>
-                                                    <!--end::Title-->
-                                                </div>
-                                                <!--end::Item-->
-                                                <!--begin::Item-->
-                                                <div class="d-flex align-items-center mb-5">
-                                                    <!--begin::Symbol-->
-                                                    <div class="symbol symbol-40px me-4">
-                                                        <span class="symbol-label bg-light">
-                                                            <i class="ki-duotone ki-bank fs-2 text-primary"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </span>
-                                                    </div>
-                                                    <!--end::Symbol-->
-
-                                                    <!--begin::Title-->
-                                                    <div class="d-flex flex-column">
-                                                        <a href="#"
-                                                            class="fs-6 text-gray-800 text-hover-primary fw-semibold">Shopix
-                                                            Mobile App</a>
-                                                        <span class="fs-7 text-muted fw-semibold">#45690</span>
-                                                    </div>
-                                                    <!--end::Title-->
-                                                </div>
-                                                <!--end::Item-->
-                                                <!--begin::Item-->
-                                                <div class="d-flex align-items-center mb-5">
-                                                    <!--begin::Symbol-->
-                                                    <div class="symbol symbol-40px me-4">
-                                                        <span class="symbol-label bg-light">
-                                                            <i class="ki-duotone ki-chart-line-down fs-2 text-primary"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </span>
-                                                    </div>
-                                                    <!--end::Symbol-->
-
-                                                    <!--begin::Title-->
-                                                    <div class="d-flex flex-column">
-                                                        <a href="#"
-                                                            class="fs-6 text-gray-800 text-hover-primary fw-semibold">"Landing
-                                                            UI Design" Launch</a>
-                                                        <span class="fs-7 text-muted fw-semibold">#24005</span>
-                                                    </div>
-                                                    <!--end::Title-->
-                                                </div>
-                                                <!--end::Item-->
-                                            </div>
-                                            <!--end::Items-->
-                                        </div>
-                                        <!--end::Recently viewed-->
-                                        <!--begin::Empty-->
-                                        <div data-kt-search-element="empty" class="text-center d-none">
-                                            <!--begin::Icon-->
-                                            <div class="pt-10 pb-10">
-                                                <i class="ki-duotone ki-search-list fs-4x opacity-50"><span
-                                                        class="path1"></span><span class="path2"></span><span
-                                                        class="path3"></span></i>
-                                            </div>
-                                            <!--end::Icon-->
-
-                                            <!--begin::Message-->
-                                            <div class="pb-15 fw-semibold">
-                                                <h3 class="text-gray-600 fs-5 mb-2">No result found</h3>
-                                                <div class="text-muted fs-7">Please try again with a different query
-                                                </div>
-                                            </div>
-                                            <!--end::Message-->
-                                        </div>
-                                        <!--end::Empty-->
-                                    </div>
-                                    <!--end::Wrapper-->
-
-                                    <!--begin::Preferences-->
-                                    <form data-kt-search-element="advanced-options-form" class="pt-1 d-none">
-                                        <!--begin::Heading-->
-                                        <h3 class="fw-semibold text-gray-900 mb-7">Advanced Search</h3>
-                                        <!--end::Heading-->
-
-                                        <!--begin::Input group-->
-                                        <div class="mb-5">
-                                            <input type="text" class="form-control form-control-sm form-control-solid"
-                                                placeholder="Contains the word" name="query">
-                                        </div>
-                                        <!--end::Input group-->
-
-                                        <!--begin::Input group-->
-                                        <div class="mb-5">
-                                            <!--begin::Radio group-->
-                                            <div class="nav-group nav-group-fluid">
-                                                <!--begin::Option-->
-                                                <label>
-                                                    <input type="radio" class="btn-check" name="type" value="has"
-                                                        checked="checked">
-                                                    <span
-                                                        class="btn btn-sm btn-color-muted btn-active btn-active-primary">
-                                                        All
-                                                    </span>
-                                                </label>
-                                                <!--end::Option-->
-
-                                                <!--begin::Option-->
-                                                <label>
-                                                    <input type="radio" class="btn-check" name="type" value="users">
-                                                    <span
-                                                        class="btn btn-sm btn-color-muted btn-active btn-active-primary px-4">
-                                                        Users
-                                                    </span>
-                                                </label>
-                                                <!--end::Option-->
-
-                                                <!--begin::Option-->
-                                                <label>
-                                                    <input type="radio" class="btn-check" name="type" value="orders">
-                                                    <span
-                                                        class="btn btn-sm btn-color-muted btn-active btn-active-primary px-4">
-                                                        Orders
-                                                    </span>
-                                                </label>
-                                                <!--end::Option-->
-
-                                                <!--begin::Option-->
-                                                <label>
-                                                    <input type="radio" class="btn-check" name="type" value="projects">
-                                                    <span
-                                                        class="btn btn-sm btn-color-muted btn-active btn-active-primary px-4">
-                                                        Projects
-                                                    </span>
-                                                </label>
-                                                <!--end::Option-->
-                                            </div>
-                                            <!--end::Radio group-->
-                                        </div>
-                                        <!--end::Input group-->
-
-                                        <!--begin::Input group-->
-                                        <div class="mb-5">
-                                            <input type="text" name="assignedto"
-                                                class="form-control form-control-sm form-control-solid"
-                                                placeholder="Assigned to" value="">
-                                        </div>
-                                        <!--end::Input group-->
-
-                                        <!--begin::Input group-->
-                                        <div class="mb-5">
-                                            <input type="text" name="collaborators"
-                                                class="form-control form-control-sm form-control-solid"
-                                                placeholder="Collaborators" value="">
-                                        </div>
-                                        <!--end::Input group-->
-
-                                        <!--begin::Input group-->
-                                        <div class="mb-5">
-                                            <!--begin::Radio group-->
-                                            <div class="nav-group nav-group-fluid">
-                                                <!--begin::Option-->
-                                                <label>
-                                                    <input type="radio" class="btn-check" name="attachment" value="has"
-                                                        checked="checked">
-                                                    <span
-                                                        class="btn btn-sm btn-color-muted btn-active btn-active-primary">
-                                                        Has attachment
-                                                    </span>
-                                                </label>
-                                                <!--end::Option-->
-
-                                                <!--begin::Option-->
-                                                <label>
-                                                    <input type="radio" class="btn-check" name="attachment" value="any">
-                                                    <span
-                                                        class="btn btn-sm btn-color-muted btn-active btn-active-primary px-4">
-                                                        Any
-                                                    </span>
-                                                </label>
-                                                <!--end::Option-->
-                                            </div>
-                                            <!--end::Radio group-->
-                                        </div>
-                                        <!--end::Input group-->
-
-                                        <!--begin::Input group-->
-                                        <div class="mb-5">
-                                            <select name="timezone" aria-label="Select a Timezone"
-                                                data-control="select2" data-dropdown-parent="#kt_header_search"
-                                                data-placeholder="date_period"
-                                                class="form-select form-select-sm form-select-solid select2-hidden-accessible"
-                                                data-select2-id="select2-data-1-k4ej" tabindex="-1" aria-hidden="true"
-                                                data-kt-initialized="1">
-                                                <option value="next" data-select2-id="select2-data-3-azd8">Within the
-                                                    next</option>
-                                                <option value="last">Within the last</option>
-                                                <option value="between">Between</option>
-                                                <option value="on">On</option>
-                                            </select><span
-                                                class="select2 select2-container select2-container--bootstrap5"
-                                                dir="ltr" data-select2-id="select2-data-2-no6v"
-                                                style="width: 100%;"><span class="selection"><span
-                                                        class="select2-selection select2-selection--single form-select form-select-sm form-select-solid"
-                                                        role="combobox" aria-haspopup="true" aria-expanded="false"
-                                                        tabindex="0" aria-disabled="false"
-                                                        aria-labelledby="select2-timezone-4k-container"
-                                                        aria-controls="select2-timezone-4k-container"><span
-                                                            class="select2-selection__rendered"
-                                                            id="select2-timezone-4k-container" role="textbox"
-                                                            aria-readonly="true" title="Within the next">Within the
-                                                            next</span><span class="select2-selection__arrow"
-                                                            role="presentation"><b
-                                                                role="presentation"></b></span></span></span><span
-                                                    class="dropdown-wrapper" aria-hidden="true"></span></span>
-                                        </div>
-                                        <!--end::Input group-->
-
-                                        <!--begin::Input group-->
-                                        <div class="row mb-8">
-                                            <!--begin::Col-->
-                                            <div class="col-6">
-                                                <input type="number" name="date_number"
-                                                    class="form-control form-control-sm form-control-solid"
-                                                    placeholder="Lenght" value="">
-                                            </div>
-                                            <!--end::Col-->
-
-                                            <!--begin::Col-->
-                                            <div class="col-6">
-                                                <select name="date_typer" aria-label="Select a Timezone"
-                                                    data-control="select2" data-dropdown-parent="#kt_header_search"
-                                                    data-placeholder="Period"
-                                                    class="form-select form-select-sm form-select-solid select2-hidden-accessible"
-                                                    data-select2-id="select2-data-4-4wfq" tabindex="-1"
-                                                    aria-hidden="true" data-kt-initialized="1">
-                                                    <option value="days" data-select2-id="select2-data-6-b9oq">Days
-                                                    </option>
-                                                    <option value="weeks">Weeks</option>
-                                                    <option value="months">Months</option>
-                                                    <option value="years">Years</option>
-                                                </select><span
-                                                    class="select2 select2-container select2-container--bootstrap5"
-                                                    dir="ltr" data-select2-id="select2-data-5-v4a3"
-                                                    style="width: 100%;"><span class="selection"><span
-                                                            class="select2-selection select2-selection--single form-select form-select-sm form-select-solid"
-                                                            role="combobox" aria-haspopup="true" aria-expanded="false"
-                                                            tabindex="0" aria-disabled="false"
-                                                            aria-labelledby="select2-date_typer-y5-container"
-                                                            aria-controls="select2-date_typer-y5-container"><span
-                                                                class="select2-selection__rendered"
-                                                                id="select2-date_typer-y5-container" role="textbox"
-                                                                aria-readonly="true" title="Days">Days</span><span
-                                                                class="select2-selection__arrow" role="presentation"><b
-                                                                    role="presentation"></b></span></span></span><span
-                                                        class="dropdown-wrapper" aria-hidden="true"></span></span>
-                                            </div>
-                                            <!--end::Col-->
-                                        </div>
-                                        <!--end::Input group-->
-
-                                        <!--begin::Actions-->
-                                        <div class="d-flex justify-content-end">
-                                            <button type="reset"
-                                                class="btn btn-sm btn-light fw-bold btn-active-light-primary me-2"
-                                                data-kt-search-element="advanced-options-form-cancel">Cancel</button>
-
-                                            <a href="/metronic8/demo1/utilities/search/horizontal.html"
-                                                class="btn btn-sm fw-bold btn-primary"
-                                                data-kt-search-element="advanced-options-form-search">Search</a>
-                                        </div>
-                                        <!--end::Actions-->
-                                    </form>
-                                    <!--end::Preferences-->
-                                    <!--begin::Preferences-->
-                                    <form data-kt-search-element="preferences" class="pt-1 d-none">
-                                        <!--begin::Heading-->
-                                        <h3 class="fw-semibold text-gray-900 mb-7">Search Preferences</h3>
-                                        <!--end::Heading-->
-
-                                        <!--begin::Input group-->
-                                        <div class="pb-4 border-bottom">
-                                            <label
-                                                class="form-check form-switch form-switch-sm form-check-custom form-check-solid flex-stack">
-                                                <span class="form-check-label text-gray-700 fs-6 fw-semibold ms-0 me-2">
-                                                    Projects
-                                                </span>
-
-                                                <input class="form-check-input" type="checkbox" value="1"
-                                                    checked="checked">
-                                            </label>
-                                        </div>
-                                        <!--end::Input group-->
-
-                                        <!--begin::Input group-->
-                                        <div class="py-4 border-bottom">
-                                            <label
-                                                class="form-check form-switch form-switch-sm form-check-custom form-check-solid flex-stack">
-                                                <span class="form-check-label text-gray-700 fs-6 fw-semibold ms-0 me-2">
-                                                    Targets
-                                                </span>
-                                                <input class="form-check-input" type="checkbox" value="1"
-                                                    checked="checked">
-                                            </label>
-                                        </div>
-                                        <!--end::Input group-->
-
-                                        <!--begin::Input group-->
-                                        <div class="py-4 border-bottom">
-                                            <label
-                                                class="form-check form-switch form-switch-sm form-check-custom form-check-solid flex-stack">
-                                                <span class="form-check-label text-gray-700 fs-6 fw-semibold ms-0 me-2">
-                                                    Affiliate Programs
-                                                </span>
-                                                <input class="form-check-input" type="checkbox" value="1">
-                                            </label>
-                                        </div>
-                                        <!--end::Input group-->
-
-                                        <!--begin::Input group-->
-                                        <div class="py-4 border-bottom">
-                                            <label
-                                                class="form-check form-switch form-switch-sm form-check-custom form-check-solid flex-stack">
-                                                <span class="form-check-label text-gray-700 fs-6 fw-semibold ms-0 me-2">
-                                                    Referrals
-                                                </span>
-                                                <input class="form-check-input" type="checkbox" value="1"
-                                                    checked="checked">
-                                            </label>
-                                        </div>
-                                        <!--end::Input group-->
-
-                                        <!--begin::Input group-->
-                                        <div class="py-4 border-bottom">
-                                            <label
-                                                class="form-check form-switch form-switch-sm form-check-custom form-check-solid flex-stack">
-                                                <span class="form-check-label text-gray-700 fs-6 fw-semibold ms-0 me-2">
-                                                    Users
-                                                </span>
-                                                <input class="form-check-input" type="checkbox" value="1">
-                                            </label>
-                                        </div>
-                                        <!--end::Input group-->
-
-                                        <!--begin::Actions-->
-                                        <div class="d-flex justify-content-end pt-7">
-                                            <button type="reset"
-                                                class="btn btn-sm btn-light fw-bold btn-active-light-primary me-2"
-                                                data-kt-search-element="preferences-dismiss">Cancel</button>
-                                            <button type="submit" class="btn btn-sm fw-bold btn-primary">Save
-                                                Changes</button>
-                                        </div>
-                                        <!--end::Actions-->
-                                    </form>
-                                    <!--end::Preferences-->
-                                </div>
-                                <!--end::Menu-->
-                            </div>
-                            <!--end::Search-->
-                        </div>
-                        <!--end::Search-->
-
-                        <!--begin::Activities-->
-                        <div class="app-navbar-item ms-1 ms-md-4">
-                            <!--begin::Drawer toggle-->
-                            <div class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary w-35px h-35px"
-                                id="kt_activities_toggle">
-                                <i class="ki-duotone ki-messages fs-2"><span class="path1"></span><span
-                                        class="path2"></span><span class="path3"></span><span class="path4"></span><span
-                                        class="path5"></span></i>
-                            </div>
-                            <!--end::Drawer toggle-->
-                        </div>
-                        <!--end::Activities-->
-
-                        <!--begin::Chat-->
-                        <div class="app-navbar-item ms-1 ms-md-4">
-                            <!--begin::Menu wrapper-->
-                            <div class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary w-35px h-35px position-relative"
-                                id="kt_drawer_chat_toggle">
-                                <i class="ki-duotone ki-message-text-2 fs-2"><span class="path1"></span><span
-                                        class="path2"></span><span class="path3"></span></i>
-                                <span
-                                    class="bullet bullet-dot bg-success h-6px w-6px position-absolute translate-middle top-0 start-50 animation-blink">
-                                </span>
-                            </div>
-                            <!--end::Menu wrapper-->
-                        </div>
-                        <!--end::Chat-->
-
-                        <!--begin::Theme mode-->
-                        <div class="app-navbar-item ms-1 ms-md-4">
-
-                            <!--begin::Menu toggle-->
-                            <a href="#"
-                                class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary w-35px h-35px"
-                                data-kt-menu-trigger="{default:'click', lg: 'hover'}" data-kt-menu-attach="parent"
-                                data-kt-menu-placement="bottom-end">
-                                <i class="ki-duotone ki-night-day theme-light-show fs-1"><span
-                                        class="path1"></span><span class="path2"></span><span class="path3"></span><span
-                                        class="path4"></span><span class="path5"></span><span class="path6"></span><span
-                                        class="path7"></span><span class="path8"></span><span class="path9"></span><span
-                                        class="path10"></span></i> <i
-                                    class="ki-duotone ki-moon theme-dark-show fs-1"><span class="path1"></span><span
-                                        class="path2"></span></i></a>
-                            <!--begin::Menu toggle-->
-
-                            <!--begin::Menu-->
-                            <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-title-gray-700 menu-icon-gray-500 menu-active-bg menu-state-color fw-semibold py-4 fs-base w-150px"
-                                data-kt-menu="true" data-kt-element="theme-mode-menu">
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3 my-0">
-                                    <a href="#" class="menu-link px-3 py-2 active" data-kt-element="mode"
-                                        data-kt-value="light">
-                                        <span class="menu-icon" data-kt-element="icon">
-                                            <i class="ki-duotone ki-night-day fs-2"><span class="path1"></span><span
-                                                    class="path2"></span><span class="path3"></span><span
-                                                    class="path4"></span><span class="path5"></span><span
-                                                    class="path6"></span><span class="path7"></span><span
-                                                    class="path8"></span><span class="path9"></span><span
-                                                    class="path10"></span></i> </span>
-                                        <span class="menu-title">
-                                            Light
-                                        </span>
-                                    </a>
-                                </div>
-                                <!--end::Menu item-->
-
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3 my-0">
-                                    <a href="#" class="menu-link px-3 py-2" data-kt-element="mode" data-kt-value="dark">
-                                        <span class="menu-icon" data-kt-element="icon">
-                                            <i class="ki-duotone ki-moon fs-2"><span class="path1"></span><span
-                                                    class="path2"></span></i> </span>
-                                        <span class="menu-title">
-                                            Dark
-                                        </span>
-                                    </a>
-                                </div>
-                                <!--end::Menu item-->
-
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3 my-0">
-                                    <a href="#" class="menu-link px-3 py-2" data-kt-element="mode"
-                                        data-kt-value="system">
-                                        <span class="menu-icon" data-kt-element="icon">
-                                            <i class="ki-duotone ki-screen fs-2"><span class="path1"></span><span
-                                                    class="path2"></span><span class="path3"></span><span
-                                                    class="path4"></span></i> </span>
-                                        <span class="menu-title">
-                                            System
-                                        </span>
-                                    </a>
-                                </div>
-                                <!--end::Menu item-->
-                            </div>
-                            <!--end::Menu-->
-
-                        </div>
-                        <!--end::Theme mode-->
-
-                        <!--begin::User menu-->
-                        <div class="app-navbar-item ms-1 ms-md-4" id="kt_header_user_menu_toggle">
-                            <!--begin::Menu wrapper-->
-                            <div class="cursor-pointer symbol symbol-35px"
-                                data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-attach="parent"
-                                data-kt-menu-placement="bottom-end">
-                                <img src="{{ asset('media/avatars/300-3.jpg') }}" class="rounded-3" alt="user">
-                            </div>
-
-                            <!--begin::User account menu-->
-                            <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-color fw-semibold py-4 fs-6 w-275px"
-                                data-kt-menu="true">
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <div class="menu-content d-flex align-items-center px-3">
-                                        <!--begin::Avatar-->
-                                        <div class="symbol symbol-50px me-5">
-                                            <img alt="Logo" src="{{ asset('media/avatars/300-3.jpg') }}">
-                                        </div>
-                                        <!--end::Avatar-->
-
-                                        <!--begin::Username-->
-                                        <div class="d-flex flex-column">
-                                            <div class="fw-bold d-flex align-items-center fs-5">
-                                                Robert Fox <span
-                                                    class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2">Pro</span>
-                                            </div>
-
-                                            <a href="#" class="fw-semibold text-muted text-hover-primary fs-7">
-                                                robert@kt.com </a>
-                                        </div>
-                                        <!--end::Username-->
-                                    </div>
-                                </div>
-                                <!--end::Menu item-->
-
-                                <!--begin::Menu separator-->
-                                <div class="separator my-2"></div>
-                                <!--end::Menu separator-->
-
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-5">
-                                    <a href="/metronic8/demo1/account/overview.html" class="menu-link px-5">
-                                        My Profile
-                                    </a>
-                                </div>
-                                <!--end::Menu item-->
-
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-5">
-                                    <a href="/metronic8/demo1/apps/projects/list.html" class="menu-link px-5">
-                                        <span class="menu-text">My Projects</span>
-                                        <span class="menu-badge">
-                                            <span class="badge badge-light-danger badge-circle fw-bold fs-7">3</span>
-                                        </span>
-                                    </a>
-                                </div>
-                                <!--end::Menu item-->
-
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-5" data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
-                                    data-kt-menu-placement="left-start" data-kt-menu-offset="-15px, 0">
-                                    <a href="#" class="menu-link px-5">
-                                        <span class="menu-title">My Subscription</span>
-                                        <span class="menu-arrow"></span>
-                                    </a>
-
-                                    <!--begin::Menu sub-->
-                                    <div class="menu-sub menu-sub-dropdown w-175px py-4">
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="/metronic8/demo1/account/referrals.html" class="menu-link px-5">
-                                                Referrals
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
-
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="/metronic8/demo1/account/billing.html" class="menu-link px-5">
-                                                Billing
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
-
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="/metronic8/demo1/account/statements.html" class="menu-link px-5">
-                                                Payments
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
-
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="/metronic8/demo1/account/statements.html"
-                                                class="menu-link d-flex flex-stack px-5">
-                                                Statements
-
-                                                <span class="ms-2 lh-0" data-bs-toggle="tooltip"
-                                                    aria-label="View your statements"
-                                                    data-bs-original-title="View your statements"
-                                                    data-kt-initialized="1">
-                                                    <i class="ki-duotone ki-information-5 fs-5"><span
-                                                            class="path1"></span><span class="path2"></span><span
-                                                            class="path3"></span></i> </span>
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
-
-                                        <!--begin::Menu separator-->
-                                        <div class="separator my-2"></div>
-                                        <!--end::Menu separator-->
-
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <div class="menu-content px-3">
-                                                <label
-                                                    class="form-check form-switch form-check-custom form-check-solid">
-                                                    <input class="form-check-input w-30px h-20px" type="checkbox"
-                                                        value="1" checked="checked" name="notifications">
-                                                    <span class="form-check-label text-muted fs-7">
-                                                        Notifications
-                                                    </span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <!--end::Menu item-->
-                                    </div>
-                                    <!--end::Menu sub-->
-                                </div>
-                                <!--end::Menu item-->
-
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-5">
-                                    <a href="/metronic8/demo1/account/statements.html" class="menu-link px-5">
-                                        My Statements
-                                    </a>
-                                </div>
-                                <!--end::Menu item-->
-
-                                <!--begin::Menu separator-->
-                                <div class="separator my-2"></div>
-                                <!--end::Menu separator-->
-
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-5" data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
-                                    data-kt-menu-placement="left-start" data-kt-menu-offset="-15px, 0">
-                                    <a href="#" class="menu-link px-5">
-                                        <span class="menu-title position-relative">
-                                            Mode
-
-                                            <span class="ms-5 position-absolute translate-middle-y top-50 end-0">
-                                                <i class="ki-duotone ki-night-day theme-light-show fs-2"><span
-                                                        class="path1"></span><span class="path2"></span><span
-                                                        class="path3"></span><span class="path4"></span><span
-                                                        class="path5"></span><span class="path6"></span><span
-                                                        class="path7"></span><span class="path8"></span><span
-                                                        class="path9"></span><span class="path10"></span></i> <i
-                                                    class="ki-duotone ki-moon theme-dark-show fs-2"><span
-                                                        class="path1"></span><span class="path2"></span></i> </span>
-                                        </span>
-                                    </a>
-
-                                    <!--begin::Menu-->
-                                    <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-title-gray-700 menu-icon-gray-500 menu-active-bg menu-state-color fw-semibold py-4 fs-base w-150px"
-                                        data-kt-menu="true" data-kt-element="theme-mode-menu">
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3 my-0">
-                                            <a href="#" class="menu-link px-3 py-2" data-kt-element="mode"
-                                                data-kt-value="light">
-                                                <span class="menu-icon" data-kt-element="icon">
-                                                    <i class="ki-duotone ki-night-day fs-2"><span
-                                                            class="path1"></span><span class="path2"></span><span
-                                                            class="path3"></span><span class="path4"></span><span
-                                                            class="path5"></span><span class="path6"></span><span
-                                                            class="path7"></span><span class="path8"></span><span
-                                                            class="path9"></span><span class="path10"></span></i>
-                                                </span>
-                                                <span class="menu-title">
-                                                    Light
-                                                </span>
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
-
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3 my-0">
-                                            <a href="#" class="menu-link px-3 py-2" data-kt-element="mode"
-                                                data-kt-value="dark">
-                                                <span class="menu-icon" data-kt-element="icon">
-                                                    <i class="ki-duotone ki-moon fs-2"><span class="path1"></span><span
-                                                            class="path2"></span></i> </span>
-                                                <span class="menu-title">
-                                                    Dark
-                                                </span>
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
-
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3 my-0">
-                                            <a href="#" class="menu-link px-3 py-2" data-kt-element="mode"
-                                                data-kt-value="system">
-                                                <span class="menu-icon" data-kt-element="icon">
-                                                    <i class="ki-duotone ki-screen fs-2"><span
-                                                            class="path1"></span><span class="path2"></span><span
-                                                            class="path3"></span><span class="path4"></span></i> </span>
-                                                <span class="menu-title">
-                                                    System
-                                                </span>
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
-                                    </div>
-                                    <!--end::Menu-->
-
-                                </div>
-                                <!--end::Menu item-->
-
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-5" data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
-                                    data-kt-menu-placement="left-start" data-kt-menu-offset="-15px, 0">
-                                    <a href="#" class="menu-link px-5">
-                                        <span class="menu-title position-relative">
-                                            Language
-
-                                            <span
-                                                class="fs-8 rounded bg-light px-3 py-2 position-absolute translate-middle-y top-50 end-0">
-                                                English <img class="w-15px h-15px rounded-1 ms-2"
-                                                    src="{{ asset('media/flags/united-states.svg') }}" alt="">
-                                            </span>
-                                        </span>
-                                    </a>
-
-                                    <!--begin::Menu sub-->
-                                    <div class="menu-sub menu-sub-dropdown w-175px py-4">
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="/metronic8/demo1/account/settings.html"
-                                                class="menu-link d-flex px-5 active">
-                                                <span class="symbol symbol-20px me-4">
-                                                    <img class="rounded-1"
-                                                        src="{{ asset('media/flags/united-states.svg') }}" alt="">
-                                                </span>
-                                                English
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
-
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="/metronic8/demo1/account/settings.html"
-                                                class="menu-link d-flex px-5">
-                                                <span class="symbol symbol-20px me-4">
-                                                    <img class="rounded-1" src="{{ asset('media/flags/spain.svg') }}"
-                                                        alt="">
-                                                </span>
-                                                Spanish
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
-
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="/metronic8/demo1/account/settings.html"
-                                                class="menu-link d-flex px-5">
-                                                <span class="symbol symbol-20px me-4">
-                                                    <img class="rounded-1" src="{{ asset('media/flags/germany.svg') }}"
-                                                        alt="">
-                                                </span>
-                                                German
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
-
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="/metronic8/demo1/account/settings.html"
-                                                class="menu-link d-flex px-5">
-                                                <span class="symbol symbol-20px me-4">
-                                                    <img class="rounded-1" src="{{ asset('media/flags/japan.svg') }}"
-                                                        alt="">
-                                                </span>
-                                                Japanese
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
-
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="/metronic8/demo1/account/settings.html"
-                                                class="menu-link d-flex px-5">
-                                                <span class="symbol symbol-20px me-4">
-                                                    <img class="rounded-1" src="{{ asset('media/flags/france.svg') }}"
-                                                        alt="">
-                                                </span>
-                                                French
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
-                                    </div>
-                                    <!--end::Menu sub-->
-                                </div>
-                                <!--end::Menu item-->
-
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-5 my-1">
-                                    <a href="/metronic8/demo1/account/settings.html" class="menu-link px-5">
-                                        Account Settings
-                                    </a>
-                                </div>
-                                <!--end::Menu item-->
-
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-5">
-                                    <a href="/metronic8/demo1/authentication/layouts/corporate/sign-in.html"
-                                        class="menu-link px-5">
-                                        Sign Out
-                                    </a>
-                                </div>
-                                <!--end::Menu item-->
-                            </div>
-                            <!--end::User account menu-->
-
-                            <!--end::Menu wrapper-->
-                        </div>
-                        <!--end::User menu-->
-
-                        <!--begin::Header menu toggle-->
-                        <div class="app-navbar-item d-lg-none ms-2 me-n2" title="Show header menu">
-                            <div class="btn btn-flex btn-icon btn-active-color-primary w-30px h-30px"
-                                id="kt_app_header_menu_toggle">
-                                <i class="ki-duotone ki-element-4 fs-1"><span class="path1"></span><span
-                                        class="path2"></span></i>
-                            </div>
-                        </div>
-                        <!--end::Header menu toggle-->
-
-                        <!--begin::Aside toggle-->
-                        <!--end::Header menu toggle-->
-                    </div>
-                    <!--end::Navbar-->
-                </div>
-                <!--end::Header wrapper-->
-            </div>
+                @include('admin.layout.header')
             <!--end::Header container-->
         </div>
         <!--end::Header-->
@@ -1470,1892 +787,8 @@
         <div class="app-wrapper  flex-column flex-row-fluid " id="kt_app_wrapper">
 
 
-
-
-
-
             <!--begin::Sidebar-->
-            <div id="kt_app_sidebar" class="app-sidebar flex-column" data-kt-drawer="true"
-                data-kt-drawer-name="app-sidebar" data-kt-drawer-activate="{default: true, lg: false}"
-                data-kt-drawer-overlay="true" data-kt-drawer-width="225px" data-kt-drawer-direction="start"
-                data-kt-drawer-toggle="#kt_app_sidebar_mobile_toggle" style="">
-
-
-                <!--begin::Logo-->
-                <div class="app-sidebar-logo px-6" id="kt_app_sidebar_logo">
-                    <!--begin::Logo image-->
-                    <a href="/metronic8/demo1/index.html">
-                        <img alt="Logo" src="{{ asset('media/logos/default-dark.svg') }}"
-                            class="h-25px app-sidebar-logo-default">
-
-                        <img alt="Logo" src="{{ asset('media/logos/default-small.svg') }}"
-                            class="h-20px app-sidebar-logo-minimize">
-                    </a>
-                    <!--end::Logo image-->
-
-                    <!--begin::Sidebar toggle-->
-                    <!--begin::Minimized sidebar setup:
-            if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_state"] === "on") {
-                1. "src/js/layout/sidebar.js" adds "sidebar_minimize_state" cookie value to save the sidebar minimize state.
-                2. Set data-kt-app-sidebar-minimize="on" attribute for body tag.
-                3. Set data-kt-toggle-state="active" attribute to the toggle element with "kt_app_sidebar_toggle" id.
-                4. Add "active" class to to sidebar toggle element with "kt_app_sidebar_toggle" id.
-            }
-        -->
-                    <div id="kt_app_sidebar_toggle"
-                        class="app-sidebar-toggle btn btn-icon btn-shadow btn-sm btn-color-muted btn-active-color-primary h-30px w-30px position-absolute top-50 start-100 translate-middle rotate "
-                        data-kt-toggle="true" data-kt-toggle-state="active" data-kt-toggle-target="body"
-                        data-kt-toggle-name="app-sidebar-minimize">
-
-                        <i class="ki-duotone ki-black-left-line fs-3 rotate-180"><span class="path1"></span><span
-                                class="path2"></span></i>
-                    </div>
-                    <!--end::Sidebar toggle-->
-                </div>
-                <!--end::Logo-->
-                <!--begin::sidebar menu-->
-                <div class="app-sidebar-menu overflow-hidden flex-column-fluid">
-                    <!--begin::Menu wrapper-->
-                    <div id="kt_app_sidebar_menu_wrapper" class="app-sidebar-wrapper">
-                        <!--begin::Scroll wrapper-->
-                        <div id="kt_app_sidebar_menu_scroll" class="scroll-y my-5 mx-3" data-kt-scroll="true"
-                            data-kt-scroll-activate="true" data-kt-scroll-height="auto"
-                            data-kt-scroll-dependencies="#kt_app_sidebar_logo, #kt_app_sidebar_footer"
-                            data-kt-scroll-wrappers="#kt_app_sidebar_menu" data-kt-scroll-offset="5px"
-                            data-kt-scroll-save-state="true" style="height: 680px;">
-                            <!--begin::Menu-->
-                            <div class="menu menu-column menu-rounded menu-sub-indention fw-semibold fs-6"
-                                id="#kt_app_sidebar_menu" data-kt-menu="true" data-kt-menu-expand="false">
-                                <!--begin:Menu item-->
-                                <div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
-                                    <!--begin:Menu link--><span class="menu-link"><span class="menu-icon"><i
-                                                class="ki-duotone ki-element-11 fs-2"><span class="path1"></span><span
-                                                    class="path2"></span><span class="path3"></span><span
-                                                    class="path4"></span></i></span><span
-                                            class="menu-title">Dashboards</span><span
-                                            class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                    <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link active"
-                                                href="/metronic8/demo1/index.html"><span class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Default</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/dashboards/ecommerce.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">eCommerce</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/dashboards/projects.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Projects</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/dashboards/online-courses.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Online Courses</span></a><!--end:Menu link-->
-                                        </div><!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/dashboards/marketing.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Marketing</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item-->
-                                        <div class="menu-inner flex-column collapse "
-                                            id="kt_app_sidebar_menu_dashboards_collapse"><!--begin:Menu item-->
-                                            <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                    href="/metronic8/demo1/dashboards/bidding.html"><span
-                                                        class="menu-bullet"><span
-                                                            class="bullet bullet-dot"></span></span><span
-                                                        class="menu-title">Bidding</span></a><!--end:Menu link--></div>
-                                            <!--end:Menu item--><!--begin:Menu item-->
-                                            <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                    href="/metronic8/demo1/dashboards/pos.html"><span
-                                                        class="menu-bullet"><span
-                                                            class="bullet bullet-dot"></span></span><span
-                                                        class="menu-title">POS System</span></a><!--end:Menu link-->
-                                            </div><!--end:Menu item--><!--begin:Menu item-->
-                                            <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                    href="/metronic8/demo1/dashboards/call-center.html"><span
-                                                        class="menu-bullet"><span
-                                                            class="bullet bullet-dot"></span></span><span
-                                                        class="menu-title">Call Center</span></a><!--end:Menu link-->
-                                            </div><!--end:Menu item--><!--begin:Menu item-->
-                                            <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                    href="/metronic8/demo1/dashboards/logistics.html"><span
-                                                        class="menu-bullet"><span
-                                                            class="bullet bullet-dot"></span></span><span
-                                                        class="menu-title">Logistics</span></a><!--end:Menu link-->
-                                            </div><!--end:Menu item--><!--begin:Menu item-->
-                                            <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                    href="/metronic8/demo1/dashboards/website-analytics.html"><span
-                                                        class="menu-bullet"><span
-                                                            class="bullet bullet-dot"></span></span><span
-                                                        class="menu-title">Website
-                                                        Analytics</span></a><!--end:Menu link--></div>
-                                            <!--end:Menu item--><!--begin:Menu item-->
-                                            <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                    href="/metronic8/demo1/dashboards/finance-performance.html"><span
-                                                        class="menu-bullet"><span
-                                                            class="bullet bullet-dot"></span></span><span
-                                                        class="menu-title">Finance
-                                                        Performance</span></a><!--end:Menu link--></div>
-                                            <!--end:Menu item--><!--begin:Menu item-->
-                                            <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                    href="/metronic8/demo1/dashboards/store-analytics.html"><span
-                                                        class="menu-bullet"><span
-                                                            class="bullet bullet-dot"></span></span><span
-                                                        class="menu-title">Store
-                                                        Analytics</span></a><!--end:Menu link--></div>
-                                            <!--end:Menu item--><!--begin:Menu item-->
-                                            <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                    href="/metronic8/demo1/dashboards/social.html"><span
-                                                        class="menu-bullet"><span
-                                                            class="bullet bullet-dot"></span></span><span
-                                                        class="menu-title">Social</span></a><!--end:Menu link--></div>
-                                            <!--end:Menu item--><!--begin:Menu item-->
-                                            <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                    href="/metronic8/demo1/dashboards/delivery.html"><span
-                                                        class="menu-bullet"><span
-                                                            class="bullet bullet-dot"></span></span><span
-                                                        class="menu-title">Delivery</span></a><!--end:Menu link--></div>
-                                            <!--end:Menu item--><!--begin:Menu item-->
-                                            <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                    href="/metronic8/demo1/dashboards/crypto.html"><span
-                                                        class="menu-bullet"><span
-                                                            class="bullet bullet-dot"></span></span><span
-                                                        class="menu-title">Crypto</span></a><!--end:Menu link--></div>
-                                            <!--end:Menu item--><!--begin:Menu item-->
-                                            <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                    href="/metronic8/demo1/dashboards/school.html"><span
-                                                        class="menu-bullet"><span
-                                                            class="bullet bullet-dot"></span></span><span
-                                                        class="menu-title">School</span></a><!--end:Menu link--></div>
-                                            <!--end:Menu item--><!--begin:Menu item-->
-                                            <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                    href="/metronic8/demo1/dashboards/podcast.html"><span
-                                                        class="menu-bullet"><span
-                                                            class="bullet bullet-dot"></span></span><span
-                                                        class="menu-title">Podcast</span></a><!--end:Menu link--></div>
-                                            <!--end:Menu item--><!--begin:Menu item-->
-                                            <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                    href="/metronic8/demo1/landing.html"><span class="menu-bullet"><span
-                                                            class="bullet bullet-dot"></span></span><span
-                                                        class="menu-title">Landing</span></a><!--end:Menu link--></div>
-                                            <!--end:Menu item-->
-                                        </div>
-                                        <div class="menu-item">
-                                            <div class="menu-content">
-                                                <a class="btn btn-flex btn-color-primary d-flex flex-stack fs-base p-0 ms-2 mb-2 toggle collapsible collapsed"
-                                                    data-bs-toggle="collapse"
-                                                    href="#kt_app_sidebar_menu_dashboards_collapse"
-                                                    data-kt-toggle-text="Show Less">
-                                                    <span data-kt-toggle-text-target="true">Show 12 More</span> <i
-                                                        class="ki-duotone ki-minus-square toggle-on fs-2 me-0"><span
-                                                            class="path1"></span><span class="path2"></span></i><i
-                                                        class="ki-duotone ki-plus-square toggle-off fs-2 me-0"><span
-                                                            class="path1"></span><span class="path2"></span><span
-                                                            class="path3"></span></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div><!--end:Menu sub-->
-                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                <div class="menu-item pt-5"><!--begin:Menu content-->
-                                    <div class="menu-content"><span
-                                            class="menu-heading fw-bold text-uppercase fs-7">Pages</span></div>
-                                    <!--end:Menu content-->
-                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                    <!--begin:Menu link--><span class="menu-link"><span class="menu-icon"><i
-                                                class="ki-duotone ki-address-book fs-2"><span class="path1"></span><span
-                                                    class="path2"></span><span class="path3"></span></i></span><span
-                                            class="menu-title">User Profile</span><span
-                                            class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                    <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/pages/user-profile/overview.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Overview</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/pages/user-profile/projects.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Projects</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/pages/user-profile/campaigns.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Campaigns</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/pages/user-profile/documents.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Documents</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/pages/user-profile/followers.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Followers</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/pages/user-profile/activity.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Activity</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item-->
-                                    </div><!--end:Menu sub-->
-                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                    <!--begin:Menu link--><span class="menu-link"><span class="menu-icon"><i
-                                                class="ki-duotone ki-element-plus fs-2"><span class="path1"></span><span
-                                                    class="path2"></span><span class="path3"></span><span
-                                                    class="path4"></span><span class="path5"></span></i></span><span
-                                            class="menu-title">Account</span><span
-                                            class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                    <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/account/overview.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Overview</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/account/settings.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Settings</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/account/security.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Security</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/account/activity.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Activity</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/account/billing.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Billing</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/account/statements.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Statements</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/account/referrals.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Referrals</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/account/api-keys.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">API Keys</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/account/logs.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Logs</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item-->
-                                    </div><!--end:Menu sub-->
-                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                    <!--begin:Menu link--><span class="menu-link"><span class="menu-icon"><i
-                                                class="ki-duotone ki-user fs-2"><span class="path1"></span><span
-                                                    class="path2"></span></i></span><span
-                                            class="menu-title">Authentication</span><span
-                                            class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                    <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                                        <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                            <!--begin:Menu link--><span class="menu-link"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Corporate Layout</span><span
-                                                    class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                            <div class="menu-sub menu-sub-accordion menu-active-bg">
-                                                <!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/authentication/layouts/corporate/sign-in.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Sign-in</span></a><!--end:Menu link-->
-                                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/authentication/layouts/corporate/sign-up.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Sign-up</span></a><!--end:Menu link-->
-                                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/authentication/layouts/corporate/two-factor.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Two-Factor</span></a><!--end:Menu link-->
-                                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/authentication/layouts/corporate/reset-password.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Reset
-                                                            Password</span></a><!--end:Menu link--></div>
-                                                <!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/authentication/layouts/corporate/new-password.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">New
-                                                            Password</span></a><!--end:Menu link--></div>
-                                                <!--end:Menu item-->
-                                            </div><!--end:Menu sub-->
-                                        </div><!--end:Menu item--><!--begin:Menu item-->
-                                        <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                            <!--begin:Menu link--><span class="menu-link"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Overlay Layout</span><span
-                                                    class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                            <div class="menu-sub menu-sub-accordion menu-active-bg">
-                                                <!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/authentication/layouts/overlay/sign-in.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Sign-in</span></a><!--end:Menu link-->
-                                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/authentication/layouts/overlay/sign-up.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Sign-up</span></a><!--end:Menu link-->
-                                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/authentication/layouts/overlay/two-factor.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Two-Factor</span></a><!--end:Menu link-->
-                                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/authentication/layouts/overlay/reset-password.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Reset
-                                                            Password</span></a><!--end:Menu link--></div>
-                                                <!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/authentication/layouts/overlay/new-password.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">New
-                                                            Password</span></a><!--end:Menu link--></div>
-                                                <!--end:Menu item-->
-                                            </div><!--end:Menu sub-->
-                                        </div><!--end:Menu item--><!--begin:Menu item-->
-                                        <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                            <!--begin:Menu link--><span class="menu-link"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Creative Layout</span><span
-                                                    class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                            <div class="menu-sub menu-sub-accordion menu-active-bg">
-                                                <!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/authentication/layouts/creative/sign-in.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Sign-in</span></a><!--end:Menu link-->
-                                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/authentication/layouts/creative/sign-up.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Sign-up</span></a><!--end:Menu link-->
-                                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/authentication/layouts/creative/two-factor.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Two-Factor</span></a><!--end:Menu link-->
-                                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/authentication/layouts/creative/reset-password.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Reset
-                                                            Password</span></a><!--end:Menu link--></div>
-                                                <!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/authentication/layouts/creative/new-password.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">New
-                                                            Password</span></a><!--end:Menu link--></div>
-                                                <!--end:Menu item-->
-                                            </div><!--end:Menu sub-->
-                                        </div><!--end:Menu item--><!--begin:Menu item-->
-                                        <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                            <!--begin:Menu link--><span class="menu-link"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Fancy Layout</span><span
-                                                    class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                            <div class="menu-sub menu-sub-accordion menu-active-bg">
-                                                <!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/authentication/layouts/fancy/sign-in.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Sign-in</span></a><!--end:Menu link-->
-                                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/authentication/layouts/fancy/sign-up.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Sign-up</span></a><!--end:Menu link-->
-                                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/authentication/layouts/fancy/two-factor.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Two-Factor</span></a><!--end:Menu link-->
-                                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/authentication/layouts/fancy/reset-password.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Reset
-                                                            Password</span></a><!--end:Menu link--></div>
-                                                <!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/authentication/layouts/fancy/new-password.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">New
-                                                            Password</span></a><!--end:Menu link--></div>
-                                                <!--end:Menu item-->
-                                            </div><!--end:Menu sub-->
-                                        </div><!--end:Menu item--><!--begin:Menu item-->
-                                        <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                            <!--begin:Menu link--><span class="menu-link"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Email Templates</span><span
-                                                    class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                            <div class="menu-sub menu-sub-accordion menu-active-bg">
-                                                <!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/authentication/email/welcome-message.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Welcome
-                                                            Message</span></a><!--end:Menu link--></div>
-                                                <!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/authentication/email/reset-password.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Reset
-                                                            Password</span></a><!--end:Menu link--></div>
-                                                <!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/authentication/email/subscription-confirmed.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Subscription
-                                                            Confirmed</span></a><!--end:Menu link--></div>
-                                                <!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/authentication/email/card-declined.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Credit Card
-                                                            Declined</span></a><!--end:Menu link--></div>
-                                                <!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/authentication/email/promo-1.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Promo 1</span></a><!--end:Menu link-->
-                                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/authentication/email/promo-2.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Promo 2</span></a><!--end:Menu link-->
-                                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/authentication/email/promo-3.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Promo 3</span></a><!--end:Menu link-->
-                                                </div><!--end:Menu item-->
-                                            </div><!--end:Menu sub-->
-                                        </div><!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/authentication/extended/multi-steps-sign-up.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Multi-steps
-                                                    Sign-up</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/authentication/general/welcome.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Welcome Message</span></a><!--end:Menu link-->
-                                        </div><!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/authentication/general/verify-email.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Verify Email</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/authentication/general/coming-soon.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Coming Soon</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/authentication/general/password-confirmation.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Password
-                                                    Confirmation</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/authentication/general/account-deactivated.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Account
-                                                    Deactivation</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/authentication/general/error-404.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Error 404</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/authentication/general/error-500.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Error 500</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item-->
-                                    </div><!--end:Menu sub-->
-                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
-                                    data-kt-menu-placement="right-start"
-                                    class="menu-item menu-lg-down-accordion menu-sub-lg-down-indention">
-                                    <!--begin:Menu link--><span class="menu-link"><span class="menu-icon"><i
-                                                class="ki-duotone ki-file fs-2"><span class="path1"></span><span
-                                                    class="path2"></span></i></span><span
-                                            class="menu-title">Corporate</span><span
-                                            class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                    <div
-                                        class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown px-2 py-4 w-200px mh-75 overflow-auto">
-                                        <!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/pages/about.html"><span class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">About</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/pages/team.html"><span class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Our Team</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/pages/contact.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Contact Us</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/pages/licenses.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Licenses</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/pages/sitemap.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Sitemap</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item-->
-                                    </div><!--end:Menu sub-->
-                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                    <!--begin:Menu link--><span class="menu-link"><span class="menu-icon"><i
-                                                class="ki-duotone ki-abstract-39 fs-2"><span class="path1"></span><span
-                                                    class="path2"></span></i></span><span
-                                            class="menu-title">Social</span><span
-                                            class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                    <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/pages/social/feeds.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Feeds</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/pages/social/activity.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Activty</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/pages/social/followers.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Followers</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/pages/social/settings.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Settings</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item-->
-                                    </div><!--end:Menu sub-->
-                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                    <!--begin:Menu link--><span class="menu-link"><span class="menu-icon"><i
-                                                class="ki-duotone ki-bank fs-2"><span class="path1"></span><span
-                                                    class="path2"></span></i></span><span
-                                            class="menu-title">Blog</span><span
-                                            class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                    <div class="menu-sub menu-sub-accordion menu-active-bg"><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/pages/blog/home.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Blog Home</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/pages/blog/post.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Blog Post</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item-->
-                                    </div><!--end:Menu sub-->
-                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                    <!--begin:Menu link--><span class="menu-link"><span class="menu-icon"><i
-                                                class="ki-duotone ki-chart-pie-3 fs-2"><span class="path1"></span><span
-                                                    class="path2"></span><span class="path3"></span></i></span><span
-                                            class="menu-title">FAQ</span><span
-                                            class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                    <div class="menu-sub menu-sub-accordion menu-active-bg"><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/pages/faq/classic.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">FAQ Classic</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/pages/faq/extended.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">FAQ Extended</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item-->
-                                    </div><!--end:Menu sub-->
-                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                    <!--begin:Menu link--><span class="menu-link"><span class="menu-icon"><i
-                                                class="ki-duotone ki-bucket fs-2"><span class="path1"></span><span
-                                                    class="path2"></span><span class="path3"></span><span
-                                                    class="path4"></span></i></span><span
-                                            class="menu-title">Pricing</span><span
-                                            class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                    <div class="menu-sub menu-sub-accordion menu-active-bg"><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/pages/pricing.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Column Pricing</span></a><!--end:Menu link-->
-                                        </div><!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/pages/pricing/table.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Table Pricing</span></a><!--end:Menu link-->
-                                        </div><!--end:Menu item-->
-                                    </div><!--end:Menu sub-->
-                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                    <!--begin:Menu link--><span class="menu-link"><span class="menu-icon"><i
-                                                class="ki-duotone ki-call fs-2"><span class="path1"></span><span
-                                                    class="path2"></span><span class="path3"></span><span
-                                                    class="path4"></span><span class="path5"></span><span
-                                                    class="path6"></span><span class="path7"></span><span
-                                                    class="path8"></span></i></span><span
-                                            class="menu-title">Careers</span><span
-                                            class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                    <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/pages/careers/list.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Careers List</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/pages/careers/apply.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Careers Apply</span></a><!--end:Menu link-->
-                                        </div><!--end:Menu item-->
-                                    </div><!--end:Menu sub-->
-                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                    <!--begin:Menu link--><span class="menu-link"><span class="menu-icon"><i
-                                                class="ki-duotone ki-color-swatch fs-2"><span class="path1"></span><span
-                                                    class="path2"></span><span class="path3"></span><span
-                                                    class="path4"></span><span class="path5"></span><span
-                                                    class="path6"></span><span class="path7"></span><span
-                                                    class="path8"></span><span class="path9"></span><span
-                                                    class="path10"></span><span class="path11"></span><span
-                                                    class="path12"></span><span class="path13"></span><span
-                                                    class="path14"></span><span class="path15"></span><span
-                                                    class="path16"></span><span class="path17"></span><span
-                                                    class="path18"></span><span class="path19"></span><span
-                                                    class="path20"></span><span class="path21"></span></i></span><span
-                                            class="menu-title">Utilities</span><span
-                                            class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                    <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                                        <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                            <!--begin:Menu link--><span class="menu-link"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Modals</span><span
-                                                    class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                            <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                                    <!--begin:Menu link--><span class="menu-link"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">General</span><span
-                                                            class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                                    <div class="menu-sub menu-sub-accordion menu-active-bg">
-                                                        <!--begin:Menu item-->
-                                                        <div class="menu-item"><!--begin:Menu link--><a
-                                                                class="menu-link"
-                                                                href="/metronic8/demo1/utilities/modals/general/invite-friends.html"><span
-                                                                    class="menu-bullet"><span
-                                                                        class="bullet bullet-dot"></span></span><span
-                                                                    class="menu-title">Invite
-                                                                    Friends</span></a><!--end:Menu link--></div>
-                                                        <!--end:Menu item--><!--begin:Menu item-->
-                                                        <div class="menu-item"><!--begin:Menu link--><a
-                                                                class="menu-link"
-                                                                href="/metronic8/demo1/utilities/modals/general/view-users.html"><span
-                                                                    class="menu-bullet"><span
-                                                                        class="bullet bullet-dot"></span></span><span
-                                                                    class="menu-title">View
-                                                                    Users</span></a><!--end:Menu link--></div>
-                                                        <!--end:Menu item--><!--begin:Menu item-->
-                                                        <div class="menu-item"><!--begin:Menu link--><a
-                                                                class="menu-link"
-                                                                href="/metronic8/demo1/utilities/modals/general/select-users.html"><span
-                                                                    class="menu-bullet"><span
-                                                                        class="bullet bullet-dot"></span></span><span
-                                                                    class="menu-title">Select
-                                                                    Users</span></a><!--end:Menu link--></div>
-                                                        <!--end:Menu item--><!--begin:Menu item-->
-                                                        <div class="menu-item"><!--begin:Menu link--><a
-                                                                class="menu-link"
-                                                                href="/metronic8/demo1/utilities/modals/general/upgrade-plan.html"><span
-                                                                    class="menu-bullet"><span
-                                                                        class="bullet bullet-dot"></span></span><span
-                                                                    class="menu-title">Upgrade
-                                                                    Plan</span></a><!--end:Menu link--></div>
-                                                        <!--end:Menu item--><!--begin:Menu item-->
-                                                        <div class="menu-item"><!--begin:Menu link--><a
-                                                                class="menu-link"
-                                                                href="/metronic8/demo1/utilities/modals/general/share-earn.html"><span
-                                                                    class="menu-bullet"><span
-                                                                        class="bullet bullet-dot"></span></span><span
-                                                                    class="menu-title">Share &amp;
-                                                                    Earn</span></a><!--end:Menu link--></div>
-                                                        <!--end:Menu item-->
-                                                    </div><!--end:Menu sub-->
-                                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                                    <!--begin:Menu link--><span class="menu-link"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Forms</span><span
-                                                            class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                                    <div class="menu-sub menu-sub-accordion menu-active-bg">
-                                                        <!--begin:Menu item-->
-                                                        <div class="menu-item"><!--begin:Menu link--><a
-                                                                class="menu-link"
-                                                                href="/metronic8/demo1/utilities/modals/forms/new-target.html"><span
-                                                                    class="menu-bullet"><span
-                                                                        class="bullet bullet-dot"></span></span><span
-                                                                    class="menu-title">New
-                                                                    Target</span></a><!--end:Menu link--></div>
-                                                        <!--end:Menu item--><!--begin:Menu item-->
-                                                        <div class="menu-item"><!--begin:Menu link--><a
-                                                                class="menu-link"
-                                                                href="/metronic8/demo1/utilities/modals/forms/new-card.html"><span
-                                                                    class="menu-bullet"><span
-                                                                        class="bullet bullet-dot"></span></span><span
-                                                                    class="menu-title">New
-                                                                    Card</span></a><!--end:Menu link--></div>
-                                                        <!--end:Menu item--><!--begin:Menu item-->
-                                                        <div class="menu-item"><!--begin:Menu link--><a
-                                                                class="menu-link"
-                                                                href="/metronic8/demo1/utilities/modals/forms/new-address.html"><span
-                                                                    class="menu-bullet"><span
-                                                                        class="bullet bullet-dot"></span></span><span
-                                                                    class="menu-title">New
-                                                                    Address</span></a><!--end:Menu link--></div>
-                                                        <!--end:Menu item--><!--begin:Menu item-->
-                                                        <div class="menu-item"><!--begin:Menu link--><a
-                                                                class="menu-link"
-                                                                href="/metronic8/demo1/utilities/modals/forms/create-api-key.html"><span
-                                                                    class="menu-bullet"><span
-                                                                        class="bullet bullet-dot"></span></span><span
-                                                                    class="menu-title">Create API
-                                                                    Key</span></a><!--end:Menu link--></div>
-                                                        <!--end:Menu item--><!--begin:Menu item-->
-                                                        <div class="menu-item"><!--begin:Menu link--><a
-                                                                class="menu-link"
-                                                                href="/metronic8/demo1/utilities/modals/forms/bidding.html"><span
-                                                                    class="menu-bullet"><span
-                                                                        class="bullet bullet-dot"></span></span><span
-                                                                    class="menu-title">Bidding</span></a><!--end:Menu link-->
-                                                        </div><!--end:Menu item-->
-                                                    </div><!--end:Menu sub-->
-                                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                                    <!--begin:Menu link--><span class="menu-link"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Wizards</span><span
-                                                            class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                                    <div class="menu-sub menu-sub-accordion menu-active-bg">
-                                                        <!--begin:Menu item-->
-                                                        <div class="menu-item"><!--begin:Menu link--><a
-                                                                class="menu-link"
-                                                                href="/metronic8/demo1/utilities/modals/wizards/create-app.html"><span
-                                                                    class="menu-bullet"><span
-                                                                        class="bullet bullet-dot"></span></span><span
-                                                                    class="menu-title">Create
-                                                                    App</span></a><!--end:Menu link--></div>
-                                                        <!--end:Menu item--><!--begin:Menu item-->
-                                                        <div class="menu-item"><!--begin:Menu link--><a
-                                                                class="menu-link"
-                                                                href="/metronic8/demo1/utilities/modals/wizards/create-campaign.html"><span
-                                                                    class="menu-bullet"><span
-                                                                        class="bullet bullet-dot"></span></span><span
-                                                                    class="menu-title">Create
-                                                                    Campaign</span></a><!--end:Menu link--></div>
-                                                        <!--end:Menu item--><!--begin:Menu item-->
-                                                        <div class="menu-item"><!--begin:Menu link--><a
-                                                                class="menu-link"
-                                                                href="/metronic8/demo1/utilities/modals/wizards/create-account.html"><span
-                                                                    class="menu-bullet"><span
-                                                                        class="bullet bullet-dot"></span></span><span
-                                                                    class="menu-title">Create Business
-                                                                    Acc</span></a><!--end:Menu link--></div>
-                                                        <!--end:Menu item--><!--begin:Menu item-->
-                                                        <div class="menu-item"><!--begin:Menu link--><a
-                                                                class="menu-link"
-                                                                href="/metronic8/demo1/utilities/modals/wizards/create-project.html"><span
-                                                                    class="menu-bullet"><span
-                                                                        class="bullet bullet-dot"></span></span><span
-                                                                    class="menu-title">Create
-                                                                    Project</span></a><!--end:Menu link--></div>
-                                                        <!--end:Menu item--><!--begin:Menu item-->
-                                                        <div class="menu-item"><!--begin:Menu link--><a
-                                                                class="menu-link"
-                                                                href="/metronic8/demo1/utilities/modals/wizards/top-up-wallet.html"><span
-                                                                    class="menu-bullet"><span
-                                                                        class="bullet bullet-dot"></span></span><span
-                                                                    class="menu-title">Top Up
-                                                                    Wallet</span></a><!--end:Menu link--></div>
-                                                        <!--end:Menu item--><!--begin:Menu item-->
-                                                        <div class="menu-item"><!--begin:Menu link--><a
-                                                                class="menu-link"
-                                                                href="/metronic8/demo1/utilities/modals/wizards/offer-a-deal.html"><span
-                                                                    class="menu-bullet"><span
-                                                                        class="bullet bullet-dot"></span></span><span
-                                                                    class="menu-title">Offer a
-                                                                    Deal</span></a><!--end:Menu link--></div>
-                                                        <!--end:Menu item--><!--begin:Menu item-->
-                                                        <div class="menu-item"><!--begin:Menu link--><a
-                                                                class="menu-link"
-                                                                href="/metronic8/demo1/utilities/modals/wizards/two-factor-authentication.html"><span
-                                                                    class="menu-bullet"><span
-                                                                        class="bullet bullet-dot"></span></span><span
-                                                                    class="menu-title">Two Factor
-                                                                    Auth</span></a><!--end:Menu link--></div>
-                                                        <!--end:Menu item-->
-                                                    </div><!--end:Menu sub-->
-                                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                                    <!--begin:Menu link--><span class="menu-link"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Search</span><span
-                                                            class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                                    <div class="menu-sub menu-sub-accordion menu-active-bg">
-                                                        <!--begin:Menu item-->
-                                                        <div class="menu-item"><!--begin:Menu link--><a
-                                                                class="menu-link"
-                                                                href="/metronic8/demo1/utilities/modals/search/users.html"><span
-                                                                    class="menu-bullet"><span
-                                                                        class="bullet bullet-dot"></span></span><span
-                                                                    class="menu-title">Users</span></a><!--end:Menu link-->
-                                                        </div><!--end:Menu item--><!--begin:Menu item-->
-                                                        <div class="menu-item"><!--begin:Menu link--><a
-                                                                class="menu-link"
-                                                                href="/metronic8/demo1/utilities/modals/search/select-location.html"><span
-                                                                    class="menu-bullet"><span
-                                                                        class="bullet bullet-dot"></span></span><span
-                                                                    class="menu-title">Select
-                                                                    Location</span></a><!--end:Menu link--></div>
-                                                        <!--end:Menu item-->
-                                                    </div><!--end:Menu sub-->
-                                                </div><!--end:Menu item-->
-                                            </div><!--end:Menu sub-->
-                                        </div><!--end:Menu item--><!--begin:Menu item-->
-                                        <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                            <!--begin:Menu link--><span class="menu-link"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Search</span><span
-                                                    class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                            <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/utilities/search/horizontal.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Horizontal</span></a><!--end:Menu link-->
-                                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/utilities/search/vertical.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Vertical</span></a><!--end:Menu link-->
-                                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/utilities/search/users.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Users</span></a><!--end:Menu link-->
-                                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/utilities/search/select-location.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Location</span></a><!--end:Menu link-->
-                                                </div><!--end:Menu item-->
-                                            </div><!--end:Menu sub-->
-                                        </div><!--end:Menu item--><!--begin:Menu item-->
-                                        <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                            <!--begin:Menu link--><span class="menu-link"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Wizards</span><span
-                                                    class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                            <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/utilities/wizards/horizontal.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Horizontal</span></a><!--end:Menu link-->
-                                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/utilities/wizards/vertical.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Vertical</span></a><!--end:Menu link-->
-                                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/utilities/wizards/two-factor-authentication.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Two Factor
-                                                            Auth</span></a><!--end:Menu link--></div>
-                                                <!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/utilities/wizards/create-app.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Create App</span></a><!--end:Menu link-->
-                                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/utilities/wizards/create-campaign.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Create
-                                                            Campaign</span></a><!--end:Menu link--></div>
-                                                <!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/utilities/wizards/create-account.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Create
-                                                            Account</span></a><!--end:Menu link--></div>
-                                                <!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/utilities/wizards/create-project.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Create
-                                                            Project</span></a><!--end:Menu link--></div>
-                                                <!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/utilities/modals/wizards/top-up-wallet.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Top Up
-                                                            Wallet</span></a><!--end:Menu link--></div>
-                                                <!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/utilities/wizards/offer-a-deal.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Offer a
-                                                            Deal</span></a><!--end:Menu link--></div>
-                                                <!--end:Menu item-->
-                                            </div><!--end:Menu sub-->
-                                        </div><!--end:Menu item-->
-                                    </div><!--end:Menu sub-->
-                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                    <!--begin:Menu link--><span class="menu-link"><span class="menu-icon"><i
-                                                class="ki-duotone ki-element-7 fs-2"><span class="path1"></span><span
-                                                    class="path2"></span></i></span><span
-                                            class="menu-title">Widgets</span><span
-                                            class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                    <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/widgets/lists.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Lists</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/widgets/statistics.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Statistics</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/widgets/charts.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Charts</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/widgets/mixed.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Mixed</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/widgets/tables.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Tables</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/widgets/feeds.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Feeds</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item-->
-                                    </div><!--end:Menu sub-->
-                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                <div class="menu-item pt-5"><!--begin:Menu content-->
-                                    <div class="menu-content"><span
-                                            class="menu-heading fw-bold text-uppercase fs-7">Apps</span></div>
-                                    <!--end:Menu content-->
-                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                    <!--begin:Menu link--><span class="menu-link"><span class="menu-icon"><i
-                                                class="ki-duotone ki-abstract-41 fs-2"><span class="path1"></span><span
-                                                    class="path2"></span></i></span><span
-                                            class="menu-title">Projects</span><span
-                                            class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                    <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/apps/projects/list.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">My Projects</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/apps/projects/project.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">View Project</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/apps/projects/targets.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Targets</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/apps/projects/budget.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Budget</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/apps/projects/users.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Users</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/apps/projects/files.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Files</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/apps/projects/activity.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Activity</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/apps/projects/settings.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Settings</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item-->
-                                    </div><!--end:Menu sub-->
-                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                    <!--begin:Menu link--><span class="menu-link"><span class="menu-icon"><i
-                                                class="ki-duotone ki-basket fs-2"><span class="path1"></span><span
-                                                    class="path2"></span><span class="path3"></span><span
-                                                    class="path4"></span></i></span><span
-                                            class="menu-title">eCommerce</span><span
-                                            class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                    <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                                        <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                            <!--begin:Menu link--><span class="menu-link"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Catalog</span><span
-                                                    class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                            <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/apps/ecommerce/catalog/products.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Products</span></a><!--end:Menu link-->
-                                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/apps/ecommerce/catalog/categories.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Categories</span></a><!--end:Menu link-->
-                                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/apps/ecommerce/catalog/add-product.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Add
-                                                            Product</span></a><!--end:Menu link--></div>
-                                                <!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/apps/ecommerce/catalog/edit-product.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Edit
-                                                            Product</span></a><!--end:Menu link--></div>
-                                                <!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/apps/ecommerce/catalog/add-category.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Add
-                                                            Category</span></a><!--end:Menu link--></div>
-                                                <!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/apps/ecommerce/catalog/edit-category.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Edit
-                                                            Category</span></a><!--end:Menu link--></div>
-                                                <!--end:Menu item-->
-                                            </div><!--end:Menu sub-->
-                                        </div><!--end:Menu item--><!--begin:Menu item-->
-                                        <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                            <!--begin:Menu link--><span class="menu-link"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Sales</span><span
-                                                    class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                            <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/apps/ecommerce/sales/listing.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Orders
-                                                            Listing</span></a><!--end:Menu link--></div>
-                                                <!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/apps/ecommerce/sales/details.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Order
-                                                            Details</span></a><!--end:Menu link--></div>
-                                                <!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/apps/ecommerce/sales/add-order.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Add Order</span></a><!--end:Menu link-->
-                                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/apps/ecommerce/sales/edit-order.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Edit Order</span></a><!--end:Menu link-->
-                                                </div><!--end:Menu item-->
-                                            </div><!--end:Menu sub-->
-                                        </div><!--end:Menu item--><!--begin:Menu item-->
-                                        <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                            <!--begin:Menu link--><span class="menu-link"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Customers</span><span
-                                                    class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                            <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/apps/ecommerce/customers/listing.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Customer
-                                                            Listing</span></a><!--end:Menu link--></div>
-                                                <!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/apps/ecommerce/customers/details.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Customer
-                                                            Details</span></a><!--end:Menu link--></div>
-                                                <!--end:Menu item-->
-                                            </div><!--end:Menu sub-->
-                                        </div><!--end:Menu item--><!--begin:Menu item-->
-                                        <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                            <!--begin:Menu link--><span class="menu-link"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Reports</span><span
-                                                    class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                            <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/apps/ecommerce/reports/view.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Products
-                                                            Viewed</span></a><!--end:Menu link--></div>
-                                                <!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/apps/ecommerce/reports/sales.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Sales</span></a><!--end:Menu link-->
-                                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/apps/ecommerce/reports/returns.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Returns</span></a><!--end:Menu link-->
-                                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/apps/ecommerce/reports/customer-orders.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Customer
-                                                            Orders</span></a><!--end:Menu link--></div>
-                                                <!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/apps/ecommerce/reports/shipping.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Shipping</span></a><!--end:Menu link-->
-                                                </div><!--end:Menu item-->
-                                            </div><!--end:Menu sub-->
-                                        </div><!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/apps/ecommerce/settings.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Settings</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item-->
-                                    </div><!--end:Menu sub-->
-                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                    <!--begin:Menu link--><span class="menu-link"><span class="menu-icon"><i
-                                                class="ki-duotone ki-abstract-25 fs-2"><span class="path1"></span><span
-                                                    class="path2"></span></i></span><span
-                                            class="menu-title">Contacts</span><span
-                                            class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                    <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/apps/contacts/getting-started.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Getting Started</span></a><!--end:Menu link-->
-                                        </div><!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/apps/contacts/add-contact.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Add Contact</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/apps/contacts/edit-contact.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Edit Contact</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/apps/contacts/view-contact.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">View Contact</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item-->
-                                    </div><!--end:Menu sub-->
-                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                    <!--begin:Menu link--><span class="menu-link"><span class="menu-icon"><i
-                                                class="ki-duotone ki-chart fs-2"><span class="path1"></span><span
-                                                    class="path2"></span></i></span><span class="menu-title">Support
-                                            Center</span><span
-                                            class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                    <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/apps/support-center/overview.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Overview</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div data-kt-menu-trigger="click" class="menu-item menu-accordion mb-1">
-                                            <!--begin:Menu link--><span class="menu-link"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Tickets</span><span
-                                                    class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                            <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/apps/support-center/tickets/list.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Tickets
-                                                            List</span></a><!--end:Menu link--></div>
-                                                <!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/apps/support-center/tickets/view.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">View
-                                                            Ticket</span></a><!--end:Menu link--></div>
-                                                <!--end:Menu item-->
-                                            </div><!--end:Menu sub-->
-                                        </div><!--end:Menu item--><!--begin:Menu item-->
-                                        <div data-kt-menu-trigger="click" class="menu-item menu-accordion mb-1">
-                                            <!--begin:Menu link--><span class="menu-link"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Tutorials</span><span
-                                                    class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                            <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/apps/support-center/tutorials/list.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Tutorials
-                                                            List</span></a><!--end:Menu link--></div>
-                                                <!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/apps/support-center/tutorials/post.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Tutorial
-                                                            Post</span></a><!--end:Menu link--></div>
-                                                <!--end:Menu item-->
-                                            </div><!--end:Menu sub-->
-                                        </div><!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/apps/support-center/faq.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">FAQ</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/apps/support-center/licenses.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Licenses</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/apps/support-center/contact.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Contact Us</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item-->
-                                    </div><!--end:Menu sub-->
-                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                    <!--begin:Menu link--><span class="menu-link"><span class="menu-icon"><i
-                                                class="ki-duotone ki-abstract-28 fs-2"><span class="path1"></span><span
-                                                    class="path2"></span></i></span><span class="menu-title">User
-                                            Management</span><span
-                                            class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                    <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                                        <div data-kt-menu-trigger="click" class="menu-item menu-accordion mb-1">
-                                            <!--begin:Menu link--><span class="menu-link"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Users</span><span
-                                                    class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                            <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/apps/user-management/users/list.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Users List</span></a><!--end:Menu link-->
-                                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/apps/user-management/users/view.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">View User</span></a><!--end:Menu link-->
-                                                </div><!--end:Menu item-->
-                                            </div><!--end:Menu sub-->
-                                        </div><!--end:Menu item--><!--begin:Menu item-->
-                                        <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                            <!--begin:Menu link--><span class="menu-link"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Roles</span><span
-                                                    class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                            <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/apps/user-management/roles/list.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Roles List</span></a><!--end:Menu link-->
-                                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/apps/user-management/roles/view.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">View Role</span></a><!--end:Menu link-->
-                                                </div><!--end:Menu item-->
-                                            </div><!--end:Menu sub-->
-                                        </div><!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/apps/user-management/permissions.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Permissions</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item-->
-                                    </div><!--end:Menu sub-->
-                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                    <!--begin:Menu link--><span class="menu-link"><span class="menu-icon"><i
-                                                class="ki-duotone ki-abstract-38 fs-2"><span class="path1"></span><span
-                                                    class="path2"></span></i></span><span
-                                            class="menu-title">Customers</span><span
-                                            class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                    <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/apps/customers/getting-started.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Getting Started</span></a><!--end:Menu link-->
-                                        </div><!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/apps/customers/list.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Customer Listing</span></a><!--end:Menu link-->
-                                        </div><!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/apps/customers/view.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Customer Details</span></a><!--end:Menu link-->
-                                        </div><!--end:Menu item-->
-                                    </div><!--end:Menu sub-->
-                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                    <!--begin:Menu link--><span class="menu-link"><span class="menu-icon"><i
-                                                class="ki-duotone ki-map fs-2"><span class="path1"></span><span
-                                                    class="path2"></span><span class="path3"></span></i></span><span
-                                            class="menu-title">Subscription</span><span
-                                            class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                    <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/apps/subscriptions/getting-started.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Getting Started</span></a><!--end:Menu link-->
-                                        </div><!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/apps/subscriptions/list.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Subscription List</span></a><!--end:Menu link-->
-                                        </div><!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/apps/subscriptions/add.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Add Subscription</span></a><!--end:Menu link-->
-                                        </div><!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/apps/subscriptions/view.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">View Subscription</span></a><!--end:Menu link-->
-                                        </div><!--end:Menu item-->
-                                    </div><!--end:Menu sub-->
-                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                    <!--begin:Menu link--><span class="menu-link"><span class="menu-icon"><i
-                                                class="ki-duotone ki-credit-cart fs-2"><span class="path1"></span><span
-                                                    class="path2"></span></i></span><span class="menu-title">Invoice
-                                            Manager</span><span
-                                            class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                    <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                                        <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                            <!--begin:Menu link--><span class="menu-link"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">View Invoices</span><span
-                                                    class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                            <div class="menu-sub menu-sub-accordion menu-active-bg">
-                                                <!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/apps/invoices/view/invoice-1.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Invoice 1</span></a><!--end:Menu link-->
-                                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/apps/invoices/view/invoice-2.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Invoice 2</span></a><!--end:Menu link-->
-                                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="/metronic8/demo1/apps/invoices/view/invoice-3.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Invoice 3</span></a><!--end:Menu link-->
-                                                </div><!--end:Menu item-->
-                                            </div><!--end:Menu sub-->
-                                        </div><!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/apps/invoices/create.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Create Invoice</span></a><!--end:Menu link-->
-                                        </div><!--end:Menu item-->
-                                    </div><!--end:Menu sub-->
-                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                    <!--begin:Menu link--><span class="menu-link"><span class="menu-icon"><i
-                                                class="ki-duotone ki-switch fs-2"><span class="path1"></span><span
-                                                    class="path2"></span></i></span><span class="menu-title">File
-                                            Manager</span><span
-                                            class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                    <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/apps/file-manager/folders.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Folders</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/apps/file-manager/files.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Files</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/apps/file-manager/blank.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Blank Directory</span></a><!--end:Menu link-->
-                                        </div><!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/apps/file-manager/settings.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Settings</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item-->
-                                    </div><!--end:Menu sub-->
-                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                    <!--begin:Menu link--><span class="menu-link"><span class="menu-icon"><i
-                                                class="ki-duotone ki-sms fs-2"><span class="path1"></span><span
-                                                    class="path2"></span></i></span><span
-                                            class="menu-title">Inbox</span><span
-                                            class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                    <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/apps/inbox/listing.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Messages</span><span class="menu-badge"><span
-                                                        class="badge badge-success">3</span></span></a><!--end:Menu link-->
-                                        </div><!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/apps/inbox/compose.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Compose</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/apps/inbox/reply.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">View &amp; Reply</span></a><!--end:Menu link-->
-                                        </div><!--end:Menu item-->
-                                    </div><!--end:Menu sub-->
-                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                    <!--begin:Menu link--><span class="menu-link"><span class="menu-icon"><i
-                                                class="ki-duotone ki-message-text-2 fs-2"><span
-                                                    class="path1"></span><span class="path2"></span><span
-                                                    class="path3"></span></i></span><span
-                                            class="menu-title">Chat</span><span
-                                            class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                    <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/apps/chat/private.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Private Chat</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/apps/chat/group.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Group Chat</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/apps/chat/drawer.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Drawer Chat</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item-->
-                                    </div><!--end:Menu sub-->
-                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                        href="/metronic8/demo1/apps/calendar.html"><span class="menu-icon"><i
-                                                class="ki-duotone ki-calendar-8 fs-2"><span class="path1"></span><span
-                                                    class="path2"></span><span class="path3"></span><span
-                                                    class="path4"></span><span class="path5"></span><span
-                                                    class="path6"></span></i></span><span
-                                            class="menu-title">Calendar</span></a><!--end:Menu link--></div>
-                                <!--end:Menu item--><!--begin:Menu item-->
-                                <div class="menu-item pt-5"><!--begin:Menu content-->
-                                    <div class="menu-content"><span
-                                            class="menu-heading fw-bold text-uppercase fs-7">Layouts</span></div>
-                                    <!--end:Menu content-->
-                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                    <!--begin:Menu link--><span class="menu-link"><span class="menu-icon"><i
-                                                class="ki-duotone ki-element-7 fs-2"><span class="path1"></span><span
-                                                    class="path2"></span></i></span><span class="menu-title">Layout
-                                            Options</span><span
-                                            class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                    <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/layouts/light-sidebar.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Light Sidebar</span></a><!--end:Menu link-->
-                                        </div><!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/layouts/dark-sidebar.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Dark Sidebar</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/layouts/light-header.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Light Header</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/layouts/dark-header.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Dark Header</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item-->
-                                    </div><!--end:Menu sub-->
-                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                    <!--begin:Menu link--><span class="menu-link"><span class="menu-icon"><i
-                                                class="ki-duotone ki-text-align-center fs-2"><span
-                                                    class="path1"></span><span class="path2"></span><span
-                                                    class="path3"></span><span class="path4"></span></i></span><span
-                                            class="menu-title">Toolbars</span><span
-                                            class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                    <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/toolbars/classic.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Classic</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/toolbars/saas.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">SaaS</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/toolbars/accounting.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Accounting</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/toolbars/extended.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Extended</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/toolbars/reports.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Reports</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item-->
-                                    </div><!--end:Menu sub-->
-                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                    <!--begin:Menu link--><span class="menu-link"><span class="menu-icon"><i
-                                                class="ki-duotone ki-menu fs-2"><span class="path1"></span><span
-                                                    class="path2"></span><span class="path3"></span><span
-                                                    class="path4"></span></i></span><span
-                                            class="menu-title">Asides</span><span
-                                            class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                    <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/asides/aside-1.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Filters</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/asides/aside-2.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Segments</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/asides/aside-3.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Shipment History</span></a><!--end:Menu link-->
-                                        </div><!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/asides/aside-4.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Courier Activity</span></a><!--end:Menu link-->
-                                        </div><!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="/metronic8/demo1/asides/aside-5.html"><span
-                                                    class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Calendar</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item-->
-                                    </div><!--end:Menu sub-->
-                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                        href="/metronic8/demo1/layout-builder.html"><span class="menu-icon"><i
-                                                class="ki-duotone ki-abstract-13 fs-2"><span class="path1"></span><span
-                                                    class="path2"></span></i></span><span class="menu-title">Layout
-                                            Builder</span></a><!--end:Menu link--></div>
-                                <!--end:Menu item--><!--begin:Menu item-->
-                                <div class="menu-item pt-5"><!--begin:Menu content-->
-                                    <div class="menu-content"><span
-                                            class="menu-heading fw-bold text-uppercase fs-7">Help</span></div>
-                                    <!--end:Menu content-->
-                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                        href="https://preview.keenthemes.com/html/metronic/docs/base/utilities"
-                                        target="_blank"><span class="menu-icon"><i
-                                                class="ki-duotone ki-rocket fs-2"><span class="path1"></span><span
-                                                    class="path2"></span></i></span><span
-                                            class="menu-title">Components</span></a><!--end:Menu link--></div>
-                                <!--end:Menu item--><!--begin:Menu item-->
-                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                        href="https://preview.keenthemes.com/html/metronic/docs" target="_blank"><span
-                                            class="menu-icon"><i class="ki-duotone ki-abstract-26 fs-2"><span
-                                                    class="path1"></span><span class="path2"></span></i></span><span
-                                            class="menu-title">Documentation</span></a><!--end:Menu link--></div>
-                                <!--end:Menu item--><!--begin:Menu item-->
-                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                        href="https://preview.keenthemes.com/html/metronic/docs/getting-started/changelog"
-                                        target="_blank"><span class="menu-icon"><i class="ki-duotone ki-code fs-2"><span
-                                                    class="path1"></span><span class="path2"></span><span
-                                                    class="path3"></span><span class="path4"></span></i></span><span
-                                            class="menu-title">Changelog v8.3.1</span></a><!--end:Menu link--></div>
-                                <!--end:Menu item-->
-                            </div>
-                            <!--end::Menu-->
-                        </div>
-                        <!--end::Scroll wrapper-->
-                    </div>
-                    <!--end::Menu wrapper-->
-                </div>
-                <!--end::sidebar menu-->
-                <!--begin::Footer-->
-                <div class="app-sidebar-footer flex-column-auto pt-2 pb-6 px-6" id="kt_app_sidebar_footer">
-                    <a href="https://preview.keenthemes.com/html/metronic/docs"
-                        class="btn btn-flex flex-center btn-custom btn-primary overflow-hidden text-nowrap px-0 h-40px w-100"
-                        data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss-="click"
-                        data-bs-original-title="200+ in-house components and 3rd-party plugins" data-kt-initialized="1">
-
-                        <span class="btn-label">
-                            Docs &amp; Components
-                        </span>
-
-                        <i class="ki-duotone ki-document btn-icon fs-2 m-0"><span class="path1"></span><span
-                                class="path2"></span></i> </a>
-                </div>
-                <!--end::Footer-->
-            </div>
+                @include('admin.layout.sidebar')
             <!--end::Sidebar-->
 
 
@@ -5381,36 +2814,7 @@
 
 
                 <!--begin::Footer-->
-                <div id="kt_app_footer" class="app-footer ">
-
-
-
-                    <!--begin::Footer container-->
-                    <div
-                        class="app-container  container-fluid d-flex flex-column flex-md-row flex-center flex-md-stack py-3 ">
-                        <!--begin::Copyright-->
-                        <div class="text-gray-900 order-2 order-md-1">
-                            <span class="text-muted fw-semibold me-1">2025©</span>
-                            <a href="https://keenthemes.com" target="_blank"
-                                class="text-gray-800 text-hover-primary">Keenthemes</a>
-                        </div>
-                        <!--end::Copyright-->
-
-                        <!--begin::Menu-->
-                        <ul class="menu menu-gray-600 menu-hover-primary fw-semibold order-1">
-                            <li class="menu-item"><a href="https://keenthemes.com" target="_blank"
-                                    class="menu-link px-2">About</a></li>
-
-                            <li class="menu-item"><a href="https://devs.keenthemes.com" target="_blank"
-                                    class="menu-link px-2">Support</a></li>
-
-                            <li class="menu-item"><a href="https://1.envato.market/EA4JP" target="_blank"
-                                    class="menu-link px-2">Purchase</a></li>
-                        </ul>
-                        <!--end::Menu-->
-                    </div>
-                    <!--end::Footer container-->
-                </div>
+                @include('admin.layout.footer')
                 <!--end::Footer-->
             </div>
             <!--end:::Main-->
@@ -18792,8 +16196,43 @@
     </div>
     <!--end::Modal - Invite Friend--> <!--end::Modals-->
 
-    @include('admin.template.script')
+    <!--begin::Javascript-->
+    <script>
+        var hostUrl = "{{ asset('')}}";        </script>
 
+    <!--begin::Global Javascript Bundle(mandatory for all pages)-->
+    <script src="{{ asset('plugins/global/plugins.bundle.js') }}"></script>
+    <script src="{{ asset('js/scripts.bundle.js') }}"></script>
+    <!--end::Global Javascript Bundle-->
+
+    <!--begin::Vendors Javascript(used for this page only)-->
+    <script src="{{ asset('plugins/custom/fullcalendar/fullcalendar.bundle.js') }}"></script>
+    <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/radar.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/map.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/geodata/continentsLow.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/geodata/usaLow.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/geodata/worldTimeZonesLow.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/geodata/worldTimeZoneAreasLow.js"></script>
+    <script src="{{ asset('plugins/custom/datatables/datatables.bundle.js') }}"></script>
+    <!--end::Vendors Javascript-->
+
+    <!--begin::Custom Javascript(used for this page only)-->
+    <script src="{{ asset('js/widgets.bundle.js') }}"></script>
+    <script src="{{ asset('js/custom/widgets.js') }}"></script>
+    <script src="{{ asset('js/custom/apps/chat/chat.js') }}"></script>
+    {{--
+    <script src="{{ asset('js/custom/apps/user-management/users/list/table.js') }}"></script> --}}
+    <script src="{{ asset('js/custom/utilities/modals/upgrade-plan.js') }}"></script>
+    <script src="{{ asset('js/custom/utilities/modals/create-app.js') }}"></script>
+    <script src="{{ asset('js/custom/utilities/modals/new-target.js') }}"></script>
+    <script src="{{ asset('js/custom/utilities/modals/users-search.js') }}"></script>
+    <!--end::Custom Javascript-->
+    <!--end::Javascript-->
 
     <svg id="SvgjsSvg1001" width="2" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1"
         xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev"
