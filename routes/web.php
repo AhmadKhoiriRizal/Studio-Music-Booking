@@ -28,3 +28,6 @@ Route::get('/riwayat-booking', function () {
 Route::get('/admin/beranda', function () {
     return view('admin.welcome');
 });
+Route::get('/admin/datastudio', function () {
+    return view('admin.page.datastudio');
+});

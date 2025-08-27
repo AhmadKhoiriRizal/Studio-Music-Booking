@@ -1,4 +1,3 @@
-<title>Metronic - The World's #1 Selling Tailwind CSS &amp; Bootstrap Admin Template by KeenThemes</title>
 <meta charset="utf-8">
 <meta name="description" content="
             The most advanced Tailwind CSS &amp; Bootstrap 5 Admin Theme with 40 unique prebuilt layouts on Themeforest trusted by 100,000 beginners and professionals. Multi-demo,
@@ -25,17 +24,13 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700"> <!--end::Fonts-->
 
 <!--begin::Vendor Stylesheets(used for this page only)-->
-<link href="{{ asset('plugins/custom/fullcalendar/fullcalendar.bundle.css') }}" rel="stylesheet"
-    type="text/css">
+<link href="{{ asset('plugins/custom/fullcalendar/fullcalendar.bundle.css') }}" rel="stylesheet" type="text/css">
 <link href="{{ asset('plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css">
 <!--end::Vendor Stylesheets-->
 
 
 <!--begin::Global Stylesheets Bundle(mandatory for all pages)-->
 <link href="{{ asset('plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css">
-<!--begin::Global Stylesheets Bundle(mandatory for all pages)-->
-<link href="{{ asset('plugins/global/plugins_visitor.bundle.css') }}" rel="stylesheet" type="text/css" />
-<link href="{{ asset('css/style_visitor.bundle.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ asset('css/style.bundle.css') }}" rel="stylesheet" type="text/css">
 <!--end::Global Stylesheets Bundle-->
 
