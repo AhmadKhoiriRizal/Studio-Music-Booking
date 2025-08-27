@@ -31,3 +31,6 @@ Route::get('/admin/beranda', function () {
 Route::get('/admin/datastudio', function () {
     return view('admin.page.datastudio');
 });
+Route::get('/admin/kelola-ketersediaan', function () {
+    return view('admin.page.ketersediaan');
+});
