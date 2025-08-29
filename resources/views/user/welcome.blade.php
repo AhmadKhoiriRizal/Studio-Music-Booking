@@ -1184,10 +1184,10 @@ License: For each use you must have a valid license purchased only from above li
                                         <!--begin::Item-->
                                         <a class="d-block card-rounded overlay h-lg-100"
                                             data-fslightbox="lightbox-projects"
-                                            img src="{{ asset('media/studio/studiom1.jpg') }}">
+                                            href ="{{ asset('media/studio/studiom1.jpg') }}">
                                             <!--begin::Image-->
                                             <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-lg-100 min-h-250px"
-                                                style="background-image:url('{{ asset('media-studio-studiom1.jpg') }}">
+                                                style="background-image:url('{{ asset('media/studio/studiom1.jpg') }}')">
                                             </div>
                                             <!--end::Image-->
 
@@ -1212,10 +1212,10 @@ License: For each use you must have a valid license purchased only from above li
                                                 <!--begin::Item-->
                                                 <a class="d-block card-rounded overlay"
                                                     data-fslightbox="lightbox-projects"
-                                                    href="/metronic8/demo1/assets/media/stock/600x600/img-22.jpg">
+                                                    href ="{{ asset('media/studio/studiom2.jpg') }}">
                                                     <!--begin::Image-->
                                                     <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-250px"
-                                                        style="background-image:url('/metronic8/demo1/assets/media/stock/600x600/img-22.jpg')">
+                                                        style="background-image:url('{{ asset('media/studio/studiom2.jpg') }}')">
                                                     </div>
                                                     <!--end::Image-->
 
@@ -1236,10 +1236,10 @@ License: For each use you must have a valid license purchased only from above li
                                                 <!--begin::Item-->
                                                 <a class="d-block card-rounded overlay"
                                                     data-fslightbox="lightbox-projects"
-                                                    href="/metronic8/demo1/assets/media/stock/600x600/img-21.jpg">
+                                                    href ="{{ asset('media/studio/studiom3.jpg') }}">
                                                     <!--begin::Image-->
                                                     <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-250px"
-                                                        style="background-image:url('/metronic8/demo1/assets/media/stock/600x600/img-21.jpg')">
+                                                        style="background-image:url('{{ asset('media/studio/studiom3.jpg') }}')">
                                                     </div>
                                                     <!--end::Image-->
 
@@ -1259,10 +1259,10 @@ License: For each use you must have a valid license purchased only from above li
 
                                         <!--begin::Item-->
                                         <a class="d-block card-rounded overlay" data-fslightbox="lightbox-projects"
-                                            href="/metronic8/demo1/assets/media/stock/600x400/img-20.jpg">
+                                            href ="{{ asset('media/studio/studiom4.jpg') }}">
                                             <!--begin::Image-->
                                             <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-250px"
-                                                style="background-image:url('/metronic8/demo1/assets/media/stock/600x600/img-20.jpg')">
+                                                style="background-image:url('{{ asset('media/studio/studiom4.jpg') }}')">
                                             </div>
                                             <!--end::Image-->
 
