@@ -115,11 +115,6 @@ License: For each use you must have a valid license purchased only from above li
             <!--begin::Wrapper-->
             <div class="app-wrapper  flex-column flex-row-fluid " id="kt_app_wrapper">
 
-
-
-
-
-
                 <!--begin::Sidebar-->
                 @include('admin.layout.sidebar')
                 <!--end::Sidebar-->

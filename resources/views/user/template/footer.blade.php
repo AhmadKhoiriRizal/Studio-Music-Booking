@@ -7,10 +7,10 @@
             <a href="/metronic8/demo1/landing.html">
                 {{-- <img alt="Logo" src="{{ asset('media/logos/landing.svg') }}" class="logo-default h-25px h-lg-30px">
                 --}}
-                <img alt="Logo" src="{{ asset('media/logos/landing-dark.svg') }}" class="logo-sticky h-20px h-lg-25px">
+                <img alt="Logo" src="{{ asset('media/studio/logostudio.png') }}" class="logo-sticky h-20px h-lg-25px">
             </a>
-            <span class="text-dark fw-bold">Studio</span>Musik©
-            <a href="https://keenthemes.com" target="_blank" class="text-white text-hover-primary">Keenthemes</a>
+            <span class="fw-bold text-white fs-5">Melodi Kreatif Studio</span>
+            {{-- <a href="https://keenthemes.com" target="_blank" class="text-white text-hover-primary">Keenthemes</a> --}}
         </div>
         <!--end::Copyright-->
 

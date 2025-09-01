@@ -1,6 +1,6 @@
 <!--begin::Javascript-->
     <script>
-        var hostUrl = "/metronic8/demo1/assets/";
+        var hostUrl = "{{ asset('') }}";
     </script>
 
     <!--begin::Global Javascript Bundle(mandatory for all pages)-->
@@ -34,12 +34,12 @@
     <!--begin::Vendors Javascript(used for this page only)-->
     <!--end::Vendors Javascript-->
     <!--begin::Custom Javascript(used for this page only)-->
-    <script src="{{ asset('assets/js/widgets.bundle.js') }}"></script>
-    <script src="{{ asset('assets/js/custom/widgets.js') }}"></script>
-    <script src="{{ asset('assets/js/custom/apps/chat/chat.js') }}"></script>
-    <script src="{{ asset('assets/js/custom/utilities/modals/upgrade-plan.js') }}"></script>
-    <script src="{{ asset('assets/js/custom/utilities/modals/new-target.js') }}"></script>
-    <script src="{{ asset('assets/js/custom/utilities/modals/create-app.js') }}"></script>
-    <script src="{{ asset('assets/js/custom/utilities/modals/users-search.js') }}"></script>
+    <script src="{{ asset('js/widgets.bundle.js') }}"></script>
+    <script src="{{ asset('js/custom/widgets.js') }}"></script>
+    <script src="{{ asset('js/custom/apps/chat/chat.js') }}"></script>
+    <script src="{{ asset('js/custom/utilities/modals/upgrade-plan.js') }}"></script>
+    <script src="{{ asset('js/custom/utilities/modals/new-target.js') }}"></script>
+    <script src="{{ asset('js/custom/utilities/modals/create-app.js') }}"></script>
+    <script src="{{ asset('js/custom/utilities/modals/users-search.js') }}"></script>
     <!--end::Custom Javascript-->
     <!--end::Javascript-->

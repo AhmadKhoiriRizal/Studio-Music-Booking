@@ -1,18 +1,50 @@
 <!DOCTYPE html>
-<html lang="id">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>PENDAFTARAN ANGGOTA BARU SAKA BHAYANGKARA POLSEK MAYONG</title>
-
-    @include('user.template.metadata')
-    {{-- <!--begin::Vendor Stylesheets(used for this page only)-->
-    <link href="{{ asset('plugins/custom/fullcalendar/fullcalendar.bundle.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css" />
-    <!--end::Vendor Stylesheets--> --}}
-
+    <title>Studio Musik - Paket Booking</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
     <style>
+        /* Custom CSS ala Metronic Style */
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Poppins', sans-serif;
+        }
+        /* Navbar styles */
+        .navbar-brand {
+            font-weight: 700;
+            color: #000;
+        }
+        .navbar-brand .circle {
+            width: 40px;
+            height: 40px;
+            background: #00aaff;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+        .nav-link {
+            font-weight: 600;
+            color: #000;
+        }
+        .nav-link:hover {
+            color: #00aaff;
+        }
+        .btn-register {
+            background-color: #00aaff;
+            color: white;
+            font-weight: 600;
+        }
+        .btn-register:hover {
+            background-color: #008ecc;
+            color: white;
+        }
+
         /* Main content styling */
         .main-section {
             padding: 3rem 1rem;
@@ -74,56 +106,61 @@
             border-bottom: 2px solid #00aaff;
             color: #00aaff;
         }
+        /* Footer style */
+        footer {
+            background-color: #00aaff;
+            color: white;
+            padding: 1rem 2rem;
+        }
+        footer a {
+            color: #ffffffcc;
+            margin-right: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        footer a:hover {
+            color: white;
+        }
+        footer .social-icons i {
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+            vertical-align: middle;
+        }
     </style>
 </head>
-
-<body id="kt_body" data-bs-spy="scroll" data-bs-target="#kt_landing_menu" class="bg-body position-relative app-blank"
-    data-kt-scrolltop="on" data-kt-sticky-landing-header="on" data-kt-landing-header="on">
-    <!--begin::Theme mode setup on page load-->
-    <script>
-        var defaultThemeMode = "light";
-        var themeMode;
-
-        if (document.documentElement) {
-            if (document.documentElement.hasAttribute("data-bs-theme-mode")) {
-                themeMode = document.documentElement.getAttribute("data-bs-theme-mode");
-            } else {
-                if (localStorage.getItem("data-bs-theme") !== null) {
-                    themeMode = localStorage.getItem("data-bs-theme");
-                } else {
-                    themeMode = defaultThemeMode;
-                }
-            }
-
-            if (themeMode === "system") {
-                themeMode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-            }
-
-            document.documentElement.setAttribute("data-bs-theme", themeMode);
-        }
-    </script>
-    <!--end::Theme mode setup on page load-->
-    <!--begin::Root-->
-    <div class="d-flex flex-column flex-root" id="kt_app_root">
-        <!--begin::Header Section-->
-        <div class="mb-0" id="home">
-            <!--begin::Wrapper-->
-            <div class="bgi-no-repeat bgi-size-contain bgi-position-x-center bgi-position-y-bottom landing-dark-bg">
-                @include('user.template.header')
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-light shadow-sm">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <span class="circle"></span>Studio Musik
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="#">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Studio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Galeri</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Testimoni</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Kontak Kami</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Riwayat Booking</a></li>
+                </ul>
+                <div class="d-flex gap-2">
+                    <a href="#" class="nav-link d-flex align-items-center">Login</a>
+                    <a href="#" class="btn btn-register">Register</a>
+                </div>
             </div>
-            <!--end::Wrapper-->
         </div>
-        <!--end::Header Section-->
+    </nav>
 
-        <!--begin::Content Section-->
-        <div class="py-20">
-            <!--begin::Container-->
-            <div class="container">
     <!-- Main Content -->
     <main class="container main-section">
         <div class="row justify-content-center">
             <!-- Image Carousel (placeholder) -->
-            <div class="col-lg-8 mb-4">
+            <div class="col-lg-6 mb-4">
                 <div id="packageCarousel" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner" style="height:400px; background:#ddd;">
                         <div class="carousel-item active d-flex justify-content-center align-items-center">
@@ -161,7 +198,7 @@
                     <button class="quantity-btn" id="btn-minus">−</button>
                     <input type="text" value="1" readonly class="quantity-input mx-1" id="quantityInput" />
                     <button class="quantity-btn" id="btn-plus">+</button>
-                    <button class="btn btn-success mx-1"><a href="/booking" class="text-white" style="text-decoration: none">Booking</a></button>
+                    <button class="btn btn-booking">Booking</button>
                 </div>
 
                 <p><strong>Ukuran Ruangan:</strong> meter x meter</p>
@@ -198,41 +235,26 @@
             </div>
         </div>
     </main>
-    </div>
-            <!--end::Container-->
+
+    <!-- Footer -->
+    <footer class="d-flex justify-content-between align-items-center flex-wrap">
+        <div class="mb-2 mb-md-0 d-flex align-items-center">
+            <span class="circle me-2" style="background:#d2d2d2; width:20px; height:20px;"></span>
+            <span class="fw-bold" style="color:#444;">Studio</span><span>Musik</span>
+            <span class="ms-3">&copy; 2025 Keenthemes Inc.</span>
         </div>
-        <!--end::Content Section-->
-
-        <!--begin::Footer Section-->
-        <div class="mb-0">
-            {{-- <!--begin::Curve top-->
-            <div class="landing-curve landing-dark-color ">
-                <svg viewBox="15 -1 1470 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M1 48C4.93573 47.6644 8.85984 47.3311 12.7725 47H1489.16C1493.1 47.3311 1497.04 47.6644 1501 48V47H1489.16C914.668 -1.34764 587.282 -1.61174 12.7725 47H1V48Z"
-                        fill="currentColor"></path>
-                </svg>
-            </div>
-            <!--end::Curve top--> --}}
-
-            <!--begin::Wrapper-->
-            <div class="landing-dark-bg">
-                @include('user.template.footer')
-            </div>
-            <!--end::Wrapper-->
+        <div class="social-icons">
+            <a href="#"><i class="bi bi-facebook"></i><span class="d-none d-md-inline fw-bold">Facebook</span></a>
+            <a href="#"><i class="bi bi-instagram"></i><span class="d-none d-md-inline fw-bold">Instagram</span></a>
+            <a href="#"><i class="bi bi-tiktok"></i><span class="d-none d-md-inline fw-bold">Tiktok</span></a>
+            <a href="#"><i class="bi bi-whatsapp"></i><span class="d-none d-md-inline fw-bold">WhatsApp</span></a>
         </div>
-        <!--end::Footer Section-->
-    </div>
-    <!--end::Root-->
+    </footer>
 
-    @include('user.template.script')
-    {{-- <!--begin::Vendors Javascript(used for this page only)-->
-    <script src="{{ asset('plugins/custom/fullcalendar/fullcalendar.bundle.js') }}"></script>
-    <script src="{{ asset('plugins/custom/datatables/datatables.bundle.js') }}"></script>
-    <!--end::Vendors Javascript-->
-    <!--begin::Custom Javascript(used for this page only)-->
-    <script src="{{ asset('js/custom/apps/calendar/calendar.js') }}"></script>
-    <!--end::Custom Javascript--> --}}
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom Quantity JS -->
     <script>
         const btnMinus = document.getElementById('btn-minus');
         const btnPlus = document.getElementById('btn-plus');
@@ -250,5 +272,6 @@
             quantityInput.value = currentValue + 1;
         });
     </script>
+
 </body>
 </html>
