@@ -43,7 +43,7 @@
                         <!--begin::Menu item-->
                         <div class="menu-item">
                             <!--begin::Menu link-->
-                            <a class="menu-link nav-link py-3 px-4 px-xxl-6" href="#beranda"
+                            <a class="menu-link nav-link py-3 px-4 px-xxl-6" href="/"
                                 data-kt-scroll-toggle="true" data-kt-drawer-dismiss="true">
                                 Beranda </a>
                             <!--end::Menu link-->
@@ -52,7 +52,7 @@
                         <!--begin::Menu item-->
                         <div class="menu-item">
                             <!--begin::Menu link-->
-                            <a class="menu-link nav-link py-3 px-4 px-xxl-6" href="#tentang-kami"
+                            <a class="menu-link nav-link py-3 px-4 px-xxl-6" href="/"
                                 data-kt-scroll-toggle="true" data-kt-drawer-dismiss="true">
                                 Tentang Kami </a>
                             <!--end::Menu link-->
@@ -61,7 +61,7 @@
                         <!--begin::Menu item-->
                         <div class="menu-item">
                             <!--begin::Menu link-->
-                            <a class="menu-link nav-link py-3 px-4 px-xxl-6" href="#paket-favorit"
+                            <a class="menu-link nav-link py-3 px-4 px-xxl-6" href="/"
                                 data-kt-scroll-toggle="true" data-kt-drawer-dismiss="true">
                                 Paket Favorit </a>
                             <!--end::Menu link-->
@@ -70,7 +70,7 @@
                         <!--begin::Menu item-->
                         <div class="menu-item">
                             <!--begin::Menu link-->
-                            <a class="menu-link nav-link py-3 px-4 px-xxl-6" href="#daftar-paket" data-kt-scroll-toggle="true"
+                            <a class="menu-link nav-link py-3 px-4 px-xxl-6" href="/" data-kt-scroll-toggle="true"
                                 data-kt-drawer-dismiss="true">
                                 Paket </a>
                             <!--end::Menu link-->
@@ -79,7 +79,7 @@
                         <!--begin::Menu item-->
                         <div class="menu-item">
                             <!--begin::Menu link-->
-                            <a class="menu-link nav-link py-3 px-4 px-xxl-6" href="#galeri"
+                            <a class="menu-link nav-link py-3 px-4 px-xxl-6" href="/"
                                 data-kt-scroll-toggle="true" data-kt-drawer-dismiss="true">
                                 Galeri </a>
                             <!--end::Menu link-->
@@ -88,7 +88,7 @@
                         <!--begin::Menu item-->
                         <div class="menu-item">
                             <!--begin::Menu link-->
-                            <a class="menu-link nav-link py-3 px-4 px-xxl-6" href="#testimoni"
+                            <a class="menu-link nav-link py-3 px-4 px-xxl-6" href="/"
                                 data-kt-scroll-toggle="true" data-kt-drawer-dismiss="true">
                                 Testimoni </a>
                             <!--end::Menu link-->
