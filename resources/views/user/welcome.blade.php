@@ -100,7 +100,7 @@ License: For each use you must have a valid license purchased only from above li
         <div class="mb-0" id="home">
             <!--begin::Wrapper-->
             <div class="bgi-no-repeat bgi-size-contain bgi-position-x-center bgi-position-y-bottom landing-dark-bg"
-                style="background-image: url(/metronic8/demo1/assets/media/svg/illustrations/landing.svg)">
+                style="background-image: url({{ asset('media/svg/illustrations/landing.svg') }})">
                 <!--begin::Header-->
                 <div class="landing-header" data-kt-sticky="true" data-kt-sticky-name="landing-header"
                     data-kt-sticky-offset="{default: '200px', lg: '300px'}" style="animation-duration: 0.3s; top: 0px;"
@@ -277,7 +277,7 @@ License: For each use you must have a valid license purchased only from above li
                         <!--begin::Client-->
                         <div class="d-flex flex-center m-3 m-md-6" data-bs-toggle="tooltip" aria-label="Fujifilm"
                             data-bs-original-title="Fujifilm" data-kt-initialized="1">
-                            <img src="/metronic8/demo1/assets/media/svg/brand-logos/fujifilm.svg"
+                            <img src="{{ asset('media/svg/brand-logos/fujifilm.svg') }}"
                                 class="mh-30px mh-lg-40px" alt="">
                         </div>
                         <!--end::Client-->
@@ -285,7 +285,7 @@ License: For each use you must have a valid license purchased only from above li
                         <!--begin::Client-->
                         <div class="d-flex flex-center m-3 m-md-6" data-bs-toggle="tooltip" aria-label="Vodafone"
                             data-bs-original-title="Vodafone" data-kt-initialized="1">
-                            <img src="/metronic8/demo1/assets/media/svg/brand-logos/vodafone.svg"
+                            <img src="{{ asset('media/svg/brand-logos/vodafone.svg') }}"
                                 class="mh-30px mh-lg-40px" alt="">
                         </div>
                         <!--end::Client-->
@@ -294,7 +294,7 @@ License: For each use you must have a valid license purchased only from above li
                         <div class="d-flex flex-center m-3 m-md-6" data-bs-toggle="tooltip"
                             aria-label="KPMG International" data-bs-original-title="KPMG International"
                             data-kt-initialized="1">
-                            <img src="/metronic8/demo1/assets/media/svg/brand-logos/kpmg.svg"
+                            <img src="{{ asset('media/svg/brand-logos/kpmg.svg') }}"
                                 class="mh-30px mh-lg-40px" alt="">
                         </div>
                         <!--end::Client-->
@@ -302,7 +302,7 @@ License: For each use you must have a valid license purchased only from above li
                         <!--begin::Client-->
                         <div class="d-flex flex-center m-3 m-md-6" data-bs-toggle="tooltip" aria-label="Nasa"
                             data-bs-original-title="Nasa" data-kt-initialized="1">
-                            <img src="/metronic8/demo1/assets/media/svg/brand-logos/nasa.svg"
+                            <img src="{{ asset('media/svg/brand-logos/nasa.svg') }}"
                                 class="mh-30px mh-lg-40px" alt="">
                         </div>
                         <!--end::Client-->
@@ -310,7 +310,7 @@ License: For each use you must have a valid license purchased only from above li
                         <!--begin::Client-->
                         <div class="d-flex flex-center m-3 m-md-6" data-bs-toggle="tooltip" aria-label="Aspnetzero"
                             data-bs-original-title="Aspnetzero" data-kt-initialized="1">
-                            <img src="/metronic8/demo1/assets/media/svg/brand-logos/aspnetzero.svg"
+                            <img src="{{ asset('media/svg/brand-logos/aspnetzero.svg') }}"
                                 class="mh-30px mh-lg-40px" alt="">
                         </div>
                         <!--end::Client-->
@@ -319,7 +319,7 @@ License: For each use you must have a valid license purchased only from above li
                         <div class="d-flex flex-center m-3 m-md-6" data-bs-toggle="tooltip"
                             aria-label="AON - Empower Results" data-bs-original-title="AON - Empower Results"
                             data-kt-initialized="1">
-                            <img src="/metronic8/demo1/assets/media/svg/brand-logos/aon.svg"
+                            <img src="{{ asset('media/svg/brand-logos/aon.svg') }}"
                                 class="mh-30px mh-lg-40px" alt="">
                         </div>
                         <!--end::Client-->
@@ -328,7 +328,7 @@ License: For each use you must have a valid license purchased only from above li
                         <div class="d-flex flex-center m-3 m-md-6" data-bs-toggle="tooltip"
                             aria-label="Hewlett-Packard" data-bs-original-title="Hewlett-Packard"
                             data-kt-initialized="1">
-                            <img src="/metronic8/demo1/assets/media/svg/brand-logos/hp-3.svg"
+                            <img src="{{ asset('media/svg/brand-logos/hp-3.svg') }}"
                                 class="mh-30px mh-lg-40px" alt="">
                         </div>
                         <!--end::Client-->
@@ -336,7 +336,7 @@ License: For each use you must have a valid license purchased only from above li
                         <!--begin::Client-->
                         <div class="d-flex flex-center m-3 m-md-6" data-bs-toggle="tooltip" aria-label="Truman"
                             data-bs-original-title="Truman" data-kt-initialized="1">
-                            <img src="/metronic8/demo1/assets/media/svg/brand-logos/truman.svg"
+                            <img src="{{ asset('media/svg/brand-logos/truman.svg') }}"
                                 class="mh-30px mh-lg-40px" alt="">
                         </div>
                         <!--end::Client-->
@@ -379,7 +379,7 @@ License: For each use you must have a valid license purchased only from above li
                         <!--begin::Story-->
                         <div class="text-center mb-10 mb-md-0">
                             <!--begin::Illustration-->
-                            <img src="/metronic8/demo1/assets/media/illustrations/sketchy-1/2.png"
+                            <img src="{{ asset('media/illustrations/sketchy-1/2.png') }}"
                                 class="mh-125px mb-9" alt="">
                             <!--end::Illustration-->
 
@@ -409,7 +409,7 @@ License: For each use you must have a valid license purchased only from above li
                         <!--begin::Story-->
                         <div class="text-center mb-10 mb-md-0">
                             <!--begin::Illustration-->
-                            <img src="/metronic8/demo1/assets/media/illustrations/sketchy-1/8.png"
+                            <img src="{{ asset('media/illustrations/sketchy-1/8.png') }}"
                                 class="mh-125px mb-9" alt="">
                             <!--end::Illustration-->
 
@@ -440,7 +440,7 @@ License: For each use you must have a valid license purchased only from above li
                         <!--begin::Story-->
                         <div class="text-center mb-10 mb-md-0">
                             <!--begin::Illustration-->
-                            <img src="/metronic8/demo1/assets/media/illustrations/sketchy-1/12.png"
+                            <img src="{{ asset('media/illustrations/sketchy-1/12.png') }}"
                                 class="mh-125px mb-9" alt="">
                             <!--end::Illustration-->
 
@@ -1291,10 +1291,10 @@ License: For each use you must have a valid license purchased only from above li
                                         <!--begin::Item-->
                                         <a class="d-block card-rounded overlay h-lg-100"
                                             data-fslightbox="lightbox-projects"
-                                            href="/metronic8/demo1/assets/media/stock/600x600/img-11.jpg">
+                                            href="{{ asset('media/stock/600x600/img-11.jpg') }}">
                                             <!--begin::Image-->
                                             <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-lg-100 min-h-250px"
-                                                style="background-image:url('/metronic8/demo1/assets/media/stock/600x600/img-11.jpg')">
+                                                style="background-image:url('{{ asset('media/stock/600x600/img-11.jpg') }}')">
                                             </div>
                                             <!--end::Image-->
 
@@ -1319,10 +1319,10 @@ License: For each use you must have a valid license purchased only from above li
                                                 <!--begin::Item-->
                                                 <a class="d-block card-rounded overlay"
                                                     data-fslightbox="lightbox-projects"
-                                                    href="/metronic8/demo1/assets/media/stock/600x600/img-12.jpg">
+                                                    href="{{ asset('media/stock/600x600/img-12.jpg') }}">
                                                     <!--begin::Image-->
                                                     <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-250px"
-                                                        style="background-image:url('/metronic8/demo1/assets/media/stock/600x600/img-12.jpg')">
+                                                        style="background-image:url('{{ asset('media/stock/600x600/img-12.jpg') }}')">
                                                     </div>
                                                     <!--end::Image-->
 
@@ -1343,10 +1343,10 @@ License: For each use you must have a valid license purchased only from above li
                                                 <!--begin::Item-->
                                                 <a class="d-block card-rounded overlay"
                                                     data-fslightbox="lightbox-projects"
-                                                    href="/metronic8/demo1/assets/media/stock/600x600/img-21.jpg">
+                                                    href="{{ asset('media/stock/600x600/img-21.jpg') }}">
                                                     <!--begin::Image-->
                                                     <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-250px"
-                                                        style="background-image:url('/metronic8/demo1/assets/media/stock/600x600/img-21.jpg')">
+                                                        style="background-image:url('{{ asset('media/stock/600x600/img-21.jpg') }}')">
                                                     </div>
                                                     <!--end::Image-->
 
@@ -1366,10 +1366,10 @@ License: For each use you must have a valid license purchased only from above li
 
                                         <!--begin::Item-->
                                         <a class="d-block card-rounded overlay" data-fslightbox="lightbox-projects"
-                                            href="/metronic8/demo1/assets/media/stock/600x400/img-20.jpg">
+                                            href="{{ asset('media/stock/600x400/img-20.jpg') }}">
                                             <!--begin::Image-->
                                             <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-250px"
-                                                style="background-image:url('/metronic8/demo1/assets/media/stock/600x600/img-20.jpg')">
+                                                style="background-image:url('{{ asset('media/stock/600x600/img-20.jpg') }}')">
                                             </div>
                                             <!--end::Image-->
 
@@ -1402,10 +1402,10 @@ License: For each use you must have a valid license purchased only from above li
                                                 <!--begin::Item-->
                                                 <a class="d-block card-rounded overlay"
                                                     data-fslightbox="lightbox-projects"
-                                                    href="/metronic8/demo1/assets/media/stock/600x600/img-16.jpg">
+                                                    href="{{ asset('media/stock/600x600/img-16.jpg') }}">
                                                     <!--begin::Image-->
                                                     <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-250px"
-                                                        style="background-image:url('/metronic8/demo1/assets/media/stock/600x600/img-16.jpg')">
+                                                        style="background-image:url('{{ asset('media/stock/600x600/img-16.jpg') }}')">
                                                     </div>
                                                     <!--end::Image-->
 
@@ -1426,10 +1426,10 @@ License: For each use you must have a valid license purchased only from above li
                                                 <!--begin::Item-->
                                                 <a class="d-block card-rounded overlay"
                                                     data-fslightbox="lightbox-projects"
-                                                    href="/metronic8/demo1/assets/media/stock/600x600/img-12.jpg">
+                                                    href="{{ asset('media/stock/600x600/img-12.jpg') }}">
                                                     <!--begin::Image-->
                                                     <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-250px"
-                                                        style="background-image:url('/metronic8/demo1/assets/media/stock/600x600/img-12.jpg')">
+                                                        style="background-image:url('{{ asset('media/stock/600x600/img-12.jpg') }}')">
                                                     </div>
                                                     <!--end::Image-->
 
@@ -1449,10 +1449,10 @@ License: For each use you must have a valid license purchased only from above li
 
                                         <!--begin::Item-->
                                         <a class="d-block card-rounded overlay" data-fslightbox="lightbox-projects"
-                                            href="/metronic8/demo1/assets/media/stock/600x400/img-15.jpg">
+                                            href="{{ asset('media/stock/600x400/img-15.jpg') }}">
                                             <!--begin::Image-->
                                             <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-250px"
-                                                style="background-image:url('/metronic8/demo1/assets/media/stock/600x600/img-15.jpg')">
+                                                style="background-image:url('{{ asset('media/stock/600x600/img-15.jpg') }}')">
                                             </div>
                                             <!--end::Image-->
 
@@ -1473,10 +1473,10 @@ License: For each use you must have a valid license purchased only from above li
                                         <!--begin::Item-->
                                         <a class="d-block card-rounded overlay h-lg-100"
                                             data-fslightbox="lightbox-projects"
-                                            href="/metronic8/demo1/assets/media/stock/600x600/img-23.jpg">
+                                            href="{{ asset('media/stock/600x600/img-23.jpg') }}">
                                             <!--begin::Image-->
                                             <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-lg-100 min-h-250px"
-                                                style="background-image:url('/metronic8/demo1/assets/media/stock/600x600/img-23.jpg')">
+                                                style="background-image:url('{{ asset('media/stock/600x600/img-23.jpg') }}')">
                                             </div>
                                             <!--end::Image-->
 
@@ -1505,10 +1505,10 @@ License: For each use you must have a valid license purchased only from above li
                                         <!--begin::Item-->
                                         <a class="d-block card-rounded overlay h-lg-100"
                                             data-fslightbox="lightbox-projects"
-                                            href="/metronic8/demo1/assets/media/stock/600x600/img-15.jpg">
+                                            href="{{ asset('media/stock/600x600/img-15.jpg') }}">
                                             <!--begin::Image-->
                                             <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-lg-100 min-h-250px"
-                                                style="background-image:url('/metronic8/demo1/assets/media/stock/600x600/img-15.jpg')">
+                                                style="background-image:url('{{ asset('media/stock/600x600/img-15.jpg') }}')">
                                             </div>
                                             <!--end::Image-->
 
@@ -1533,10 +1533,10 @@ License: For each use you must have a valid license purchased only from above li
                                                 <!--begin::Item-->
                                                 <a class="d-block card-rounded overlay"
                                                     data-fslightbox="lightbox-projects"
-                                                    href="/metronic8/demo1/assets/media/stock/600x600/img-22.jpg">
+                                                    href="{{ asset('media/stock/600x600/img-22.jpg') }}">
                                                     <!--begin::Image-->
                                                     <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-250px"
-                                                        style="background-image:url('/metronic8/demo1/assets/media/stock/600x600/img-22.jpg')">
+                                                        style="background-image:url('{{ asset('media/stock/600x600/img-22.jpg') }}')">
                                                     </div>
                                                     <!--end::Image-->
 
@@ -1557,10 +1557,10 @@ License: For each use you must have a valid license purchased only from above li
                                                 <!--begin::Item-->
                                                 <a class="d-block card-rounded overlay"
                                                     data-fslightbox="lightbox-projects"
-                                                    href="/metronic8/demo1/assets/media/stock/600x600/img-21.jpg">
+                                                    href="{{ asset('media/stock/600x600/img-21.jpg') }}">
                                                     <!--begin::Image-->
                                                     <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-250px"
-                                                        style="background-image:url('/metronic8/demo1/assets/media/stock/600x600/img-21.jpg')">
+                                                        style="background-image:url('{{ asset('media/stock/600x600/img-21.jpg') }}')">
                                                     </div>
                                                     <!--end::Image-->
 
@@ -1580,10 +1580,10 @@ License: For each use you must have a valid license purchased only from above li
 
                                         <!--begin::Item-->
                                         <a class="d-block card-rounded overlay" data-fslightbox="lightbox-projects"
-                                            href="/metronic8/demo1/assets/media/stock/600x400/img-14.jpg">
+                                            href="{{ asset('media/stock/600x400/img-14.jpg') }}">
                                             <!--begin::Image-->
                                             <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-250px"
-                                                style="background-image:url('/metronic8/demo1/assets/media/stock/600x600/img-14.jpg')">
+                                                style="background-image:url('{{ asset('media/stock/600x600/img-14.jpg') }}')">
                                             </div>
                                             <!--end::Image-->
 
@@ -1821,7 +1821,7 @@ License: For each use you must have a valid license purchased only from above li
 
                 <!--begin::Javascript-->
                 <script>
-                    var hostUrl = "/metronic8/demo1/assets/";
+                    var hostUrl = "{{ asset('') }}";
                 </script>
 
                 <!--begin::Global Javascript Bundle(mandatory for all pages)-->
