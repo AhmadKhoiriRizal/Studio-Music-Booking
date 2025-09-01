@@ -64,7 +64,7 @@ License: For each use you must have a valid license purchased only from above li
 <!--end::Head-->
 <!--begin::Body-->
 
-<body id="kt_body" data-bs-spy="scroll" data-bs-target="#kt_landing_menu" 
+<body id="kt_body" data-bs-spy="scroll" data-bs-target="#kt_landing_menu"
       class="bg-body position-relative app-blank"
       data-kt-scrolltop="on" data-kt-sticky-landing-header="on" data-kt-landing-header="on">
 
@@ -121,14 +121,14 @@ License: For each use you must have a valid license purchased only from above li
 
                                 <!--begin::Logo image-->
                                <a href="{{ url('/') }}">
-                                <img alt="Logo" 
-                                src="{{ asset('media/studio/logostudio.png') }}" 
-                                class="logo-default" 
+                                <img alt="Logo"
+                                src="{{ asset('media/studio/logostudio.png') }}"
+                                class="logo-default"
                                 style="height: 70px;">
 
-                                <img alt="Logo" 
-                                src="{{ asset('media/studio/logostudio.png') }}" 
-                                class="logo-sticky" 
+                                <img alt="Logo"
+                                src="{{ asset('media/studio/logostudio.png') }}"
+                                class="logo-sticky"
                                 style="height: 50px;">
                                 </a>
 
@@ -235,7 +235,7 @@ License: For each use you must have a valid license purchased only from above li
                         <!--begin::Title-->
                         <h1 class="text-white lh-base fw-bold fs-2x fs-lg-3x mb-15">
                             Melodi Kreatif Studio <br>
-                        
+
 
                            <span
         style="background: linear-gradient(to right, #12CE5D 0%, #FFD80C 100%);
@@ -446,7 +446,7 @@ License: For each use you must have a valid license purchased only from above li
 
                             <!--begin::Heading-->
                             <div class="d-flex flex-center mb-5">
-                                
+
                                 <!--begin::Title-->
                                 <div class="fs-5 fs-lg-3 fw-bold text-gray-900">
                                    Kontak </div>
@@ -480,7 +480,7 @@ License: For each use you must have a valid license purchased only from above li
                         <!--begin::Heading-->
                         <div class="mb-13 text-center">
                             <h1 class="fs-2hx fw-bold text-white mb-5" id="pricing"
-                            
+
                                 data-kt-scroll-offset="{default: 100, lg: 100}">Paket Favotit Di Kelasnya</h1>
 
                             <!--begin::Row-->
@@ -772,13 +772,13 @@ License: For each use you must have a valid license purchased only from above li
             <!--end::Wrapper-->
 
         <!--begin:: Daftar Paket Section-->
-        <div class="mb-lg-n15 position-relative z-index-2">
+        <div class=" position-relative z-index-2">
             <!--begin::Container-->
             {{-- <div class="container"> --}}
                 <!--begin::Card-->
                 <div class="card" style="filter: drop-shadow(0px 0px 40px rgba(68, 81, 96, 0.08))">
                     <!--begin::Card body-->
-                    <div class="card-body p-lg-20">
+                    <div class="py-20 card-body container">
                         <!--begin::Heading-->
                         <div class="text-center mb-5 mb-lg-10">
                             <!--begin::Title-->
@@ -823,7 +823,7 @@ License: For each use you must have a valid license purchased only from above li
 
                          <!--begin::Row-->
                             <div class="row g-10">
-                                
+
                                 <!--begin::Col-->
                                 <div class="col-xl-4">
                                     <div class="d-flex h-100 align-items-center">
@@ -833,14 +833,14 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin::Heading-->
                                             <!-- Foto dengan ukuran tetap -->
                                 <div class="d-flex justify-content-center mb-3" style="margin-top: -20px;">
-                              <img src="{{ asset('media/studio/studiom1.jpg') }}" 
-                              class="img-fluid" 
+                              <img src="{{ asset('media/studio/studiom1.jpg') }}"
+                              class="img-fluid"
                             alt="Paket 1"
                             style="width: 300px; height: 300px; object-fit: cover; border-radius:10px;">
                             </div>
 
 
-                                            
+
                     <div class="d-flex justify-content-between align-items-center text-white mb-5">
                      <!-- Left: Nama Paket & Deskripsi -->
                     <div>
@@ -919,7 +919,7 @@ License: For each use you must have a valid license purchased only from above li
                                     </div>
                                 </div>
                                 <!--end::Col-->
-                                
+
                                 <!--begin::Col-->
                                 <div class="col-xl-4">
                                     <div class="d-flex h-100 align-items-center">
@@ -930,14 +930,14 @@ License: For each use you must have a valid license purchased only from above li
 
                                             <!-- Foto dengan ukuran tetap -->
                                 <div class="d-flex justify-content-center mb-3" style="margin-top: -20px;">
-                              <img src="{{ asset('media/studio/studiom1.jpg') }}" 
-                              class="img-fluid" 
+                              <img src="{{ asset('media/studio/studiom1.jpg') }}"
+                              class="img-fluid"
                             alt="Paket 1"
                             style="width: 300px; height: 300px; object-fit: cover; border-radius:10px;">
                             </div>
 
 
-                                            
+
                     <div class="d-flex justify-content-between align-items-center text-white mb-5">
                      <!-- Left: Nama Paket & Deskripsi -->
                     <div>
@@ -954,7 +954,7 @@ License: For each use you must have a valid license purchased only from above li
                 <div style="font-size: 14px; opacity: 0.7;">/ 1 Jam</div>
                 </div>
             </div>
-                                            
+
 
                                             <!--begin::Features-->
                                             <div class="w-100 mb-10">
@@ -1016,7 +1016,7 @@ License: For each use you must have a valid license purchased only from above li
                                     </div>
                                 </div>
                                 <!--end::Col-->
-                                
+
                                 <!--begin::Col-->
                                 <div class="col-xl-4">
                                     <div class="d-flex h-100 align-items-center">
@@ -1026,14 +1026,14 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin::Heading-->
                                             <!-- Foto dengan ukuran tetap -->
                                 <div class="d-flex justify-content-center mb-3" style="margin-top: -20px;">
-                              <img src="{{ asset('media/studio/studiom1.jpg') }}" 
-                              class="img-fluid" 
+                              <img src="{{ asset('media/studio/studiom1.jpg') }}"
+                              class="img-fluid"
                             alt="Paket 1"
                             style="width: 300px; height: 300px; object-fit: cover; border-radius:10px;">
                             </div>
 
 
-                                            
+
                     <div class="d-flex justify-content-between align-items-center text-white mb-5">
                      <!-- Left: Nama Paket & Deskripsi -->
                     <div>
@@ -1124,13 +1124,13 @@ License: For each use you must have a valid license purchased only from above li
 
 
         <!--begin::Galeri Section-->
-        <div class="mb-lg-n15 position-relative z-index-2">
+        <div class="position-relative z-index-2">
             <!--begin::Container-->
             {{-- <div class="container"> --}}
                 <!--begin::Card-->
                 <div class="card" style="filter: drop-shadow(0px 0px 40px rgba(68, 81, 96, 0.08))">
                     <!--begin::Card body-->
-                    <div class="card-body p-lg-20">
+                    <div class="py-20 card-body container">
                         <!--begin::Heading-->
                         <div class="text-center mb-5 mb-lg-10">
                             <!--begin::Title-->
@@ -1614,8 +1614,10 @@ License: For each use you must have a valid license purchased only from above li
         <!--end::Galeri Section-->
 
         <!--begin::Testimonials Section-->
-        <div class="mt-20 mb-n20 position-relative z-index-2">
+        <div class="position-relative z-index-2">
             <!--begin::Container-->
+            <!--begin::Card body-->
+                    <div class="py-20 card-body container">
             {{-- <div class="container"> --}}
                 <!--begin::Heading-->
                 <div class="text-center mb-17">
@@ -1627,7 +1629,7 @@ License: For each use you must have a valid license purchased only from above li
                 <!--end::Heading-->
 
                 <!--begin::Row-->
-                <div class="row justify-content-center g-lg-10 mb-10 mb-lg-20 px-5">
+                <div class="row justify-content-center g-lg-10 px-5">
                     <!--begin::Col-->
                     <div class="col-lg-4">
                         <!--begin::Testimonial-->
@@ -1663,7 +1665,7 @@ License: For each use you must have a valid license purchased only from above li
                                 <!--begin::Feedback-->
                                 <div class="text-gray-500 fw-semibold fs-4">
 
-                                    Pengalaman latihan di studio ini bener-bener luar biasa. 
+                                    Pengalaman latihan di studio ini bener-bener luar biasa.
                                     Alat-alat musiknya lengkap, kualitas sound system sangat baik,
                                     dan ruangan juga kedap suara sehingga latihan jadi lebih fokus tanpa gangguan.
                                 </div>
@@ -1718,7 +1720,7 @@ License: For each use you must have a valid license purchased only from above li
                                 <div class="text-gray-500 fw-semibold fs-4">
 
                                     Kemarin saya booking studio untuk latihan band secara mendadak.
-                                     Untungnya sistem booking di sini cepat banget dan tanpa ribet. 
+                                     Untungnya sistem booking di sini cepat banget dan tanpa ribet.
                                      Pas sampai, semua sudah siap: ruangan rapi, alat musik lengkap, dan sound sudah diatur dengan baik.
                                 </div>
                                 <!--end::Feedback-->
@@ -1760,11 +1762,11 @@ License: For each use you must have a valid license purchased only from above li
                                     </div>
                                 </div>
                                 <!--end::Rating-->
-                        
+
                                 <!--begin::Feedback-->
                                 <div class="text-gray-500 fw-semibold fs-4">
 
-                                   Sebagai orang yang sering latihan untuk persiapan event, saya bisa bilang kalau studio ini salah satu yang terbaik. 
+                                   Sebagai orang yang sering latihan untuk persiapan event, saya bisa bilang kalau studio ini salah satu yang terbaik.
                                    Sound system benar-benar jernih, ruangan kedap suara, dan tata ruangnya sangat mendukung.
                                 </div>
                                 <!--end::Feedback-->
@@ -1774,16 +1776,19 @@ License: For each use you must have a valid license purchased only from above li
                             <!--end::Author-->
                         </div>
                         <!--end::Testimonial-->
+                </div>
+                </div>
+                <!--end::Row-->
 
     <!-- Footer Section -->
-    <footer class="bg-info py-4 w-100">
-  <div class="container-fluid d-flex flex-column flex-md-row justify-content-between align-items-center">
-    
+    <footer class="bg-black py-4 w-100">
+  <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+
     <!-- Logo dan Nama -->
     <div class="d-flex align-items-center mb-3 mb-md-0">
       <div class="me-3">
-        <img src="{{ asset('media/studio/logostudio.png') }}" 
-             alt="logo" 
+        <img src="{{ asset('media/studio/logostudio.png') }}"
+             alt="logo"
              {{-- class="rounded-circle"  --}}
              style="height:40px; width:auto;">
       </div>
