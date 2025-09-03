@@ -43,12 +43,26 @@
 
         /* Hide all steps by default */
         .step {
-            display: none;
-            animation: fadeIn 0.5s ease-out;
+            visibility: hidden;
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 0;
+            overflow: hidden;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            z-index: 0;
         }
 
         .step.active {
-            display: block;
+            visibility: visible;
+            position: static;
+            height: auto;
+            opacity: 1;
+            pointer-events: auto;
+            z-index: 1;
+            animation: fadeIn 0.5s ease-out;
         }
 
         @keyframes fadeIn {
@@ -121,28 +135,28 @@
             <!--begin::Container-->
             <div class="container">
     <div class="card shadow-sm w-100">
-        <div class="card-header bg-primary text-white text-center py-4">
+        {{-- <div class="card-header bg-primary text-white text-center py-4">
             <h1 class="h4 fw-bold">PENDAFTARAN ANGGOTA BARU SAKA BHAYANGKARA POLSEK MAYONG</h1>
-        </div>
+        </div> --}}
 
         <div class="card-body">
             <!-- Step Indicators -->
             <div class="d-flex justify-content-between mb-4 px-3">
                 <div class="text-center">
                     <div class="step-indicator active" id="step1-indicator">1</div>
-                    <small class="d-block mt-2 text-muted">Data Diri</small>
+                    <small class="d-block mt-2 text-muted">Pilih Paket</small>
                 </div>
                 <div class="text-center">
                     <div class="step-indicator inactive" id="step2-indicator">2</div>
-                    <small class="d-block mt-2 text-muted">Pendidikan</small>
+                    <small class="d-block mt-2 text-muted">Pilih Jadwal</small>
                 </div>
                 <div class="text-center">
                     <div class="step-indicator inactive" id="step3-indicator">3</div>
-                    <small class="d-block mt-2 text-muted">Berkas</small>
+                    <small class="d-block mt-2 text-muted">Pilih Alat Tambahan</small>
                 </div>
                 <div class="text-center">
                     <div class="step-indicator inactive" id="step4-indicator">4</div>
-                    <small class="d-block mt-2 text-muted">Konfirmasi</small>
+                    <small class="d-block mt-2 text-muted">Pembayaran</small>
                 </div>
             </div>
 
@@ -156,221 +170,15 @@
             <form id="registration-form" method="POST" action="###" enctype="multipart/form-data" novalidate>
                 @csrf
 
-                <!-- Step 1: Data Diri -->
-                <div class="step active" data-step="1" id="step-1">
-                    <h4 class="mb-4 text-primary">Data Pribadi</h4>
-                    <!--begin::Card body-->
-                    <div class="card-body">
-                        <!--begin::Calendar-->
-                        <div id="kt_calendar_app"></div>
-                        <!--end::Calendar-->
-                    </div>
-                    <!--end::Card body-->
+                @include('user.booking.step.step1')
 
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <label for="nama_lengkap" class="form-label">Nama Lengkap <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap" placeholder="Masukkan nama lengkap" required />
-                            <div class="invalid-feedback">Nama lengkap wajib diisi.</div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="tempat_lahir" class="form-label">Tempat Lahir <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" placeholder="Masukkan tempat lahir" required />
-                            <div class="invalid-feedback">Tempat lahir wajib diisi.</div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="tanggal_lahir" class="form-label">Tanggal Lahir <span class="text-danger">*</span></label>
-                            <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" required />
-                            <div class="invalid-feedback">Tanggal lahir wajib diisi.</div>
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label d-block">Jenis Kelamin <span class="text-danger">*</span></label>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="jenis_kelamin" id="jenis_kelamin_l" value="L" required />
-                                <label class="form-check-label" for="jenis_kelamin_l">Laki-laki</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="jenis_kelamin" id="jenis_kelamin_p" value="P" required />
-                                <label class="form-check-label" for="jenis_kelamin_p">Perempuan</label>
-                            </div>
-                            <div class="invalid-feedback d-block">Pilih jenis kelamin.</div>
-                        </div>
-                        <div class="col-12">
-                            <label for="alamat" class="form-label">Alamat <span class="text-danger">*</span></label>
-                            <textarea class="form-control" id="alamat" name="alamat" rows="3" placeholder="Masukkan alamat" required></textarea>
-                            <div class="invalid-feedback">Alamat wajib diisi.</div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="no_hp" class="form-label">Nomor Telepon <span class="text-danger">*</span></label>
-                            <input type="tel" class="form-control" id="no_hp" name="no_hp" placeholder="08xxxxxxxxxx" pattern="[0-9]{10,15}" required />
-                            <div class="invalid-feedback">Nomor telepon wajib diisi dan harus 10-15 digit angka.</div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="contoh@email.com" required />
-                            <div class="invalid-feedback">Email wajib diisi dan harus valid.</div>
-                        </div>
-                    </div>
+                @include('user.booking.step.step2')
 
-                    <div class="d-flex justify-content-between mt-4">
-                        <a href="###" class="btn btn-secondary disabled">Kembali</a>
-                        <button type="button" class="btn btn-primary next-btn">Lanjut</button>
-                    </div>
-                </div>
+                @include('user.booking.step.step3')
 
-                <!-- Step 2: Data Sekolah -->
-                <div class="step" data-step="2" id="step-2">
-                    <h4 class="mb-4 text-primary">Data Sekolah</h4>
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <label for="sekolah" class="form-label">Nama Sekolah <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="sekolah" name="sekolah" placeholder="Nama sekolah/universitas" required />
-                            <div class="invalid-feedback">Nama sekolah wajib diisi.</div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="nama_ortu" class="form-label">Nama Orang Tua <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="nama_ortu" name="nama_ortu" placeholder="Nama orang tua" required />
-                            <div class="invalid-feedback">Nama orang tua wajib diisi.</div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="pekerjaan_ortu" class="form-label">Pekerjaan Orang Tua <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="pekerjaan_ortu" name="pekerjaan_ortu" placeholder="Pekerjaan orang tua" required />
-                            <div class="invalid-feedback">Pekerjaan orang tua wajib diisi.</div>
-                        </div>
-                    </div>
+                @include('user.booking.step.step4')
 
-                    <div class="d-flex justify-content-between mt-4">
-                        <button type="button" class="btn btn-secondary prev-btn">Kembali</button>
-                        <button type="button" class="btn btn-primary next-btn">Lanjut</button>
-                    </div>
-                </div>
-
-                <!-- Step 3: Data Tambahan -->
-                <div class="step" data-step="3" id="step-3">
-                    <h4 class="mb-4 text-primary">Data Tambahan</h4>
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <label for="hobi" class="form-label">Hobi</label>
-                            <input type="text" class="form-control" id="hobi" name="hobi" placeholder="Masukkan hobi (opsional)" />
-                        </div>
-                        <div class="col-md-6">
-                            <label for="tinggi_badan" class="form-label">Tinggi Badan (cm) <span class="text-danger">*</span></label>
-                            <input type="number" class="form-control" id="tinggi_badan" name="tinggi_badan" placeholder="Tinggi badan dalam cm" required />
-                            <div class="invalid-feedback">Tinggi badan wajib diisi.</div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="berat_badan" class="form-label">Berat Badan (kg) <span class="text-danger">*</span></label>
-                            <input type="number" class="form-control" id="berat_badan" name="berat_badan" placeholder="Berat badan dalam kg" required />
-                            <div class="invalid-feedback">Berat badan wajib diisi.</div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="golongan_darah" class="form-label">Golongan Darah <span class="text-danger">*</span></label>
-                            <select class="form-select" id="golongan_darah" name="golongan_darah" required>
-                                <option value="" selected disabled>Pilih golongan darah</option>
-                                <option value="A">A</option>
-                                <option value="B">B</option>
-                                <option value="AB">AB</option>
-                                <option value="O">O</option>
-                            </select>
-                            <div class="invalid-feedback">Golongan darah wajib dipilih.</div>
-                        </div>
-                    </div>
-
-                    <div class="d-flex justify-content-between mt-4">
-                        <button type="button" class="btn btn-secondary prev-btn">Kembali</button>
-                        <button type="button" class="btn btn-primary next-btn">Lanjut</button>
-                    </div>
-                </div>
-
-                <!-- Step 4: Upload Berkas -->
-                <div class="step" data-step="4" id="step-4">
-                    <h4 class="mb-4 text-primary">Upload Berkas</h4>
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <label for="foto" class="form-label">Foto Profil (3x4) <span class="text-danger">*</span></label>
-                            <input class="form-control" type="file" id="foto" name="foto" accept="image/*" required />
-                            <div class="invalid-feedback">Foto profil wajib diunggah.</div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="file_pernyataan" class="form-label">File Pernyataan <span class="text-danger">*</span></label>
-                            <input class="form-control" type="file" id="file_pernyataan" name="file_pernyataan" accept=".pdf,.doc,.docx" required />
-                            <div class="invalid-feedback">File pernyataan wajib diunggah.</div>
-                        </div>
-                    </div>
-
-                    <div class="d-flex justify-content-between mt-4">
-                        <button type="button" class="btn btn-secondary prev-btn">Kembali</button>
-                        <button type="button" class="btn btn-primary next-btn">Lanjut</button>
-                    </div>
-                </div>
-
-                <!-- Step 5: Konfirmasi -->
-                <div class="step" data-step="5" id="step-5">
-                    <h4 class="mb-4 text-primary">Konfirmasi Data</h4>
-
-                    <div class="mb-4 p-3 bg-light rounded">
-                        <h5 class="text-primary mb-3">Data Pribadi</h5>
-                        <div class="row g-3">
-                            <div class="col-md-6"><strong>Nama Lengkap:</strong> <span id="confirm-nama"></span></div>
-                            <div class="col-md-6"><strong>Tempat Lahir:</strong> <span id="confirm-tempat_lahir"></span></div>
-                            <div class="col-md-6"><strong>Tanggal Lahir:</strong> <span id="confirm-tanggal_lahir"></span></div>
-                            <div class="col-md-6"><strong>Jenis Kelamin:</strong> <span id="confirm-jenis_kelamin"></span></div>
-                            <div class="col-12"><strong>Alamat:</strong> <span id="confirm-alamat"></span></div>
-                            <div class="col-md-6"><strong>Nomor Telepon:</strong> <span id="confirm-no_hp"></span></div>
-                            <div class="col-md-6"><strong>Email:</strong> <span id="confirm-email"></span></div>
-                        </div>
-                    </div>
-
-                    <div class="mb-4 p-3 bg-light rounded">
-                        <h5 class="text-primary mb-3">Data Sekolah</h5>
-                        <div class="row g-3">
-                            <div class="col-md-6"><strong>Nama Sekolah:</strong> <span id="confirm-sekolah"></span></div>
-                            <div class="col-md-6"><strong>Nama Orang Tua:</strong> <span id="confirm-nama_ortu"></span></div>
-                            <div class="col-md-6"><strong>Pekerjaan Orang Tua:</strong> <span id="confirm-pekerjaan_ortu"></span></div>
-                        </div>
-                    </div>
-
-                    <div class="mb-4 p-3 bg-light rounded">
-                        <h5 class="text-primary mb-3">Data Tambahan</h5>
-                        <div class="row g-3">
-                            <div class="col-md-6"><strong>Hobi:</strong> <span id="confirm-hobi"></span></div>
-                            <div class="col-md-6"><strong>Tinggi Badan:</strong> <span id="confirm-tinggi_badan"></span></div>
-                            <div class="col-md-6"><strong>Berat Badan:</strong> <span id="confirm-berat_badan"></span></div>
-                            <div class="col-md-6"><strong>Golongan Darah:</strong> <span id="confirm-golongan_darah"></span></div>
-                        </div>
-                    </div>
-
-                    <div class="mb-4 p-3 bg-light rounded">
-                        <h5 class="text-primary mb-3">Berkas</h5>
-                        <div class="row g-3 align-items-center">
-                            <div class="col-md-4 text-center">
-                                <strong>Foto Profil</strong>
-                                <img id="confirm-foto-preview" src="https://placehold.co/120x160" alt="Pratinjau foto profil yang diunggah"
-                                    class="img-thumbnail mt-2" style="width: 120px; height: 160px; object-fit: cover;" />
-                            </div>
-                            <div class="col-md-8">
-                                <strong>File Pernyataan:</strong>
-                                <p id="confirm-file_pernyataan" class="mb-0"></p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-check mb-4">
-                        <input class="form-check-input" type="checkbox" id="agree" name="agree" required />
-                        <label class="form-check-label" for="agree">
-                            Saya menyatakan bahwa data yang diisi adalah benar dan dapat dipertanggungjawabkan.
-                        </label>
-
-                </div>
-
-                <div class="flex justify-between">
-                    <button type="button"
-                        class="prev-btn bg-gray-300 text-gray-700 px-6 py-2 rounded-md hover:bg-gray-400 transition">Kembali</button>
-                    <button type="submit"
-                        class="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition">Kirim
-                        Pendaftaran</button>
-                </div>
-            </div>
+                @include('user.booking.step.step5')
             </form>
         </div>
     </div>
@@ -379,304 +187,305 @@
         </div>
         <!--end::Content Section-->
         <!--begin::Modals-->
-                    <!--begin::Modal - New Product-->
-                    <div class="modal fade" id="kt_modal_add_event" tabindex-="1" aria-hidden="true"
-                        data-bs-focus="false">
-                        <!--begin::Modal dialog-->
-                        <div class="modal-dialog modal-dialog-centered mw-650px">
-                            <!--begin::Modal content-->
-                            <div class="modal-content">
-                                <!--begin::Form-->
-                                <form class="form" action="#" id="kt_modal_add_event_form">
-                                    <!--begin::Modal header-->
-                                    <div class="modal-header">
-                                        <!--begin::Modal title-->
-                                        <h2 class="fw-bold" data-kt-calendar="title">Add Event</h2>
-                                        <!--end::Modal title-->
+        <!--begin::Modal - New Product-->
+        <div class="modal fade" id="kt_modal_add_event" tabindex-="1" aria-hidden="true"
+            data-bs-focus="false">
+            <!--begin::Modal dialog-->
+            <div class="modal-dialog modal-dialog-centered mw-650px">
+                <!--begin::Modal content-->
+                <div class="modal-content">
+                    <!--begin::Form-->
+                    <form class="form" action="#" id="kt_modal_add_event_form">
+                        @csrf
+                        <!--begin::Modal header-->
+                        <div class="modal-header">
+                            <!--begin::Modal title-->
+                            <h2 class="fw-bold" data-kt-calendar="title">Add Event</h2>
+                            <!--end::Modal title-->
 
-                                        <!--begin::Close-->
-                                        <div class="btn btn-icon btn-sm btn-active-icon-primary"
-                                            id="kt_modal_add_event_close">
-                                            <i class="ki-duotone ki-cross fs-1"><span
-                                                    class="path1"></span><span class="path2"></span></i>
-                                        </div>
-                                        <!--end::Close-->
+                            <!--begin::Close-->
+                            <div class="btn btn-icon btn-sm btn-active-icon-primary"
+                                id="kt_modal_add_event_close">
+                                <i class="ki-duotone ki-cross fs-1"><span
+                                        class="path1"></span><span class="path2"></span></i>
+                            </div>
+                            <!--end::Close-->
+                        </div>
+                        <!--end::Modal header-->
+
+                        <!--begin::Modal body-->
+                        <div class="modal-body py-10 px-lg-17">
+                            <!--begin::Input group-->
+                            <div class="fv-row mb-9">
+                                <!--begin::Label-->
+                                <label class="fs-6 fw-semibold required mb-2">Event Name</label>
+                                <!--end::Label-->
+
+                                <!--begin::Input-->
+                                <input type="text" class="form-control form-control-solid"
+                                    placeholder="" name="calendar_event_name" />
+                                <!--end::Input-->
+                            </div>
+                            <!--end::Input group-->
+
+                            <!--begin::Input group-->
+                            <div class="fv-row mb-9">
+                                <!--begin::Label-->
+                                <label class="fs-6 fw-semibold mb-2">Event Description</label>
+                                <!--end::Label-->
+
+                                <!--begin::Input-->
+                                <input type="text" class="form-control form-control-solid"
+                                    placeholder="" name="calendar_event_description" />
+                                <!--end::Input-->
+                            </div>
+                            <!--end::Input group-->
+
+                            <!--begin::Input group-->
+                            <div class="fv-row mb-9">
+                                <!--begin::Label-->
+                                <label class="fs-6 fw-semibold mb-2">Event Location</label>
+                                <!--end::Label-->
+
+                                <!--begin::Input-->
+                                <input type="text" class="form-control form-control-solid"
+                                    placeholder="" name="calendar_event_location" />
+                                <!--end::Input-->
+                            </div>
+                            <!--end::Input group-->
+
+                            <!--begin::Input group-->
+                            <div class="fv-row mb-9">
+                                <!--begin::Checkbox-->
+                                <label class="form-check form-check-custom form-check-solid">
+                                    <input class="form-check-input" type="checkbox" value=""
+                                        id="kt_calendar_datepicker_allday" />
+                                    <span class="form-check-label fw-semibold"
+                                        for="kt_calendar_datepicker_allday">
+                                        All Day
+                                    </span>
+                                </label>
+                                <!--end::Checkbox-->
+                            </div>
+                            <!--end::Input group-->
+
+                            <!--begin::Input group-->
+                            <div class="row row-cols-lg-2 g-10">
+                                <div class="col">
+                                    <div class="fv-row mb-9">
+                                        <!--begin::Label-->
+                                        <label class="fs-6 fw-semibold mb-2 required">Event
+                                            Start Date</label>
+                                        <!--end::Label-->
+
+                                        <!--begin::Input-->
+                                        <input class="form-control form-control-solid"
+                                            name="calendar_event_start_date"
+                                            placeholder="Pick a start date"
+                                            id="kt_calendar_datepicker_start_date" />
+                                        <!--end::Input-->
                                     </div>
-                                    <!--end::Modal header-->
+                                </div>
+                                <div class="col" data-kt-calendar="datepicker">
+                                    <div class="fv-row mb-9">
+                                        <!--begin::Label-->
+                                        <label class="fs-6 fw-semibold mb-2">Event Start
+                                            Time</label>
+                                        <!--end::Label-->
 
-                                    <!--begin::Modal body-->
-                                    <div class="modal-body py-10 px-lg-17">
-                                        <!--begin::Input group-->
-                                        <div class="fv-row mb-9">
-                                            <!--begin::Label-->
-                                            <label class="fs-6 fw-semibold required mb-2">Event Name</label>
-                                            <!--end::Label-->
-
-                                            <!--begin::Input-->
-                                            <input type="text" class="form-control form-control-solid"
-                                                placeholder="" name="calendar_event_name" />
-                                            <!--end::Input-->
-                                        </div>
-                                        <!--end::Input group-->
-
-                                        <!--begin::Input group-->
-                                        <div class="fv-row mb-9">
-                                            <!--begin::Label-->
-                                            <label class="fs-6 fw-semibold mb-2">Event Description</label>
-                                            <!--end::Label-->
-
-                                            <!--begin::Input-->
-                                            <input type="text" class="form-control form-control-solid"
-                                                placeholder="" name="calendar_event_description" />
-                                            <!--end::Input-->
-                                        </div>
-                                        <!--end::Input group-->
-
-                                        <!--begin::Input group-->
-                                        <div class="fv-row mb-9">
-                                            <!--begin::Label-->
-                                            <label class="fs-6 fw-semibold mb-2">Event Location</label>
-                                            <!--end::Label-->
-
-                                            <!--begin::Input-->
-                                            <input type="text" class="form-control form-control-solid"
-                                                placeholder="" name="calendar_event_location" />
-                                            <!--end::Input-->
-                                        </div>
-                                        <!--end::Input group-->
-
-                                        <!--begin::Input group-->
-                                        <div class="fv-row mb-9">
-                                            <!--begin::Checkbox-->
-                                            <label class="form-check form-check-custom form-check-solid">
-                                                <input class="form-check-input" type="checkbox" value=""
-                                                    id="kt_calendar_datepicker_allday" />
-                                                <span class="form-check-label fw-semibold"
-                                                    for="kt_calendar_datepicker_allday">
-                                                    All Day
-                                                </span>
-                                            </label>
-                                            <!--end::Checkbox-->
-                                        </div>
-                                        <!--end::Input group-->
-
-                                        <!--begin::Input group-->
-                                        <div class="row row-cols-lg-2 g-10">
-                                            <div class="col">
-                                                <div class="fv-row mb-9">
-                                                    <!--begin::Label-->
-                                                    <label class="fs-6 fw-semibold mb-2 required">Event
-                                                        Start Date</label>
-                                                    <!--end::Label-->
-
-                                                    <!--begin::Input-->
-                                                    <input class="form-control form-control-solid"
-                                                        name="calendar_event_start_date"
-                                                        placeholder="Pick a start date"
-                                                        id="kt_calendar_datepicker_start_date" />
-                                                    <!--end::Input-->
-                                                </div>
-                                            </div>
-                                            <div class="col" data-kt-calendar="datepicker">
-                                                <div class="fv-row mb-9">
-                                                    <!--begin::Label-->
-                                                    <label class="fs-6 fw-semibold mb-2">Event Start
-                                                        Time</label>
-                                                    <!--end::Label-->
-
-                                                    <!--begin::Input-->
-                                                    <input class="form-control form-control-solid"
-                                                        name="calendar_event_start_time"
-                                                        placeholder="Pick a start time"
-                                                        id="kt_calendar_datepicker_start_time" />
-                                                    <!--end::Input-->
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        <!--end::Input group-->
-
-                                        <!--begin::Input group-->
-                                        <div class="row row-cols-lg-2 g-10">
-                                            <div class="col">
-                                                <div class="fv-row mb-9">
-                                                    <!--begin::Label-->
-                                                    <label class="fs-6 fw-semibold mb-2 required">Event End
-                                                        Date</label>
-                                                    <!--end::Label-->
-
-                                                    <!--begin::Input-->
-                                                    <input class="form-control form-control-solid"
-                                                        name="calendar_event_end_date"
-                                                        placeholder="Pick a end date"
-                                                        id="kt_calendar_datepicker_end_date" />
-                                                    <!--end::Input-->
-                                                </div>
-                                            </div>
-                                            <div class="col" data-kt-calendar="datepicker">
-                                                <div class="fv-row mb-9">
-                                                    <!--begin::Label-->
-                                                    <label class="fs-6 fw-semibold mb-2">Event End
-                                                        Time</label>
-                                                    <!--end::Label-->
-
-                                                    <!--begin::Input-->
-                                                    <input class="form-control form-control-solid"
-                                                        name="calendar_event_end_time"
-                                                        placeholder="Pick a end time"
-                                                        id="kt_calendar_datepicker_end_time" />
-                                                    <!--end::Input-->
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        <!--end::Input group-->
+                                        <!--begin::Input-->
+                                        <input class="form-control form-control-solid"
+                                            name="calendar_event_start_time"
+                                            placeholder="Pick a start time"
+                                            id="kt_calendar_datepicker_start_time" />
+                                        <!--end::Input-->
                                     </div>
-                                    <!--end::Modal body-->
+                                </div>
 
-                                    <!--begin::Modal footer-->
-                                    <div class="modal-footer flex-center">
-                                        <!--begin::Button-->
-                                        <button type="reset" id="kt_modal_add_event_cancel"
-                                            class="btn btn-light me-3">
-                                            Cancel
-                                        </button>
-                                        <!--end::Button-->
+                            </div>
+                            <!--end::Input group-->
 
-                                        <!--begin::Button-->
-                                        <button type="button" id="kt_modal_add_event_submit"
-                                            class="btn btn-primary">
-                                            <span class="indicator-label">
-                                                Submit
-                                            </span>
-                                            <span class="indicator-progress">
-                                                Please wait... <span
-                                                    class="spinner-border spinner-border-sm align-middle ms-2"></span>
-                                            </span>
-                                        </button>
-                                        <!--end::Button-->
+                            <!--begin::Input group-->
+                            <div class="row row-cols-lg-2 g-10">
+                                <div class="col">
+                                    <div class="fv-row mb-9">
+                                        <!--begin::Label-->
+                                        <label class="fs-6 fw-semibold mb-2 required">Event End
+                                            Date</label>
+                                        <!--end::Label-->
+
+                                        <!--begin::Input-->
+                                        <input class="form-control form-control-solid"
+                                            name="calendar_event_end_date"
+                                            placeholder="Pick a end date"
+                                            id="kt_calendar_datepicker_end_date" />
+                                        <!--end::Input-->
                                     </div>
-                                    <!--end::Modal footer-->
-                                </form>
-                                <!--end::Form-->
+                                </div>
+                                <div class="col" data-kt-calendar="datepicker">
+                                    <div class="fv-row mb-9">
+                                        <!--begin::Label-->
+                                        <label class="fs-6 fw-semibold mb-2">Event End
+                                            Time</label>
+                                        <!--end::Label-->
+
+                                        <!--begin::Input-->
+                                        <input class="form-control form-control-solid"
+                                            name="calendar_event_end_time"
+                                            placeholder="Pick a end time"
+                                            id="kt_calendar_datepicker_end_time" />
+                                        <!--end::Input-->
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!--end::Input group-->
+                        </div>
+                        <!--end::Modal body-->
+
+                        <!--begin::Modal footer-->
+                        <div class="modal-footer flex-center">
+                            <!--begin::Button-->
+                            <button type="reset" id="kt_modal_add_event_cancel"
+                                class="btn btn-light me-3">
+                                Cancel
+                            </button>
+                            <!--end::Button-->
+
+                            <!--begin::Button-->
+                            <button type="button" id="kt_modal_add_event_submit"
+                                class="btn btn-primary">
+                                <span class="indicator-label">
+                                    Submit
+                                </span>
+                                <span class="indicator-progress">
+                                    Please wait... <span
+                                        class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                </span>
+                            </button>
+                            <!--end::Button-->
+                        </div>
+                        <!--end::Modal footer-->
+                    </form>
+                    <!--end::Form-->
+                </div>
+            </div>
+        </div>
+        <!--end::Modal - New Product-->
+        <!--begin::Modal - New Product-->
+        <div class="modal fade" id="kt_modal_view_event" tabindex="-1" data-bs-focus="false"
+            aria-hidden="true">
+            <!--begin::Modal dialog-->
+            <div class="modal-dialog modal-dialog-centered mw-650px">
+                <!--begin::Modal content-->
+                <div class="modal-content">
+                    <!--begin::Modal header-->
+                    <div class="modal-header border-0 justify-content-end">
+                        <!--begin::Edit-->
+                        <div class="btn btn-icon btn-sm btn-color-gray-500 btn-active-icon-primary me-2"
+                            data-bs-toggle="tooltip" data-bs-dismiss="click" title="Edit Event"
+                            id="kt_modal_view_event_edit">
+                            <i class="ki-duotone ki-pencil fs-2"><span
+                                    class="path1"></span><span class="path2"></span></i>
+                        </div>
+                        <!--end::Edit-->
+
+                        <!--begin::Edit-->
+                        <div class="btn btn-icon btn-sm btn-color-gray-500 btn-active-icon-danger me-2"
+                            data-bs-toggle="tooltip" data-bs-dismiss="click"
+                            title="Delete Event" id="kt_modal_view_event_delete">
+                            <i class="ki-duotone ki-trash fs-2"><span class="path1"></span><span
+                                    class="path2"></span><span class="path3"></span><span
+                                    class="path4"></span><span class="path5"></span></i>
+                        </div>
+                        <!--end::Edit-->
+
+                        <!--begin::Close-->
+                        <div class="btn btn-icon btn-sm btn-color-gray-500 btn-active-icon-primary"
+                            data-bs-dismiss="modal" data-bs-toggle="tooltip"
+                            data-bs-dismiss="click" title="Hide Event" data-bs-dismiss="modal">
+                            <i class="ki-duotone ki-cross fs-2x"><span
+                                    class="path1"></span><span class="path2"></span></i>
+                        </div>
+                        <!--end::Close-->
+                    </div>
+                    <!--end::Modal header-->
+
+                    <!--begin::Modal body-->
+                    <div class="modal-body pt-0 pb-20 px-lg-17">
+                        <!--begin::Row-->
+                        <div class="d-flex">
+                            <!--begin::Icon-->
+                            <i class="ki-duotone ki-calendar-8 fs-1 text-muted me-5"><span
+                                    class="path1"></span><span class="path2"></span><span
+                                    class="path3"></span><span class="path4"></span><span
+                                    class="path5"></span><span class="path6"></span></i>
+                            <!--end::Icon-->
+
+                            <div class="mb-9">
+                                <!--begin::Event name-->
+                                <div class="d-flex align-items-center mb-2">
+                                    <span class="fs-3 fw-bold me-3"
+                                        data-kt-calendar="event_name"></span> <span
+                                        class="badge badge-light-success"
+                                        data-kt-calendar="all_day"></span>
+                                </div>
+                                <!--end::Event name-->
+
+                                <!--begin::Event description-->
+                                <div class="fs-6" data-kt-calendar="event_description"></div>
+                                <!--end::Event description-->
                             </div>
                         </div>
-                    </div>
-                    <!--end::Modal - New Product-->
-                    <!--begin::Modal - New Product-->
-                    <div class="modal fade" id="kt_modal_view_event" tabindex="-1" data-bs-focus="false"
-                        aria-hidden="true">
-                        <!--begin::Modal dialog-->
-                        <div class="modal-dialog modal-dialog-centered mw-650px">
-                            <!--begin::Modal content-->
-                            <div class="modal-content">
-                                <!--begin::Modal header-->
-                                <div class="modal-header border-0 justify-content-end">
-                                    <!--begin::Edit-->
-                                    <div class="btn btn-icon btn-sm btn-color-gray-500 btn-active-icon-primary me-2"
-                                        data-bs-toggle="tooltip" data-bs-dismiss="click" title="Edit Event"
-                                        id="kt_modal_view_event_edit">
-                                        <i class="ki-duotone ki-pencil fs-2"><span
-                                                class="path1"></span><span class="path2"></span></i>
-                                    </div>
-                                    <!--end::Edit-->
+                        <!--end::Row-->
 
-                                    <!--begin::Edit-->
-                                    <div class="btn btn-icon btn-sm btn-color-gray-500 btn-active-icon-danger me-2"
-                                        data-bs-toggle="tooltip" data-bs-dismiss="click"
-                                        title="Delete Event" id="kt_modal_view_event_delete">
-                                        <i class="ki-duotone ki-trash fs-2"><span class="path1"></span><span
-                                                class="path2"></span><span class="path3"></span><span
-                                                class="path4"></span><span class="path5"></span></i>
-                                    </div>
-                                    <!--end::Edit-->
+                        <!--begin::Row-->
+                        <div class="d-flex align-items-center mb-2">
+                            <!--begin::Bullet-->
+                            <span
+                                class="bullet bullet-dot h-10px w-10px bg-success ms-2 me-7"></span>
+                            <!--end::Bullet-->
 
-                                    <!--begin::Close-->
-                                    <div class="btn btn-icon btn-sm btn-color-gray-500 btn-active-icon-primary"
-                                        data-bs-dismiss="modal" data-bs-toggle="tooltip"
-                                        data-bs-dismiss="click" title="Hide Event" data-bs-dismiss="modal">
-                                        <i class="ki-duotone ki-cross fs-2x"><span
-                                                class="path1"></span><span class="path2"></span></i>
-                                    </div>
-                                    <!--end::Close-->
-                                </div>
-                                <!--end::Modal header-->
-
-                                <!--begin::Modal body-->
-                                <div class="modal-body pt-0 pb-20 px-lg-17">
-                                    <!--begin::Row-->
-                                    <div class="d-flex">
-                                        <!--begin::Icon-->
-                                        <i class="ki-duotone ki-calendar-8 fs-1 text-muted me-5"><span
-                                                class="path1"></span><span class="path2"></span><span
-                                                class="path3"></span><span class="path4"></span><span
-                                                class="path5"></span><span class="path6"></span></i>
-                                        <!--end::Icon-->
-
-                                        <div class="mb-9">
-                                            <!--begin::Event name-->
-                                            <div class="d-flex align-items-center mb-2">
-                                                <span class="fs-3 fw-bold me-3"
-                                                    data-kt-calendar="event_name"></span> <span
-                                                    class="badge badge-light-success"
-                                                    data-kt-calendar="all_day"></span>
-                                            </div>
-                                            <!--end::Event name-->
-
-                                            <!--begin::Event description-->
-                                            <div class="fs-6" data-kt-calendar="event_description"></div>
-                                            <!--end::Event description-->
-                                        </div>
-                                    </div>
-                                    <!--end::Row-->
-
-                                    <!--begin::Row-->
-                                    <div class="d-flex align-items-center mb-2">
-                                        <!--begin::Bullet-->
-                                        <span
-                                            class="bullet bullet-dot h-10px w-10px bg-success ms-2 me-7"></span>
-                                        <!--end::Bullet-->
-
-                                        <!--begin::Event start date/time-->
-                                        <div class="fs-6"><span class="fw-bold">Starts</span> <span
-                                                data-kt-calendar="event_start_date"></span></div>
-                                        <!--end::Event start date/time-->
-                                    </div>
-                                    <!--end::Row-->
-
-                                    <!--begin::Row-->
-                                    <div class="d-flex align-items-center mb-9">
-                                        <!--begin::Bullet-->
-                                        <span
-                                            class="bullet bullet-dot h-10px w-10px bg-danger ms-2 me-7"></span>
-                                        <!--end::Bullet-->
-
-                                        <!--begin::Event end date/time-->
-                                        <div class="fs-6"><span class="fw-bold">Ends</span> <span
-                                                data-kt-calendar="event_end_date"></span></div>
-                                        <!--end::Event end date/time-->
-                                    </div>
-                                    <!--end::Row-->
-
-                                    <!--begin::Row-->
-                                    <div class="d-flex align-items-center">
-                                        <!--begin::Icon-->
-                                        <i class="ki-duotone ki-geolocation fs-1 text-muted me-5"><span
-                                                class="path1"></span><span class="path2"></span></i>
-                                        <!--end::Icon-->
-
-                                        <!--begin::Event location-->
-                                        <div class="fs-6" data-kt-calendar="event_location"></div>
-                                        <!--end::Event location-->
-                                    </div>
-                                    <!--end::Row-->
-                                </div>
-                                <!--end::Modal body-->
-                            </div>
+                            <!--begin::Event start date/time-->
+                            <div class="fs-6"><span class="fw-bold">Starts</span> <span
+                                    data-kt-calendar="event_start_date"></span></div>
+                            <!--end::Event start date/time-->
                         </div>
+                        <!--end::Row-->
+
+                        <!--begin::Row-->
+                        <div class="d-flex align-items-center mb-9">
+                            <!--begin::Bullet-->
+                            <span
+                                class="bullet bullet-dot h-10px w-10px bg-danger ms-2 me-7"></span>
+                            <!--end::Bullet-->
+
+                            <!--begin::Event end date/time-->
+                            <div class="fs-6"><span class="fw-bold">Ends</span> <span
+                                    data-kt-calendar="event_end_date"></span></div>
+                            <!--end::Event end date/time-->
+                        </div>
+                        <!--end::Row-->
+
+                        <!--begin::Row-->
+                        <div class="d-flex align-items-center">
+                            <!--begin::Icon-->
+                            <i class="ki-duotone ki-geolocation fs-1 text-muted me-5"><span
+                                    class="path1"></span><span class="path2"></span></i>
+                            <!--end::Icon-->
+
+                            <!--begin::Event location-->
+                            <div class="fs-6" data-kt-calendar="event_location"></div>
+                            <!--end::Event location-->
+                        </div>
+                        <!--end::Row-->
                     </div>
-                    <!--end::Modal - New Product-->
-                    <!--end::Modals-->
+                    <!--end::Modal body-->
+                </div>
+            </div>
+        </div>
+        <!--end::Modal - New Product-->
+        <!--end::Modals-->
         <!--begin::Footer Section-->
         <div class="mb-0">
             {{-- <!--begin::Curve top-->
@@ -710,172 +519,159 @@
     <script>
         const formData = {};
 
-        document.addEventListener('DOMContentLoaded', function () {
-            var calendarEl = document.getElementById('kt_calendar_app');
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: 'timeGridDay', // tampilan harian dengan grid waktu
-                headerToolbar: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'timeGridDay'
-                    // ,timeGridWeek,dayGridMonth'
-                },
-                // contoh event
-                events: [
-                    {
-                        title: 'Meeting',
-                        start: new Date().toISOString().slice(0, 10) + 'T10:00:00',
-                        end: new Date().toISOString().slice(0, 10) + 'T12:00:00'
-                    }
-                ],
-                nowIndicator: true,
-                editable: true,
-                selectable: true,
+        const steps = document.querySelectorAll('.step');
+        const stepIndicators = document.querySelectorAll('.step-indicator');
+        const progressBar = document.getElementById('progress-bar');
+        const nextButtons = document.querySelectorAll('.next-btn');
+        const prevButtons = document.querySelectorAll('.prev-btn');
+        const registrationForm = document.getElementById('registration-form');
+
+        let currentStep = 1;
+
+        // Update step indicators
+        function updateStepIndicators() {
+            stepIndicators.forEach((indicator, index) => {
+                indicator.classList.remove('active', 'completed', 'inactive');
+                if (index + 1 === currentStep) {
+                    indicator.classList.add('active');
+                } else if (index + 1 < currentStep) {
+                    indicator.classList.add('completed');
+                } else {
+                    indicator.classList.add('inactive');
+                }
             });
-            calendar.render();
 
-            const steps = document.querySelectorAll('.step');
-            const stepIndicators = document.querySelectorAll('.step-indicator');
-            const progressBar = document.getElementById('progress-bar');
-            const nextButtons = document.querySelectorAll('.next-btn');
-            const prevButtons = document.querySelectorAll('.prev-btn');
-            const registrationForm = document.getElementById('registration-form');
+            // Update progress bar
+            progressBar.style.width = `${((currentStep - 1) / (steps.length - 1)) * 100}%`;
+        }
 
-            let currentStep = 1;
+        // Show current step
+        function showStep(stepNumber) {
+            function updateConfirmation() {
+                // document.getElementById('confirm-nama').textContent = formData.nama_lengkap || '';
+                // document.getElementById('confirm-tempat_lahir').textContent = formData.tempat_lahir || '';
+                // document.getElementById('confirm-tanggal_lahir').textContent = formData.tanggal_lahir || '';
+                // document.getElementById('confirm-jenis_kelamin').textContent = formData.jenis_kelamin === 'L' ? 'Laki-laki' : 'Perempuan';
+                // document.getElementById('confirm-alamat').textContent = formData.alamat || '';
+                // document.getElementById('confirm-no_hp').textContent = formData.no_hp || '';
+                // document.getElementById('confirm-email').textContent = formData.email || '';
 
-            // Update step indicators
-            function updateStepIndicators() {
-                stepIndicators.forEach((indicator, index) => {
-                    indicator.classList.remove('active', 'completed', 'inactive');
-                    if (index + 1 === currentStep) {
-                        indicator.classList.add('active');
-                    } else if (index + 1 < currentStep) {
-                        indicator.classList.add('completed');
-                    } else {
-                        indicator.classList.add('inactive');
-                    }
-                });
+                // document.getElementById('confirm-sekolah').textContent = formData.sekolah || '';
+                // document.getElementById('confirm-nama_ortu').textContent = formData.nama_ortu || '';
+                // document.getElementById('confirm-pekerjaan_ortu').textContent = formData.pekerjaan_ortu || '';
 
-                // Update progress bar
-                progressBar.style.width = `${((currentStep - 1) / (steps.length - 1)) * 100}%`;
+                // document.getElementById('confirm-hobi').textContent = formData.hobi || '-';
+                // document.getElementById('confirm-tinggi_badan').textContent = formData.tinggi_badan ? formData.tinggi_badan + ' cm' : '';
+                // document.getElementById('confirm-berat_badan').textContent = formData.berat_badan ? formData.berat_badan + ' kg' : '';
+                // document.getElementById('confirm-golongan_darah').textContent = formData.golongan_darah || '';
+
+                // // File preview
+                // const fotoFile = formData.foto;
+                // if (fotoFile) {
+                //     const reader = new FileReader();
+                //     reader.onload = function (e) {
+                //         document.getElementById('confirm-foto-preview').src = e.target.result;
+                //     };
+                //     reader.readAsDataURL(fotoFile);
+                // }
+
+                // document.getElementById('confirm-file_pernyataan').textContent = formData.file_pernyataan?.name || '';
             }
 
-            // Show current step
-            function showStep(stepNumber) {
-                function updateConfirmation() {
-                    document.getElementById('confirm-nama').textContent = formData.nama_lengkap || '';
-                    document.getElementById('confirm-tempat_lahir').textContent = formData.tempat_lahir || '';
-                    document.getElementById('confirm-tanggal_lahir').textContent = formData.tanggal_lahir || '';
-                    document.getElementById('confirm-jenis_kelamin').textContent = formData.jenis_kelamin === 'L' ? 'Laki-laki' : 'Perempuan';
-                    document.getElementById('confirm-alamat').textContent = formData.alamat || '';
-                    document.getElementById('confirm-no_hp').textContent = formData.no_hp || '';
-                    document.getElementById('confirm-email').textContent = formData.email || '';
-
-                    document.getElementById('confirm-sekolah').textContent = formData.sekolah || '';
-                    document.getElementById('confirm-nama_ortu').textContent = formData.nama_ortu || '';
-                    document.getElementById('confirm-pekerjaan_ortu').textContent = formData.pekerjaan_ortu || '';
-
-                    document.getElementById('confirm-hobi').textContent = formData.hobi || '-';
-                    document.getElementById('confirm-tinggi_badan').textContent = formData.tinggi_badan ? formData.tinggi_badan + ' cm' : '';
-                    document.getElementById('confirm-berat_badan').textContent = formData.berat_badan ? formData.berat_badan + ' kg' : '';
-                    document.getElementById('confirm-golongan_darah').textContent = formData.golongan_darah || '';
-
-                    // File preview
-                    const fotoFile = formData.foto;
-                    if (fotoFile) {
-                        const reader = new FileReader();
-                        reader.onload = function (e) {
-                            document.getElementById('confirm-foto-preview').src = e.target.result;
-                        };
-                        reader.readAsDataURL(fotoFile);
-                    }
-
-                    document.getElementById('confirm-file_pernyataan').textContent = formData.file_pernyataan?.name || '';
+            steps.forEach(step => {
+                if (parseInt(step.dataset.step) === stepNumber) {
+                    step.classList.add('active');
+                } else {
+                    step.classList.remove('active');
                 }
-
-                steps.forEach(step => {
-                    if (parseInt(step.dataset.step) === stepNumber) {
-                        step.classList.add('active');
-                    } else {
-                        step.classList.remove('active');
-                    }
-                });
-                if (stepNumber === 5) {
-                    updateConfirmation();
-                }
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            if (stepNumber === 5) {
+                updateConfirmation();
             }
 
-            // Next button click handler
-            nextButtons.forEach(button => {
-                button.addEventListener('click', function () {
-                    const currentStepForm = this.closest('.step');
-                    const inputs = currentStepForm.querySelectorAll('input[required], select[required]');
-                    let isValid = true;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
 
-                    inputs.forEach(input => {
-                        if (!input.checkValidity()) {
-                            input.classList.add('border-red-500');
-                            isValid = false;
-                        } else {
-                            input.classList.remove('border-red-500');
-                        }
-                    });
+        // Next button click handler
+        nextButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const currentStepForm = this.closest('.step');
+                const inputs = currentStepForm.querySelectorAll('input[required], select[required]');
+                let isValid = true;
 
-                    if (!isValid) {
-                        alert('Harap lengkapi semua field yang diperlukan!');
-                        return;
-                    }
 
-                    // Simpan data ke formData sesuai step
-                    if (currentStep === 1) {
-                        formData.nama_lengkap = document.getElementById('nama_lengkap').value;
-                        formData.tempat_lahir = document.getElementById('tempat_lahir').value;
-                        formData.tanggal_lahir = document.getElementById('tanggal_lahir').value;
-                        formData.jenis_kelamin = document.querySelector('input[name="jenis_kelamin"]:checked')?.value;
-                        formData.alamat = document.getElementById('alamat').value;
-                        formData.no_hp = document.getElementById('no_hp').value;
-                        formData.email = document.getElementById('email').value;
-                    } else if (currentStep === 2) {
-                        formData.sekolah = document.getElementById('sekolah').value;
-                        formData.nama_ortu = document.getElementById('nama_ortu').value;
-                        formData.pekerjaan_ortu = document.getElementById('pekerjaan_ortu').value;
-                    } else if (currentStep === 3) {
-                        formData.hobi = document.getElementById('hobi').value;
-                        formData.tinggi_badan = document.getElementById('tinggi_badan').value;
-                        formData.berat_badan = document.getElementById('berat_badan').value;
-                        formData.golongan_darah = document.getElementById('golongan_darah').value;
-                    } else if (currentStep === 4) {
-                        formData.foto = document.getElementById('foto').files[0];
-                        formData.file_pernyataan = document.getElementById('file_pernyataan').files[0];
-                    }
-
-                    if (currentStep < steps.length) {
-                        currentStep++;
-                        updateStepIndicators();
-                        showStep(currentStep);
-                        if (currentStep === 5) {
-                            updateConfirmation();
-                        }
+                inputs.forEach(input => {
+                    if (!input.checkValidity()) {
+                        input.classList.add('border-red-500');
+                        isValid = false;
+                    } else {
+                        input.classList.remove('border-red-500');
                     }
                 });
-            });
 
-            // Previous button click handler
-            prevButtons.forEach(button => {
-                button.addEventListener('click', function () {
-                    if (currentStep > 1) {
-                        currentStep--;
-                        updateStepIndicators();
-                        showStep(currentStep);
+                if (!isValid) {
+                    alert('Harap lengkapi semua field yang diperlukan!');
+                    return;
+                }
+
+                // Simpan data ke formData sesuai step
+                if (currentStep === 1) {
+                    // formData.nama_lengkap = document.getElementById('nama_lengkap').value;
+                    // formData.tempat_lahir = document.getElementById('tempat_lahir').value;
+                    // formData.tanggal_lahir = document.getElementById('tanggal_lahir').value;
+                    // formData.jenis_kelamin = document.querySelector('input[name="jenis_kelamin"]:checked')?.value;
+                    // formData.alamat = document.getElementById('alamat').value;
+                    // formData.no_hp = document.getElementById('no_hp').value;
+                    // formData.email = document.getElementById('email').value;
+                } else if (currentStep === 2) {
+                    // formData.sekolah = document.getElementById('sekolah').value;
+                    // formData.nama_ortu = document.getElementById('nama_ortu').value;
+                    // formData.pekerjaan_ortu = document.getElementById('pekerjaan_ortu').value;
+                } else if (currentStep === 3) {
+                    // formData.hobi = document.getElementById('hobi').value;
+                    // formData.tinggi_badan = document.getElementById('tinggi_badan').value;
+                    // formData.berat_badan = document.getElementById('berat_badan').value;
+                    // formData.golongan_darah = document.getElementById('golongan_darah').value;
+                } else if (currentStep === 4) {
+                    // formData.foto = document.getElementById('foto').files[0];
+                    // formData.file_pernyataan = document.getElementById('file_pernyataan').files[0];
+                }
+
+                if (currentStep < steps.length) {
+                    currentStep++;
+                    updateStepIndicators();
+                    showStep(currentStep);
+                    if (currentStep === 5) {
+                        updateConfirmation();
                     }
-                });
+                }
             });
-
-            // Initialize
-            updateStepIndicators();
         });
-        
+
+        // Previous button click handler
+        prevButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                if (currentStep > 1) {
+                    currentStep--;
+                    updateStepIndicators();
+                    showStep(currentStep);
+                }
+            });
+        });
+
+        // Optional: handle form submit
+        registrationForm.addEventListener('submit', function (e) {
+            // Validasi final sebelum submit
+            if (!registrationForm.checkValidity()) {
+                e.preventDefault();
+                registrationForm.reportValidity();
+            }
+            // Jika ingin submit via AJAX, tambahkan kode di sini
+        });
+        // Initialize
+        updateStepIndicators();
+
+
     </script>
 </body>
 </html>

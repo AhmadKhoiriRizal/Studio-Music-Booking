@@ -847,7 +847,7 @@ License: For each use you must have a valid license purchased only from above li
 
 
                                                     <div
-                                                        class="d-flex justify-content-between align-items-center text-white mb-5">
+                                                        class="d-flex justify-content-between align-items-center text-white mb-5" style="width: 100%">
                                                         <!-- Left: Nama Paket & Deskripsi -->
                                                         <div>
                                                             <h2 class="fw-bold text-white"
@@ -948,7 +948,7 @@ License: For each use you must have a valid license purchased only from above li
 
 
                                                     <div
-                                                        class="d-flex justify-content-between align-items-center text-white mb-5">
+                                                        class="d-flex justify-content-between align-items-center text-white mb-5" style="width: 100%">
                                                         <!-- Left: Nama Paket & Deskripsi -->
                                                         <div>
                                                             <h2 class="fw-bold text-white"
@@ -1048,7 +1048,7 @@ License: For each use you must have a valid license purchased only from above li
 
 
                                                     <div
-                                                        class="d-flex justify-content-between align-items-center text-white mb-5">
+                                                        class="d-flex justify-content-between align-items-center text-white mb-5" style="width: 100%">
                                                         <!-- Left: Nama Paket & Deskripsi -->
                                                         <div>
                                                             <h2 class="fw-bold text-white"
@@ -1156,7 +1156,7 @@ License: For each use you must have a valid license purchased only from above li
 
 
                                                     <div
-                                                        class="d-flex justify-content-between align-items-center text-white mb-5">
+                                                        class="d-flex justify-content-between align-items-center text-white mb-5" style="width: 100%">
                                                         <!-- Left: Nama Paket & Deskripsi -->
                                                         <div>
                                                             <h2 class="fw-bold text-white"
@@ -1257,7 +1257,7 @@ License: For each use you must have a valid license purchased only from above li
 
 
                                                     <div
-                                                        class="d-flex justify-content-between align-items-center text-white mb-5">
+                                                        class="d-flex justify-content-between align-items-center text-white mb-5" style="width: 100%">
                                                         <!-- Left: Nama Paket & Deskripsi -->
                                                         <div>
                                                             <h2 class="fw-bold text-white"
@@ -1357,7 +1357,7 @@ License: For each use you must have a valid license purchased only from above li
 
 
                                                     <div
-                                                        class="d-flex justify-content-between align-items-center text-white mb-5">
+                                                        class="d-flex justify-content-between align-items-center text-white mb-5" style="width: 100%">
                                                         <!-- Left: Nama Paket & Deskripsi -->
                                                         <div>
                                                             <h2 class="fw-bold text-white"
@@ -1464,7 +1464,7 @@ License: For each use you must have a valid license purchased only from above li
 
 
 
-                            <div class="d-flex justify-content-between align-items-center text-white mb-5">
+                            <div class="d-flex justify-content-between align-items-center text-white mb-5" style="width: 100%">
                             <!-- Left: Nama Paket & Deskripsi -->
                             <div>
                                 <h2 class="fw-bold text-white" style="font-size: 20px; margin-bottom: 8px;">Paket 1</h2>
@@ -1561,7 +1561,7 @@ License: For each use you must have a valid license purchased only from above li
 
 
 
-                            <div class="d-flex justify-content-between align-items-center text-white mb-5">
+                            <div class="d-flex justify-content-between align-items-center text-white mb-5" style="width: 100%">
                             <!-- Left: Nama Paket & Deskripsi -->
                             <div>
                                 <h2 class="fw-bold text-white" style="font-size: 20px; margin-bottom: 8px;">Paket 1</h2>
@@ -1657,7 +1657,7 @@ License: For each use you must have a valid license purchased only from above li
 
 
 
-                            <div class="d-flex justify-content-between align-items-center text-white mb-5">
+                            <div class="d-flex justify-content-between align-items-center text-white mb-5" style="width: 100%">
                             <!-- Left: Nama Paket & Deskripsi -->
                             <div>
                                 <h2 class="fw-bold text-white" style="font-size: 20px; margin-bottom: 8px;">Paket 1</h2>
@@ -1762,7 +1762,7 @@ License: For each use you must have a valid license purchased only from above li
 
 
                                                     <div
-                                                        class="d-flex justify-content-between align-items-center text-white mb-5">
+                                                        class="d-flex justify-content-between align-items-center text-white mb-5" style="width: 100%">
                                                         <!-- Left: Nama Paket & Deskripsi -->
                                                         <div>
                                                             <h2 class="fw-bold text-white"
@@ -1863,7 +1863,7 @@ License: For each use you must have a valid license purchased only from above li
 
 
                                                     <div
-                                                        class="d-flex justify-content-between align-items-center text-white mb-5">
+                                                        class="d-flex justify-content-between align-items-center text-white mb-5" style="width: 100%">
                                                         <!-- Left: Nama Paket & Deskripsi -->
                                                         <div>
                                                             <h2 class="fw-bold text-white"
@@ -1963,7 +1963,7 @@ License: For each use you must have a valid license purchased only from above li
 
 
                                                     <div
-                                                        class="d-flex justify-content-between align-items-center text-white mb-5">
+                                                        class="d-flex justify-content-between align-items-center text-white mb-5" style="width: 100%">
                                                         <!-- Left: Nama Paket & Deskripsi -->
                                                         <div>
                                                             <h2 class="fw-bold text-white"
