@@ -59,7 +59,8 @@ License: For each use you must have a valid license purchased only from above li
 
                         <!--begin::Form-->
                         <form class="form w-100 fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate"
-                            id="kt_sign_in_form" data-kt-redirect-url="/metronic8/demo1/index.html" action="#">
+                            id="kt_sign_in_form" data-kt-redirect-url="/metronic8/demo1/index.html" method="POST" action="{{ route('login') }}">
+                            @csrf
                             <!--begin::Heading-->
                             <div class="text-center mb-11">
                                 <!--begin::Title-->
@@ -79,9 +80,9 @@ License: For each use you must have a valid license purchased only from above li
                             <!--begin::Login options-->
                             <div class="row g-3 mb-9">
                                 <!--begin::Col-->
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <!--begin::Google link--->
-                                    <a href="#"
+                                    <a href="{{ route('google.login') }}"
                                         class="btn btn-flex btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
                                         <img alt="Logo" src="{{ asset('media/svg/brand-logos/google-icon.svg') }}"
                                             class="h-15px me-3">
@@ -91,7 +92,7 @@ License: For each use you must have a valid license purchased only from above li
                                 </div>
                                 <!--end::Col-->
 
-                                <!--begin::Col-->
+                                {{-- <!--begin::Col-->
                                 <div class="col-md-6">
                                     <!--begin::Google link--->
                                     <a href="#"
@@ -104,7 +105,7 @@ License: For each use you must have a valid license purchased only from above li
                                     </a>
                                     <!--end::Google link--->
                                 </div>
-                                <!--end::Col-->
+                                <!--end::Col--> --}}
                             </div>
                             <!--end::Login options-->
 

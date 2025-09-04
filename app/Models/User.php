@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Helpers\Helper;
 
 class User extends Authenticatable
 {
@@ -17,10 +18,18 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
+    public $incrementing = false;
+    protected $keyType = 'string';
+    protected $primaryKey = 'id';
+
     protected $fillable = [
+        'id',
         'name',
         'email',
         'password',
+        'role',
+        'google_id',
     ];
 
     /**
@@ -42,4 +51,25 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            if (empty($model->id)) {
+                $model->id = Helper::generateUniqueUserId(new self);
+            }
+        });
+    }
+
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
+    }
+
+    public function isUser()
+    {
+        return $this->role === 'user';
+    }
 }
