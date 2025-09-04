@@ -196,9 +196,10 @@ License: For each use you must have a valid license purchased only from above li
                                         <!--begin::Menu item-->
                                         <div class="menu-item">
                                             <!--begin::Menu link-->
-                                            <a class="menu-link nav-link py-3 px-4 px-xxl-6" href="/riwayat-booking"
+                                            <a class="menu-link nav-link py-3 px-4 px-xxl-6" href="{{ route('user.booking.riwayat') }}"
                                                 data-kt-scroll-toggle="true" data-kt-drawer-dismiss="true">
-                                                Riwayat Booking </a>
+                                                Riwayat Booking
+                                            </a>
                                             <!--end::Menu link-->
                                         </div>
                                         <!--end::Menu item-->

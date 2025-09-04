@@ -59,51 +59,25 @@ License: For each use you must have a valid license purchased only from above li
 
                         <!--begin::Form-->
                         <form class="form w-100 fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate"
-                            id="kt_sign_up_form"
-                            data-kt-redirect-url="/metronic8/demo1/authentication/layouts/corporate/sign-in.html"
-                            action="#">
+                            id="kt_sign_up_form" method="POST"  action="{{ session('google_user') ? route('google.register') : route('register') }}">
+                            @csrf
                             <!--begin::Heading-->
                             <div class="text-center mb-11">
-                                <!--begin::Title-->
-                                <h1 class="text-gray-900 fw-bolder mb-3">
-                                    Sign Up
-                                </h1>
-                                <!--end::Title-->
-
-                                <!--begin::Subtitle-->
-                                <div class="text-gray-500 fw-semibold fs-6">
-                                    Your Social Campaigns
-                                </div>
-                                <!--end::Subtitle--->
+                                <h1 class="text-gray-900 fw-bolder mb-3">Sign Up</h1>
+                                <div class="text-gray-500 fw-semibold fs-6">Your Social Campaigns</div>
                             </div>
-                            <!--begin::Heading-->
+                            <!--end::Heading-->
 
                             <!--begin::Login options-->
                             <div class="row g-3 mb-9">
                                 <!--begin::Col-->
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <!--begin::Google link--->
-                                    <a href="#"
+                                    <a href="{{ route('google.login') }}"
                                         class="btn btn-flex btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
                                         <img alt="Logo" src="{{ asset('media/svg/brand-logos/google-icon.svg') }}"
                                             class="h-15px me-3">
-                                        Sign in with Google
-                                    </a>
-                                    <!--end::Google link--->
-                                </div>
-                                <!--end::Col-->
-
-                                <!--begin::Col-->
-                                <div class="col-md-6">
-                                    <!--begin::Google link--->
-                                    <a href="#"
-                                        class="btn btn-flex btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
-                                        <img alt="Logo" src="{{ asset('media/svg/brand-logos/apple-black.svg') }}"
-                                            class="theme-light-show h-15px me-3">
-                                        <img alt="Logo"
-                                            src="{{ asset('media/svg/brand-logos/apple-black-dark.svg') }}"
-                                            class="theme-dark-show h-15px me-3">
-                                        Sign in with Apple
+                                        Sign up with Google
                                     </a>
                                     <!--end::Google link--->
                                 </div>
@@ -112,19 +86,31 @@ License: For each use you must have a valid license purchased only from above li
                             <!--end::Login options-->
 
                             <!--begin::Separator-->
-                            <div class="separator separator-content my-14"><span
-                                    class="w-125px text-gray-500 fw-semibold fs-7">Or with email</span></div>
+                            <div class="separator separator-content my-14">
+                                <span class="w-125px text-gray-500 fw-semibold fs-7">Or with email</span>
+                            </div>
                             <!--end::Separator-->
 
+                            <!-- Input fields lainnya... -->
                             <!--begin::Input group--->
                             <div class="fv-row mb-8 fv-plugins-icon-container">
+                                <!--begin::Name-->
+                                <input type="text" placeholder="Full Name" name="name" autocomplete="off"
+                                    class="form-control bg-transparent" value="{{ old('name') }}" required>
+                                @error('name')
+                                    <div class="text-danger mt-2">{{ $message }}</div>
+                                @enderror
+                                <!--end::Name-->
+                            </div>
+
+                            <div class="fv-row mb-8 fv-plugins-icon-container">
                                 <!--begin::Email-->
-                                <input type="text" placeholder="Email" name="email" autocomplete="off"
-                                    class="form-control bg-transparent">
+                                <input type="email" placeholder="Email" name="email" autocomplete="off"
+                                    class="form-control bg-transparent" value="{{ old('email') }}" required>
+                                @error('email')
+                                    <div class="text-danger mt-2">{{ $message }}</div>
+                                @enderror
                                 <!--end::Email-->
-                                <div
-                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
-                                </div>
                             </div>
 
                             <!--begin::Input group-->
@@ -156,6 +142,9 @@ License: For each use you must have a valid license purchased only from above li
                                         <div class="flex-grow-1 bg-secondary bg-active-success rounded h-5px"></div>
                                     </div>
                                     <!--end::Meter-->
+                                    @error('password')
+                                        <div class="text-danger mt-2">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <!--end::Wrapper-->
 
@@ -170,60 +159,26 @@ License: For each use you must have a valid license purchased only from above li
                             </div>
                             <!--end::Input group--->
 
-                            <!--end::Input group--->
                             <div class="fv-row mb-8 fv-plugins-icon-container">
-                                <!--begin::Repeat Password-->
-                                <input type="text" placeholder="Repeat Password" name="confirm-password"
-                                    autocomplete="off" class="form-control bg-transparent">
-                                <!--end::Repeat Password-->
-                                <div
-                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
-                                </div>
+                                <input type="password" placeholder="Confirm Password" name="password_confirmation"
+                                    autocomplete="off" class="form-control bg-transparent" required>
                             </div>
                             <!--end::Input group--->
 
-                            <!--begin::Accept-->
-                            <div class="fv-row mb-8 fv-plugins-icon-container">
-                                <label class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="toc" value="1">
-                                    <span class="form-check-label fw-semibold text-gray-700 fs-base ms-1">
-                                        I Accept the <a href="#" class="ms-1 link-primary">Terms</a>
-                                    </span>
-                                </label>
-                                <div
-                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
-                                </div>
-                            </div>
-                            <!--end::Accept-->
-
-                            <!--begin::Submit button-->
+                            <!-- Submit button dan lainnya... -->
                             <div class="d-grid mb-10">
                                 <button type="submit" id="kt_sign_up_submit" class="btn btn-primary">
-
-                                    <!--begin::Indicator label-->
-                                    <span class="indicator-label">
-                                        Sign up</span>
-                                    <!--end::Indicator label-->
-
-                                    <!--begin::Indicator progress-->
+                                    <span class="indicator-label">Sign up</span>
                                     <span class="indicator-progress">
-                                        Please wait... <span
-                                            class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                        Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
                                     </span>
-                                    <!--end::Indicator progress--> </button>
+                                </button>
                             </div>
-                            <!--end::Submit button-->
 
-                            <!--begin::Sign up-->
                             <div class="text-gray-500 text-center fw-semibold fs-6">
                                 Already have an Account?
-
-                                <a href="/metronic8/demo1/authentication/layouts/corporate/sign-in.html"
-                                    class="link-primary fw-semibold">
-                                    Sign in
-                                </a>
+                                <a href="{{ route('login') }}" class="link-primary fw-semibold">Sign in</a>
                             </div>
-                            <!--end::Sign up-->
                         </form>
                         <!--end::Form-->
 

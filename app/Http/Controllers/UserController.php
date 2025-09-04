@@ -10,4 +10,14 @@ class UserController extends Controller
     {
         return view('user.dashboard');
     }
+    
+    public function profile()
+    {
+        return view('user.profile');
+    }
+
+    public function settings()
+    {
+        return view('user.settings');
+    }
 }

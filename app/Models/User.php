@@ -72,4 +72,10 @@ class User extends Authenticatable
     {
         return $this->role === 'user';
     }
+
+    // Cek apakah user registered via Google
+    public function isGoogleUser()
+    {
+        return !empty($this->google_id);
+    }
 }

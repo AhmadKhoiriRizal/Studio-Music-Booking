@@ -173,7 +173,7 @@ License: For each use you must have a valid license purchased only from above li
                             <div class="text-gray-500 text-center fw-semibold fs-6">
                                 Not a Member yet?
 
-                                <a href="/metronic8/demo1/authentication/layouts/corporate/sign-up.html"
+                                <a href="{{ route('register') }}"
                                     class="link-primary">
                                     Sign up
                                 </a>

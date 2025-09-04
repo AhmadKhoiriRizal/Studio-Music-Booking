@@ -73,6 +73,7 @@ Route::controller(LoginController::class)->group(function () {
 // Google Login Routes
 Route::get('/auth/google', [GoogleController::class, 'redirectToGoogle'])->name('google.login');
 Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+Route::post('/auth/google/register', [GoogleController::class, 'registerWithGoogle'])->name('google.register');
 
 // User Routes (harus login sebagai user)
 Route::middleware(['auth', 'user'])->prefix('user')->name('user.')->group(function () {
