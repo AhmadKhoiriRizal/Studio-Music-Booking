@@ -59,7 +59,7 @@ License: For each use you must have a valid license purchased only from above li
 
                         <!--begin::Form-->
                         <form class="form w-100 fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate"
-                            id="kt_sign_up_form" method="POST"  action="{{ session('google_user') ? route('google.register') : route('register') }}">
+                            id="kt_sign_up_form" method="POST" action="{{ route('register') }}">
                             @csrf
                             <!--begin::Heading-->
                             <div class="text-center mb-11">
