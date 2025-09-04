@@ -15,7 +15,7 @@ License: For each use you must have a valid license purchased only from above li
 
 <head>
     <title>Studio Musik - Riwayat Booking</title>
-    @include('user.template.metadata')
+    @include('user.layout.metadata')
     <link href="{{ asset('plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css" />
 </head>
 <!--end::Head-->
@@ -54,7 +54,7 @@ License: For each use you must have a valid license purchased only from above li
         <div class="mb-0" id="home">
             <!--begin::Wrapper-->
             <div class="bgi-no-repeat bgi-size-contain bgi-position-x-center bgi-position-y-bottom landing-dark-bg">
-                @include('user.template.header')
+                @include('user.layout.header')
             </div>
             <!--end::Wrapper-->
         </div>
@@ -164,14 +164,14 @@ License: For each use you must have a valid license purchased only from above li
 
             <!--begin::Wrapper-->
             <div class="landing-dark-bg">
-                @include('user.template.footer')
+                @include('user.layout.footer')
             </div>
             <!--end::Wrapper-->
         </div>
         <!--end::Footer Section-->
     </div>
 
-    @include('user.template.script')
+    @include('user.layout.script')
 
     <script src="{{ asset('plugins/custom/datatables/datatables.bundle.js') }}"></script>
     <script>

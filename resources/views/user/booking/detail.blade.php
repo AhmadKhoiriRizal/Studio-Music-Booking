@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>PENDAFTARAN ANGGOTA BARU SAKA BHAYANGKARA POLSEK MAYONG</title>
 
-    @include('user.template.metadata')
+    @include('user.layout.metadata')
     {{-- <!--begin::Vendor Stylesheets(used for this page only)-->
     <link href="{{ asset('plugins/custom/fullcalendar/fullcalendar.bundle.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css" />
@@ -120,7 +120,7 @@
         <div class="mb-0" id="home">
             <!--begin::Wrapper-->
             <div class="bgi-no-repeat bgi-size-contain bgi-position-x-center bgi-position-y-bottom landing-dark-bg">
-                @include('user.template.header')
+                @include('user.layout.header')
             </div>
             <!--end::Wrapper-->
         </div>
@@ -237,7 +237,7 @@
 
             <!--begin::Wrapper-->
             <div class="landing-dark-bg">
-                @include('user.template.footer')
+                @include('user.layout.footer')
             </div>
             <!--end::Wrapper-->
         </div>
@@ -245,7 +245,7 @@
     </div>
     <!--end::Root-->
 
-    @include('user.template.script')
+    @include('user.layout.script')
     {{-- <!--begin::Vendors Javascript(used for this page only)-->
     <script src="{{ asset('plugins/custom/fullcalendar/fullcalendar.bundle.js') }}"></script>
     <script src="{{ asset('plugins/custom/datatables/datatables.bundle.js') }}"></script>

@@ -14,7 +14,7 @@ License: For each use you must have a valid license purchased only from above li
 <!--begin::Head-->
 
 <head>
-    @include('user.template.metadata')
+    @include('user.layout.metadata')
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -381,7 +381,7 @@ License: For each use you must have a valid license purchased only from above li
     </svg>
     <!--end::Container-->
 
-    @include('user.template.script')
+    @include('user.layout.script')
 </body>
 <!--end::Body-->
 
