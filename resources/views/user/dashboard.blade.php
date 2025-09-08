@@ -374,8 +374,8 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--end::User menu-->
                                 @else
                                     <!-- Tampilan untuk guest (belum login) -->
-                                    <a href="{{ route('login') }}" class="btn btn-success">Login</a>
-                                    <a href="{{ route('register') }}" class="btn btn-success">Register</a>
+                                    <a href="/signin" class="btn btn-success">Login</a>
+                                    <a href="/signup" class="btn btn-success">Register</a>
                                 @endauth
                             </div>
                             <!--end::Toolbar-->

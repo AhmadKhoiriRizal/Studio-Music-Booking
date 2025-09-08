@@ -59,11 +59,11 @@ License: For each use you must have a valid license purchased only from above li
 
                         <!--begin::Form-->
                         <form class="form w-100 fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate"
-                            id="kt_sign_up_form" method="POST" action="{{ route('register') }}">
+                            id="kt_sign_up_form" method="POST" action="{{ route('password.update') }}">
                             @csrf
                             <!--begin::Heading-->
                             <div class="text-center mb-11">
-                                <h1 class="text-gray-900 fw-bolder mb-3">Sign Up</h1>
+                                <h1 class="text-gray-900 fw-bolder mb-3">Reset Password</h1>
                                 <div class="text-gray-500 fw-semibold fs-6">Your Social Campaigns</div>
                             </div>
                             <!--end::Heading-->
@@ -92,15 +92,15 @@ License: For each use you must have a valid license purchased only from above li
                             <!--end::Separator-->
 
                             <!-- Input fields lainnya... -->
-                            <!--begin::Input group--->
+                            {{-- <!--begin::Input group--->
                             <div class="fv-row mb-8 fv-plugins-icon-container">
-                                <!--begin::Name-->
-                                <input type="text" placeholder="Full Name" name="name" autocomplete="off"
-                                    class="form-control bg-transparent" value="{{ old('name') }}" required>
-                                @error('name')
+                                <!--begin::Login-->
+                                <input type="text" placeholder="Masukkan email atau nomor handphone" autocomplete="off" id="login" name="login"
+                                    class="form-control bg-transparent" value="{{ old('login') }}" required>
+                                @error('login')
                                     <div class="text-danger mt-2">{{ $message }}</div>
                                 @enderror
-                                <!--end::Name-->
+                                <!--end::Login-->
                             </div>
 
                             <div class="fv-row mb-8 fv-plugins-icon-container">
@@ -121,7 +121,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <div class="text-danger mt-2">{{ $message }}</div>
                                 @enderror
                                 <!--end::Email-->
-                            </div>
+                            </div> --}}
 
                             <!--begin::Input group-->
                             <div class="fv-row mb-8 fv-plugins-icon-container" data-kt-password-meter="true">
@@ -130,7 +130,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin::Input wrapper-->
                                     <div class="position-relative mb-3">
                                         <input class="form-control bg-transparent" type="password"
-                                            placeholder="Password" name="password" autocomplete="off">
+                                            placeholder="Password Baru" name="password" autocomplete="off">
 
                                         <span
                                             class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2"
@@ -180,7 +180,7 @@ License: For each use you must have a valid license purchased only from above li
                                 <div></div>
 
                                 <!--begin::Link-->
-                                <a href="{{ route('password.forgot')}}"
+                                <a href="/metronic8/demo1/authentication/layouts/corporate/reset-password.html"
                                     class="link-primary">
                                     Forgot Password ?
                                 </a>
@@ -191,7 +191,7 @@ License: For each use you must have a valid license purchased only from above li
                             <!-- Submit button dan lainnya... -->
                             <div class="d-grid mb-10">
                                 <button type="submit" id="kt_sign_up_submit" class="btn btn-primary">
-                                    <span class="indicator-label">Sign up</span>
+                                    <span class="indicator-label">Kirim Kode Verifikasi</span>
                                     <span class="indicator-progress">
                                         Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
                                     </span>

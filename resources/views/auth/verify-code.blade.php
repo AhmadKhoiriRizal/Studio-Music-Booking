@@ -59,11 +59,11 @@ License: For each use you must have a valid license purchased only from above li
 
                         <!--begin::Form-->
                         <form class="form w-100 fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate"
-                            id="kt_sign_up_form" method="POST" action="{{ route('register') }}">
+                            id="kt_sign_up_form" method="POST" action="{{ route('password.verify') }}">
                             @csrf
                             <!--begin::Heading-->
                             <div class="text-center mb-11">
-                                <h1 class="text-gray-900 fw-bolder mb-3">Sign Up</h1>
+                                <h1 class="text-gray-900 fw-bolder mb-3">Verrification Code</h1>
                                 <div class="text-gray-500 fw-semibold fs-6">Your Social Campaigns</div>
                             </div>
                             <!--end::Heading-->
@@ -94,16 +94,16 @@ License: For each use you must have a valid license purchased only from above li
                             <!-- Input fields lainnya... -->
                             <!--begin::Input group--->
                             <div class="fv-row mb-8 fv-plugins-icon-container">
-                                <!--begin::Name-->
-                                <input type="text" placeholder="Full Name" name="name" autocomplete="off"
-                                    class="form-control bg-transparent" value="{{ old('name') }}" required>
-                                @error('name')
+                                <!--begin::Login-->
+                                <input type="text" placeholder="Kode Verifikasi (6 digit)" autocomplete="off" id="verification_code" name="verification_code"
+                                    class="form-control bg-transparent" required maxlength="6" pattern="\d{6}">
+                                @error('verification_code')
                                     <div class="text-danger mt-2">{{ $message }}</div>
                                 @enderror
-                                <!--end::Name-->
+                                <!--end::Login-->
                             </div>
 
-                            <div class="fv-row mb-8 fv-plugins-icon-container">
+                            {{-- <div class="fv-row mb-8 fv-plugins-icon-container">
                                 <!--begin::Phone-->
                                 <input type="phone" placeholder="No Handphone" name="phone" autocomplete="off"
                                     class="form-control bg-transparent" value="{{ old('phone') }}" required>
@@ -180,18 +180,18 @@ License: For each use you must have a valid license purchased only from above li
                                 <div></div>
 
                                 <!--begin::Link-->
-                                <a href="{{ route('password.forgot')}}"
+                                <a href="/metronic8/demo1/authentication/layouts/corporate/reset-password.html"
                                     class="link-primary">
                                     Forgot Password ?
                                 </a>
                                 <!--end::Link-->
                             </div>
-                            <!--end::Wrapper-->
+                            <!--end::Wrapper--> --}}
 
                             <!-- Submit button dan lainnya... -->
                             <div class="d-grid mb-10">
                                 <button type="submit" id="kt_sign_up_submit" class="btn btn-primary">
-                                    <span class="indicator-label">Sign up</span>
+                                    <span class="indicator-label">Verifikasi</span>
                                     <span class="indicator-progress">
                                         Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
                                     </span>
@@ -204,6 +204,19 @@ License: For each use you must have a valid license purchased only from above li
                             </div>
                         </form>
                         <!--end::Form-->
+
+                        <!--begin::Wrapper-->
+                        <div class="d-flex flex-stack flex-wrap gap-3 fs-base fw-semibold mb-8">
+                            <div></div>
+
+                            <!--begin::Link-->
+                            <a href="{{ route('password.forgot') }}"
+                                class="link-primary">
+                                Kirim Ulang Kode
+                            </a>
+                            <!--end::Link-->
+                        </div>
+                        <!--end::Wrapper-->
 
                     </div>
                     <!--end::Wrapper-->

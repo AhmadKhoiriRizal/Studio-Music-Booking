@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BookingController;
@@ -73,7 +74,7 @@ Route::controller(LoginController::class)->group(function () {
 // Google Login Routes
 Route::get('/auth/google', [GoogleController::class, 'redirectToGoogle'])->name('google.login');
 Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
-Route::post('/auth/google/register', [GoogleController::class, 'registerWithGoogle'])->name('google.register');
+// Route::post('/auth/google/register', [GoogleController::class, 'registerWithGoogle'])->nam   e('google.register');
 
 // User Routes (harus login sebagai user)
 Route::middleware(['auth', 'user'])->prefix('user')->name('user.')->group(function () {
@@ -137,4 +138,16 @@ Route::get('/home', function () {
 Route::fallback(function () {
     return view('errors.404');
 });
+
+// Password Reset Routes
+Route::prefix('password')->group(function () {
+    Route::get('/forgot', [ForgotPasswordController::class, 'showForgotPasswordForm'])->name('password.forgot');
+    Route::post('/send', [ForgotPasswordController::class, 'sendResetLink'])->name('password.send');
+    Route::get('/verify', [ForgotPasswordController::class, 'showVerifyForm'])->name('password.verify');
+    Route::post('/verify', [ForgotPasswordController::class, 'verifyCode'])->name('password.verify');
+    Route::get('/reset', [ForgotPasswordController::class, 'showResetForm'])->name('password.reset');
+    Route::post('/reset', [ForgotPasswordController::class, 'resetPassword'])->name('password.update');
+});
+
+
 

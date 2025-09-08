@@ -84,63 +84,38 @@ class LoginController extends Controller
      */
     public function showRegistrationForm()
     {
-        // Clear google_user session jika user mengakses register page manually
-        if (!request()->has('google_redirect')) {
-            session()->forget('google_user');
-        }
-
         return view('signup');
     }
 
     public function register(Request $request)
     {
-        // Validasi berbeda untuk Google vs manual registration
-        $validationRules = [
+        // Validasi input
+        $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
-        ];
-
-        if ($request->filled('google_id')) {
-            // Google registration - password optional
-            $validationRules['password'] = 'nullable';
-            $validationRules['google_id'] = 'required';
-        } else {
-            // Manual registration - password required
-            $validationRules['password'] = 'required|min:6|confirmed';
-        }
-
-        $validator = Validator::make($request->all(), $validationRules);
+            'phone' => 'required|string|max:15|unique:users,phone',
+            'password' => 'required|min:6|confirmed',
+        ]);
 
         if ($validator->fails()) {
             return redirect()->back()
                 ->withErrors($validator)
-                ->withInput()
-                ->with('google_user', $request->only(['google_id', 'name', 'email']));
+                ->withInput();
         }
 
         // Buat user baru
-        $userData = [
+        $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => $request->filled('google_id')
-                ? bcrypt(uniqid()) // Password acak untuk Google user
-                : Hash::make($request->password),
-            'role' => 'user',
-        ];
-
-        // Tambahkan google_id jika ada
-        if ($request->filled('google_id')) {
-            $userData['google_id'] = $request->google_id;
-        }
-
-        $user = User::create($userData);
+            'phone' => $request->phone,
+            'password' => Hash::make($request->password),
+            'role' => 'user', // Default role
+            'status' => 'aktif',
+        ]);
 
         // Login user setelah registrasi
         Auth::login($user);
 
-        // Clear google_user session
-        session()->forget('google_user');
-
-        return redirect($this->redirectTo());
+        return redirect()->intended('/signin');
     }
 }

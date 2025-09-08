@@ -27,6 +27,7 @@ class User extends Authenticatable
         'id',
         'name',
         'email',
+        'phone', // Tambahkan phone ke fillable
         'password',
         'role',
         'google_id',
@@ -74,8 +75,13 @@ class User extends Authenticatable
     }
 
     // Cek apakah user registered via Google
-    public function isGoogleUser()
+    // public function isGoogleUser()
+    // {
+    //     return !empty($this->google_id);
+    // }
+
+    public function isActive()
     {
-        return !empty($this->google_id);
+        return $this->status === 'aktif';
     }
 }

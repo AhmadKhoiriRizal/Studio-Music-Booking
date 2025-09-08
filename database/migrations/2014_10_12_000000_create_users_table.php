@@ -15,6 +15,7 @@ return new class extends Migration
             $table->string('id', 10)->primary();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('phone')->nullable(); // Tambahan nomor handphone
             $table->string('role')->default('user'); // Tambahkan kolom role
             $table->string('password');
             $table->string('google_id')->nullable();
