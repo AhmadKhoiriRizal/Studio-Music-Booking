@@ -14,7 +14,27 @@ License: For each use you must have a valid license purchased only from above li
 <!--begin::Head-->
 
 <head>
+    <title>Sign Up | Studio Musik</title>
     @include('user.layout.metadata')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <style>
+        @keyframes wave {
+        0%, 100% { transform: translateY(0); }
+        25% { transform: translateY(-10px); }
+        50% { transform: translateY(5px); }
+        75% { transform: translateY(-5px); }
+        }
+
+        .music-wave-text {
+        display: inline-block;
+        color: #fff;
+        font-size: 2.5rem;
+        font-weight: bold;
+        text-align: center;
+        animation: wave 2s ease-in-out infinite;
+        }
+    </style>
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -64,7 +84,7 @@ License: For each use you must have a valid license purchased only from above li
                             <!--begin::Heading-->
                             <div class="text-center mb-11">
                                 <h1 class="text-gray-900 fw-bolder mb-3">Sign Up</h1>
-                                <div class="text-gray-500 fw-semibold fs-6">Your Social Campaigns</div>
+                                <div class="text-gray-500 fw-semibold fs-6">Studio Musik</div>
                             </div>
                             <!--end::Heading-->
 
@@ -200,7 +220,7 @@ License: For each use you must have a valid license purchased only from above li
 
                             <div class="text-gray-500 text-center fw-semibold fs-6">
                                 Already have an Account?
-                                <a href="{{ route('login') }}" class="link-primary fw-semibold">Sign in</a>
+                                <a href="/signin" class="link-primary fw-semibold">Sign in</a>
                             </div>
                         </form>
                         <!--end::Form-->
@@ -209,100 +229,6 @@ License: For each use you must have a valid license purchased only from above li
                     <!--end::Wrapper-->
                 </div>
                 <!--end::Form-->
-
-                <!--begin::Footer-->
-                <div class="w-lg-500px d-flex flex-stack px-10 mx-auto">
-                    <!--begin::Languages-->
-                    <div class="me-10">
-                        <!--begin::Toggle-->
-                        <button
-                            class="btn btn-flex btn-link btn-color-gray-700 btn-active-color-primary rotate fs-base"
-                            data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
-                            data-kt-menu-offset="0px, 0px">
-                            <img data-kt-element="current-lang-flag" class="w-20px h-20px rounded me-3"
-                                src="{{ asset('media/flags/united-states.svg') }}" alt="">
-
-                            <span data-kt-element="current-lang-name" class="me-1">English</span>
-
-                            <span class="d-flex flex-center rotate-180">
-                                <i class="ki-duotone ki-down fs-5 text-muted m-0"></i> </span>
-                        </button>
-                        <!--end::Toggle-->
-
-                        <!--begin::Menu-->
-                        <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-4 fs-7"
-                            data-kt-menu="true" id="kt_auth_lang_menu">
-                            <!--begin::Menu item-->
-                            <div class="menu-item px-3">
-                                <a href="#" class="menu-link d-flex px-5" data-kt-lang="English">
-                                    <span class="symbol symbol-20px me-4">
-                                        <img data-kt-element="lang-flag" class="rounded-1"
-                                            src="{{ asset('media/flags/united-states.svg') }}" alt="">
-                                    </span>
-                                    <span data-kt-element="lang-name">English</span>
-                                </a>
-                            </div>
-                            <!--end::Menu item-->
-                            <!--begin::Menu item-->
-                            <div class="menu-item px-3">
-                                <a href="#" class="menu-link d-flex px-5" data-kt-lang="Spanish">
-                                    <span class="symbol symbol-20px me-4">
-                                        <img data-kt-element="lang-flag" class="rounded-1"
-                                            src="{{ asset('media/flags/spain.svg') }}" alt="">
-                                    </span>
-                                    <span data-kt-element="lang-name">Spanish</span>
-                                </a>
-                            </div>
-                            <!--end::Menu item-->
-                            <!--begin::Menu item-->
-                            <div class="menu-item px-3">
-                                <a href="#" class="menu-link d-flex px-5" data-kt-lang="German">
-                                    <span class="symbol symbol-20px me-4">
-                                        <img data-kt-element="lang-flag" class="rounded-1"
-                                            src="{{ asset('media/flags/germany.svg') }}" alt="">
-                                    </span>
-                                    <span data-kt-element="lang-name">German</span>
-                                </a>
-                            </div>
-                            <!--end::Menu item-->
-                            <!--begin::Menu item-->
-                            <div class="menu-item px-3">
-                                <a href="#" class="menu-link d-flex px-5" data-kt-lang="Japanese">
-                                    <span class="symbol symbol-20px me-4">
-                                        <img data-kt-element="lang-flag" class="rounded-1"
-                                            src="{{ asset('media/flags/japan.svg') }}" alt="">
-                                    </span>
-                                    <span data-kt-element="lang-name">Japanese</span>
-                                </a>
-                            </div>
-                            <!--end::Menu item-->
-                            <!--begin::Menu item-->
-                            <div class="menu-item px-3">
-                                <a href="#" class="menu-link d-flex px-5" data-kt-lang="French">
-                                    <span class="symbol symbol-20px me-4">
-                                        <img data-kt-element="lang-flag" class="rounded-1"
-                                            src="{{ asset('media/flags/france.svg') }}" alt="">
-                                    </span>
-                                    <span data-kt-element="lang-name">French</span>
-                                </a>
-                            </div>
-                            <!--end::Menu item-->
-                        </div>
-                        <!--end::Menu-->
-                    </div>
-                    <!--end::Languages-->
-
-                    <!--begin::Links-->
-                    <div class="d-flex fw-semibold text-primary fs-base gap-5">
-                        <a href="/metronic8/demo1/pages/team.html" target="_blank">Terms</a>
-
-                        <a href="/metronic8/demo1/pages/pricing/column.html" target="_blank">Plans</a>
-
-                        <a href="/metronic8/demo1/pages/contact.html" target="_blank">Contact Us</a>
-                    </div>
-                    <!--end::Links-->
-                </div>
-                <!--end::Footer-->
             </div>
             <!--end::Body-->
 
@@ -312,33 +238,29 @@ License: For each use you must have a valid license purchased only from above li
                 <!--begin::Content-->
                 <div class="d-flex flex-column flex-center py-7 py-lg-15 px-5 px-md-15 w-100">
                     <!--begin::Logo-->
-                    <a href="/metronic8/demo1/index.html" class="mb-0 mb-lg-12">
-                        <img alt="Logo" src="{{ asset('media/logos/custom-1.png') }}" class="h-60px h-lg-75px">
+                    <a href="/metronic8/demo1/index.html" class="mb-0 mb-lg-12 animate__animated animate__pulse animate__infinite">
+                        <img alt="Logo" src="{{ asset('media/studio/logostudio.png') }}" class="h-60px h-lg-75px">
                     </a>
                     <!--end::Logo-->
 
                     <!--begin::Image-->
-                    <img class="d-none d-lg-block mx-auto w-275px w-md-50 w-xl-500px mb-10 mb-lg-20"
-                        src="{{ asset('media/misc/auth-screens.png') }}" alt="">
+                    <img class="d-none d-lg-block mx-auto w-200px w-md-50 w-xl-400px mb-10 mb-lg-20"
+                        src="{{ asset('media/misc/undefined__Professional_music_.png') }}" alt="">
                     <!--end::Image-->
 
                     <!--begin::Title-->
                     <h1 class="d-none d-lg-block text-white fs-2qx fw-bolder text-center mb-7">
-                        Fast, Efficient and Productive
+                        Studio Musik, Mudah & Cepat
                     </h1>
                     <!--end::Title-->
 
                     <!--begin::Text-->
                     <div class="d-none d-lg-block text-white fs-base text-center">
-                        In this kind of post, <a href="#" class="opacity-75-hover text-warning fw-bold me-1">the
-                            blogger</a>
-
-                        introduces a person they’ve interviewed <br> and provides some background information about
-
-                        <a href="#" class="opacity-75-hover text-warning fw-bold me-1">the interviewee</a>
-                        and their <br> work following this is a transcript of the interview.
+                        Rasakan ritme kemudahan dalam memesan studio musik favoritmu! <br>
+                        ⏱️ Cepat, 🔒 aman, dan 🎧 siap menemani sesi latihanmu kapan saja.
                     </div>
                     <!--end::Text-->
+
                 </div>
                 <!--end::Content-->
             </div>

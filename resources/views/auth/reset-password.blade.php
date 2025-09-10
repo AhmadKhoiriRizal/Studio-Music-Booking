@@ -14,7 +14,28 @@ License: For each use you must have a valid license purchased only from above li
 <!--begin::Head-->
 
 <head>
+    <title>Reset Password | Studio Musik</title>
     @include('user.layout.metadata')
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <style>
+        @keyframes wave {
+        0%, 100% { transform: translateY(0); }
+        25% { transform: translateY(-10px); }
+        50% { transform: translateY(5px); }
+        75% { transform: translateY(-5px); }
+        }
+
+        .music-wave-text {
+        display: inline-block;
+        color: #fff;
+        font-size: 2.5rem;
+        font-weight: bold;
+        text-align: center;
+        animation: wave 2s ease-in-out infinite;
+        }
+    </style>
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -64,64 +85,9 @@ License: For each use you must have a valid license purchased only from above li
                             <!--begin::Heading-->
                             <div class="text-center mb-11">
                                 <h1 class="text-gray-900 fw-bolder mb-3">Reset Password</h1>
-                                <div class="text-gray-500 fw-semibold fs-6">Your Social Campaigns</div>
+                                <div class="text-gray-500 fw-semibold fs-6">Studio Musik</div>
                             </div>
                             <!--end::Heading-->
-
-                            <!--begin::Login options-->
-                            <div class="row g-3 mb-9">
-                                <!--begin::Col-->
-                                <div class="col-md-12">
-                                    <!--begin::Google link--->
-                                    <a href="{{ route('google.login') }}"
-                                        class="btn btn-flex btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
-                                        <img alt="Logo" src="{{ asset('media/svg/brand-logos/google-icon.svg') }}"
-                                            class="h-15px me-3">
-                                        Sign up with Google
-                                    </a>
-                                    <!--end::Google link--->
-                                </div>
-                                <!--end::Col-->
-                            </div>
-                            <!--end::Login options-->
-
-                            <!--begin::Separator-->
-                            <div class="separator separator-content my-14">
-                                <span class="w-125px text-gray-500 fw-semibold fs-7">Or with email</span>
-                            </div>
-                            <!--end::Separator-->
-
-                            <!-- Input fields lainnya... -->
-                            {{-- <!--begin::Input group--->
-                            <div class="fv-row mb-8 fv-plugins-icon-container">
-                                <!--begin::Login-->
-                                <input type="text" placeholder="Masukkan email atau nomor handphone" autocomplete="off" id="login" name="login"
-                                    class="form-control bg-transparent" value="{{ old('login') }}" required>
-                                @error('login')
-                                    <div class="text-danger mt-2">{{ $message }}</div>
-                                @enderror
-                                <!--end::Login-->
-                            </div>
-
-                            <div class="fv-row mb-8 fv-plugins-icon-container">
-                                <!--begin::Phone-->
-                                <input type="phone" placeholder="No Handphone" name="phone" autocomplete="off"
-                                    class="form-control bg-transparent" value="{{ old('phone') }}" required>
-                                @error('phone')
-                                    <div class="text-danger mt-2">{{ $message }}</div>
-                                @enderror
-                                <!--end::Phone-->
-                            </div>
-
-                            <div class="fv-row mb-8 fv-plugins-icon-container">
-                                <!--begin::Email-->
-                                <input type="email" placeholder="Email" name="email" autocomplete="off"
-                                    class="form-control bg-transparent" value="{{ old('email') }}" required>
-                                @error('email')
-                                    <div class="text-danger mt-2">{{ $message }}</div>
-                                @enderror
-                                <!--end::Email-->
-                            </div> --}}
 
                             <!--begin::Input group-->
                             <div class="fv-row mb-8 fv-plugins-icon-container" data-kt-password-meter="true">
@@ -130,7 +96,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin::Input wrapper-->
                                     <div class="position-relative mb-3">
                                         <input class="form-control bg-transparent" type="password"
-                                            placeholder="Password Baru" name="password" autocomplete="off">
+                                            placeholder="New Password" name="password" autocomplete="off">
 
                                         <span
                                             class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2"
@@ -171,27 +137,17 @@ License: For each use you must have a valid license purchased only from above li
 
                             <div class="fv-row mb-8 fv-plugins-icon-container">
                                 <input type="password" placeholder="Confirm Password" name="password_confirmation"
-                                    autocomplete="off" class="form-control bg-transparent" required>
+                                    autocomplete="off" class="form-control bg-transparent @error('password_confirmation') is-invalid @enderror" required>
+                                @error('password_confirmation')
+                                    <div class="text-danger mt-2 small">{{ $message }}</div>
+                                @enderror
                             </div>
                             <!--end::Input group--->
-
-                            <!--begin::Wrapper-->
-                            <div class="d-flex flex-stack flex-wrap gap-3 fs-base fw-semibold mb-8">
-                                <div></div>
-
-                                <!--begin::Link-->
-                                <a href="/metronic8/demo1/authentication/layouts/corporate/reset-password.html"
-                                    class="link-primary">
-                                    Forgot Password ?
-                                </a>
-                                <!--end::Link-->
-                            </div>
-                            <!--end::Wrapper-->
 
                             <!-- Submit button dan lainnya... -->
                             <div class="d-grid mb-10">
                                 <button type="submit" id="kt_sign_up_submit" class="btn btn-primary">
-                                    <span class="indicator-label">Kirim Kode Verifikasi</span>
+                                    <span class="indicator-label">Update Password</span>
                                     <span class="indicator-progress">
                                         Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
                                     </span>
@@ -200,7 +156,7 @@ License: For each use you must have a valid license purchased only from above li
 
                             <div class="text-gray-500 text-center fw-semibold fs-6">
                                 Already have an Account?
-                                <a href="{{ route('login') }}" class="link-primary fw-semibold">Sign in</a>
+                                <a href="/signin" class="link-primary fw-semibold">Sign in</a>
                             </div>
                         </form>
                         <!--end::Form-->
@@ -210,99 +166,6 @@ License: For each use you must have a valid license purchased only from above li
                 </div>
                 <!--end::Form-->
 
-                <!--begin::Footer-->
-                <div class="w-lg-500px d-flex flex-stack px-10 mx-auto">
-                    <!--begin::Languages-->
-                    <div class="me-10">
-                        <!--begin::Toggle-->
-                        <button
-                            class="btn btn-flex btn-link btn-color-gray-700 btn-active-color-primary rotate fs-base"
-                            data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
-                            data-kt-menu-offset="0px, 0px">
-                            <img data-kt-element="current-lang-flag" class="w-20px h-20px rounded me-3"
-                                src="{{ asset('media/flags/united-states.svg') }}" alt="">
-
-                            <span data-kt-element="current-lang-name" class="me-1">English</span>
-
-                            <span class="d-flex flex-center rotate-180">
-                                <i class="ki-duotone ki-down fs-5 text-muted m-0"></i> </span>
-                        </button>
-                        <!--end::Toggle-->
-
-                        <!--begin::Menu-->
-                        <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-4 fs-7"
-                            data-kt-menu="true" id="kt_auth_lang_menu">
-                            <!--begin::Menu item-->
-                            <div class="menu-item px-3">
-                                <a href="#" class="menu-link d-flex px-5" data-kt-lang="English">
-                                    <span class="symbol symbol-20px me-4">
-                                        <img data-kt-element="lang-flag" class="rounded-1"
-                                            src="{{ asset('media/flags/united-states.svg') }}" alt="">
-                                    </span>
-                                    <span data-kt-element="lang-name">English</span>
-                                </a>
-                            </div>
-                            <!--end::Menu item-->
-                            <!--begin::Menu item-->
-                            <div class="menu-item px-3">
-                                <a href="#" class="menu-link d-flex px-5" data-kt-lang="Spanish">
-                                    <span class="symbol symbol-20px me-4">
-                                        <img data-kt-element="lang-flag" class="rounded-1"
-                                            src="{{ asset('media/flags/spain.svg') }}" alt="">
-                                    </span>
-                                    <span data-kt-element="lang-name">Spanish</span>
-                                </a>
-                            </div>
-                            <!--end::Menu item-->
-                            <!--begin::Menu item-->
-                            <div class="menu-item px-3">
-                                <a href="#" class="menu-link d-flex px-5" data-kt-lang="German">
-                                    <span class="symbol symbol-20px me-4">
-                                        <img data-kt-element="lang-flag" class="rounded-1"
-                                            src="{{ asset('media/flags/germany.svg') }}" alt="">
-                                    </span>
-                                    <span data-kt-element="lang-name">German</span>
-                                </a>
-                            </div>
-                            <!--end::Menu item-->
-                            <!--begin::Menu item-->
-                            <div class="menu-item px-3">
-                                <a href="#" class="menu-link d-flex px-5" data-kt-lang="Japanese">
-                                    <span class="symbol symbol-20px me-4">
-                                        <img data-kt-element="lang-flag" class="rounded-1"
-                                            src="{{ asset('media/flags/japan.svg') }}" alt="">
-                                    </span>
-                                    <span data-kt-element="lang-name">Japanese</span>
-                                </a>
-                            </div>
-                            <!--end::Menu item-->
-                            <!--begin::Menu item-->
-                            <div class="menu-item px-3">
-                                <a href="#" class="menu-link d-flex px-5" data-kt-lang="French">
-                                    <span class="symbol symbol-20px me-4">
-                                        <img data-kt-element="lang-flag" class="rounded-1"
-                                            src="{{ asset('media/flags/france.svg') }}" alt="">
-                                    </span>
-                                    <span data-kt-element="lang-name">French</span>
-                                </a>
-                            </div>
-                            <!--end::Menu item-->
-                        </div>
-                        <!--end::Menu-->
-                    </div>
-                    <!--end::Languages-->
-
-                    <!--begin::Links-->
-                    <div class="d-flex fw-semibold text-primary fs-base gap-5">
-                        <a href="/metronic8/demo1/pages/team.html" target="_blank">Terms</a>
-
-                        <a href="/metronic8/demo1/pages/pricing/column.html" target="_blank">Plans</a>
-
-                        <a href="/metronic8/demo1/pages/contact.html" target="_blank">Contact Us</a>
-                    </div>
-                    <!--end::Links-->
-                </div>
-                <!--end::Footer-->
             </div>
             <!--end::Body-->
 
@@ -312,33 +175,29 @@ License: For each use you must have a valid license purchased only from above li
                 <!--begin::Content-->
                 <div class="d-flex flex-column flex-center py-7 py-lg-15 px-5 px-md-15 w-100">
                     <!--begin::Logo-->
-                    <a href="/metronic8/demo1/index.html" class="mb-0 mb-lg-12">
-                        <img alt="Logo" src="{{ asset('media/logos/custom-1.png') }}" class="h-60px h-lg-75px">
+                    <a href="/metronic8/demo1/index.html" class="mb-0 mb-lg-12 animate__animated animate__pulse animate__infinite">
+                        <img alt="Logo" src="{{ asset('media/studio/logostudio.png') }}" class="h-60px h-lg-75px">
                     </a>
                     <!--end::Logo-->
 
                     <!--begin::Image-->
-                    <img class="d-none d-lg-block mx-auto w-275px w-md-50 w-xl-500px mb-10 mb-lg-20"
-                        src="{{ asset('media/misc/auth-screens.png') }}" alt="">
+                    <img class="d-none d-lg-block mx-auto w-200px w-md-50 w-xl-400px mb-10 mb-lg-20"
+                        src="{{ asset('media/misc/undefined__Professional_music_.png') }}" alt="">
                     <!--end::Image-->
 
                     <!--begin::Title-->
                     <h1 class="d-none d-lg-block text-white fs-2qx fw-bolder text-center mb-7">
-                        Fast, Efficient and Productive
+                        Studio Musik, Mudah & Cepat
                     </h1>
                     <!--end::Title-->
 
                     <!--begin::Text-->
                     <div class="d-none d-lg-block text-white fs-base text-center">
-                        In this kind of post, <a href="#" class="opacity-75-hover text-warning fw-bold me-1">the
-                            blogger</a>
-
-                        introduces a person they’ve interviewed <br> and provides some background information about
-
-                        <a href="#" class="opacity-75-hover text-warning fw-bold me-1">the interviewee</a>
-                        and their <br> work following this is a transcript of the interview.
+                        Rasakan ritme kemudahan dalam memesan studio musik favoritmu! <br>
+                        ⏱️ Cepat, 🔒 aman, dan 🎧 siap menemani sesi latihanmu kapan saja.
                     </div>
                     <!--end::Text-->
+
                 </div>
                 <!--end::Content-->
             </div>
@@ -360,6 +219,68 @@ License: For each use you must have a valid license purchased only from above li
     <!--end::Container-->
 
     @include('user.layout.script')
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const passwordInput = document.querySelector('input[name="password"]');
+            const confirmPasswordInput = document.querySelector('input[name="password_confirmation"]');
+            const form = document.getElementById('kt_sign_up_form');
+
+            // Real-time password validation
+            passwordInput.addEventListener('input', function() {
+                validatePassword(this.value);
+            });
+
+            function validatePassword(password) {
+                const hasLower = /[a-z]/.test(password);
+                const hasUpper = /[A-Z]/.test(password);
+                const hasNumber = /\d/.test(password);
+                const hasSpecial = /[@$!%*?&]/.test(password);
+                const hasMinLength = password.length >= 8;
+
+                // Update UI based on validation
+                updateValidationUI('lower', hasLower);
+                updateValidationUI('upper', hasUpper);
+                updateValidationUI('number', hasNumber);
+                updateValidationUI('special', hasSpecial);
+                updateValidationUI('length', hasMinLength);
+            }
+
+            function updateValidationUI(type, isValid) {
+                const element = document.getElementById(`validation-${type}`);
+                if (element) {
+                    if (isValid) {
+                        element.classList.add('text-success');
+                        element.classList.remove('text-danger');
+                    } else {
+                        element.classList.add('text-danger');
+                        element.classList.remove('text-success');
+                    }
+                }
+            }
+
+            // Form submission validation
+            form.addEventListener('submit', function(e) {
+                const password = passwordInput.value;
+                const confirmPassword = confirmPasswordInput.value;
+
+                // Validate password pattern
+                const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/;
+
+                if (!passwordPattern.test(password)) {
+                    e.preventDefault();
+                    alert('Password harus mengandung huruf kecil, huruf besar, angka, dan karakter khusus!');
+                    return false;
+                }
+
+                if (password !== confirmPassword) {
+                    e.preventDefault();
+                    alert('Password dan konfirmasi password tidak cocok!');
+                    return false;
+                }
+            });
+        });
+    </script>
 </body>
 <!--end::Body-->
 

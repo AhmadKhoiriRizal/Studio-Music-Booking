@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Lupa Password | Studio Music Booking</title>
     @include('user.layout.metadata')
-    <title>Lupa Password - Studio Music Booking</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <style>
         .method-badge {
             position: absolute;
@@ -20,6 +22,21 @@
         }
         .email-badge {
             color: #EA4335;
+        }
+        @keyframes wave {
+            0%, 100% { transform: translateY(0); }
+            25% { transform: translateY(-10px); }
+            50% { transform: translateY(5px); }
+            75% { transform: translateY(-5px); }
+        }
+
+        .music-wave-text {
+            display: inline-block;
+            color: #fff;
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            animation: wave 2s ease-in-out infinite;
         }
     </style>
 </head>
@@ -43,9 +60,7 @@
                             <!--begin::Heading-->
                             <div class="text-center mb-11">
                                 <h1 class="text-gray-900 fw-bolder mb-3">Reset Password</h1>
-                                <div class="text-gray-500 fw-semibold fs-6">
-                                    Masukkan email atau nomor WhatsApp yang terdaftar
-                                </div>
+                                <div class="text-gray-500 fw-semibold fs-6">Studio Musik</div>
                             </div>
                             <!--end::Heading-->
 
@@ -86,17 +101,13 @@
                                 </div>
                             </div>
                             <!--end::Method info-->
+
+                            <div class="text-gray-500 text-center fw-semibold fs-6">
+                                Already have an Account?
+                                <a href="/signin" class="link-primary fw-semibold">Sign in</a>
+                            </div>
                         </form>
                         <!--end::Form-->
-
-                        <!--begin::Back to login-->
-                        <div class="text-center mt-5">
-                            <a href="{{ route('login') }}" class="btn btn-light-primary">
-                                <i class="ki-duotone ki-arrow-left fs-3 me-1"></i>
-                                Kembali ke Login
-                            </a>
-                        </div>
-                        <!--end::Back to login-->
 
                     </div>
                     <!--end::Wrapper-->
@@ -107,37 +118,33 @@
 
             <!--begin::Aside-->
             <div class="d-flex flex-lg-row-fluid w-lg-50 bgi-size-cover bgi-position-center order-1 order-lg-2"
-                style="background-image: url( {{ asset('media/misc/auth-bg.png')}}">
+                style="background-image: url({{ asset('media/misc/auth-bg.png') }})">
                 <!--begin::Content-->
                 <div class="d-flex flex-column flex-center py-7 py-lg-15 px-5 px-md-15 w-100">
                     <!--begin::Logo-->
-                    <a href="/metronic8/demo1/index.html" class="mb-0 mb-lg-12">
-                        <img alt="Logo" src="{{ asset('media/logos/custom-1.png') }}" class="h-60px h-lg-75px">
+                    <a href="/metronic8/demo1/index.html" class="mb-0 mb-lg-12 animate__animated animate__pulse animate__infinite">
+                        <img alt="Logo" src="{{ asset('media/studio/logostudio.png') }}" class="h-60px h-lg-75px">
                     </a>
                     <!--end::Logo-->
 
                     <!--begin::Image-->
-                    <img class="d-none d-lg-block mx-auto w-275px w-md-50 w-xl-500px mb-10 mb-lg-20"
-                        src="{{ asset('media/misc/auth-screens.png') }}" alt="">
+                    <img class="d-none d-lg-block mx-auto w-200px w-md-50 w-xl-400px mb-10 mb-lg-20"
+                        src="{{ asset('media/misc/undefined__Professional_music_.png') }}" alt="">
                     <!--end::Image-->
 
                     <!--begin::Title-->
                     <h1 class="d-none d-lg-block text-white fs-2qx fw-bolder text-center mb-7">
-                        Fast, Efficient and Productive
+                        Studio Musik, Mudah & Cepat
                     </h1>
                     <!--end::Title-->
 
                     <!--begin::Text-->
                     <div class="d-none d-lg-block text-white fs-base text-center">
-                        In this kind of post, <a href="#" class="opacity-75-hover text-warning fw-bold me-1">the
-                            blogger</a>
-
-                        introduces a person they’ve interviewed <br> and provides some background information about
-
-                        <a href="#" class="opacity-75-hover text-warning fw-bold me-1">the interviewee</a>
-                        and their <br> work following this is a transcript of the interview.
+                        Rasakan ritme kemudahan dalam memesan studio musik favoritmu! <br>
+                        ⏱️ Cepat, 🔒 aman, dan 🎧 siap menemani sesi latihanmu kapan saja.
                     </div>
                     <!--end::Text-->
+
                 </div>
                 <!--end::Content-->
             </div>

@@ -9,9 +9,11 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use App\Mail\PasswordResetMail;
 use Twilio\Rest\Client;
+use Carbon\Carbon;
 
 class ForgotPasswordController extends Controller
 {
@@ -21,12 +23,20 @@ class ForgotPasswordController extends Controller
         return view('auth.forgot-password');
     }
 
-    // Kirim kode verifikasi
+    // Kirim kode verifikasi dengan rate limiting
     public function sendResetLink(Request $request)
     {
+        // Rate Limiting - 5 attempts per IP dalam 1 jam
+        $key = 'reset-password:' . $request->ip();
+        if (RateLimiter::tooManyAttempts($key, 5)) {
+            $seconds = RateLimiter::availableIn($key);
+            $minutes = ceil($seconds / 60);
+            return back()->with('error', "Terlalu banyak percobaan reset password. Coba lagi dalam {$minutes} menit.");
+        }
+
         $validator = Validator::make($request->all(), [
             'login' => 'required',
-            'method' => 'required|in:auto,email,whatsapp' // Tambahkan 'auto'
+            'method' => 'required|in:auto,email,whatsapp'
         ]);
 
         if ($validator->fails()) {
@@ -45,19 +55,26 @@ class ForgotPasswordController extends Controller
                     ->first();
 
         if (!$user) {
+            // Hit rate limiter even for invalid users to prevent enumeration
+            RateLimiter::hit($key, 3600); // 1 hour
             return back()->with('error', 'Email/nomor handphone tidak ditemukan.');
         }
 
-        // Generate token dan kode verifikasi
-        $token = Str::random(60);
-        $verificationCode = rand(100000, 999999);
+        // Generate SECURE token dan kode verifikasi
+        $token = hash('sha256', Str::random(60) . time() . $user->id);
+        $verificationCode = str_pad(random_int(100000, 999999), 6, '0', STR_PAD_LEFT);
 
-        // Simpan atau update token di database
+        // Determine identifier based on method
+        $identifier = $method === 'email' ? $user->email : $user->phone;
+        $identifierColumn = $method === 'email' ? 'email' : 'phone';
+
+        // Simpan atau update token di database dengan identifier yang tepat
         DB::table('password_reset_tokens')->updateOrInsert(
-            ['email' => $user->email],
+            [$identifierColumn => $identifier],
             [
-                'token' => $token,
-                'verification_code' => $verificationCode,
+                'token' => $token, // Sekarang sudah di-hash
+                'verification_code' => Hash::make($verificationCode), // Hash verification code juga
+                'method' => $method, // Tambah kolom method untuk tracking
                 'created_at' => now()
             ]
         );
@@ -66,8 +83,15 @@ class ForgotPasswordController extends Controller
             // Kirim kode via email
             try {
                 Mail::to($user->email)->send(new PasswordResetMail($verificationCode));
-                session(['reset_email' => $user->email]);
+                session([
+                    'reset_identifier' => $user->email,
+                    'reset_method' => 'email'
+                ]);
                 \Log::info('Email verification sent', ['email' => $user->email]);
+
+                // Hit rate limiter on success
+                RateLimiter::hit($key, 3600);
+
                 return redirect()->route('password.verify')->with('success', 'Kode verifikasi telah dikirim ke email Anda.');
             } catch (\Exception $e) {
                 \Log::error('Email sending failed', ['error' => $e->getMessage()]);
@@ -80,8 +104,22 @@ class ForgotPasswordController extends Controller
             }
 
             // Kirim kode via WhatsApp
-            if ($this->sendWhatsApp($user->phone, $verificationCode)) {
-                session(['reset_phone' => $user->phone]);
+            $whatsappResult = $this->sendWhatsApp($user->phone, $verificationCode);
+
+            if ($whatsappResult['success']) {
+                session([
+                    'reset_identifier' => $user->phone,
+                    'reset_method' => 'whatsapp'
+                ]);
+
+                // Hit rate limiter on success
+                RateLimiter::hit($key, 3600);
+
+                if ($whatsappResult['sandbox_warning']) {
+                    session(['sandbox_warning' => true]);
+                    return redirect()->route('password.verify')->with('warning', 'Kode verifikasi telah dikirim via WhatsApp. Pastikan Anda sudah bergabung dengan sandbox Twilio untuk menerima pesan.');
+                }
+
                 return redirect()->route('password.verify')->with('success', 'Kode verifikasi telah dikirim via WhatsApp.');
             } else {
                 return back()->with('error', 'Gagal mengirim WhatsApp. Silakan coba lagi atau gunakan email.');
@@ -92,33 +130,21 @@ class ForgotPasswordController extends Controller
     // Tampilkan form verifikasi kode
     public function showVerifyForm()
     {
-        // Check jika perlu show sandbox warning (untuk WhatsApp)
-        $showSandboxHelp = session('sandbox_help', false);
-        $userPhone = session('user_phone');
-        $userEmail = session('reset_email');
+        $method = session('reset_method');
+        $identifier = session('reset_identifier');
 
-        $verificationCode = session('verification_code');
-        $method = $userEmail ? 'email' : 'whatsapp';
-
-        if ($showSandboxHelp) {
-            session()->forget(['sandbox_help', 'user_phone']);
-
-            return view('auth.verify-code', [
-                'showSandboxHelp' => true,
-                'userPhone' => $userPhone,
-                'verification_code' => $verificationCode,
-                'method' => $method
-            ]);
+        if (!$method || !$identifier) {
+            return redirect()->route('password.forgot')->with('error', 'Silakan mulai proses reset password dari awal.');
         }
 
         return view('auth.verify-code', [
-            'showSandboxHelp' => false,
             'method' => $method,
-            'verification_code' => $method === 'email' ? $verificationCode : null
+            'identifier' => $method === 'email' ? 'email' : 'nomor WhatsApp',
+            'sandbox_warning' => session('sandbox_warning', false)
         ]);
     }
 
-    // Verifikasi kode
+    // Verifikasi kode dengan proper validation
     public function verifyCode(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -129,12 +155,19 @@ class ForgotPasswordController extends Controller
             return back()->withErrors($validator)->withInput();
         }
 
-        // Cari token berdasarkan email atau phone dari session
-        $email = session('reset_email');
-        $phone = session('reset_phone');
+        // Get session data
+        $method = session('reset_method');
+        $identifier = session('reset_identifier');
 
+        if (!$method || !$identifier) {
+            return redirect()->route('password.forgot')->with('error', 'Session expired. Silakan mulai ulang proses reset password.');
+        }
+
+        // Cari token berdasarkan method dan identifier yang tepat
+        $identifierColumn = $method === 'email' ? 'email' : 'phone';
         $resetToken = DB::table('password_reset_tokens')
-                        ->where('email', $email)
+                        ->where($identifierColumn, $identifier)
+                        ->where('method', $method)
                         ->first();
 
         // Check if token exists and is not expired (10 minutes)
@@ -142,8 +175,8 @@ class ForgotPasswordController extends Controller
             return back()->with('error', 'Kode verifikasi tidak valid atau sudah kadaluarsa.');
         }
 
-        // Check verification code
-        if ($resetToken->verification_code != $request->verification_code) {
+        // Verify hashed verification code
+        if (!Hash::check($request->verification_code, $resetToken->verification_code)) {
             return back()->with('error', 'Kode verifikasi tidak valid.');
         }
 
@@ -156,80 +189,114 @@ class ForgotPasswordController extends Controller
     // Tampilkan form reset password
     public function showResetForm()
     {
+        if (!session('reset_token')) {
+            return redirect()->route('password.forgot')->with('error', 'Silakan mulai proses reset password dari awal.');
+        }
+
         return view('auth.reset-password');
     }
 
-    // Reset password
+    // Reset password dengan validation yang lebih kuat
     public function resetPassword(Request $request)
     {
+        // Validasi
         $validator = Validator::make($request->all(), [
-            'password' => 'required|min:6|confirmed'
+            'password' => [
+                'required',
+                'min:8',
+                'confirmed',
+                'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/'
+            ]
+        ], [
+            'password.regex' => 'Password harus mengandung minimal 1 huruf kecil, 1 huruf besar, 1 angka, dan 1 karakter khusus.'
         ]);
 
         if ($validator->fails()) {
-            return back()->withErrors($validator)->withInput();
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput()
+                ->with('validation_error', true);
         }
 
         $token = session('reset_token');
+
+        if (!$token) {
+            return redirect()->route('password.forgot')
+                ->with('error', 'Token tidak valid atau sesi telah kadaluarsa.');
+        }
+
         $resetToken = DB::table('password_reset_tokens')->where('token', $token)->first();
 
         if (!$resetToken) {
-            return redirect()->route('password.forgot')->with('error', 'Token tidak valid. Silakan ulangi proses lupa password.');
+            return redirect()->route('password.forgot')
+                ->with('error', 'Token tidak valid. Silakan ulangi proses lupa password.');
         }
 
-        // Update password user
+        // Cari user berdasarkan email
         $user = User::where('email', $resetToken->email)->first();
+
+        if (!$user) {
+            return redirect()->route('password.forgot')
+                ->with('error', 'User tidak ditemukan.');
+        }
+
+        // Update password
         $user->password = Hash::make($request->password);
         $user->save();
 
-        // Hapus token
-        DB::table('password_reset_tokens')->where('email', $resetToken->email)->delete();
+        // Hapus token reset
+        DB::table('password_reset_tokens')
+            ->where('email', $user->email)
+            ->delete();
 
         // Hapus session
-        $request->session()->forget(['reset_token', 'reset_email', 'reset_phone']);
+        $request->session()->forget([
+            'reset_token',
+            'reset_email',
+            'reset_phone'
+        ]);
 
-        return redirect()->route('login')->with('success', 'Password berhasil direset. Silakan login dengan password baru.');
+        return redirect()->route('signin')
+            ->with('success', 'Password berhasil direset. Silakan login dengan password baru.');
     }
 
-    // Kirim WhatsApp menggunakan Twilio
+    // Kirim WhatsApp menggunakan Twilio dengan proper error handling
     private function sendWhatsApp($phone, $code)
     {
         \Log::info('Attempting to send WhatsApp verification', ['phone' => $phone]);
 
         try {
             $result = $this->sendWhatsAppFallback($phone, $code);
-
-            if (!$result) {
-                // Jika gagal, mungkin karena sandbox issue
-                return $this->handleSandboxError($phone);
-            }
-
             return $result;
-
         } catch (\Exception $e) {
             \Log::error('WhatsApp sending failed', ['error' => $e->getMessage()]);
-            return $this->handleSandboxError($phone);
+
+            // Jika error karena sandbox, return dengan warning
+            if (str_contains($e->getMessage(), 'sandbox') || str_contains($e->getMessage(), 'not a valid')) {
+                return [
+                    'success' => true,
+                    'sandbox_warning' => true
+                ];
+            }
+
+            return [
+                'success' => false,
+                'sandbox_warning' => false
+            ];
         }
     }
 
-    private function handleSandboxError($phone)
-    {
-        // Simpan info bahwa user perlu join sandbox
-        session(['sandbox_help' => true, 'user_phone' => $phone]);
-
-        \Log::warning('Sandbox enrollment required for phone: ' . $phone);
-
-        // Return true agar flow continue, tapi tampilkan warning ke user
-        return true;
-    }
-
-    // Fallback method jika Content API gagal
+    // Improved WhatsApp fallback method
     private function sendWhatsAppFallback($phone, $code)
     {
         try {
             $twilioSid = env('TWILIO_SID');
             $twilioToken = env('TWILIO_AUTH_TOKEN');
             $twilioWhatsAppNumber = env('TWILIO_WHATSAPP_NUMBER');
+
+            if (!$twilioSid || !$twilioToken || !$twilioWhatsAppNumber) {
+                throw new \Exception('Twilio configuration incomplete');
+            }
 
             $formattedPhone = $this->formatPhoneForWhatsApp($phone);
 
@@ -243,12 +310,28 @@ class ForgotPasswordController extends Controller
                 ]
             );
 
-            \Log::info('WhatsApp fallback message sent: ' . $message->sid);
-            return true;
+            \Log::info('WhatsApp message sent successfully: ' . $message->sid);
+
+            return [
+                'success' => true,
+                'sandbox_warning' => false
+            ];
 
         } catch (\Exception $e) {
             \Log::error('WhatsApp Fallback Error: ' . $e->getMessage());
-            return false;
+
+            // Check if it's a sandbox issue
+            if (str_contains($e->getMessage(), 'sandbox') ||
+                str_contains($e->getMessage(), 'not a valid') ||
+                str_contains($e->getMessage(), 'Attempted to send to unverified number')) {
+
+                return [
+                    'success' => true,
+                    'sandbox_warning' => true
+                ];
+            }
+
+            throw $e;
         }
     }
 
@@ -261,40 +344,11 @@ class ForgotPasswordController extends Controller
         // Jika diawali dengan 0, ganti dengan kode negara Indonesia (+62)
         if (substr($phone, 0, 1) === '0') {
             $phone = '62' . substr($phone, 1);
+        } elseif (!str_starts_with($phone, '62')) {
+            // Jika tidak diawali 62, tambahkan 62
+            $phone = '62' . $phone;
         }
 
-        return $phone;
-    }
-
-    // Opsi alternatif: Kirim WhatsApp menggunakan WhatsApp API dari Netflisc
-    private function sendWhatsAppNetflisc($phone, $code)
-    {
-        try {
-            $apiKey = env('WHATSAPP_API_KEY');
-            $apiUrl = env('WHATSAPP_API_URL');
-
-            if (!$apiKey || !$apiUrl) {
-                return false;
-            }
-
-            $client = new \GuzzleHttp\Client();
-
-            $response = $client->post($apiUrl, [
-                'headers' => [
-                    'Authorization' => 'Bearer ' . $apiKey,
-                    'Content-Type' => 'application/json',
-                ],
-                'json' => [
-                    'phone' => $this->formatPhoneForWhatsApp($phone),
-                    'message' => "Kode verifikasi reset password Anda: *{$code}*\n\nJangan berikan kode ini kepada siapapun.",
-                    'type' => 'text'
-                ]
-            ]);
-
-            return $response->getStatusCode() === 200;
-        } catch (\Exception $e) {
-            \Log::error('WhatsApp API Error: ' . $e->getMessage());
-            return false;
-        }
+        return '+' . $phone;
     }
 }

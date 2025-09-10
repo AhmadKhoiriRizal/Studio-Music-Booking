@@ -27,6 +27,7 @@ class User extends Authenticatable
         'id',
         'name',
         'email',
+        'phone',
         'phone', // Tambahkan phone ke fillable
         'password',
         'role',
@@ -83,5 +84,21 @@ class User extends Authenticatable
     public function isActive()
     {
         return $this->status === 'aktif';
+    }
+
+    // Di Model User.php
+    public function getPhotoUrlAttribute()
+    {
+        if (empty($this->photo)) {
+            return asset('media/avatars/blank.png');
+        }
+
+        // Jika sudah URL lengkap, return langsung
+        if (filter_var($this->photo, FILTER_VALIDATE_URL)) {
+            return $this->photo;
+        }
+
+        // Jika path relatif, tambahkan asset()
+        return asset($this->photo);
     }
 }

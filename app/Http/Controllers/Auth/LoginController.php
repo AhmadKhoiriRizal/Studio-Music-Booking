@@ -107,6 +107,7 @@ class LoginController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'photo' => asset('media/avatars/blank.png'), // Foto default
             'phone' => $request->phone,
             'password' => Hash::make($request->password),
             'role' => 'user', // Default role

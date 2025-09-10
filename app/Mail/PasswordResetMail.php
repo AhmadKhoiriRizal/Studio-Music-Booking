@@ -11,26 +11,16 @@ use Illuminate\Queue\SerializesModels;
 
 class PasswordResetMail extends Mailable
 {
-    /**
-     * Create a new message instance.
-     */
     use Queueable, SerializesModels;
 
     public $verificationCode;
 
+    /**
+     * Create a new message instance.
+     */
     public function __construct($verificationCode)
     {
         $this->verificationCode = $verificationCode;
-    }
-
-    /**
-     * Get the message code.
-     */
-    public function build()
-    {
-        return $this->subject('Kode Verifikasi Reset Password')
-                    ->view('emails.password-reset')
-                    ->with(['code' => $this->verificationCode]);
     }
 
     /**
@@ -39,7 +29,7 @@ class PasswordResetMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Password Reset Mail',
+            subject: 'Kode Verifikasi Reset Password - ' . config('app.name'),
         );
     }
 
@@ -49,7 +39,12 @@ class PasswordResetMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'emails.password-reset',
+            with: [
+                'code' => $this->verificationCode,
+                'appName' => config('app.name'),
+                'appUrl' => config('app.url')
+            ]
         );
     }
 

@@ -117,6 +117,15 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
         Route::get('/edit/{id}', [StudioController::class, 'edit'])->name('edit');
     });
 
+    // Data Akun Management
+    Route::prefix('akun')->name('akun.')->group(function () {
+        Route::get('/data', [AdminController::class, 'index'])->name('index');
+        Route::get('/create', [AdminController::class, 'create'])->name('create');
+        Route::get('/edit/{id}', [AdminController::class, 'edit'])->name('edit');
+        Route::delete('/destroy/{id}', [AdminController::class, 'destroy'])->name('destroy'); // Tambahkan route delete
+        Route::delete('/destroy-multiple', [AdminController::class, 'destroyMultiple'])->name('destroy.multiple');
+    });
+
     // Availability Management
     Route::get('/kelola-ketersediaan', [StudioController::class, 'availability'])->name('ketersediaan');
 
@@ -148,6 +157,10 @@ Route::prefix('password')->group(function () {
     Route::get('/reset', [ForgotPasswordController::class, 'showResetForm'])->name('password.reset');
     Route::post('/reset', [ForgotPasswordController::class, 'resetPassword'])->name('password.update');
 });
+
+
+// routes/web.php (temporary for testing)
+// Route::get('/admin/akun/test-delete', [AdminController::class, 'testDelete']);
 
 
 

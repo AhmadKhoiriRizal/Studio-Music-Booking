@@ -7,9 +7,11 @@
     <div class="app-sidebar-logo px-6" id="kt_app_sidebar_logo">
         <!--begin::Logo image-->
         <a href="/metronic8/demo1/index.html">
-            <img alt="Logo" src="{{ asset('media/logos/default-dark.svg') }}" class="h-25px app-sidebar-logo-default">
+            <img alt="Logo" src="{{ asset('media/logos/default-dark.svg') }}"
+                class="h-25px app-sidebar-logo-default">
 
-            <img alt="Logo" src="{{ asset('media/logos/default-small.svg') }}" class="h-20px app-sidebar-logo-minimize">
+            <img alt="Logo" src="{{ asset('media/logos/default-small.svg') }}"
+                class="h-20px app-sidebar-logo-minimize">
         </a>
         <!--end::Logo image-->
 
@@ -49,12 +51,13 @@
                     <!--begin:Menu item-->
                     <div class="menu-item">
                         <!--begin:Menu link-->
-                        <a class="menu-link"
-                            href="/metronic8/demo1/apps/calendar.html"><span class="menu-icon"><i
-                                    class="ki-duotone ki-calendar-8 fs-2"><span class="path1"></span><span
-                                        class="path2"></span><span class="path3"></span><span class="path4"></span><span
-                                        class="path5"></span><span class="path6"></span></i></span><span
-                                class="menu-title">Calendar</span></a><!--end:Menu link--></div>
+                        <a class="menu-link" href="{{ route('admin.dashboard') }}"><span class="menu-icon"><i
+                                    class="ki-duotone ki-element-11 fs-2"><span class="path1"></span><span
+                                        class="path2"></span><span class="path3"></span><span
+                                        class="path4"></span><span class="path5"></span><span
+                                        class="path6"></span></i></span><span
+                                class="menu-title">Dashboard</span></a><!--end:Menu link-->
+                    </div>
                     <!--end:Menu item-->
                     <!--begin:Menu item-->
                     <div class="menu-item pt-5"><!--begin:Menu content-->
@@ -63,44 +66,25 @@
                         <!--end:Menu content-->
                     </div><!--end:Menu item--><!--begin:Menu item-->
                     <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                        <!--begin:Menu link--><span class="menu-link"><span class="menu-icon"><i
-                                    class="ki-duotone ki-address-book fs-2"><span class="path1"></span><span
-                                        class="path2"></span><span class="path3"></span></i></span><span
-                                class="menu-title">User Profile</span></span><!--end:Menu link-->
-                                <!--begin:Menu sub-->
-                        <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                            <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                    href="/metronic8/demo1/pages/user-profile/overview.html"><span
-                                        class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
-                                        class="menu-title">Overview</span></a><!--end:Menu link--></div>
-                            <!--end:Menu item--><!--begin:Menu item-->
-                            <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                    href="/metronic8/demo1/pages/user-profile/projects.html"><span
-                                        class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
-                                        class="menu-title">Projects</span></a><!--end:Menu link--></div>
-                            <!--end:Menu item--><!--begin:Menu item-->
-                            <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                    href="/metronic8/demo1/pages/user-profile/campaigns.html"><span
-                                        class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
-                                        class="menu-title">Campaigns</span></a><!--end:Menu link--></div>
-                            <!--end:Menu item--><!--begin:Menu item-->
-                            <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                    href="/metronic8/demo1/pages/user-profile/documents.html"><span
-                                        class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
-                                        class="menu-title">Documents</span></a><!--end:Menu link--></div>
-                            <!--end:Menu item--><!--begin:Menu item-->
-                            <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                    href="/metronic8/demo1/pages/user-profile/followers.html"><span
-                                        class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
-                                        class="menu-title">Followers</span></a><!--end:Menu link--></div>
-                            <!--end:Menu item--><!--begin:Menu item-->
-                            <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                    href="/metronic8/demo1/pages/user-profile/activity.html"><span
-                                        class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
-                                        class="menu-title">Activity</span></a><!--end:Menu link--></div>
-                            <!--end:Menu item-->
-                        </div><!--end:Menu sub-->
+                        <!--begin:Menu link-->
+                        <a class="menu-link" href="{{ route('admin.studio.index') }}"><span class="menu-icon"><i
+                                    class="ki-duotone ki-element-11 fs-2"><span class="path1"></span><span
+                                        class="path2"></span><span class="path3"></span><span
+                                        class="path4"></span><span class="path5"></span><span
+                                        class="path6"></span></i></span><span class="menu-title">Data
+                                Studio</span></a><!--end:Menu link-->
                     </div><!--end:Menu item-->
+                    <!--begin:Menu item-->
+                    <div class="menu-item">
+                        <!--begin:Menu link-->
+                        <a class="menu-link" href="{{ route('admin.ketersediaan') }}"><span class="menu-icon"><i
+                                    class="ki-duotone ki-calendar-8 fs-2"><span class="path1"></span><span
+                                        class="path2"></span><span class="path3"></span><span
+                                        class="path4"></span><span class="path5"></span><span
+                                        class="path6"></span></i></span><span
+                                class="menu-title">Calendar</span></a><!--end:Menu link-->
+                    </div>
+                    <!--end:Menu item-->
                     <!--begin:Menu item-->
                     <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                         <!--begin:Menu link--><span class="menu-link"><span class="menu-icon"><i
@@ -182,13 +166,13 @@
                                         class="menu-title">Files</span></a><!--end:Menu link--></div>
                             <!--end:Menu item--><!--begin:Menu item-->
                             <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                    href="/metronic8/demo1/apps/projects/activity.html"><span class="menu-bullet"><span
-                                            class="bullet bullet-dot"></span></span><span
+                                    href="/metronic8/demo1/apps/projects/activity.html"><span
+                                        class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
                                         class="menu-title">Activity</span></a><!--end:Menu link--></div>
                             <!--end:Menu item--><!--begin:Menu item-->
                             <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                    href="/metronic8/demo1/apps/projects/settings.html"><span class="menu-bullet"><span
-                                            class="bullet bullet-dot"></span></span><span
+                                    href="/metronic8/demo1/apps/projects/settings.html"><span
+                                        class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
                                         class="menu-title">Settings</span></a><!--end:Menu link--></div>
                             <!--end:Menu item-->
                         </div><!--end:Menu sub-->
@@ -219,34 +203,32 @@
                         </div><!--end:Menu sub-->
                     </div><!--end:Menu item-->
                     <!--begin:Menu item-->
-                    <div class="menu-item">
-                        <!--begin:Menu link-->
-                        <a class="menu-link"
-                            href="/metronic8/demo1/apps/calendar.html"><span class="menu-icon"><i
-                                    class="ki-duotone ki-calendar-8 fs-2"><span class="path1"></span><span
-                                        class="path2"></span><span class="path3"></span><span class="path4"></span><span
-                                        class="path5"></span><span class="path6"></span></i></span><span
-                                class="menu-title">Calendar</span></a><!--end:Menu link--></div>
-                    <!--end:Menu item-->
-                    <!--begin:Menu item-->
                     <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                            href="/metronic8/demo1/layout-builder.html"><span class="menu-icon"><i
+                            href="{{ route('admin.akun.index') }}"><span class="menu-icon"><i
                                     class="ki-duotone ki-abstract-13 fs-2"><span class="path1"></span><span
-                                        class="path2"></span></i></span><span class="menu-title">Layout
-                                Builder</span></a><!--end:Menu link--></div>
+                                        class="path2"></span></i></span><span class="menu-title">Data
+                                Akun</span></a><!--end:Menu link--></div>
                     <!--end:Menu item--><!--begin:Menu item-->
                     <div class="menu-item pt-5"><!--begin:Menu content-->
-                        <div class="menu-content"><span class="menu-heading fw-bold text-uppercase fs-7">Sign Out</span>
+                        <div class="menu-content"><span class="menu-heading fw-bold text-uppercase fs-7">Sign
+                                Out</span>
                         </div>
                         <!--end:Menu content-->
                     </div>
                     <!--end:Menu item-->
                     <!--begin:Menu item-->
-                    <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                            href="https://preview.keenthemes.com/html/metronic/docs/getting-started/changelog"
-                            target="_blank"><span class="menu-icon"><i class="ki-duotone ki-code fs-2"><span
-                                        class="path1"></span><span class="path2"></span><span class="path3"></span><span
-                                        class="path4"></span></i></span><span class="menu-title">Sign Out</span></a><!--end:Menu link--></div>
+                    <div class="menu-item"><!--begin:Menu link-->
+                        <form method="POST" action="{{ route('logout') }}" id="logout-form">
+                            <a class="menu-link" href="#" class="menu-link px-5"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                                target="_blank"><span class="menu-icon"><i class="ki-duotone ki-code fs-2"><span
+                                            class="path1"></span><span class="path2"></span><span
+                                            class="path3"></span><span class="path4"></span></i></span><span
+                                    class="menu-title">Sign Out</span>
+                            </a>
+                        </form>
+                        <!--end:Menu link-->
+                    </div>
                     <!--end:Menu item-->
                 </div>
                 <!--end::Menu-->
