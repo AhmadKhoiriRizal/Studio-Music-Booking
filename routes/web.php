@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\StudioController;
+use App\Http\Controllers\EquipmentController ;
 use App\Http\Controllers\BackupController;
 use Illuminate\Support\Facades\Route;
 
@@ -114,8 +115,11 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     // Data Studio Management
     Route::prefix('studio')->name('studio.')->group(function () {
         Route::get('/data', [StudioController::class, 'index'])->name('index');
+        Route::post('/store', [StudioController::class, 'store'])->name('store'); // Diubah dari 'index' ke 'store'
         Route::get('/create', [StudioController::class, 'create'])->name('create');
         Route::get('/edit/{id}', [StudioController::class, 'edit'])->name('edit');
+        Route::put('/update/{id}', [StudioController::class, 'update'])->name('update'); // Tambahkan route update
+        Route::delete('/destroy/{id}', [StudioController::class, 'destroy'])->name('destroy'); // Tambahkan route delete
     });
 
     // Data Akun Management
@@ -155,6 +159,13 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
 
         // Custom backup
         Route::post('/create-custom', [BackupController::class, 'createCustomBackup'])->name('create.custom');
+    });
+
+    // Data Equipment Management
+    Route::prefix('equipment')->name('equipment.')->group(function () {
+        Route::get('/data', [EquipmentController::class, 'index'])->name('index');
+        Route::post('/store', [EquipmentController::class, 'store'])->name('store');
+        Route::delete('/destroy/{id}', [EquipmentController::class, 'destroy'])->name('destroy');
     });
     // Route::get('/backup-data', [AdminController::class, 'backup'])->name('backup');
 
