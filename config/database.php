@@ -51,7 +51,7 @@ return [
             'database' => env('DB_DATABASE', 'forge'),
             'username' => env('DB_USERNAME', 'forge'),
             'password' => env('DB_PASSWORD', ''),
-            'unix_socket' => env('DB_SOCKET', ''),
+            'unix_socket' => env('DB_SOCKET', 'D:/Laragon/tmp/mysql.sock'),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
@@ -61,6 +61,14 @@ return [
             'options' => extension_loaded('pdo_mysql') ? array_filter([
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
+
+            // KONFIGURASI DUMP YANG BENAR
+            'dump' => [
+                'dump_binary_path' => 'D:/Laragon/laragon/bin/mysql/mysql-8.0.30-winx64/bin/',
+                'use_single_transaction' => true,
+                'timeout' => 300,
+                'add_extra_option' => '--column-statistics=0', // Penting untuk MySQL 8+
+            ],
         ],
 
         'pgsql' => [

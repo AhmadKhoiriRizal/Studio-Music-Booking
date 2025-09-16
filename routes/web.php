@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\StudioController;
+use App\Http\Controllers\BackupController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -129,6 +130,34 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     // Availability Management
     Route::get('/kelola-ketersediaan', [StudioController::class, 'availability'])->name('ketersediaan');
 
+    // Availability Management
+    // Backup Management - COMPLETE ROUTES
+    Route::prefix('backup')->name('backup.')->group(function () {
+        // Basic backup operations
+        Route::get('/', [BackupController::class, 'index'])->name('index');
+        Route::get('/data', [BackupController::class, 'data'])->name('data');
+        Route::post('/create', [BackupController::class, 'createBackup'])->name('create');
+
+        // Restore operations
+        Route::post('/restore', [BackupController::class, 'restoreBackup'])->name('restore');
+        Route::post('/restore-enhanced', [BackupController::class, 'restoreBackupEnhanced'])->name('restore.enhanced');
+
+        // File operations
+        Route::get('/download/{filename}', [BackupController::class, 'downloadBackup'])->name('download');
+        Route::delete('/delete/{filename}', [BackupController::class, 'deleteBackup'])->name('delete');
+        Route::get('/list', [BackupController::class, 'listBackups'])->name('list');
+
+        // Testing and debugging
+        Route::get('/test', [BackupController::class, 'testConnection'])->name('test');
+        Route::get('/debug/{filename}', [BackupController::class, 'debugBackup'])->name('debug');
+        Route::post('/test-restore', [BackupController::class, 'testRestore'])->name('test.restore');
+        Route::get('/verify-database', [BackupController::class, 'verifyDatabaseState'])->name('verify.database');
+
+        // Custom backup
+        Route::post('/create-custom', [BackupController::class, 'createCustomBackup'])->name('create.custom');
+    });
+    // Route::get('/backup-data', [AdminController::class, 'backup'])->name('backup');
+
     // Additional admin routes bisa ditambahkan di sini
 });
 
@@ -162,5 +191,6 @@ Route::prefix('password')->group(function () {
 // routes/web.php (temporary for testing)
 // Route::get('/admin/akun/test-delete', [AdminController::class, 'testDelete']);
 
-
+// Tambahkan di routes/web.php
+Route::get('/find-mysqldump', [BackupController::class, 'findMysqldump']);
 

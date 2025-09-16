@@ -7,11 +7,9 @@
     <div class="app-sidebar-logo px-6" id="kt_app_sidebar_logo">
         <!--begin::Logo image-->
         <a href="/metronic8/demo1/index.html">
-            <img alt="Logo" src="{{ asset('media/logos/default-dark.svg') }}"
-                class="h-25px app-sidebar-logo-default">
+            <img alt="Logo" src="{{ asset('media/logos/default-dark.svg') }}" class="h-25px app-sidebar-logo-default">
 
-            <img alt="Logo" src="{{ asset('media/logos/default-small.svg') }}"
-                class="h-20px app-sidebar-logo-minimize">
+            <img alt="Logo" src="{{ asset('media/logos/default-small.svg') }}" class="h-20px app-sidebar-logo-minimize">
         </a>
         <!--end::Logo image-->
 
@@ -53,15 +51,14 @@
                         <!--begin:Menu link-->
                         <a class="menu-link" href="{{ route('admin.dashboard') }}"><span class="menu-icon"><i
                                     class="ki-duotone ki-element-11 fs-2"><span class="path1"></span><span
-                                        class="path2"></span><span class="path3"></span><span
-                                        class="path4"></span><span class="path5"></span><span
-                                        class="path6"></span></i></span><span
+                                        class="path2"></span><span class="path3"></span><span class="path4"></span><span
+                                        class="path5"></span><span class="path6"></span></i></span><span
                                 class="menu-title">Dashboard</span></a><!--end:Menu link-->
                     </div>
                     <!--end:Menu item-->
                     <!--begin:Menu item-->
                     <div class="menu-item pt-5"><!--begin:Menu content-->
-                        <div class="menu-content"><span class="menu-heading fw-bold text-uppercase fs-7">Pages</span>
+                        <div class="menu-content"><span class="menu-heading fw-bold text-uppercase fs-7">MANAJEMENT DATA</span>
                         </div>
                         <!--end:Menu content-->
                     </div><!--end:Menu item--><!--begin:Menu item-->
@@ -69,138 +66,35 @@
                         <!--begin:Menu link-->
                         <a class="menu-link" href="{{ route('admin.studio.index') }}"><span class="menu-icon"><i
                                     class="ki-duotone ki-element-11 fs-2"><span class="path1"></span><span
-                                        class="path2"></span><span class="path3"></span><span
-                                        class="path4"></span><span class="path5"></span><span
-                                        class="path6"></span></i></span><span class="menu-title">Data
+                                        class="path2"></span><span class="path3"></span><span class="path4"></span><span
+                                        class="path5"></span><span class="path6"></span></i></span><span
+                                class="menu-title">Data
                                 Studio</span></a><!--end:Menu link-->
                     </div><!--end:Menu item-->
                     <!--begin:Menu item-->
                     <div class="menu-item">
                         <!--begin:Menu link-->
-                        <a class="menu-link" href="{{ route('admin.ketersediaan') }}"><span class="menu-icon"><i
-                                    class="ki-duotone ki-calendar-8 fs-2"><span class="path1"></span><span
-                                        class="path2"></span><span class="path3"></span><span
-                                        class="path4"></span><span class="path5"></span><span
-                                        class="path6"></span></i></span><span
-                                class="menu-title">Calendar</span></a><!--end:Menu link-->
+                        <a class="menu-link" href="{{ route('admin.ketersediaan') }}">
+                            <span class="menu-icon">
+                                <i class="ki-duotone ki-calendar-8 fs-2">
+                                    <span class="path1"></span>
+                                    <span class="path2"></span>
+                                    <span class="path3"></span>
+                                    <span class="path4"></span>
+                                    <span class="path5"></span>
+                                    <span class="path6"></span>
+                                </i>
+                            </span>
+                            <span class="menu-title">Ketersediaan Studio</span>
+                        </a>
+                        <!--end:Menu link-->
                     </div>
                     <!--end:Menu item-->
                     <!--begin:Menu item-->
-                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                        <!--begin:Menu link--><span class="menu-link"><span class="menu-icon"><i
-                                    class="ki-duotone ki-element-7 fs-2"><span class="path1"></span><span
-                                        class="path2"></span></i></span><span class="menu-title">Widgets</span><span
-                                class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                        <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                            <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                    href="/metronic8/demo1/widgets/lists.html"><span class="menu-bullet"><span
-                                            class="bullet bullet-dot"></span></span><span
-                                        class="menu-title">Lists</span></a><!--end:Menu link--></div>
-                            <!--end:Menu item--><!--begin:Menu item-->
-                            <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                    href="/metronic8/demo1/widgets/statistics.html"><span class="menu-bullet"><span
-                                            class="bullet bullet-dot"></span></span><span
-                                        class="menu-title">Statistics</span></a><!--end:Menu link--></div>
-                            <!--end:Menu item--><!--begin:Menu item-->
-                            <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                    href="/metronic8/demo1/widgets/charts.html"><span class="menu-bullet"><span
-                                            class="bullet bullet-dot"></span></span><span
-                                        class="menu-title">Charts</span></a><!--end:Menu link--></div>
-                            <!--end:Menu item--><!--begin:Menu item-->
-                            <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                    href="/metronic8/demo1/widgets/mixed.html"><span class="menu-bullet"><span
-                                            class="bullet bullet-dot"></span></span><span
-                                        class="menu-title">Mixed</span></a><!--end:Menu link--></div>
-                            <!--end:Menu item--><!--begin:Menu item-->
-                            <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                    href="/metronic8/demo1/widgets/tables.html"><span class="menu-bullet"><span
-                                            class="bullet bullet-dot"></span></span><span
-                                        class="menu-title">Tables</span></a><!--end:Menu link--></div>
-                            <!--end:Menu item--><!--begin:Menu item-->
-                            <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                    href="/metronic8/demo1/widgets/feeds.html"><span class="menu-bullet"><span
-                                            class="bullet bullet-dot"></span></span><span
-                                        class="menu-title">Feeds</span></a><!--end:Menu link--></div>
-                            <!--end:Menu item-->
-                        </div><!--end:Menu sub-->
-                    </div><!--end:Menu item--><!--begin:Menu item-->
                     <div class="menu-item pt-5"><!--begin:Menu content-->
-                        <div class="menu-content"><span class="menu-heading fw-bold text-uppercase fs-7">Apps</span>
+                        <div class="menu-content"><span class="menu-heading fw-bold text-uppercase fs-7">Manajement Akun</span>
                         </div>
                         <!--end:Menu content-->
-                    </div><!--end:Menu item--><!--begin:Menu item-->
-                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                        <!--begin:Menu link--><span class="menu-link"><span class="menu-icon"><i
-                                    class="ki-duotone ki-abstract-41 fs-2"><span class="path1"></span><span
-                                        class="path2"></span></i></span><span class="menu-title">Projects</span><span
-                                class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                        <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                            <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                    href="/metronic8/demo1/apps/projects/list.html"><span class="menu-bullet"><span
-                                            class="bullet bullet-dot"></span></span><span class="menu-title">My
-                                        Projects</span></a><!--end:Menu link--></div>
-                            <!--end:Menu item--><!--begin:Menu item-->
-                            <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                    href="/metronic8/demo1/apps/projects/project.html"><span class="menu-bullet"><span
-                                            class="bullet bullet-dot"></span></span><span class="menu-title">View
-                                        Project</span></a><!--end:Menu link--></div>
-                            <!--end:Menu item--><!--begin:Menu item-->
-                            <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                    href="/metronic8/demo1/apps/projects/targets.html"><span class="menu-bullet"><span
-                                            class="bullet bullet-dot"></span></span><span
-                                        class="menu-title">Targets</span></a><!--end:Menu link--></div>
-                            <!--end:Menu item--><!--begin:Menu item-->
-                            <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                    href="/metronic8/demo1/apps/projects/budget.html"><span class="menu-bullet"><span
-                                            class="bullet bullet-dot"></span></span><span
-                                        class="menu-title">Budget</span></a><!--end:Menu link--></div>
-                            <!--end:Menu item--><!--begin:Menu item-->
-                            <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                    href="/metronic8/demo1/apps/projects/users.html"><span class="menu-bullet"><span
-                                            class="bullet bullet-dot"></span></span><span
-                                        class="menu-title">Users</span></a><!--end:Menu link--></div>
-                            <!--end:Menu item--><!--begin:Menu item-->
-                            <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                    href="/metronic8/demo1/apps/projects/files.html"><span class="menu-bullet"><span
-                                            class="bullet bullet-dot"></span></span><span
-                                        class="menu-title">Files</span></a><!--end:Menu link--></div>
-                            <!--end:Menu item--><!--begin:Menu item-->
-                            <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                    href="/metronic8/demo1/apps/projects/activity.html"><span
-                                        class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
-                                        class="menu-title">Activity</span></a><!--end:Menu link--></div>
-                            <!--end:Menu item--><!--begin:Menu item-->
-                            <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                    href="/metronic8/demo1/apps/projects/settings.html"><span
-                                        class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
-                                        class="menu-title">Settings</span></a><!--end:Menu link--></div>
-                            <!--end:Menu item-->
-                        </div><!--end:Menu sub-->
-                    </div><!--end:Menu item-->
-                    <!--begin:Menu item-->
-                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                        <!--begin:Menu link--><span class="menu-link"><span class="menu-icon"><i
-                                    class="ki-duotone ki-message-text-2 fs-2"><span class="path1"></span><span
-                                        class="path2"></span><span class="path3"></span></i></span><span
-                                class="menu-title">Chat</span><span
-                                class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                        <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                            <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                    href="/metronic8/demo1/apps/chat/private.html"><span class="menu-bullet"><span
-                                            class="bullet bullet-dot"></span></span><span class="menu-title">Private
-                                        Chat</span></a><!--end:Menu link--></div>
-                            <!--end:Menu item--><!--begin:Menu item-->
-                            <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                    href="/metronic8/demo1/apps/chat/group.html"><span class="menu-bullet"><span
-                                            class="bullet bullet-dot"></span></span><span class="menu-title">Group
-                                        Chat</span></a><!--end:Menu link--></div>
-                            <!--end:Menu item--><!--begin:Menu item-->
-                            <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                    href="/metronic8/demo1/apps/chat/drawer.html"><span class="menu-bullet"><span
-                                            class="bullet bullet-dot"></span></span><span class="menu-title">Drawer
-                                        Chat</span></a><!--end:Menu link--></div>
-                            <!--end:Menu item-->
-                        </div><!--end:Menu sub-->
                     </div><!--end:Menu item-->
                     <!--begin:Menu item-->
                     <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
@@ -208,7 +102,20 @@
                                     class="ki-duotone ki-abstract-13 fs-2"><span class="path1"></span><span
                                         class="path2"></span></i></span><span class="menu-title">Data
                                 Akun</span></a><!--end:Menu link--></div>
-                    <!--end:Menu item--><!--begin:Menu item-->
+                    <!--end:Menu item-->
+                    <!--begin:Menu item-->
+                    <div class="menu-item pt-5"><!--begin:Menu content-->
+                        <div class="menu-content"><span class="menu-heading fw-bold text-uppercase fs-7">Backup database</span>
+                        </div>
+                        <!--end:Menu content-->
+                    </div><!--end:Menu item-->
+                    <!--begin:Menu item-->
+                    <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
+                            href="{{ route('admin.backup.index') }}"><span class="menu-icon"><i
+                                    class="ki-duotone ki-abstract-13 fs-2"><span class="path1"></span><span
+                                        class="path2"></span></i></span><span class="menu-title">Backup Data</span></a><!--end:Menu link--></div>
+                    <!--end:Menu item-->
+                    <!--begin:Menu item-->
                     <div class="menu-item pt-5"><!--begin:Menu content-->
                         <div class="menu-content"><span class="menu-heading fw-bold text-uppercase fs-7">Sign
                                 Out</span>

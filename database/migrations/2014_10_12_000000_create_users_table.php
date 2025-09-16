@@ -34,3 +34,82 @@ return new class extends Migration
         Schema::dropIfExists('users');
     }
 };
+
+
+// Users (sudah ada)
+// |---
+// | id (string, PK)
+// | name
+// | email
+// | photo
+// | phone
+// | role (user/admin)
+// | password
+// | google_id
+// | status (aktif/nonaktif)
+// | remember_token
+// | timestamps
+
+// Studios
+// |---
+// | id (string, PK)
+// | name
+// | type
+// | description
+// | price_per_hour
+// | min_booking_hours
+// | max_booking_hours
+// | status (available/maintenance)
+// | created_at
+// | updated_at
+
+// Equipment
+// |---
+// | id (string, PK)
+// | name
+// | description
+// | category
+// | quantity
+// | studio_id (FK to Studios)
+// | created_at
+// | updated_at
+
+// Bookings
+// |---
+// | id (string, PK)
+// | user_id (FK to Users)
+// | studio_id (FK to Studios)
+// | booking_code
+// | date
+// | start_time
+// | end_time
+// | total_hours
+// | base_price
+// | total_amount
+// | status (pending/paid/cancelled/completed)
+// | notes
+// | created_at
+// | updated_at
+
+// Payments
+// |---
+// | id (string, PK)
+// | booking_id (FK to Bookings)
+// | merchant_ref (from Tripay)
+// | payment_method
+// | reference (from Tripay)
+// | amount
+// | status (unpaid/paid/expired/failed)
+// | paid_at
+// | payment_url
+// | created_at
+// | updated_at
+
+// BookingEquipment
+// |---
+// | id (string, PK)
+// | booking_id (FK to Bookings)
+// | equipment_id (FK to Equipment)
+// | quantity
+// | created_at
+// | updated_at

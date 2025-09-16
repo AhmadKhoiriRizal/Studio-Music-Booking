@@ -6,13 +6,15 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
-        "guzzlehttp/guzzle": "^7.2",
+        "guzzlehttp/guzzle": "^7.10",
         "hidehalo/nanoid-php": "^2.0",
         "illuminate/redis": "*",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
+        "laravel/slack-notification-channel": "^3.6",
         "laravel/socialite": "^5.23",
         "laravel/tinker": "^2.8",
+        "spatie/laravel-backup": "^9.3",
         "twilio/sdk": "^8.8"
     },
     "require-dev": {

@@ -578,6 +578,57 @@
                                                                         <!--end::Input group-->
 
                                                                         <!--begin::Input group-->
+                                                                        <div class="fv-row mb-7">
+                                                                            <!--begin::Label-->
+                                                                            <label
+                                                                                class="required fw-semibold fs-6 mb-2">Full
+                                                                                Name</label>
+                                                                            <!--end::Label-->
+
+                                                                            <!--begin::Input-->
+                                                                            <input type="text" name="user_name"
+                                                                                class="form-control form-control-solid mb-3 mb-lg-0"
+                                                                                placeholder="Full name"
+                                                                                value="Emma Smith" />
+                                                                            <!--end::Input-->
+                                                                        </div>
+                                                                        <!--end::Input group-->
+
+                                                                        <!--begin::Input group-->
+                                                                        <div class="fv-row mb-7">
+                                                                            <!--begin::Label-->
+                                                                            <label
+                                                                                class="required fw-semibold fs-6 mb-2">Full
+                                                                                Name</label>
+                                                                            <!--end::Label-->
+
+                                                                            <!--begin::Input-->
+                                                                            <input type="text" name="user_name"
+                                                                                class="form-control form-control-solid mb-3 mb-lg-0"
+                                                                                placeholder="Full name"
+                                                                                value="Emma Smith" />
+                                                                            <!--end::Input-->
+                                                                        </div>
+                                                                        <!--end::Input group-->
+
+                                                                        <!--begin::Input group-->
+                                                                        <div class="fv-row mb-7">
+                                                                            <!--begin::Label-->
+                                                                            <label
+                                                                                class="required fw-semibold fs-6 mb-2">Full
+                                                                                Name</label>
+                                                                            <!--end::Label-->
+
+                                                                            <!--begin::Input-->
+                                                                            <input type="text" name="user_name"
+                                                                                class="form-control form-control-solid mb-3 mb-lg-0"
+                                                                                placeholder="Full name"
+                                                                                value="Emma Smith" />
+                                                                            <!--end::Input-->
+                                                                        </div>
+                                                                        <!--end::Input group-->
+
+                                                                        <!--begin::Input group-->
                                                                         <div class="mb-5">
                                                                             <!--begin::Label-->
                                                                             <label
