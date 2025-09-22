@@ -115,11 +115,12 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     // Data Studio Management
     Route::prefix('studio')->name('studio.')->group(function () {
         Route::get('/data', [StudioController::class, 'index'])->name('index');
-        Route::post('/store', [StudioController::class, 'store'])->name('store'); // Diubah dari 'index' ke 'store'
+        Route::post('/store', [StudioController::class, 'store'])->name('store');
         Route::get('/create', [StudioController::class, 'create'])->name('create');
         Route::get('/edit/{id}', [StudioController::class, 'edit'])->name('edit');
-        Route::put('/update/{id}', [StudioController::class, 'update'])->name('update'); // Tambahkan route update
-        Route::delete('/destroy/{id}', [StudioController::class, 'destroy'])->name('destroy'); // Tambahkan route delete
+        Route::get('/edit-data/{id}', [StudioController::class, 'getEditData'])->name('edit.data'); // Route baru
+        Route::put('/update/{id}', [StudioController::class, 'update'])->name('update');
+        Route::delete('/destroy/{id}', [StudioController::class, 'destroy'])->name('destroy');
     });
 
     // Data Akun Management
@@ -132,7 +133,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     });
 
     // Availability Management
-    Route::get('/kelola-ketersediaan', [StudioController::class, 'availability'])->name('ketersediaan');
+    Route::get('/kelola-ketersediaan', [BookingController::class, 'availability'])->name('ketersediaan');
 
     // Availability Management
     // Backup Management - COMPLETE ROUTES
@@ -162,10 +163,17 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     });
 
     // Data Equipment Management
+    // Data Equipment Management dengan Stock Control
     Route::prefix('equipment')->name('equipment.')->group(function () {
         Route::get('/data', [EquipmentController::class, 'index'])->name('index');
         Route::post('/store', [EquipmentController::class, 'store'])->name('store');
+        Route::get('/edit-data/{id}', [EquipmentController::class, 'getEditData'])->name('edit.data'); // Route baru
+        Route::put('/update/{id}', [EquipmentController::class, 'update'])->name('update');
         Route::delete('/destroy/{id}', [EquipmentController::class, 'destroy'])->name('destroy');
+
+        // Stock management routes
+        Route::post('/adjust-stock/{id}', [EquipmentController::class, 'adjustStock'])->name('adjust.stock');
+        Route::get('/allocation-details/{id}', [EquipmentController::class, 'getAllocationDetails'])->name('allocation.details');
     });
     // Route::get('/backup-data', [AdminController::class, 'backup'])->name('backup');
 

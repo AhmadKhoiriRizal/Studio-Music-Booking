@@ -30,14 +30,16 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->string('category');
             $table->integer('quantity')->default(1);
+            $table->integer('allocated_quantity')->default(0)->after('quantity');
             $table->string('foto')->nullable();
-            // HAPUS studio_id dari sini karena kita sudah punya pivot table
             $table->timestamps();
         });
 
         // Buat pivot table studio_equipment SEBELUM bookings
         Schema::create('studio_equipment', function (Blueprint $table) {
-            $table->string('id', 10)->primary();
+            // HAPUS kolom id karena tidak diperlukan untuk pivot table
+            // $table->string('id', 10)->primary();
+
             $table->string('studio_id', 10);
             $table->string('equipment_id', 10);
             $table->integer('quantity')->default(1);
@@ -45,6 +47,9 @@ return new class extends Migration
 
             $table->foreign('studio_id')->references('id')->on('studios')->onDelete('cascade');
             $table->foreign('equipment_id')->references('id')->on('equipment')->onDelete('cascade');
+
+            // Tambahkan composite primary key
+            $table->primary(['studio_id', 'equipment_id']);
         });
 
         Schema::create('bookings', function (Blueprint $table) {
@@ -98,11 +103,11 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('booking_equipment');
-        Schema::dropIfExists('payments');
-        Schema::dropIfExists('bookings');
-        Schema::dropIfExists('studio_equipment'); // Tambahkan ini
-        Schema::dropIfExists('equipment');
         Schema::dropIfExists('studios');
+        Schema::dropIfExists('equipment');
+        Schema::dropIfExists('studio_equipment');
+        Schema::dropIfExists('bookings');
+        Schema::dropIfExists('payments');
+        Schema::dropIfExists('booking_equipment');
     }
 };

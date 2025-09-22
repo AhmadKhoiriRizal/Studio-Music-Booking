@@ -7,6 +7,11 @@ use Illuminate\Support\Facades\Auth;
 
 class BookingController extends Controller
 {
+    public function availability()
+    {
+        return view('admin.page.ketersediaan');
+    }
+
     public function index()
     {
         return view('user.booking.booking');

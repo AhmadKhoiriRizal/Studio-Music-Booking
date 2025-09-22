@@ -6,20 +6,22 @@ use App\Models\Studio;
 use App\Models\Equipment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 class StudioController extends Controller
 {
     public function index()
     {
         $studios = Studio::with('equipment')->get();
-        $equipment = Equipment::all(); // Tambahkan ini
+        $equipment = Equipment::available()->get(); // Hanya equipment dengan stock tersedia
         return view('admin.page.datastudio', compact('studios', 'equipment'));
     }
 
     public function create()
     {
-        $equipment = Equipment::all();
+        $equipment = Equipment::available()->get();
         return view('admin.studios.create', compact('equipment'));
     }
 
@@ -27,132 +29,419 @@ class StudioController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'type' => 'required|string|max:255',
+            'type' => 'required|string|in:small,medium,large,vip',
             'price_per_hour' => 'required|numeric|min:0',
             'min_booking_hours' => 'required|integer|min:1',
             'max_booking_hours' => 'required|integer|min:1',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'status' => 'required|in:available,maintenance',
             'equipment' => 'nullable|array',
             'equipment.*.quantity' => 'nullable|integer|min:1',
         ]);
 
-        $data = $request->all();
+        DB::beginTransaction();
 
-        // Upload foto jika ada
-        if ($request->hasFile('foto')) {
-            $fotoPath = $request->file('foto')->store('studios', 'public');
-            $data['foto'] = $fotoPath;
-        }
+        try {
+            $data = $request->all();
 
-        // Buat studio
-        $studio = Studio::create([
-            'id' => $this->generateUniqueId(),
-            'name' => $data['name'],
-            'type' => $data['type'],
-            'description' => $data['description'] ?? null,
-            'foto' => $data['foto'] ?? null,
-            'price_per_hour' => $data['price_per_hour'],
-            'min_booking_hours' => $data['min_booking_hours'],
-            'max_booking_hours' => $data['max_booking_hours'],
-            'status' => $data['status'] ?? 'available',
-        ]);
+            // Upload foto jika ada
+            if ($request->hasFile('foto')) {
+                $fotoPath = $request->file('foto')->store('studios', 'public');
+                $data['foto'] = $fotoPath;
+            }
 
-        // Sync equipment dengan quantity
-        if ($request->has('equipment')) {
-            $equipmentData = [];
-            foreach ($request->equipment as $equipmentId => $equipmentItem) {
-                if (!empty($equipmentItem['quantity']) && $equipmentItem['quantity'] > 0) {
-                    $equipmentData[$equipmentId] = ['quantity' => $equipmentItem['quantity']];
+            // Buat studio
+            $studio = Studio::create([
+                'id' => $this->generateUniqueId(),
+                'name' => $data['name'],
+                'type' => $data['type'],
+                'description' => $data['description'] ?? null,
+                'foto' => $data['foto'] ?? null,
+                'price_per_hour' => $data['price_per_hour'],
+                'min_booking_hours' => $data['min_booking_hours'],
+                'max_booking_hours' => $data['max_booking_hours'],
+                'status' => $data['status'],
+            ]);
+
+            // Process equipment dengan stock validation
+            if ($request->has('equipment') && is_array($request->equipment)) {
+                $equipmentData = [];
+                $equipmentAllocations = []; // Track allocations for rollback if needed
+
+                Log::info('Processing equipment data with stock validation', [
+                    'studio_id' => $studio->id,
+                    'equipment_input' => $request->equipment
+                ]);
+
+                foreach ($request->equipment as $equipmentId => $equipmentItem) {
+                    if (!is_array($equipmentItem) || !isset($equipmentItem['quantity'])) {
+                        Log::warning('Invalid equipment format', [
+                            'equipment_id' => $equipmentId,
+                            'equipment_item' => $equipmentItem
+                        ]);
+                        continue;
+                    }
+
+                    $quantity = intval($equipmentItem['quantity']);
+
+                    if ($quantity > 0) {
+                        $equipment = Equipment::find($equipmentId);
+
+                        if (!$equipment) {
+                            throw new \Exception("Equipment dengan ID {$equipmentId} tidak ditemukan");
+                        }
+
+                        // Check available stock
+                        if (!$equipment->hasAvailableStock($quantity)) {
+                            throw new \Exception("Stok {$equipment->name} tidak mencukupi. Tersedia: {$equipment->available_stock}, Diminta: {$quantity}");
+                        }
+
+                        // Allocate stock
+                        $equipment->allocateStock($quantity);
+                        $equipmentAllocations[] = ['equipment' => $equipment, 'quantity' => $quantity];
+
+                        $equipmentData[$equipmentId] = ['quantity' => $quantity];
+
+                        Log::info('Stock allocated', [
+                            'equipment_id' => $equipmentId,
+                            'equipment_name' => $equipment->name,
+                            'allocated_quantity' => $quantity,
+                            'remaining_stock' => $equipment->fresh()->available_stock
+                        ]);
+                    }
+                }
+
+                // Sync equipment to studio
+                if (!empty($equipmentData)) {
+                    $studio->equipment()->sync($equipmentData);
+
+                    Log::info('Equipment sync successful with stock allocation', [
+                        'studio_id' => $studio->id,
+                        'synced_count' => count($equipmentData),
+                        'allocations' => $equipmentAllocations
+                    ]);
                 }
             }
-            $studio->equipment()->sync($equipmentData);
+
+            DB::commit();
+
+            return redirect()->route('admin.studio.index')
+                            ->with('success', "Studio '{$studio->name}' berhasil dibuat dengan {$studio->equipment()->count()} peralatan teralokasi.");
+
+        } catch (\Exception $e) {
+            DB::rollback();
+
+            Log::error('Studio creation failed with stock allocation', [
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString()
+            ]);
+
+            return redirect()->back()
+                            ->withInput()
+                            ->withErrors(['error' => $e->getMessage()]);
         }
-
-        return redirect()->route('admin.studio.index')
-                         ->with('success', 'Studio berhasil dibuat dengan peralatan yang termasuk.');
-    }
-
-    public function edit($id)
-    {
-        $studio = Studio::with('equipment')->findOrFail($id);
-        $equipment = Equipment::all();
-        return view('admin.studios.edit', compact('studio', 'equipment'));
     }
 
     public function update(Request $request, $id)
     {
-        $studio = Studio::findOrFail($id);
+        $studio = Studio::with('equipment')->findOrFail($id);
 
         $request->validate([
             'name' => 'required|string|max:255',
-            'type' => 'required|string|max:255',
+            'type' => 'required|string|in:small,medium,large,vip',
             'price_per_hour' => 'required|numeric|min:0',
             'min_booking_hours' => 'required|integer|min:1',
             'max_booking_hours' => 'required|integer|min:1',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'status' => 'required|in:available,maintenance',
             'equipment' => 'nullable|array',
             'equipment.*.quantity' => 'nullable|integer|min:1',
         ]);
 
-        $data = $request->all();
+        DB::beginTransaction();
 
-        // Upload foto baru jika ada
-        if ($request->hasFile('foto')) {
-            // Hapus foto lama jika ada
-            if ($studio->foto) {
-                Storage::disk('public')->delete($studio->foto);
-            }
+        try {
+            $data = $request->all();
 
-            $fotoPath = $request->file('foto')->store('studios', 'public');
-            $data['foto'] = $fotoPath;
-        }
-
-        $studio->update($data);
-
-        // Sync equipment dengan quantity
-        $equipmentData = [];
-        if ($request->has('equipment')) {
-            foreach ($request->equipment as $equipmentId => $equipmentItem) {
-                if (!empty($equipmentItem['quantity']) && $equipmentItem['quantity'] > 0) {
-                    $equipmentData[$equipmentId] = ['quantity' => $equipmentItem['quantity']];
+            // Upload foto baru jika ada
+            if ($request->hasFile('foto')) {
+                if ($studio->foto) {
+                    Storage::disk('public')->delete($studio->foto);
                 }
+                $fotoPath = $request->file('foto')->store('studios', 'public');
+                $data['foto'] = $fotoPath;
             }
-        }
-        $studio->equipment()->sync($equipmentData);
 
-        return redirect()->route('admin.studio.index')
-                         ->with('success', 'Studio berhasil diperbarui dengan peralatan yang termasuk.');
+            $studio->update($data);
+
+            // Get current equipment allocations
+            $currentEquipment = $studio->equipment->keyBy('id');
+
+            // Process new equipment allocations
+            if ($request->has('equipment') && is_array($request->equipment)) {
+                $equipmentData = [];
+                $processedEquipmentIds = [];
+
+                foreach ($request->equipment as $equipmentId => $equipmentItem) {
+                    if (!is_array($equipmentItem) || !isset($equipmentItem['quantity'])) {
+                        continue;
+                    }
+
+                    $newQuantity = intval($equipmentItem['quantity']);
+
+                    if ($newQuantity > 0) {
+                        $equipment = Equipment::find($equipmentId);
+
+                        if (!$equipment) {
+                            continue;
+                        }
+
+                        $oldQuantity = $currentEquipment->has($equipmentId) ?
+                            $currentEquipment[$equipmentId]->pivot->quantity : 0;
+
+                        // Update stock allocation
+                        try {
+                            $equipment->updateAllocation($oldQuantity, $newQuantity);
+                        } catch (\Exception $e) {
+                            throw new \Exception("Error updating {$equipment->name}: " . $e->getMessage());
+                        }
+
+                        $equipmentData[$equipmentId] = ['quantity' => $newQuantity];
+                        $processedEquipmentIds[] = $equipmentId;
+
+                        Log::info('Equipment allocation updated', [
+                            'equipment_id' => $equipmentId,
+                            'old_quantity' => $oldQuantity,
+                            'new_quantity' => $newQuantity,
+                            'available_stock' => $equipment->fresh()->available_stock
+                        ]);
+                    }
+                }
+
+                // Deallocate equipment that was removed
+                foreach ($currentEquipment as $equipmentId => $equipmentData) {
+                    if (!in_array($equipmentId, $processedEquipmentIds)) {
+                        $equipment = Equipment::find($equipmentId);
+                        if ($equipment) {
+                            $equipment->deallocateStock($equipmentData->pivot->quantity);
+
+                            Log::info('Equipment deallocated (removed from studio)', [
+                                'equipment_id' => $equipmentId,
+                                'deallocated_quantity' => $equipmentData->pivot->quantity,
+                                'available_stock' => $equipment->fresh()->available_stock
+                            ]);
+                        }
+                    }
+                }
+
+                $studio->equipment()->sync($equipmentData);
+            } else {
+                // No equipment data - deallocate all current equipment
+                foreach ($currentEquipment as $equipmentId => $equipmentData) {
+                    $equipment = Equipment::find($equipmentId);
+                    if ($equipment) {
+                        $equipment->deallocateStock($equipmentData->pivot->quantity);
+                    }
+                }
+                $studio->equipment()->sync([]);
+            }
+
+            DB::commit();
+
+            return redirect()->route('admin.studio.index')
+                            ->with('success', "Studio '{$studio->name}' berhasil diperbarui dengan alokasi stock yang tepat.");
+
+        } catch (\Exception $e) {
+            DB::rollback();
+
+            Log::error('Studio update failed with stock allocation', [
+                'studio_id' => $id,
+                'error' => $e->getMessage()
+            ]);
+
+            return redirect()->back()
+                            ->withInput()
+                            ->withErrors(['error' => $e->getMessage()]);
+        }
+    }
+
+    /**
+     * Get studio data for editing via AJAX
+     */
+    public function getEditData($id)
+    {
+        $studio = Studio::with('equipment')->findOrFail($id);
+
+        $equipmentData = $studio->equipment->mapWithKeys(function($item) {
+            return [$item->id => ['quantity' => $item->pivot->quantity]];
+        })->toArray();
+
+        return response()->json([
+            'id' => $studio->id,
+            'name' => $studio->name,
+            'type' => $studio->type,
+            'description' => $studio->description,
+            'price_per_hour' => $studio->price_per_hour,
+            'min_booking_hours' => $studio->min_booking_hours,
+            'max_booking_hours' => $studio->max_booking_hours,
+            'status' => $studio->status,
+            'foto' => $studio->foto,
+            'equipment' => $equipmentData
+        ]);
     }
 
     public function destroy($id)
     {
-        $studio = Studio::findOrFail($id);
+        DB::beginTransaction();
 
-        // Hapus foto jika ada
-        if ($studio->foto) {
-            Storage::disk('public')->delete($studio->foto);
+        try {
+            $studio = Studio::with('equipment')->findOrFail($id);
+
+            // Deallocate all equipment stock
+            foreach ($studio->equipment as $equipment) {
+                $equipmentModel = Equipment::find($equipment->id);
+                if ($equipmentModel) {
+                    $equipmentModel->deallocateStock($equipment->pivot->quantity);
+
+                    Log::info('Stock deallocated on studio deletion', [
+                        'studio_id' => $studio->id,
+                        'equipment_id' => $equipment->id,
+                        'deallocated_quantity' => $equipment->pivot->quantity,
+                        'available_stock' => $equipmentModel->fresh()->available_stock
+                    ]);
+                }
+            }
+
+            // Hapus foto jika ada
+            if ($studio->foto) {
+                Storage::disk('public')->delete($studio->foto);
+            }
+
+            // Hapus relasi equipment
+            $studio->equipment()->detach();
+            $studio->delete();
+
+            DB::commit();
+
+            return redirect()->route('admin.studio.index')
+                            ->with('success', "Studio '{$studio->name}' berhasil dihapus dan stock equipment telah dikembalikan.");
+
+        } catch (\Exception $e) {
+            DB::rollback();
+
+            Log::error('Studio deletion failed', [
+                'studio_id' => $id,
+                'error' => $e->getMessage()
+            ]);
+
+            return redirect()->back()
+                            ->withErrors(['error' => 'Gagal menghapus studio: ' . $e->getMessage()]);
         }
-
-        // Hapus relasi equipment terlebih dahulu
-        $studio->equipment()->detach();
-
-        $studio->delete();
-
-        return redirect()->route('admin.studio.index')
-                         ->with('success', 'Studio berhasil dihapus.');
     }
 
-    // Helper function untuk generate unique ID
-    private function generateUniqueId($length = 10)
+    /**
+     * AJAX endpoint to get equipment with stock info
+     */
+    public function getEquipmentStock()
     {
-        $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $charactersLength = strlen($characters);
-        $randomString = '';
+        $equipment = Equipment::select('id', 'name', 'category', 'quantity', 'allocated_quantity')
+                              ->available()
+                              ->get()
+                              ->map(function($item) {
+                                  return [
+                                      'id' => $item->id,
+                                      'name' => $item->name,
+                                      'category' => $item->category,
+                                      'total_quantity' => $item->quantity,
+                                      'allocated_quantity' => $item->allocated_quantity,
+                                      'available_stock' => $item->available_stock,
+                                      'foto' => $item->foto ? asset('storage/' . $item->foto) : null
+                                  ];
+                              });
 
-        for ($i = 0; $i < $length; $i++) {
-            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        return response()->json($equipment);
+    }
+
+    /**
+     * Check real-time equipment availability
+     */
+    public function checkEquipmentAvailability(Request $request)
+    {
+        $equipmentId = $request->equipment_id;
+        $quantity = intval($request->quantity);
+        $studioId = $request->studio_id; // For edit mode
+
+        $equipment = Equipment::find($equipmentId);
+
+        if (!$equipment) {
+            return response()->json([
+                'available' => false,
+                'message' => 'Equipment tidak ditemukan'
+            ], 404);
         }
 
-        return $randomString;
+        $availableStock = $equipment->available_stock;
+
+        // If editing existing studio, add back current allocation
+        if ($studioId) {
+            $currentAllocation = DB::table('studio_equipment')
+                                  ->where('studio_id', $studioId)
+                                  ->where('equipment_id', $equipmentId)
+                                  ->value('quantity') ?? 0;
+            $availableStock += $currentAllocation;
+        }
+
+        $isAvailable = $quantity <= $availableStock;
+
+        return response()->json([
+            'available' => $isAvailable,
+            'available_stock' => $availableStock,
+            'requested_quantity' => $quantity,
+            'total_stock' => $equipment->quantity,
+            'allocated_stock' => $equipment->allocated_quantity,
+            'message' => $isAvailable ?
+                "Stock tersedia: {$availableStock}" :
+                "Stock tidak mencukupi! Tersedia: {$availableStock}, Diminta: {$quantity}"
+        ]);
+    }
+
+    /**
+     * Recalculate all equipment allocations (utility function)
+     */
+    public function recalculateAllocations()
+    {
+        DB::beginTransaction();
+
+        try {
+            $equipmentList = Equipment::all();
+
+            foreach ($equipmentList as $equipment) {
+                $equipment->recalculateAllocation();
+            }
+
+            DB::commit();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Alokasi stock berhasil dikalkulasi ulang'
+            ]);
+
+        } catch (\Exception $e) {
+            DB::rollback();
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Error: ' . $e->getMessage()
+            ], 500);
+        }
+    }
+
+    private function generateUniqueId($length = 10)
+    {
+        do {
+            $id = strtoupper(Str::random($length));
+        } while (Studio::where('id', $id)->exists());
+
+        return $id;
     }
 }
