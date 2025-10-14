@@ -255,6 +255,7 @@
                                                     </th>
                                                     <th class="min-w-100px">Studio</th>
                                                     <th class="min-w-100px">Tipe</th>
+                                                    <th class="min-w-100px">kapasitas</th>
                                                     <th class="min-w-100px">Harga/Jam</th>
                                                     <th class="min-w-150px">Equipment Included</th>
                                                     <th class="min-w-100px">Status</th>
@@ -291,6 +292,9 @@
                                                         <span class="badge badge-light-info">{{ ucfirst($studio->type) }}</span>
                                                     </td>
                                                     <td>
+                                                        <span class="badge badge-light-info">{{ ucfirst($studio->kapasitas . ' Orang')}}</span>
+                                                    </td>
+                                                    <td>
                                                         <span class="fw-bold">Rp {{ number_format($studio->price_per_hour, 0, ',', '.') }}</span>
                                                     </td>
                                                     <td>
@@ -308,7 +312,7 @@
                                                     </td>
                                                     <td>
                                                         @if($studio->status == 'available')
-                                                        <span class="badge badge-light-success">Tersedia</span>
+                                                        <span class="badge badge-light-success">available</span>
                                                         @else
                                                         <span class="badge badge-light-danger">Maintenance</span>
                                                         @endif
@@ -398,6 +402,11 @@
                                 <option value="large">Large</option>
                                 <option value="vip">VIP</option>
                             </select>
+                        </div>
+                        <div class="fv-row mb-7">
+                            <label class="required fw-semibold fs-6 mb-2">kapasitas</label>
+                            <input type="number" name="kapasitas" class="form-control form-control-solid"
+                                placeholder="Masukkan kapasitas" min="0" required />
                         </div>
                         <div class="fv-row mb-7">
                             <label class="fw-semibold fs-6 mb-2">Deskripsi</label>
@@ -561,6 +570,12 @@
                             <option value="large">Large</option>
                             <option value="vip">VIP</option>
                         </select>
+                    </div>
+
+                    <div class="fv-row mb-7">
+                        <label class="fw-semibold fs-6 mb-2">kapasitas</label>
+                        <input type="number" id="edit_kapasitas" name="kapasitas" class="form-control form-control-solid" rows="3"
+                            placeholder="Masukkan Kapasitas"></input>
                     </div>
 
                     <div class="fv-row mb-7">
@@ -755,19 +770,48 @@
                 table.search(this.value).draw();
             });
 
-            // Filter functionality
+            // Filter functionality - VERSI CUSTOM
             $('#apply_filter').on('click', function() {
                 var type = $('#filter_type').val();
                 var status = $('#filter_status').val();
 
-                table.column(2).search(type).column(5).search(status).draw();
+                $.fn.dataTable.ext.search.push(
+                    function(settings, data, dataIndex) {
+                        var rowType = data[2]; // Kolom tipe (index 2)
+                        var rowStatus = data[6]; // Kolom status (index 6)
+
+                        var typeMatch = true;
+                        var statusMatch = true;
+
+                        // Filter tipe
+                        if (type) {
+                            typeMatch = rowType.toLowerCase().includes(type.toLowerCase());
+                        }
+
+                        // Filter status
+                        if (status) {
+                            if (status === 'available') {
+                                statusMatch = rowStatus.includes('Tersedia') || rowStatus.includes('available');
+                            } else if (status === 'maintenance') {
+                                statusMatch = rowStatus.includes('Maintenance') || rowStatus.includes('maintenance');
+                            }
+                        }
+
+                        return typeMatch && statusMatch;
+                    }
+                );
+
+                table.draw();
+
+                // Hapus filter function setelah draw
+                $.fn.dataTable.ext.search.pop();
             });
 
             // Reset filter
             $('#reset_filter').on('click', function() {
                 $('#filter_type').val('');
                 $('#filter_status').val('');
-                table.columns().search('').draw();
+                table.draw();
             });
         });
 
@@ -932,20 +976,73 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Load equipment stock data dari server
     function loadEquipmentStock() {
-        fetch('/admin/studio/equipment-stock')
-            .then(response => response.json())
-            .then(data => {
-                equipmentStockData = {};
-                data.forEach(equipment => {
+    return fetch('/admin/studio/equipment-stock')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Check if data is an array
+            if (!Array.isArray(data)) {
+                console.warn('Equipment stock data is not an array, using fallback data');
+                return loadBasicEquipmentData();
+            }
+
+            equipmentStockData = {};
+            data.forEach(equipment => {
+                if (equipment && equipment.id) {
                     equipmentStockData[equipment.id] = equipment;
                     updateStockDisplay(equipment.id, equipment.available_stock);
-                });
-            })
-            .catch(error => {
-                console.error('Error loading equipment stock:', error);
-                showAlert('Gagal memuat data stock equipment', 'error');
+                }
             });
-    }
+
+            console.log('Equipment stock loaded successfully:', Object.keys(equipmentStockData).length, 'items');
+        })
+        .catch(error => {
+            console.error('Error loading equipment stock:', error);
+            showAlert('Gagal memuat data stock equipment. Menggunakan data dasar.', 'warning');
+            // Fallback: use basic equipment data without stock validation
+            return loadBasicEquipmentData();
+        });
+}
+
+// Fallback function jika endpoint gagal
+function loadBasicEquipmentData() {
+    const equipmentModal = document.getElementById('equipmentModal');
+    let loadedCount = 0;
+
+    equipmentModal.querySelectorAll('tr').forEach(row => {
+        const checkbox = row.querySelector('.equipment-checkbox');
+        if (checkbox) {
+            const equipmentId = checkbox.value;
+            const quantityInput = row.querySelector('.equipment-quantity');
+            const stockCell = row.querySelector('td:nth-child(4)');
+
+            if (stockCell && quantityInput) {
+                const maxStock = parseInt(quantityInput.getAttribute('data-max')) || 1;
+                stockCell.innerHTML = `<span class="fw-bold text-success">${maxStock}</span>`;
+
+                // Initialize basic equipment data
+                equipmentStockData[equipmentId] = {
+                    id: equipmentId,
+                    name: checkbox.getAttribute('data-name'),
+                    category: checkbox.getAttribute('data-category'),
+                    total_quantity: maxStock,
+                    allocated_quantity: 0,
+                    available_stock: maxStock
+                };
+
+                loadedCount++;
+            }
+        }
+    });
+
+    console.log('Basic equipment data loaded:', loadedCount, 'items');
+    return Promise.resolve();
+}
+
 
     // Update stock display di tabel
     function updateStockDisplay(equipmentId, availableStock) {
@@ -1035,10 +1132,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         })
-        .catch(error => {
-            console.error('Error validating stock:', error);
-            showAlert('Gagal memvalidasi stock', 'error');
-        });
+        // .catch(error => {
+        //     console.error('Error validating stock:', error);
+        //     showAlert('Gagal memvalidasi stock', 'error');
+        // })
+        ;
     }
 
     // Enable quantity input when checkbox is checked dengan stock validation
@@ -1267,34 +1365,51 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Function untuk edit studio
+// Global variables untuk edit
+let selectedEquipmentEdit = {};
+let currentStudioId = null;
+
+// Function untuk edit studio
+// Function untuk edit studio
 function editStudio(studioId) {
-    // Fetch studio data via AJAX
+    currentStudioId = studioId;
+
     fetch(`/admin/studio/edit-data/${studioId}`)
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
         .then(data => {
-            // Fill the form with studio data
+            console.log('Studio data loaded:', data);
+
+            // Fill form data
             document.getElementById('edit_studio_id').value = data.id;
             document.getElementById('edit_name').value = data.name;
             document.getElementById('edit_type').value = data.type;
+            document.getElementById('edit_kapasitas').value = data.kapasitas;
             document.getElementById('edit_description').value = data.description || '';
             document.getElementById('edit_price_per_hour').value = data.price_per_hour;
             document.getElementById('edit_min_booking_hours').value = data.min_booking_hours;
             document.getElementById('edit_max_booking_hours').value = data.max_booking_hours;
             document.getElementById('edit_status').value = data.status;
 
-            // Handle current image preview
+            // Handle image preview
             const imageContainer = document.getElementById('current_image_container_studio');
-            imageContainer.innerHTML = ''; // Clear previous content
+            imageContainer.innerHTML = '';
 
             if (data.foto) {
                 const img = document.createElement('img');
                 img.src = `/storage/${data.foto}`;
                 img.alt = data.name;
                 img.className = 'w-100';
+                img.style.borderRadius = '0.475rem';
                 imageContainer.appendChild(img);
             } else {
                 const placeholder = document.createElement('div');
-                placeholder.className = 'symbol-label fs-1 bg-light-primary text-primary';
+                placeholder.className = 'symbol-label fs-1 bg-light-primary text-primary d-flex align-items-center justify-content-center w-100 h-100';
+                placeholder.style.borderRadius = '0.475rem';
                 placeholder.textContent = data.name.charAt(0).toUpperCase();
                 imageContainer.appendChild(placeholder);
             }
@@ -1302,52 +1417,491 @@ function editStudio(studioId) {
             // Load equipment data
             loadStudioEquipmentData(data.equipment);
 
-            // Set form action
+            // PERBAIKAN: Gunakan route yang sesuai dengan web.php
             document.getElementById('editStudioForm').action = `/admin/studio/update/${data.id}`;
 
-            // Show the modal
+            // Show modal
             const modal = new bootstrap.Modal(document.getElementById('kt_modal_edit_studio'));
             modal.show();
         })
         .catch(error => {
-            console.error('Error:', error);
-            alert('Gagal memuat data studio');
+            console.error('Error loading studio data:', error);
+            showAlert('Gagal memuat data studio: ' + error.message, 'error');
         });
 }
 
-// Function to load studio equipment data
+// Pastikan form memiliki CSRF token dan method PUT
+document.addEventListener('DOMContentLoaded', function() {
+    const editStudioForm = document.getElementById('editStudioForm');
+    if (editStudioForm) {
+        editStudioForm.addEventListener('submit', function(e) {
+            // Validasi equipment sebelum submit
+            const selectedCount = Object.keys(selectedEquipmentEdit).length;
+            let validEquipment = true;
+
+            Object.entries(selectedEquipmentEdit).forEach(([equipmentId, data]) => {
+                if (data.quantity <= 0) {
+                    validEquipment = false;
+                }
+            });
+
+            if (!validEquipment) {
+                e.preventDefault();
+                showAlert('Ada equipment dengan quantity tidak valid.', 'error');
+                return false;
+            }
+
+            console.log('Submitting edit form with equipment:', selectedEquipmentEdit);
+            return true;
+        });
+    }
+});
+
 function loadStudioEquipmentData(equipmentData) {
-    // Clear previous selections
-    const selectedEquipmentList = document.getElementById('selectedEquipmentListEdit');
-    const equipmentDataContainer = document.getElementById('equipmentDataContainerEdit');
-    const selectedEquipmentContainer = document.getElementById('selectedEquipmentContainerEdit');
+    const selectedEquipmentListEdit = document.getElementById('selectedEquipmentListEdit');
+    const equipmentDataContainerEdit = document.getElementById('equipmentDataContainerEdit');
+    const selectedEquipmentContainerEdit = document.getElementById('selectedEquipmentContainerEdit');
 
-    selectedEquipmentList.innerHTML = '';
-    equipmentDataContainer.innerHTML = '';
+    // Reset
+    selectedEquipmentEdit = {};
+    selectedEquipmentListEdit.innerHTML = '';
+    equipmentDataContainerEdit.innerHTML = '';
 
-    // Populate equipment data
     if (equipmentData && Object.keys(equipmentData).length > 0) {
         Object.entries(equipmentData).forEach(([equipmentId, equipmentItem]) => {
             const quantity = equipmentItem.quantity;
 
-            // Create hidden inputs for form submission
+            selectedEquipmentEdit[equipmentId] = {
+                quantity: quantity,
+                name: `Equipment ${equipmentId}`, // Nanti akan diganti dengan nama sebenarnya
+                equipmentId: equipmentId
+            };
+
+            // Create hidden inputs untuk form submission
             const quantityInputHidden = document.createElement('input');
             quantityInputHidden.type = 'hidden';
             quantityInputHidden.name = `equipment[${equipmentId}][quantity]`;
             quantityInputHidden.value = quantity;
-            equipmentDataContainer.appendChild(quantityInputHidden);
+            equipmentDataContainerEdit.appendChild(quantityInputHidden);
 
-            // Add to selected equipment display
+            // Add to display
             const badge = document.createElement('span');
-            badge.className = 'badge badge-light-primary';
-            badge.innerHTML = `Equipment ${equipmentId} (x${quantity}) <button type="button" class="btn btn-sm btn-icon btn-light-danger ms-2 remove-equipment-edit" data-id="${equipmentId}">×</button>`;
-            selectedEquipmentList.appendChild(badge);
+            badge.className = 'badge badge-light-primary mb-1 me-1';
+            badge.innerHTML = `Equipment ${equipmentId} (x${quantity})
+                <button type="button" class="btn btn-sm btn-icon btn-light-danger ms-2 remove-equipment-edit" data-id="${equipmentId}">
+                    ×
+                </button>`;
+            selectedEquipmentListEdit.appendChild(badge);
         });
 
-        selectedEquipmentContainer.classList.remove('d-none');
+        selectedEquipmentContainerEdit.classList.remove('d-none');
+
+        // Load nama equipment yang sebenarnya
+        loadEquipmentNames();
     } else {
-        selectedEquipmentContainer.classList.add('d-none');
+        selectedEquipmentContainerEdit.classList.add('d-none');
     }
+}
+
+// Load nama equipment dari server
+function loadEquipmentNames() {
+    fetch('/admin/studio/equipment-stock')
+        .then(response => response.json())
+        .then(equipmentList => {
+            equipmentList.forEach(equipment => {
+                if (selectedEquipmentEdit[equipment.id]) {
+                    selectedEquipmentEdit[equipment.id].name = equipment.name;
+
+                    // Update display name
+                    const badge = document.querySelector(`.remove-equipment-edit[data-id="${equipment.id}"]`)?.closest('.badge');
+                    if (badge) {
+                        badge.innerHTML = badge.innerHTML.replace(
+                            `Equipment ${equipment.id}`,
+                            equipment.name
+                        );
+                    }
+                }
+            });
+        })
+        .catch(error => {
+            console.error('Error loading equipment names:', error);
+        });
+}
+
+// Initialize edit equipment modal
+function initializeEditEquipmentModal() {
+    const equipmentModalEdit = document.getElementById('equipmentModalEdit');
+
+    if (!equipmentModalEdit) return;
+
+    // Load stock data saat modal edit dibuka
+    equipmentModalEdit.addEventListener('show.bs.modal', function() {
+        loadEquipmentStockForEdit();
+        prefillEditEquipmentSelection();
+    });
+
+    // Enable quantity input when checkbox is checked
+    equipmentModalEdit.addEventListener('change', function(e) {
+        if (e.target.classList.contains('equipment-checkbox-edit')) {
+            const equipmentId = e.target.value;
+            const quantityInput = equipmentModalEdit.querySelector(`.equipment-quantity-edit[data-equipment-id="${equipmentId}"]`);
+
+            if (e.target.checked) {
+                quantityInput.removeAttribute('disabled');
+                // Validate initial quantity dengan studio_id untuk edit mode
+                validateStockForEdit(equipmentId, parseInt(quantityInput.value) || 1, quantityInput);
+            } else {
+                quantityInput.setAttribute('disabled', 'disabled');
+                quantityInput.value = '1';
+                quantityInput.classList.remove('is-valid', 'is-invalid');
+
+                // Remove validation messages
+                const row = e.target.closest('tr');
+                const messages = row.querySelectorAll('.stock-message, .stock-info');
+                messages.forEach(msg => msg.remove());
+            }
+        }
+    });
+
+    // Real-time stock validation untuk edit
+    equipmentModalEdit.addEventListener('input', function(e) {
+        if (e.target.classList.contains('equipment-quantity-edit')) {
+            const equipmentId = e.target.getAttribute('data-equipment-id');
+            const requestedQuantity = parseInt(e.target.value) || 0;
+            const checkbox = equipmentModalEdit.querySelector(`.equipment-checkbox-edit[value="${equipmentId}"]`);
+
+            if (requestedQuantity > 0 && checkbox && checkbox.checked) {
+                validateStockForEdit(equipmentId, requestedQuantity, e.target);
+            }
+        }
+    });
+
+    // Save equipment selection untuk edit
+    document.getElementById('saveEquipmentSelectionEdit').addEventListener('click', function() {
+        saveEquipmentSelectionEdit();
+    });
+}
+
+// Load equipment stock untuk edit mode
+function loadEquipmentStockForEdit() {
+    return fetch('/admin/studio/equipment-stock')
+        .then(response => {
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            return response.json();
+        })
+        .then(data => {
+            if (!Array.isArray(data)) {
+                console.warn('Equipment stock data is not an array');
+                return loadBasicEquipmentDataForEdit();
+            }
+
+            // Update stock display di modal edit
+            data.forEach(equipment => {
+                if (equipment && equipment.id) {
+                    updateStockDisplayForEdit(equipment.id, equipment.available_stock);
+                }
+            });
+        })
+        .catch(error => {
+            console.error('Error loading equipment stock for edit:', error);
+            return loadBasicEquipmentDataForEdit();
+        });
+}
+
+function loadBasicEquipmentDataForEdit() {
+    const equipmentModalEdit = document.getElementById('equipmentModalEdit');
+    if (!equipmentModalEdit) return;
+
+    equipmentModalEdit.querySelectorAll('tr').forEach(row => {
+        const checkbox = row.querySelector('.equipment-checkbox-edit');
+        if (checkbox) {
+            const equipmentId = checkbox.value;
+            const quantityInput = row.querySelector('.equipment-quantity-edit');
+            const stockCell = row.querySelector('td:nth-child(4)');
+
+            if (stockCell && quantityInput) {
+                const maxStock = parseInt(quantityInput.getAttribute('data-max')) || 1;
+                stockCell.innerHTML = `<span class="fw-bold text-success">${maxStock}</span>`;
+            }
+        }
+    });
+
+    return Promise.resolve();
+}
+
+function updateStockDisplayForEdit(equipmentId, availableStock) {
+    const equipmentModalEdit = document.getElementById('equipmentModalEdit');
+    if (!equipmentModalEdit) return;
+
+    const row = equipmentModalEdit.querySelector(`tr:has(.equipment-checkbox-edit[value="${equipmentId}"])`);
+    if (row) {
+        const stockCell = row.querySelector('td:nth-child(4)');
+        const quantityInput = row.querySelector('.equipment-quantity-edit');
+
+        if (stockCell) {
+            stockCell.innerHTML = `
+                <span class="fw-bold ${availableStock > 0 ? 'text-success' : 'text-danger'}">
+                    ${availableStock}
+                </span>
+            `;
+        }
+
+        if (quantityInput) {
+            quantityInput.max = availableStock;
+            if (availableStock === 0) {
+                quantityInput.disabled = true;
+                const checkbox = row.querySelector('.equipment-checkbox-edit');
+                if (checkbox) {
+                    checkbox.disabled = true;
+                    checkbox.checked = false;
+                }
+            }
+        }
+    }
+}
+
+function validateStockForEdit(equipmentId, quantity, inputElement) {
+    const data = {
+        equipment_id: equipmentId,
+        quantity: quantity,
+        studio_id: currentStudioId // Penting untuk edit mode
+    };
+
+    fetch('/admin/studio/check-equipment-availability', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || ''
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(result => {
+        const row = inputElement.closest('tr');
+        let messageElement = row.querySelector('.stock-message');
+
+        if (!messageElement) {
+            messageElement = document.createElement('div');
+            messageElement.className = 'stock-message small mt-1';
+            inputElement.parentNode.appendChild(messageElement);
+        }
+
+        if (result.available) {
+            inputElement.classList.remove('is-invalid');
+            inputElement.classList.add('is-valid');
+            messageElement.className = 'stock-message small mt-1 text-success';
+            messageElement.textContent = result.message;
+        } else {
+            inputElement.classList.remove('is-valid');
+            inputElement.classList.add('is-invalid');
+            messageElement.className = 'stock-message small mt-1 text-danger';
+            messageElement.textContent = result.message;
+
+            // Auto-correct quantity to maximum available
+            if (result.available_stock > 0) {
+                inputElement.value = result.available_stock;
+                setTimeout(() => validateStockForEdit(equipmentId, result.available_stock, inputElement), 100);
+            }
+        }
+    })
+    .catch(error => {
+        console.error('Error validating stock for edit:', error);
+    });
+}
+
+function prefillEditEquipmentSelection() {
+    const equipmentModalEdit = document.getElementById('equipmentModalEdit');
+    if (!equipmentModalEdit) return;
+
+    // Reset semua checkbox terlebih dahulu
+    equipmentModalEdit.querySelectorAll('.equipment-checkbox-edit').forEach(checkbox => {
+        checkbox.checked = false;
+        const equipmentId = checkbox.value;
+        const quantityInput = equipmentModalEdit.querySelector(`.equipment-quantity-edit[data-equipment-id="${equipmentId}"]`);
+        if (quantityInput) {
+            quantityInput.disabled = true;
+            quantityInput.value = '1';
+            quantityInput.classList.remove('is-valid', 'is-invalid');
+
+            // Remove validation messages
+            const row = checkbox.closest('tr');
+            const messages = row.querySelectorAll('.stock-message, .stock-info');
+            messages.forEach(msg => msg.remove());
+        }
+    });
+
+    // Prefill berdasarkan selectedEquipmentEdit
+    Object.keys(selectedEquipmentEdit).forEach(equipmentId => {
+        const checkbox = equipmentModalEdit.querySelector(`.equipment-checkbox-edit[value="${equipmentId}"]`);
+        if (checkbox) {
+            checkbox.checked = true;
+            const quantityInput = equipmentModalEdit.querySelector(`.equipment-quantity-edit[data-equipment-id="${equipmentId}"]`);
+            if (quantityInput) {
+                quantityInput.disabled = false;
+                quantityInput.value = selectedEquipmentEdit[equipmentId].quantity;
+                // Validate the quantity
+                validateStockForEdit(equipmentId, selectedEquipmentEdit[equipmentId].quantity, quantityInput);
+            }
+        }
+    });
+}
+
+function saveEquipmentSelectionEdit() {
+    const equipmentModalEdit = document.getElementById('equipmentModalEdit');
+    const selectedEquipmentListEdit = document.getElementById('selectedEquipmentListEdit');
+    const equipmentDataContainerEdit = document.getElementById('equipmentDataContainerEdit');
+    const selectedEquipmentContainerEdit = document.getElementById('selectedEquipmentContainerEdit');
+
+    // Reset
+    selectedEquipmentEdit = {};
+    equipmentDataContainerEdit.innerHTML = '';
+    selectedEquipmentListEdit.innerHTML = '';
+
+    const checkedEquipment = equipmentModalEdit.querySelectorAll('.equipment-checkbox-edit:checked');
+    let hasErrors = false;
+
+    checkedEquipment.forEach(checkbox => {
+        const equipmentId = checkbox.value;
+        const quantityInput = equipmentModalEdit.querySelector(`.equipment-quantity-edit[data-equipment-id="${equipmentId}"]`);
+        const quantity = parseInt(quantityInput.value) || 0;
+
+        if (quantityInput.classList.contains('is-invalid') || quantity === 0) {
+            hasErrors = true;
+            return;
+        }
+
+        const equipmentName = checkbox.getAttribute('data-name');
+
+        selectedEquipmentEdit[equipmentId] = {
+            quantity: quantity,
+            name: equipmentName,
+            equipmentId: equipmentId
+        };
+
+        // Create hidden inputs untuk form submission
+        const quantityInputHidden = document.createElement('input');
+        quantityInputHidden.type = 'hidden';
+        quantityInputHidden.name = `equipment[${equipmentId}][quantity]`;
+        quantityInputHidden.value = quantity;
+        equipmentDataContainerEdit.appendChild(quantityInputHidden);
+
+        // Add to display
+        const badge = document.createElement('span');
+        badge.className = 'badge badge-light-primary mb-1 me-1';
+        badge.innerHTML = `${equipmentName} (x${quantity})
+            <button type="button" class="btn btn-sm btn-icon btn-light-danger ms-2 remove-equipment-edit" data-id="${equipmentId}">
+                ×
+            </button>`;
+        selectedEquipmentListEdit.appendChild(badge);
+    });
+
+    if (hasErrors) {
+        showAlert('Masih ada equipment dengan quantity tidak valid.', 'error');
+        return;
+    }
+
+    // Show/hide container
+    if (Object.keys(selectedEquipmentEdit).length > 0) {
+        selectedEquipmentContainerEdit.classList.remove('d-none');
+    } else {
+        selectedEquipmentContainerEdit.classList.add('d-none');
+    }
+
+    // Close modal
+    const equipmentBootstrapModal = bootstrap.Modal.getInstance(equipmentModalEdit);
+    equipmentBootstrapModal.hide();
+
+    showAlert('Equipment berhasil dipilih', 'success');
+}
+
+// Event listeners untuk remove equipment di edit mode
+document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('remove-equipment-edit')) {
+        const equipmentId = e.target.getAttribute('data-id');
+        removeEquipmentEdit(equipmentId);
+    }
+});
+
+function removeEquipmentEdit(equipmentId) {
+    delete selectedEquipmentEdit[equipmentId];
+
+    const equipmentDataContainerEdit = document.getElementById('equipmentDataContainerEdit');
+    const hiddenInput = equipmentDataContainerEdit.querySelector(`input[name="equipment[${equipmentId}][quantity]"]`);
+    if (hiddenInput) {
+        equipmentDataContainerEdit.removeChild(hiddenInput);
+    }
+
+    const selectedEquipmentContainerEdit = document.getElementById('selectedEquipmentContainerEdit');
+    const selectedEquipmentListEdit = document.getElementById('selectedEquipmentListEdit');
+    const badge = selectedEquipmentListEdit.querySelector(`.badge:has(button[data-id="${equipmentId}"])`);
+    if (badge) {
+        badge.remove();
+    }
+
+    // Hide container jika tidak ada equipment
+    if (Object.keys(selectedEquipmentEdit).length === 0) {
+        selectedEquipmentContainerEdit.classList.add('d-none');
+    }
+}
+
+// Initialize ketika document ready
+document.addEventListener('DOMContentLoaded', function() {
+    initializeEditEquipmentModal();
+
+    // Form validation untuk edit
+    const editStudioForm = document.getElementById('editStudioForm');
+    if (editStudioForm) {
+        editStudioForm.addEventListener('submit', function(e) {
+            const selectedCount = Object.keys(selectedEquipmentEdit).length;
+            let validEquipment = true;
+
+            Object.entries(selectedEquipmentEdit).forEach(([equipmentId, data]) => {
+                if (data.quantity <= 0) {
+                    validEquipment = false;
+                }
+            });
+
+            if (!validEquipment) {
+                e.preventDefault();
+                showAlert('Ada equipment dengan quantity tidak valid.', 'error');
+                return false;
+            }
+
+            console.log('Submitting edit form with equipment:', selectedEquipmentEdit);
+            return true;
+        });
+    }
+});
+
+// Utility function untuk show alert
+function showAlert(message, type = 'info') {
+    // Remove existing alerts
+    const existingAlerts = document.querySelectorAll('.custom-alert');
+    existingAlerts.forEach(alert => alert.remove());
+
+    const alertDiv = document.createElement('div');
+    alertDiv.className = `alert alert-${type === 'error' ? 'danger' : type} alert-dismissible fade show custom-alert`;
+    alertDiv.style.position = 'fixed';
+    alertDiv.style.top = '20px';
+    alertDiv.style.right = '20px';
+    alertDiv.style.zIndex = '9999';
+    alertDiv.style.minWidth = '300px';
+    alertDiv.innerHTML = `
+        <div class="d-flex align-items-center">
+            <i class="ki-duotone ki-${type === 'success' ? 'check' : 'information'} fs-2 me-2"></i>
+            <div>${message}</div>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    `;
+
+    document.body.appendChild(alertDiv);
+
+    // Auto remove after 5 seconds
+    setTimeout(() => {
+        if (alertDiv.parentNode) {
+            alertDiv.remove();
+        }
+    }, 5000);
 }
 
 // Equipment Selection for Edit Modal

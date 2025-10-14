@@ -19,11 +19,13 @@ class Equipment extends Model
         'description',
         'category',
         'quantity',
+        'price_per_hours',
         'allocated_quantity',
         'foto'
     ];
 
     protected $casts = [
+        'price_per_hours' => 'decimal:2',
         'quantity' => 'integer',
         'allocated_quantity' => 'integer',
         'created_at' => 'datetime',

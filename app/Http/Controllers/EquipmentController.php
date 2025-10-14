@@ -29,6 +29,7 @@ class EquipmentController extends Controller
             'name' => 'required|string|max:255',
             'category' => 'required|string|max:255',
             'quantity' => 'required|integer|min:1',
+            'price_per_hours' => 'required|numeric|min:0', // Tambahan
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
@@ -45,8 +46,9 @@ class EquipmentController extends Controller
             'name' => $data['name'],
             'description' => $data['description'] ?? null,
             'category' => $data['category'],
+            'price_per_hours' => $data['price_per_hours'], // Tambahan
             'quantity' => $data['quantity'],
-            'allocated_quantity' => 0, // Start dengan 0 alokasi
+            'allocated_quantity' => 0,
             'foto' => $data['foto'] ?? null,
         ]);
 
@@ -68,6 +70,7 @@ class EquipmentController extends Controller
             'description' => $equipment->description,
             'quantity' => $equipment->quantity,
             'allocated_quantity' => $equipment->allocated_quantity,
+            'price_per_hours' => $equipment->price_per_hours, // Tambahan
             'foto' => $equipment->foto
         ]);
     }
@@ -79,13 +82,14 @@ class EquipmentController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'category' => 'required|string|max:255',
-            'quantity' => 'required|integer|min:' . $equipment->allocated_quantity, // Min quantity = allocated
+            'quantity' => 'required|integer|min:' . $equipment->allocated_quantity,
+            'price_per_hours' => 'required|numeric|min:0', // Tambahan
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ], [
             'quantity.min' => "Quantity minimal adalah {$equipment->allocated_quantity} (sudah teralokasi ke studio)"
         ]);
 
-        $data = $request->only(['name', 'description', 'category', 'quantity']);
+        $data = $request->only(['name', 'description', 'category', 'quantity', 'price_per_hours']); // Tambahan
 
         // Upload foto baru jika ada
         if ($request->hasFile('foto')) {

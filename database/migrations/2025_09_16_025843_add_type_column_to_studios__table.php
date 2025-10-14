@@ -15,6 +15,7 @@ return new class extends Migration
             $table->string('id', 10)->primary();
             $table->string('name');
             $table->string('type'); // small, medium, large, etc.
+            $table->string('kapasitas');
             $table->text('description')->nullable();
             $table->string('foto')->nullable();
             $table->decimal('price_per_hour', 10, 2);
@@ -29,6 +30,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->string('category');
+             $table->decimal('price_per_hours', 10, 2); // Tambahan di sini
             $table->integer('quantity')->default(1);
             $table->integer('allocated_quantity')->default(0)->after('quantity');
             $table->string('foto')->nullable();

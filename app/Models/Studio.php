@@ -16,6 +16,7 @@ class Studio extends Model
         'id',
         'name',
         'type',
+        'kapasitas',
         'description',
         'foto',
         'price_per_hour',

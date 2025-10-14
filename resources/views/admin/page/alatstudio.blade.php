@@ -258,7 +258,7 @@
                                                     <th class="min-w-100px">Kategori</th>
                                                     <th class="min-w-100px">Stock Status</th>
                                                     <th class="min-w-100px">Alokasi Studio</th>
-                                                    <th class="min-w-100px">Dibuat Pada</th>
+                                                    <th class="min-w-100px">Harga/Jam</th>
                                                     <th class="text-end min-w-100px">Actions</th>
                                                 </tr>
                                             </thead>
@@ -329,7 +329,9 @@
                                                             <span class="text-muted">Belum dialokasi</span>
                                                         @endif
                                                     </td>
-                                                    <td>{{ $item->created_at->format('d M Y') }}</td>
+                                                    <td>
+                                                        <span class="fw-bold">Rp {{ number_format($item->price_per_hours, 0, ',', '.') }}</span>
+                                                    </td>
                                                     <td class="text-end">
                                                         <a href="#" class="btn btn-light btn-active-light-primary btn-sm btn-flex"
                                                             data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
@@ -516,6 +518,11 @@
                                 placeholder="Masukkan jumlah stok" min="0" required />
                         </div>
                         <div class="fv-row mb-7">
+                            <label class="required fw-semibold fs-6 mb-2">Harga/Jam</label>
+                            <input type="number" name="price_per_hours" class="form-control form-control-solid"
+                                placeholder="Masukkan harga perjam" min="0" required />
+                        </div>
+                        <div class="fv-row mb-7">
                             <label class="fw-semibold fs-6 mb-2">Foto Alat</label>
                             <input type="file" name="foto" class="form-control form-control-solid"
                                 accept="image/*" />
@@ -629,6 +636,12 @@
                         <input type="number" id="edit_quantity" name="quantity" class="form-control form-control-solid"
                             placeholder="Masukkan jumlah stok" min="0" required />
                         <div class="form-text text-warning" id="allocated_quantity_warning"></div>
+                    </div>
+
+                    <div class="fv-row mb-7">
+                        <label class="required fw-semibold fs-6 mb-2">Harga/Jam</label>
+                        <input type="number" id="edit_price_per_hours" name="price_per_hours" class="form-control form-control-solid"
+                            placeholder="Masukkan harga perjam" min="0" required />
                     </div>
 
                     <div class="fv-row mb-7">
@@ -865,6 +878,7 @@ function editEquipment(equipmentId) {
             document.getElementById('edit_description').value = data.description || '';
             document.getElementById('edit_quantity').value = data.quantity;
             document.getElementById('edit_quantity').min = data.allocated_quantity;
+            document.getElementById('edit_price_per_hours').value = data.price_per_hours;
 
             // Show allocated quantity warning
             const warningElement = document.getElementById('allocated_quantity_warning');

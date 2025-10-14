@@ -391,7 +391,7 @@ License: For each use you must have a valid license purchased only from above li
                                             @endauth
                                         </div>
                                         <!--end::Toolbar-->
-                                        
+
                                     </div>
                                     <!--end::Menu-->
                                 </div>
@@ -754,7 +754,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--end::Features-->
 
                                             <!--begin::Select-->
-                                            <a href="/detail-paket" class="btn btn-primary">Booking</a>
+                                            <a href="{{ route('user.booking.detail') }}" class="btn btn-primary">Booking</a>
                                             <!--end::Select-->
                                         </div>
                                         <!--end::Option-->
@@ -848,7 +848,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--end::Features-->
 
                                             <!--begin::Select-->
-                                            <a href="/detail-paket"
+                                            <a href="{{ route('user.booking.detail') }}"
                                                 class="btn btn-color-primary btn-active-light-primary btn-light">Booking</a>
                                             <!--end::Select-->
                                         </div>
@@ -937,7 +937,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--end::Features-->
 
                                             <!--begin::Select-->
-                                            <a href="/detail-paket" class="btn btn-primary">Booking</a>
+                                            <a href="{{ route('user.booking.detail') }}" class="btn btn-primary">Booking</a>
                                             <!--end::Select-->
                                         </div>
                                         <!--end::Option-->
@@ -956,1290 +956,285 @@ License: For each use you must have a valid license purchased only from above li
             <!--end::Wrapper-->
 
             <!--begin:: Daftar Paket Section-->
-            <div class=" position-relative z-index-2" id="daftar-paket">
-                <!--begin::Container-->
-                {{-- <div class="container"> --}}
-                    <!--begin::Card-->
-                    <div class="card"
-                        style="filter: drop-shadow(0px 0px 40px rgba(68, 81, 96, 0.08)) border-radius: 0px;">
-                        <!--begin::Card body-->
-                        <div class="py-20 card-body container">
-                            <!--begin::Heading-->
-                            <div class="text-center mb-5 mb-lg-10">
-                                <!--begin::Title-->
-                                <h3 class="fs-2hx text-gray-900 mb-5"
-                                    data-kt-scroll-offset="{default: 100, lg: 250}">Daftar Paket</h3>
-                                <!--end::Title-->
-                            </div>
-                            <!--end::Heading-->
-
-                            <!--begin::Tabs wrapper-->
-                            <div class="d-flex flex-center mb-5 mb-lg-15">
-                                <!--begin::Tabs-->
-                                <ul class="nav border-transparent flex-center fs-5 fw-bold" role="tablist">
-                                    <li class="nav-item" role="presentation">
-                                        <a class="nav-link text-gray-500 text-active-primary px-3 px-lg-6 active"
-                                            href="#" data-bs-toggle="tab" data-bs-target="#kt_produk_latest"
-                                            aria-selected="true" role="tab">Semua</a>
-                                    </li>
-
-                                    <li class="nav-item" role="presentation">
-                                        <a class="nav-link text-gray-500 text-active-primary px-3 px-lg-6" href="#"
-                                            data-bs-toggle="tab" data-bs-target="#kt_produk_low" aria-selected="false"
-                                            tabindex="-1" role="tab">Low</a>
-                                    </li>
-
-                                    <li class="nav-item" role="presentation">
-                                        <a class="nav-link text-gray-500 text-active-primary px-3 px-lg-6" href="#"
-                                            data-bs-toggle="tab" data-bs-target="#kt_produk_middle"
-                                            aria-selected="false" tabindex="-1" role="tab">Middle</a>
-                                    </li>
-
-                                    <li class="nav-item" role="presentation">
-                                        <a class="nav-link text-gray-500 text-active-primary px-3 px-lg-6" href="#"
-                                            data-bs-toggle="tab" data-bs-target="#kt_produk_max" aria-selected="false"
-                                            tabindex="-1" role="tab">Max</a>
-                                    </li>
-                                </ul>
-                                <!--end::Tabs-->
-                            </div>
-                            <!--end::Tabs wrapper-->
-
-                            <!--begin::Tabs content-->
-                            <div class="tab-content">
-                                <!--begin::Tab pane-->
-                                <div class="tab-pane fade show active" id="kt_produk_latest" role="tabpanel">
-                                    <!--begin::Row-->
-                                    <div class="row g-10">
-
-                                        <!--begin::Col-->
-                                        <div class="col-xl-4">
-                                            <div class="d-flex h-100 align-items-center">
-                                                <!--begin::Option-->
-                                                <div
-                                                    class="w-100 d-flex flex-column flex-center rounded-3 bg-primary py-20 px-10">
-                                                    <!--begin::Heading-->
-                                                    <!-- Foto dengan ukuran tetap -->
-                                                    <div class="d-flex justify-content-center mb-3"
-                                                        style="margin-top: -20px;">
-                                                        <img src="{{ asset('media/studio/studiom1.jpg') }}"
-                                                            class="img-fluid" alt="Paket 1"
-                                                            style="width: 300px; height: 300px; object-fit: cover; border-radius:10px;">
-                                                    </div>
-
-
-
-                                                    <div
-                                                        class="d-flex justify-content-between align-items-center text-white mb-5" style="width: 100%">
-                                                        <!-- Left: Nama Paket & Deskripsi -->
-                                                        <div>
-                                                            <h2 class="fw-bold text-white"
-                                                                style="font-size: 20px; margin-bottom: 8px;">Paket 1
-                                                            </h2>
-                                                            <div class="opacity-75" style="font-size: 10px;">
-                                                                Basic Studio
-                                                            </div>
-                                                        </div>
-
-                                                        <!-- Right: Harga -->
-                                                        <div class="text-end">
-                                                            <span style="font-size: 16px;">Rp</span>
-                                                            <span class="fw-bold"
-                                                                style="font-size: 15px; margin-left: 4px;">120.000</span>
-                                                            <div style="font-size: 14px; opacity: 0.7;">/ 1 Jam</div>
-                                                        </div>
-                                                    </div>
-
-
-                                                    <!--begin::Features-->
-                                                    <div class="w-100 mb-10">
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                Ruang treated (maks 6–8 orang) </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                Drum set + 2 gitar amp + 1 bass amp </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                3–4 mic vokal + mixer 12–16 ch </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                Monitor lebih jernih + DI box </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                Rekam stereo rehearsal (mp3)</span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-
-                                                    </div>
-                                                    <!--end::Features-->
-
-                                                    <!--begin::Select-->
-                                                    <a href="/detail-paket"
-                                                        class="btn btn-color-primary btn-active-light-primary btn-light">Booking</a>
-                                                    <!--end::Select-->
-                                                </div>
-                                                <!--end::Option-->
-                                            </div>
-                                        </div>
-                                        <!--end::Col-->
-
-                                        <!--begin::Col-->
-                                        <div class="col-xl-4">
-                                            <div class="d-flex h-100 align-items-center">
-                                                <!--begin::Option-->
-                                                <div
-                                                    class="w-100 d-flex flex-column flex-center rounded-3 bg-primary py-20 px-10">
-                                                    <!--begin::Heading-->
-
-                                                    <!-- Foto dengan ukuran tetap -->
-                                                    <div class="d-flex justify-content-center mb-3"
-                                                        style="margin-top: -20px;">
-                                                        <img src="{{ asset('media/studio/studiom1.jpg') }}"
-                                                            class="img-fluid" alt="Paket 1"
-                                                            style="width: 300px; height: 300px; object-fit: cover; border-radius:10px;">
-                                                    </div>
-
-
-
-                                                    <div
-                                                        class="d-flex justify-content-between align-items-center text-white mb-5" style="width: 100%">
-                                                        <!-- Left: Nama Paket & Deskripsi -->
-                                                        <div>
-                                                            <h2 class="fw-bold text-white"
-                                                                style="font-size: 20px; margin-bottom: 8px;">Paket 1
-                                                            </h2>
-                                                            <div class="opacity-75" style="font-size: 10px;">
-                                                                Basic Studio
-                                                            </div>
-                                                        </div>
-
-                                                        <!-- Right: Harga -->
-                                                        <div class="text-end">
-                                                            <span style="font-size: 16px;">Rp</span>
-                                                            <span class="fw-bold"
-                                                                style="font-size: 15px; margin-left: 4px;">120.000</span>
-                                                            <div style="font-size: 14px; opacity: 0.7;">/ 1 Jam</div>
-                                                        </div>
-                                                    </div>
-
-
-                                                    <!--begin::Features-->
-                                                    <div class="w-100 mb-10">
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                Ruang treated (maks 6–8 orang) </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                Drum set + 2 gitar amp + 1 bass amp </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                3–4 mic vokal + mixer 12–16 ch </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                Monitor lebih jernih + DI box </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                Rekam stereo rehearsal (mp3)</span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-
-                                                    </div>
-                                                    <!--end::Features-->
-
-                                                    <!--begin::Select-->
-                                                    <a href="/detail-paket"
-                                                        class="btn btn-color-primary btn-active-light-primary btn-light">Booking</a>
-                                                    <!--end::Select-->
-                                                </div>
-                                                <!--end::Option-->
-                                            </div>
-                                        </div>
-                                        <!--end::Col-->
-
-                                        <!--begin::Col-->
-                                        <div class="col-xl-4">
-                                            <div class="d-flex h-100 align-items-center">
-                                                <!--begin::Option-->
-                                                <div
-                                                    class="w-100 d-flex flex-column flex-center rounded-3 bg-primary py-20 px-10">
-                                                    <!--begin::Heading-->
-                                                    <!-- Foto dengan ukuran tetap -->
-                                                    <div class="d-flex justify-content-center mb-3"
-                                                        style="margin-top: -20px;">
-                                                        <img src="{{ asset('media/studio/studiom1.jpg') }}"
-                                                            class="img-fluid" alt="Paket 1"
-                                                            style="width: 300px; height: 300px; object-fit: cover; border-radius:10px;">
-                                                    </div>
-
-
-
-                                                    <div
-                                                        class="d-flex justify-content-between align-items-center text-white mb-5" style="width: 100%">
-                                                        <!-- Left: Nama Paket & Deskripsi -->
-                                                        <div>
-                                                            <h2 class="fw-bold text-white"
-                                                                style="font-size: 20px; margin-bottom: 8px;">Paket 1
-                                                            </h2>
-                                                            <div class="opacity-75" style="font-size: 10px;">
-                                                                Basic Studio
-                                                            </div>
-                                                        </div>
-
-                                                        <!-- Right: Harga -->
-                                                        <div class="text-end">
-                                                            <span style="font-size: 16px;">Rp</span>
-                                                            <span class="fw-bold"
-                                                                style="font-size: 15px; margin-left: 4px;">120.000</span>
-                                                            <div style="font-size: 14px; opacity: 0.7;">/ 1 Jam</div>
-                                                        </div>
-                                                    </div>
-
-                                                    <!--begin::Features-->
-                                                    <div class="w-100 mb-10">
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                Ruang treated (maks 6–8 orang) </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                Drum set + 2 gitar amp + 1 bass amp </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                3–4 mic vokal + mixer 12–16 ch </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                Monitor lebih jernih + DI box </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                Rekam stereo rehearsal (mp3)</span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-
-                                                    </div>
-                                                    <!--end::Features-->
-
-                                                    <!--begin::Select-->
-                                                    <a href="/detail-paket"
-                                                        class="btn btn-color-primary btn-active-light-primary btn-light">Booking</a>
-                                                    <!--end::Select-->
-                                                </div>
-                                                <!--end::Option-->
-                                            </div>
-                                        </div>
-                                        <!--end::Col-->
-                                    </div>
-                                    <!--end::Row-->
-                                </div>
-                                <!--end::Tab pane-->
-
-                                <!--begin::Tab pane-->
-                                <div class="tab-pane fade" id="kt_produk_low" role="tabpanel">
-                                    <!--begin::Row-->
-                                    <div class="row g-10">
-
-                                        <!--begin::Col-->
-                                        <div class="col-xl-4">
-                                            <div class="d-flex h-100 align-items-center">
-                                                <!--begin::Option-->
-                                                <div
-                                                    class="w-100 d-flex flex-column flex-center rounded-3 bg-primary py-20 px-10">
-                                                    <!--begin::Heading-->
-                                                    <!-- Foto dengan ukuran tetap -->
-                                                    <div class="d-flex justify-content-center mb-3"
-                                                        style="margin-top: -20px;">
-                                                        <img src="{{ asset('media/studio/studiom1.jpg') }}"
-                                                            class="img-fluid" alt="Paket 1"
-                                                            style="width: 300px; height: 300px; object-fit: cover; border-radius:10px;">
-                                                    </div>
-
-
-
-                                                    <div
-                                                        class="d-flex justify-content-between align-items-center text-white mb-5" style="width: 100%">
-                                                        <!-- Left: Nama Paket & Deskripsi -->
-                                                        <div>
-                                                            <h2 class="fw-bold text-white"
-                                                                style="font-size: 20px; margin-bottom: 8px;">Paket 2
-                                                            </h2>
-                                                            <div class="opacity-75" style="font-size: 10px;">
-                                                                Basic Studio
-                                                            </div>
-                                                        </div>
-
-                                                        <!-- Right: Harga -->
-                                                        <div class="text-end">
-                                                            <span style="font-size: 16px;">Rp</span>
-                                                            <span class="fw-bold"
-                                                                style="font-size: 15px; margin-left: 4px;">120.000</span>
-                                                            <div style="font-size: 14px; opacity: 0.7;">/ 1 Jam</div>
-                                                        </div>
-                                                    </div>
-
-
-                                                    <!--begin::Features-->
-                                                    <div class="w-100 mb-10">
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                Ruang treated (maks 6–8 orang) </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                Drum set + 2 gitar amp + 1 bass amp </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                3–4 mic vokal + mixer 12–16 ch </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                Monitor lebih jernih + DI box </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                Rekam stereo rehearsal (mp3)</span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-
-                                                    </div>
-                                                    <!--end::Features-->
-
-                                                    <!--begin::Select-->
-                                                    <a href="/detail-paket"
-                                                        class="btn btn-color-primary btn-active-light-primary btn-light">Booking</a>
-                                                    <!--end::Select-->
-                                                </div>
-                                                <!--end::Option-->
-                                            </div>
-                                        </div>
-                                        <!--end::Col-->
-
-                                        <!--begin::Col-->
-                                        <div class="col-xl-4">
-                                            <div class="d-flex h-100 align-items-center">
-                                                <!--begin::Option-->
-                                                <div
-                                                    class="w-100 d-flex flex-column flex-center rounded-3 bg-primary py-20 px-10">
-                                                    <!--begin::Heading-->
-
-                                                    <!-- Foto dengan ukuran tetap -->
-                                                    <div class="d-flex justify-content-center mb-3"
-                                                        style="margin-top: -20px;">
-                                                        <img src="{{ asset('media/studio/studiom1.jpg') }}"
-                                                            class="img-fluid" alt="Paket 1"
-                                                            style="width: 300px; height: 300px; object-fit: cover; border-radius:10px;">
-                                                    </div>
-
-
-
-                                                    <div
-                                                        class="d-flex justify-content-between align-items-center text-white mb-5" style="width: 100%">
-                                                        <!-- Left: Nama Paket & Deskripsi -->
-                                                        <div>
-                                                            <h2 class="fw-bold text-white"
-                                                                style="font-size: 20px; margin-bottom: 8px;">Paket 1
-                                                            </h2>
-                                                            <div class="opacity-75" style="font-size: 10px;">
-                                                                Basic Studio
-                                                            </div>
-                                                        </div>
-
-                                                        <!-- Right: Harga -->
-                                                        <div class="text-end">
-                                                            <span style="font-size: 16px;">Rp</span>
-                                                            <span class="fw-bold"
-                                                                style="font-size: 15px; margin-left: 4px;">120.000</span>
-                                                            <div style="font-size: 14px; opacity: 0.7;">/ 1 Jam</div>
-                                                        </div>
-                                                    </div>
-
-
-                                                    <!--begin::Features-->
-                                                    <div class="w-100 mb-10">
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                Ruang treated (maks 6–8 orang) </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                Drum set + 2 gitar amp + 1 bass amp </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                3–4 mic vokal + mixer 12–16 ch </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                Monitor lebih jernih + DI box </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                Rekam stereo rehearsal (mp3)</span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-
-                                                    </div>
-                                                    <!--end::Features-->
-
-                                                    <!--begin::Select-->
-                                                    <a href="/detail-paket"
-                                                        class="btn btn-color-primary btn-active-light-primary btn-light">Booking</a>
-                                                    <!--end::Select-->
-                                                </div>
-                                                <!--end::Option-->
-                                            </div>
-                                        </div>
-                                        <!--end::Col-->
-
-                                        <!--begin::Col-->
-                                        <div class="col-xl-4">
-                                            <div class="d-flex h-100 align-items-center">
-                                                <!--begin::Option-->
-                                                <div
-                                                    class="w-100 d-flex flex-column flex-center rounded-3 bg-primary py-20 px-10">
-                                                    <!--begin::Heading-->
-                                                    <!-- Foto dengan ukuran tetap -->
-                                                    <div class="d-flex justify-content-center mb-3"
-                                                        style="margin-top: -20px;">
-                                                        <img src="{{ asset('media/studio/studiom1.jpg') }}"
-                                                            class="img-fluid" alt="Paket 1"
-                                                            style="width: 300px; height: 300px; object-fit: cover; border-radius:10px;">
-                                                    </div>
-
-
-
-                                                    <div
-                                                        class="d-flex justify-content-between align-items-center text-white mb-5" style="width: 100%">
-                                                        <!-- Left: Nama Paket & Deskripsi -->
-                                                        <div>
-                                                            <h2 class="fw-bold text-white"
-                                                                style="font-size: 20px; margin-bottom: 8px;">Paket 1
-                                                            </h2>
-                                                            <div class="opacity-75" style="font-size: 10px;">
-                                                                Basic Studio
-                                                            </div>
-                                                        </div>
-
-                                                        <!-- Right: Harga -->
-                                                        <div class="text-end">
-                                                            <span style="font-size: 16px;">Rp</span>
-                                                            <span class="fw-bold"
-                                                                style="font-size: 15px; margin-left: 4px;">120.000</span>
-                                                            <div style="font-size: 14px; opacity: 0.7;">/ 1 Jam</div>
-                                                        </div>
-                                                    </div>
-
-                                                    <!--begin::Features-->
-                                                    <div class="w-100 mb-10">
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                Ruang treated (maks 6–8 orang) </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                Drum set + 2 gitar amp + 1 bass amp </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                3–4 mic vokal + mixer 12–16 ch </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                Monitor lebih jernih + DI box </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                Rekam stereo rehearsal (mp3)</span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-
-                                                    </div>
-                                                    <!--end::Features-->
-
-                                                    <!--begin::Select-->
-                                                    <a href="/detail-paket"
-                                                        class="btn btn-color-primary btn-active-light-primary btn-light">Booking</a>
-                                                    <!--end::Select-->
-                                                </div>
-                                                <!--end::Option-->
-                                            </div>
-                                        </div>
-                                        <!--end::Col-->
-                                    </div>
-                                    <!--end::Row-->
-                                </div>
-                                <!--end::Tab pane-->
-
-                                <!--begin::Tab pane-->
-                                <div class="tab-pane fade" id="kt_produk_middle" role="tabpanel">
-                                    <!--begin::Row-->
-                                    <div class="row g-10">
-
-                                        <!--begin::Col-->
-                                        <div class="col-xl-4">
-                                            <div class="d-flex h-100 align-items-center">
-                                                <!--begin::Option-->
-                                                <div
-                                                    class="w-100 d-flex flex-column flex-center rounded-3 bg-primary py-20 px-10">
-                                                    <!--begin::Heading-->
-                                                    <!-- Foto dengan ukuran tetap -->
-                                        <div class="d-flex justify-content-center mb-3" style="margin-top: -20px;">
-                                    <img src="{{ asset('media/studio/studiom1.jpg') }}"
-                                    class="img-fluid"
-                                    alt="Paket 1"
-                                    style="width: 300px; height: 300px; object-fit: cover; border-radius:10px;">
-                                    </div>
-
-
-
-                            <div class="d-flex justify-content-between align-items-center text-white mb-5" style="width: 100%">
-                            <!-- Left: Nama Paket & Deskripsi -->
-                            <div>
-                                <h2 class="fw-bold text-white" style="font-size: 20px; margin-bottom: 8px;">Paket 1</h2>
-                                <div class="opacity-75" style="font-size: 10px;">
-                                Basic Studio
-                                </div>
-                            </div>
-
-                        <!-- Right: Harga -->
-                        <div class="text-end">
-                        <span style="font-size: 16px;">Rp</span>
-                        <span class="fw-bold" style="font-size: 15px; margin-left: 4px;">120.000</span>
-                        <div style="font-size: 14px; opacity: 0.7;">/ 1 Jam</div>
+            <!--begin:: Daftar Paket Section-->
+            <div class="position-relative z-index-2" id="daftar-paket">
+                <!--begin::Card-->
+                <div class="card" style="filter: drop-shadow(0px 0px 40px rgba(68, 81, 96, 0.08)) border-radius: 0px;">
+                    <!--begin::Card body-->
+                    <div class="py-20 card-body container">
+                        <!--begin::Heading-->
+                        <div class="text-center mb-5 mb-lg-10">
+                            <!--begin::Title-->
+                            <h3 class="fs-2hx text-gray-900 mb-5" data-kt-scroll-offset="{default: 100, lg: 250}">Daftar Paket Studio</h3>
+                            <!--end::Title-->
                         </div>
-                    </div>
+                        <!--end::Heading-->
 
-
-                                                    <!--begin::Features-->
-                                                    <div class="w-100 mb-10">
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                            Ruang treated (maks 6–8 orang) </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                Drum set + 2 gitar amp + 1 bass amp </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                3–4 mic vokal + mixer 12–16 ch </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                Monitor lebih jernih + DI box </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                Rekam stereo rehearsal (mp3)</span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-
-                                                    </div>
-                                                    <!--end::Features-->
-
-                                                    <!--begin::Select-->
-                                                    <a href="/detail-paket"
-                                                        class="btn btn-color-primary btn-active-light-primary btn-light">Booking</a>
-                                                    <!--end::Select-->
-                                                </div>
-                                                <!--end::Option-->
-                                            </div>
-                                        </div>
-                                        <!--end::Col-->
-
-                                        <!--begin::Col-->
-                                        <div class="col-xl-4">
-                                            <div class="d-flex h-100 align-items-center">
-                                                <!--begin::Option-->
-                                                <div
-                                                    class="w-100 d-flex flex-column flex-center rounded-3 bg-primary py-20 px-10">
-                                                    <!--begin::Heading-->
-
-                                                    <!-- Foto dengan ukuran tetap -->
-                                        <div class="d-flex justify-content-center mb-3" style="margin-top: -20px;">
-                                    <img src="{{ asset('media/studio/studiom1.jpg') }}"
-                                    class="img-fluid"
-                                    alt="Paket 1"
-                                    style="width: 300px; height: 300px; object-fit: cover; border-radius:10px;">
-                                    </div>
-
-
-
-                            <div class="d-flex justify-content-between align-items-center text-white mb-5" style="width: 100%">
-                            <!-- Left: Nama Paket & Deskripsi -->
-                            <div>
-                                <h2 class="fw-bold text-white" style="font-size: 20px; margin-bottom: 8px;">Paket 1</h2>
-                                <div class="opacity-75" style="font-size: 10px;">
-                                Basic Studio
-                                </div>
-                            </div>
-
-                        <!-- Right: Harga -->
-                        <div class="text-end">
-                        <span style="font-size: 16px;">Rp</span>
-                        <span class="fw-bold" style="font-size: 15px; margin-left: 4px;">120.000</span>
-                        <div style="font-size: 14px; opacity: 0.7;">/ 1 Jam</div>
+                        <!--begin::Tabs wrapper-->
+                        <div class="d-flex flex-center mb-5 mb-lg-15">
+                            <!--begin::Tabs-->
+                            <ul class="nav border-transparent flex-center fs-5 fw-bold" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link text-gray-500 text-active-primary px-3 px-lg-6 active" href="#"
+                                    data-bs-toggle="tab" data-bs-target="#kt_produk_all" aria-selected="true" role="tab">
+                                    Semua
+                                    </a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link text-gray-500 text-active-primary px-3 px-lg-6" href="#"
+                                    data-bs-toggle="tab" data-bs-target="#kt_produk_small" aria-selected="false"
+                                    tabindex="-1" role="tab">Small</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link text-gray-500 text-active-primary px-3 px-lg-6" href="#"
+                                    data-bs-toggle="tab" data-bs-target="#kt_produk_medium" aria-selected="false"
+                                    tabindex="-1" role="tab">Medium</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link text-gray-500 text-active-primary px-3 px-lg-6" href="#"
+                                    data-bs-toggle="tab" data-bs-target="#kt_produk_large" aria-selected="false"
+                                    tabindex="-1" role="tab">Large</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link text-gray-500 text-active-primary px-3 px-lg-6" href="#"
+                                    data-bs-toggle="tab" data-bs-target="#kt_produk_vip" aria-selected="false"
+                                    tabindex="-1" role="tab">VIP</a>
+                                </li>
+                            </ul>
+                            <!--end::Tabs-->
                         </div>
-                    </div>
+                        <!--end::Tabs wrapper-->
 
-
-                                                    <!--begin::Features-->
-                                                    <div class="w-100 mb-10">
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                            Ruang treated (maks 6–8 orang) </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                Drum set + 2 gitar amp + 1 bass amp </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                3–4 mic vokal + mixer 12–16 ch </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                Monitor lebih jernih + DI box </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                Rekam stereo rehearsal (mp3)</span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-
-                                                    </div>
-                                                    <!--end::Features-->
-
-                                                    <!--begin::Select-->
-                                                    <a href="/detail-paket"
-                                                        class="btn btn-color-primary btn-active-light-primary btn-light">Booking</a>
-                                                    <!--end::Select-->
+                        <!--begin::Tabs content-->
+                        <div class="tab-content">
+                            <!--begin::Tab pane - All Studios-->
+                            <div class="tab-pane fade show active" id="kt_produk_all" role="tabpanel">
+                                <!--begin::Row-->
+                                <div class="row g-10">
+                                    @forelse($studios as $studio)
+                                    <!--begin::Col-->
+                                    <div class="col-xl-4 mb-10">
+                                        <div class="d-flex h-100 align-items-center">
+                                            <!--begin::Option-->
+                                            <div class="w-100 d-flex flex-column flex-center rounded-3 bg-primary py-15 px-10">
+                                                <!--begin::Heading-->
+                                                <!-- Foto dengan ukuran tetap -->
+                                                <div class="d-flex justify-content-center mb-3" style="margin-top: -20px;">
+                                                    <img src="{{ $studio->foto ? asset('storage/' . $studio->foto) : asset('media/studio/studiom1.jpg') }}"
+                                                        class="img-fluid" alt="{{ $studio->name }}"
+                                                        style="width: 300px; height: 300px; object-fit: cover; border-radius:10px;">
                                                 </div>
-                                                <!--end::Option-->
+
+                                                <div class="d-flex justify-content-between align-items-center text-white mb-4" style="width: 100%">
+                                                    <!-- Left: Nama Paket & Deskripsi -->
+                                                    <div>
+                                                        <h2 class="fw-bold text-white" style="font-size: 20px; margin-bottom: 8px;">
+                                                            {{ $studio->name }}
+                                                        </h2>
+                                                        <div class="opacity-75" style="font-size: 10px;">
+                                                            {{ ucfirst($studio->type) }} Studio • Kapasitas: {{ $studio->kapasitas . ' Orang'}}
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Right: Harga -->
+                                                    <div class="text-end">
+                                                        <span style="font-size: 16px;">Rp</span>
+                                                        <span class="fw-bold" style="font-size: 15px; margin-left: 4px;">
+                                                            {{ number_format($studio->price_per_hour, 0, ',', '.') }}
+                                                        </span>
+                                                        <div style="font-size: 14px; opacity: 0.7;">/ 1 Jam</div>
+                                                    </div>
+                                                </div>
+
+                                                <!--begin::Features-->
+                                                <div class="w-100 mb-8">
+                                                    <!--begin::Item - Description-->
+                                                    <div class="d-flex flex-stack mb-3">
+                                                        <span class="fw-semibold fs-6 text-white opacity-75 text-start pe-3" style="font-size: 12px !important;">
+                                                            {{ $studio->description ?? 'Studio profesional untuk latihan band' }}
+                                                        </span>
+                                                        <i class="ki-duotone ki-check-circle fs-1 text-white">
+                                                            <span class="path1"></span><span class="path2"></span>
+                                                        </i>
+                                                    </div>
+                                                    <!--end::Item-->
+
+                                                    <!--begin::Item - Booking Hours-->
+                                                    <div class="d-flex flex-stack mb-3">
+                                                        <span class="fw-semibold fs-6 text-white opacity-75 text-start pe-3" style="font-size: 12px !important;">
+                                                            Min. Booking: {{ $studio->min_booking_hours }} jam
+                                                        </span>
+                                                        <i class="ki-duotone ki-check-circle fs-1 text-white">
+                                                            <span class="path1"></span><span class="path2"></span>
+                                                        </i>
+                                                    </div>
+                                                    <!--end::Item-->
+
+                                                    <!--begin::Item - Equipment Count-->
+                                                    <div class="d-flex flex-stack mb-3">
+                                                        <span class="fw-semibold fs-6 text-white opacity-75 text-start pe-3" style="font-size: 12px !important;">
+                                                            Equipment: {{ $studio->equipment->count() }} item tersedia
+                                                        </span>
+                                                        <i class="ki-duotone ki-check-circle fs-1 text-white">
+                                                            <span class="path1"></span><span class="path2"></span>
+                                                        </i>
+                                                    </div>
+                                                    <!--end::Item-->
+                                                </div>
+                                                <!--end::Features-->
+
+                                                <!--begin::Select-->
+                                                <a href="{{ route('user.booking.detail', ['studio_id' => $studio->id]) }}"
+                                                class="btn btn-color-primary btn-active-light-primary btn-light w-100">
+                                                Booking Sekarang
+                                                </a>
+                                                <!--end::Select-->
                                             </div>
+                                            <!--end::Option-->
                                         </div>
-                                        <!--end::Col-->
-
-                                        <!--begin::Col-->
-                                        <div class="col-xl-4">
-                                            <div class="d-flex h-100 align-items-center">
-                                                <!--begin::Option-->
-                                                <div
-                                                    class="w-100 d-flex flex-column flex-center rounded-3 bg-primary py-20 px-10">
-                                                    <!--begin::Heading-->
-                                                    <!-- Foto dengan ukuran tetap -->
-                                        <div class="d-flex justify-content-center mb-3" style="margin-top: -20px;">
-                                    <img src="{{ asset('media/studio/studiom1.jpg') }}"
-                                    class="img-fluid"
-                                    alt="Paket 1"
-                                    style="width: 300px; height: 300px; object-fit: cover; border-radius:10px;">
                                     </div>
-
-
-
-                            <div class="d-flex justify-content-between align-items-center text-white mb-5" style="width: 100%">
-                            <!-- Left: Nama Paket & Deskripsi -->
-                            <div>
-                                <h2 class="fw-bold text-white" style="font-size: 20px; margin-bottom: 8px;">Paket 1</h2>
-                                <div class="opacity-75" style="font-size: 10px;">
-                                Basic Studio
+                                    <!--end::Col-->
+                                    @empty
+                                    <!--begin::Col - Empty State-->
+                                    <div class="col-12">
+                                        <div class="text-center py-10">
+                                            <i class="ki-duotone ki-information-5 fs-2hx text-muted mb-5">
+                                                <span class="path1"></span>
+                                                <span class="path2"></span>
+                                                <span class="path3"></span>
+                                            </i>
+                                            <h4 class="text-muted">Tidak ada studio yang tersedia saat ini</h4>
+                                            <p class="text-muted">Silakan coba lagi nanti atau hubungi admin untuk informasi lebih lanjut.</p>
+                                        </div>
+                                    </div>
+                                    <!--end::Col-->
+                                    @endforelse
                                 </div>
+                                <!--end::Row-->
                             </div>
+                            <!--end::Tab pane-->
 
-                        <!-- Right: Harga -->
-                        <div class="text-end">
-                        <span style="font-size: 16px;">Rp</span>
-                        <span class="fw-bold" style="font-size: 15px; margin-left: 4px;">120.000</span>
-                        <div style="font-size: 14px; opacity: 0.7;">/ 1 Jam</div>
-                        </div>
-                    </div>
+                            <!-- Tab panes untuk setiap tipe studio -->
+                            @foreach(['small', 'medium', 'large', 'vip'] as $type)
+                            <!--begin::Tab pane - {{ ucfirst($type) }} Studios-->
+                            <div class="tab-pane fade" id="kt_produk_{{ $type }}" role="tabpanel">
+                                <!--begin::Row-->
+                                <div class="row g-10">
+                                    @php
+                                        $filteredStudios = $studios->where('type', $type);
+                                    @endphp
 
-                                                    <!--begin::Features-->
-                                                    <div class="w-100 mb-10">
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                            Ruang treated (maks 6–8 orang) </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                Drum set + 2 gitar amp + 1 bass amp </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                3–4 mic vokal + mixer 12–16 ch </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                Monitor lebih jernih + DI box </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                Rekam stereo rehearsal (mp3)</span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-
-                                                    </div>
-                                                    <!--end::Features-->
-
-                                                    <!--begin::Select-->
-                                                    <a href="/detail-paket"
-                                                        class="btn btn-color-primary btn-active-light-primary btn-light">Booking</a>
-                                                    <!--end::Select-->
+                                    @forelse($filteredStudios as $studio)
+                                    <!--begin::Col-->
+                                    <div class="col-xl-4 mb-10">
+                                        <div class="d-flex h-100 align-items-center">
+                                            <!--begin::Option-->
+                                            <div class="w-100 d-flex flex-column flex-center rounded-3 bg-primary py-15 px-10">
+                                                <!--begin::Heading-->
+                                                <!-- Foto dengan ukuran tetap -->
+                                                <div class="d-flex justify-content-center mb-3" style="margin-top: -20px;">
+                                                    <img src="{{ $studio->foto ? asset('storage/' . $studio->foto) : asset('media/studio/studiom1.jpg') }}"
+                                                        class="img-fluid" alt="{{ $studio->name }}"
+                                                        style="width: 300px; height: 300px; object-fit: cover; border-radius:10px;">
                                                 </div>
-                                                <!--end::Option-->
+
+                                                <div class="d-flex justify-content-between align-items-center text-white mb-4" style="width: 100%">
+                                                    <!-- Left: Nama Paket & Deskripsi -->
+                                                    <div>
+                                                        <h2 class="fw-bold text-white" style="font-size: 20px; margin-bottom: 8px;">
+                                                            {{ $studio->name }}
+                                                        </h2>
+                                                        <div class="opacity-75" style="font-size: 10px;">
+                                                            {{ ucfirst($studio->type) }} Studio • Kapasitas: {{ $studio->kapasitas . ' Orang'}}
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Right: Harga -->
+                                                    <div class="text-end">
+                                                        <span style="font-size: 16px;">Rp</span>
+                                                        <span class="fw-bold" style="font-size: 15px; margin-left: 4px;">
+                                                            {{ number_format($studio->price_per_hour, 0, ',', '.') }}
+                                                        </span>
+                                                        <div style="font-size: 14px; opacity: 0.7;">/ 1 Jam</div>
+                                                    </div>
+                                                </div>
+
+                                                <!--begin::Features-->
+                                                <div class="w-100 mb-8">
+                                                    <!--begin::Item - Description-->
+                                                    <div class="d-flex flex-stack mb-3">
+                                                        <span class="fw-semibold fs-6 text-white opacity-75 text-start pe-3" style="font-size: 12px !important;">
+                                                            {{ $studio->description ?? 'Studio profesional untuk latihan band' }}
+                                                        </span>
+                                                        <i class="ki-duotone ki-check-circle fs-1 text-white">
+                                                            <span class="path1"></span><span class="path2"></span>
+                                                        </i>
+                                                    </div>
+                                                    <!--end::Item-->
+
+                                                    <!--begin::Item - Booking Hours-->
+                                                    <div class="d-flex flex-stack mb-3">
+                                                        <span class="fw-semibold fs-6 text-white opacity-75 text-start pe-3" style="font-size: 12px !important;">
+                                                            Min. Booking: {{ $studio->min_booking_hours }} jam
+                                                        </span>
+                                                        <i class="ki-duotone ki-check-circle fs-1 text-white">
+                                                            <span class="path1"></span><span class="path2"></span>
+                                                        </i>
+                                                    </div>
+                                                    <!--end::Item-->
+
+                                                    <!--begin::Item - Equipment Count-->
+                                                    <div class="d-flex flex-stack mb-3">
+                                                        <span class="fw-semibold fs-6 text-white opacity-75 text-start pe-3" style="font-size: 12px !important;">
+                                                            Equipment: {{ $studio->equipment->count() }} item tersedia
+                                                        </span>
+                                                        <i class="ki-duotone ki-check-circle fs-1 text-white">
+                                                            <span class="path1"></span><span class="path2"></span>
+                                                        </i>
+                                                    </div>
+                                                    <!--end::Item-->
+                                                </div>
+                                                <!--end::Features-->
+
+                                                <!--begin::Select-->
+                                                <a href="{{ route('user.booking.detail', ['studio_id' => $studio->id]) }}"
+                                                class="btn btn-color-primary btn-active-light-primary btn-light w-100">
+                                                Booking Sekarang
+                                                </a>
+                                                <!--end::Select-->
                                             </div>
+                                            <!--end::Option-->
                                         </div>
-                                        <!--end::Col-->
                                     </div>
-                                    <!--end::Row-->
-                                </div>
-                                <!--end::Tab pane-->
-
-                                <!--begin::Tab pane-->
-                                <div class="tab-pane fade" id="kt_produk_max" role="tabpanel">
-                                    <!--begin::Row-->
-                                    <div class="row g-10">
-
-                                        <!--begin::Col-->
-                                        <div class="col-xl-4">
-                                            <div class="d-flex h-100 align-items-center">
-                                                <!--begin::Option-->
-                                                <div
-                                                    class="w-100 d-flex flex-column flex-center rounded-3 bg-primary py-20 px-10">
-                                                    <!--begin::Heading-->
-                                                    <!-- Foto dengan ukuran tetap -->
-                                                    <div class="d-flex justify-content-center mb-3"
-                                                        style="margin-top: -20px;">
-                                                        <img src="{{ asset('media/studio/studiom1.jpg') }}"
-                                                            class="img-fluid" alt="Paket 1"
-                                                            style="width: 300px; height: 300px; object-fit: cover; border-radius:10px;">
-                                                    </div>
-
-
-
-                                                    <div
-                                                        class="d-flex justify-content-between align-items-center text-white mb-5" style="width: 100%">
-                                                        <!-- Left: Nama Paket & Deskripsi -->
-                                                        <div>
-                                                            <h2 class="fw-bold text-white"
-                                                                style="font-size: 20px; margin-bottom: 8px;">Paket 2
-                                                            </h2>
-                                                            <div class="opacity-75" style="font-size: 10px;">
-                                                                Basic Studio
-                                                            </div>
-                                                        </div>
-
-                                                        <!-- Right: Harga -->
-                                                        <div class="text-end">
-                                                            <span style="font-size: 16px;">Rp</span>
-                                                            <span class="fw-bold"
-                                                                style="font-size: 15px; margin-left: 4px;">120.000</span>
-                                                            <div style="font-size: 14px; opacity: 0.7;">/ 1 Jam</div>
-                                                        </div>
-                                                    </div>
-
-
-                                                    <!--begin::Features-->
-                                                    <div class="w-100 mb-10">
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                Ruang treated (maks 6–8 orang) </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                Drum set + 2 gitar amp + 1 bass amp </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                3–4 mic vokal + mixer 12–16 ch </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                Monitor lebih jernih + DI box </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                Rekam stereo rehearsal (mp3)</span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-
-                                                    </div>
-                                                    <!--end::Features-->
-
-                                                    <!--begin::Select-->
-                                                    <a href="/detail-paket"
-                                                        class="btn btn-color-primary btn-active-light-primary btn-light">Booking</a>
-                                                    <!--end::Select-->
-                                                </div>
-                                                <!--end::Option-->
-                                            </div>
+                                    <!--end::Col-->
+                                    @empty
+                                    <!--begin::Col - Empty State-->
+                                    <div class="col-12">
+                                        <div class="text-center py-10">
+                                            <i class="ki-duotone ki-information-5 fs-2hx text-muted mb-5">
+                                                <span class="path1"></span>
+                                                <span class="path2"></span>
+                                                <span class="path3"></span>
+                                            </i>
+                                            <h4 class="text-muted">Tidak ada studio {{ $type }} yang tersedia</h4>
+                                            <p class="text-muted">Silakan pilih tipe studio lainnya atau hubungi admin untuk informasi lebih lanjut.</p>
                                         </div>
-                                        <!--end::Col-->
-
-                                        <!--begin::Col-->
-                                        <div class="col-xl-4">
-                                            <div class="d-flex h-100 align-items-center">
-                                                <!--begin::Option-->
-                                                <div
-                                                    class="w-100 d-flex flex-column flex-center rounded-3 bg-primary py-20 px-10">
-                                                    <!--begin::Heading-->
-
-                                                    <!-- Foto dengan ukuran tetap -->
-                                                    <div class="d-flex justify-content-center mb-3"
-                                                        style="margin-top: -20px;">
-                                                        <img src="{{ asset('media/studio/studiom1.jpg') }}"
-                                                            class="img-fluid" alt="Paket 1"
-                                                            style="width: 300px; height: 300px; object-fit: cover; border-radius:10px;">
-                                                    </div>
-
-
-
-                                                    <div
-                                                        class="d-flex justify-content-between align-items-center text-white mb-5" style="width: 100%">
-                                                        <!-- Left: Nama Paket & Deskripsi -->
-                                                        <div>
-                                                            <h2 class="fw-bold text-white"
-                                                                style="font-size: 20px; margin-bottom: 8px;">Paket 1
-                                                            </h2>
-                                                            <div class="opacity-75" style="font-size: 10px;">
-                                                                Basic Studio
-                                                            </div>
-                                                        </div>
-
-                                                        <!-- Right: Harga -->
-                                                        <div class="text-end">
-                                                            <span style="font-size: 16px;">Rp</span>
-                                                            <span class="fw-bold"
-                                                                style="font-size: 15px; margin-left: 4px;">120.000</span>
-                                                            <div style="font-size: 14px; opacity: 0.7;">/ 1 Jam</div>
-                                                        </div>
-                                                    </div>
-
-
-                                                    <!--begin::Features-->
-                                                    <div class="w-100 mb-10">
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                Ruang treated (maks 6–8 orang) </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                Drum set + 2 gitar amp + 1 bass amp </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                3–4 mic vokal + mixer 12–16 ch </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                Monitor lebih jernih + DI box </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                Rekam stereo rehearsal (mp3)</span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-
-                                                    </div>
-                                                    <!--end::Features-->
-
-                                                    <!--begin::Select-->
-                                                    <a href="/detail-paket"
-                                                        class="btn btn-color-primary btn-active-light-primary btn-light">Booking</a>
-                                                    <!--end::Select-->
-                                                </div>
-                                                <!--end::Option-->
-                                            </div>
-                                        </div>
-                                        <!--end::Col-->
-
-                                        <!--begin::Col-->
-                                        <div class="col-xl-4">
-                                            <div class="d-flex h-100 align-items-center">
-                                                <!--begin::Option-->
-                                                <div
-                                                    class="w-100 d-flex flex-column flex-center rounded-3 bg-primary py-20 px-10">
-                                                    <!--begin::Heading-->
-                                                    <!-- Foto dengan ukuran tetap -->
-                                                    <div class="d-flex justify-content-center mb-3"
-                                                        style="margin-top: -20px;">
-                                                        <img src="{{ asset('media/studio/studiom1.jpg') }}"
-                                                            class="img-fluid" alt="Paket 1"
-                                                            style="width: 300px; height: 300px; object-fit: cover; border-radius:10px;">
-                                                    </div>
-
-
-
-                                                    <div
-                                                        class="d-flex justify-content-between align-items-center text-white mb-5" style="width: 100%">
-                                                        <!-- Left: Nama Paket & Deskripsi -->
-                                                        <div>
-                                                            <h2 class="fw-bold text-white"
-                                                                style="font-size: 20px; margin-bottom: 8px;">Paket 1
-                                                            </h2>
-                                                            <div class="opacity-75" style="font-size: 10px;">
-                                                                Basic Studio
-                                                            </div>
-                                                        </div>
-
-                                                        <!-- Right: Harga -->
-                                                        <div class="text-end">
-                                                            <span style="font-size: 16px;">Rp</span>
-                                                            <span class="fw-bold"
-                                                                style="font-size: 15px; margin-left: 4px;">120.000</span>
-                                                            <div style="font-size: 14px; opacity: 0.7;">/ 1 Jam</div>
-                                                        </div>
-                                                    </div>
-
-                                                    <!--begin::Features-->
-                                                    <div class="w-100 mb-10">
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                Ruang treated (maks 6–8 orang) </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                Drum set + 2 gitar amp + 1 bass amp </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                3–4 mic vokal + mixer 12–16 ch </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                Monitor lebih jernih + DI box </span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-                                                        <!--begin::Item-->
-                                                        <div class="d-flex flex-stack mb-5">
-                                                            <span
-                                                                class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">
-                                                                Rekam stereo rehearsal (mp3)</span>
-                                                            <i class="ki-duotone ki-check-circle fs-1 text-white"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </div>
-                                                        <!--end::Item-->
-
-                                                    </div>
-                                                    <!--end::Features-->
-
-                                                    <!--begin::Select-->
-                                                    <a href="/detail-paket"
-                                                        class="btn btn-color-primary btn-active-light-primary btn-light">Booking</a>
-                                                    <!--end::Select-->
-                                                </div>
-                                                <!--end::Option-->
-                                            </div>
-                                        </div>
-                                        <!--end::Col-->
                                     </div>
-                                    <!--end::Row-->
+                                    <!--end::Col-->
+                                    @endforelse
                                 </div>
-                                <!--end::Tab pane-->
+                                <!--end::Row-->
                             </div>
-                            <!--end::Tabs content-->
+                            <!--end::Tab pane-->
+                            @endforeach
                         </div>
-                        <!--end::Pricing-->
+                        <!--end::Tabs content-->
                     </div>
-                    <!--end::Plans-->
-                    {{--
-                </div> --}}
-                <!--end::Container-->
+                    <!--end::Card body-->
+                </div>
+                <!--end::Card-->
             </div>
+            <!--end:: Daftar Paket Section-->
             <!--end::Wrapper-->
 
 

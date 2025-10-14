@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>PENDAFTARAN ANGGOTA BARU SAKA BHAYANGKARA POLSEK MAYONG</title>
+    <title>BOOKING STUDIO MUSIK</title>
 
     @include('user.layout.metadata')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!--begin::Vendor Stylesheets(used for this page only)-->
     <link href="{{ asset('plugins/custom/fullcalendar/fullcalendar.bundle.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css" />
@@ -89,12 +90,133 @@
         textarea:valid:not(:placeholder-shown) {
             border-color: #1bc5bd !important;
         }
+        /* Custom CSS untuk FullCalendar - Hilangkan menit */
+        .fc-timegrid-slot-label-frame {
+            text-align: center;
+        }
+
+        .fc-timegrid-slot-label-cushion {
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* Pastikan hanya menampilkan jam saja */
+        .fc-timegrid-slot-lane {
+            min-height: 60px; /* Tinggi slot 1 jam */
+        }
+
+        /* Sembunyikan axis waktu jika perlu */
+        .fc-timegrid-axis-frame {
+            display: none;
+        }
+
+        /* Style untuk event */
+        .fc-event {
+            border-radius: 4px;
+            border: none;
+            padding: 2px 4px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* Custom step indicator circles */
+        .step-indicator {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            line-height: 40px;
+            text-align: center;
+            font-weight: 600;
+            cursor: default;
+            user-select: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .step-indicator.active {
+            background-color: #3699ff; /* Metronic primary */
+            color: white;
+        }
+
+        .step-indicator.completed {
+            background-color: #1bc5bd; /* Metronic success */
+            color: white;
+        }
+
+        .step-indicator.inactive {
+            background-color: #e4e6ef;
+            color: #7e8299;
+        }
+
+        /* Hide all steps by default */
+        .step {
+            visibility: hidden;
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 0;
+            overflow: hidden;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            z-index: 0;
+        }
+
+        .step.active {
+            visibility: visible;
+            position: static;
+            height: auto;
+            opacity: 1;
+            pointer-events: auto;
+            z-index: 1;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Invalid input border override for Bootstrap */
+        input:invalid,
+        select:invalid,
+        textarea:invalid {
+            border-color: #f64e60 !important;
+        }
+
+        input:valid:not(:placeholder-shown),
+        select:valid:not(:placeholder-shown),
+        textarea:valid:not(:placeholder-shown) {
+            border-color: #1bc5bd !important;
+        }
+
+        @media (max-width: 768px) {
+            .summary {
+                flex-direction: column;
+            }
+            .summary-font {
+                font-size: 0.8rem !important;
+            }
+        }
     </style>
 </head>
 
 <body id="kt_body" data-bs-spy="scroll" data-bs-target="#kt_landing_menu" class="bg-body position-relative app-blank"
     data-kt-scrolltop="on" data-kt-sticky-landing-header="on" data-kt-landing-header="on">
     <!--begin::Theme mode setup on page load-->
+    <script>
+        var studioBasePrice = {{ $studio->price_per_hour }};
+        var currentUser = {
+            name: "{{ auth()->user()->name }}",
+            phone: "{{ auth()->user()->phone }}"
+        };
+    </script>
     <script>
         var defaultThemeMode = "light";
         var themeMode;
@@ -142,19 +264,19 @@
         <div class="card-body">
             <!-- Step Indicators -->
             <div class="d-flex justify-content-between mb-4 px-3">
-                <div class="text-center">
+                <div class="text-center" style="justify-items: center;">
                     <div class="step-indicator active" id="step1-indicator">1</div>
                     <small class="d-block mt-2 text-muted">Pilih Paket</small>
                 </div>
-                <div class="text-center">
+                <div class="text-center" style="justify-items: center;">
                     <div class="step-indicator inactive" id="step2-indicator">2</div>
                     <small class="d-block mt-2 text-muted">Pilih Jadwal</small>
                 </div>
-                <div class="text-center">
+                <div class="text-center" style="justify-items: center;">
                     <div class="step-indicator inactive" id="step3-indicator">3</div>
                     <small class="d-block mt-2 text-muted">Pilih Alat Tambahan</small>
                 </div>
-                <div class="text-center">
+                <div class="text-center" style="justify-items: center;">
                     <div class="step-indicator inactive" id="step4-indicator">4</div>
                     <small class="d-block mt-2 text-muted">Pembayaran</small>
                 </div>
@@ -188,189 +310,89 @@
         <!--end::Content Section-->
         <!--begin::Modals-->
         <!--begin::Modal - New Product-->
-        <div class="modal fade" id="kt_modal_add_event" tabindex-="1" aria-hidden="true"
-            data-bs-focus="false">
-            <!--begin::Modal dialog-->
-            <div class="modal-dialog modal-dialog-centered mw-650px">
-                <!--begin::Modal content-->
-                <div class="modal-content">
-                    <!--begin::Form-->
-                    <form class="form" action="#" id="kt_modal_add_event_form">
-                        @csrf
-                        <!--begin::Modal header-->
-                        <div class="modal-header">
-                            <!--begin::Modal title-->
-                            <h2 class="fw-bold" data-kt-calendar="title">Add Event</h2>
-                            <!--end::Modal title-->
-
-                            <!--begin::Close-->
-                            <div class="btn btn-icon btn-sm btn-active-icon-primary"
-                                id="kt_modal_add_event_close">
-                                <i class="ki-duotone ki-cross fs-1"><span
-                                        class="path1"></span><span class="path2"></span></i>
-                            </div>
-                            <!--end::Close-->
-                        </div>
-                        <!--end::Modal header-->
-
-                        <!--begin::Modal body-->
-                        <div class="modal-body py-10 px-lg-17">
-                            <!--begin::Input group-->
-                            <div class="fv-row mb-9">
-                                <!--begin::Label-->
-                                <label class="fs-6 fw-semibold required mb-2">Event Name</label>
-                                <!--end::Label-->
-
-                                <!--begin::Input-->
-                                <input type="text" class="form-control form-control-solid"
-                                    placeholder="" name="calendar_event_name" />
-                                <!--end::Input-->
-                            </div>
-                            <!--end::Input group-->
-
-                            <!--begin::Input group-->
-                            <div class="fv-row mb-9">
-                                <!--begin::Label-->
-                                <label class="fs-6 fw-semibold mb-2">Event Description</label>
-                                <!--end::Label-->
-
-                                <!--begin::Input-->
-                                <input type="text" class="form-control form-control-solid"
-                                    placeholder="" name="calendar_event_description" />
-                                <!--end::Input-->
-                            </div>
-                            <!--end::Input group-->
-
-                            <!--begin::Input group-->
-                            <div class="fv-row mb-9">
-                                <!--begin::Label-->
-                                <label class="fs-6 fw-semibold mb-2">Event Location</label>
-                                <!--end::Label-->
-
-                                <!--begin::Input-->
-                                <input type="text" class="form-control form-control-solid"
-                                    placeholder="" name="calendar_event_location" />
-                                <!--end::Input-->
-                            </div>
-                            <!--end::Input group-->
-
-                            <!--begin::Input group-->
-                            <div class="fv-row mb-9">
-                                <!--begin::Checkbox-->
-                                <label class="form-check form-check-custom form-check-solid">
-                                    <input class="form-check-input" type="checkbox" value=""
-                                        id="kt_calendar_datepicker_allday" />
-                                    <span class="form-check-label fw-semibold"
-                                        for="kt_calendar_datepicker_allday">
-                                        All Day
-                                    </span>
-                                </label>
-                                <!--end::Checkbox-->
-                            </div>
-                            <!--end::Input group-->
-
-                            <!--begin::Input group-->
-                            <div class="row row-cols-lg-2 g-10">
-                                <div class="col">
-                                    <div class="fv-row mb-9">
-                                        <!--begin::Label-->
-                                        <label class="fs-6 fw-semibold mb-2 required">Event
-                                            Start Date</label>
-                                        <!--end::Label-->
-
-                                        <!--begin::Input-->
-                                        <input class="form-control form-control-solid"
-                                            name="calendar_event_start_date"
-                                            placeholder="Pick a start date"
-                                            id="kt_calendar_datepicker_start_date" />
-                                        <!--end::Input-->
-                                    </div>
-                                </div>
-                                <div class="col" data-kt-calendar="datepicker">
-                                    <div class="fv-row mb-9">
-                                        <!--begin::Label-->
-                                        <label class="fs-6 fw-semibold mb-2">Event Start
-                                            Time</label>
-                                        <!--end::Label-->
-
-                                        <!--begin::Input-->
-                                        <input class="form-control form-control-solid"
-                                            name="calendar_event_start_time"
-                                            placeholder="Pick a start time"
-                                            id="kt_calendar_datepicker_start_time" />
-                                        <!--end::Input-->
-                                    </div>
-                                </div>
-
-                            </div>
-                            <!--end::Input group-->
-
-                            <!--begin::Input group-->
-                            <div class="row row-cols-lg-2 g-10">
-                                <div class="col">
-                                    <div class="fv-row mb-9">
-                                        <!--begin::Label-->
-                                        <label class="fs-6 fw-semibold mb-2 required">Event End
-                                            Date</label>
-                                        <!--end::Label-->
-
-                                        <!--begin::Input-->
-                                        <input class="form-control form-control-solid"
-                                            name="calendar_event_end_date"
-                                            placeholder="Pick a end date"
-                                            id="kt_calendar_datepicker_end_date" />
-                                        <!--end::Input-->
-                                    </div>
-                                </div>
-                                <div class="col" data-kt-calendar="datepicker">
-                                    <div class="fv-row mb-9">
-                                        <!--begin::Label-->
-                                        <label class="fs-6 fw-semibold mb-2">Event End
-                                            Time</label>
-                                        <!--end::Label-->
-
-                                        <!--begin::Input-->
-                                        <input class="form-control form-control-solid"
-                                            name="calendar_event_end_time"
-                                            placeholder="Pick a end time"
-                                            id="kt_calendar_datepicker_end_time" />
-                                        <!--end::Input-->
-                                    </div>
-                                </div>
-
-                            </div>
-                            <!--end::Input group-->
-                        </div>
-                        <!--end::Modal body-->
-
-                        <!--begin::Modal footer-->
-                        <div class="modal-footer flex-center">
-                            <!--begin::Button-->
-                            <button type="reset" id="kt_modal_add_event_cancel"
-                                class="btn btn-light me-3">
-                                Cancel
-                            </button>
-                            <!--end::Button-->
-
-                            <!--begin::Button-->
-                            <button type="button" id="kt_modal_add_event_submit"
-                                class="btn btn-primary">
-                                <span class="indicator-label">
-                                    Submit
-                                </span>
-                                <span class="indicator-progress">
-                                    Please wait... <span
-                                        class="spinner-border spinner-border-sm align-middle ms-2"></span>
-                                </span>
-                            </button>
-                            <!--end::Button-->
-                        </div>
-                        <!--end::Modal footer-->
-                    </form>
-                    <!--end::Form-->
+        <div class="modal fade" id="kt_modal_add_event" tabindex="-1" aria-hidden="true" data-bs-focus="false">
+    <div class="modal-dialog modal-dialog-centered mw-650px">
+        <div class="modal-content">
+            <form class="form" action="#" id="kt_modal_add_event_form">
+                @csrf
+                <div class="modal-header">
+                    <h2 class="fw-bold" data-kt-calendar="title">Pilih Jadwal Booking</h2>
+                    <div class="btn btn-icon btn-sm btn-active-icon-primary" id="kt_modal_add_event_close">
+                        <i class="ki-duotone ki-cross fs-1">
+                            <span class="path1"></span>
+                            <span class="path2"></span>
+                        </i>
+                    </div>
                 </div>
-            </div>
+                <div class="modal-body py-10 px-lg-17">
+                    <div class="fv-row mb-9">
+                        <label class="fs-6 fw-semibold required mb-2">Nama User</label>
+                        <input type="text" class="form-control form-control-solid" placeholder="" name="calendar_event_name" readonly />
+                        <div class="text-muted fs-7 mt-1">Data diambil dari profil user yang login</div>
+                    </div>
+                    <div class="fv-row mb-9">
+                        <label class="fs-6 fw-semibold mb-2">No Handphone</label>
+                        <input type="text" class="form-control form-control-solid" placeholder="" name="calendar_event_description" readonly />
+                        <div class="text-muted fs-7 mt-1">Data diambil dari profil user yang login</div>
+                    </div>
+
+                    <div class="row row-cols-lg-2 g-10">
+                        <div class="col">
+                            <div class="fv-row mb-9">
+                                <label class="fs-6 fw-semibold mb-2 required">Tanggal Mulai</label>
+                                <input class="form-control form-control-solid" name="calendar_event_start_date" placeholder="Pilih tanggal mulai" id="kt_calendar_datepicker_start_date" readonly />
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="fv-row mb-9">
+                                <label class="fs-6 fw-semibold mb-2 required">Waktu Mulai</label>
+                                <input class="form-control form-control-solid" name="calendar_event_start_time" placeholder="Pilih waktu mulai" id="kt_calendar_datepicker_start_time"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row-cols-lg-2 g-10">
+                        <div class="col">
+                            <div class="fv-row mb-9">
+                                <label class="fs-6 fw-semibold mb-2 required">Tanggal Selesai</label>
+                                <input class="form-control form-control-solid" name="calendar_event_end_date" placeholder="Pilih tanggal selesai" id="kt_calendar_datepicker_end_date" readonly />
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="fv-row mb-9">
+                                <label class="fs-6 fw-semibold mb-2 required">Waktu Selesai</label>
+                                <input class="form-control form-control-solid" name="calendar_event_end_time" placeholder="Pilih waktu selesai" id="kt_calendar_datepicker_end_time"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-primary d-flex align-items-center p-5 mb-10">
+                        <i class="ki-duotone ki-information fs-2hx text-primary me-4"></i>
+                        <div class="d-flex flex-column">
+                            <h4 class="mb-1 text-primary">Informasi Booking</h4>
+                            <span>• Minimal booking: 1 jam</span>
+                            <span>• Maksimal booking: 8 jam</span>
+                            <span>• Jam operasional: 08:00 - 22:00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer flex-center">
+                    <button type="button" id="kt_modal_add_event_delete" class="btn btn-danger me-auto" style="display: none;">
+                        Batalkan Booking
+                    </button>
+                    <button type="reset" id="kt_modal_add_event_cancel" class="btn btn-light me-3">
+                        Batal
+                    </button>
+                    <button type="button" id="kt_modal_add_event_submit" class="btn btn-primary">
+                        <span class="indicator-label">Booking Sekarang</span>
+                        <span class="indicator-progress">
+                            Memproses... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                        </span>
+                    </button>
+                </div>
+            </form>
         </div>
+    </div>
+</div>
         <!--end::Modal - New Product-->
         <!--begin::Modal - New Product-->
         <div class="modal fade" id="kt_modal_view_event" tabindex="-1" data-bs-focus="false"
@@ -526,6 +548,138 @@
         const prevButtons = document.querySelectorAll('.prev-btn');
         const registrationForm = document.getElementById('registration-form');
 
+        // Fungsi untuk menyimpan state ke localStorage
+        // Di dalam fungsi saveFormState(), tambahkan:
+        function saveFormState() {
+            const state = {
+                currentStep: currentStep,
+                formData: formData,
+                // Simpan juga data equipment
+                equipmentData: {
+                    selectedEquipment: window.selectedEquipment || [],
+                    studioPricePerHour: window.studioPricePerHour || {{ $studio->price_per_hour }},
+                    bookingDuration: window.bookingDuration || 1
+                },
+                calendarEvents: window.calendar ? window.calendar.getEvents().map(event => ({
+                    id: event.id,
+                    title: event.title,
+                    start: event.start ? event.start.toISOString() : null,
+                    end: event.end ? event.end.toISOString() : null,
+                    extendedProps: event.extendedProps
+                })) : []
+            };
+            localStorage.setItem('bookingFormState', JSON.stringify(state));
+            console.log('💾 Full state saved');
+        }
+
+        // Di dalam fungsi loadFormState(), tambahkan:
+        function loadFormState() {
+            const savedState = localStorage.getItem('bookingFormState');
+            if (savedState) {
+                try {
+                    const state = JSON.parse(savedState);
+                    currentStep = state.currentStep || 1;
+
+                    // Memuat data form yang tersimpan
+                    if (state.formData) {
+                        Object.assign(formData, state.formData);
+                    }
+
+                    // Memuat data equipment
+                    if (state.equipmentData) {
+                        window.selectedEquipment = state.equipmentData.selectedEquipment || [];
+                        window.studioPricePerHour = state.equipmentData.studioPricePerHour || {{ $studio->price_per_hour }};
+                        window.bookingDuration = state.equipmentData.bookingDuration || 1;
+                    }
+
+                    // Memuat calendar events
+                    if (state.calendarEvents && state.calendarEvents.length > 0 && window.calendar) {
+                        setTimeout(() => {
+                            loadCalendarEvents(state.calendarEvents);
+                        }, 500);
+                    }
+
+                } catch (error) {
+                    console.error('Error loading saved state:', error);
+                    currentStep = 1;
+                }
+            } else {
+                currentStep = 1;
+            }
+        }
+
+        // Fungsi untuk memuat events ke calendar
+        function loadCalendarEvents(events) {
+            if (!window.calendar) {
+                console.error('Calendar not initialized yet');
+                return;
+            }
+
+            // Clear existing events
+            window.calendar.removeAllEvents();
+
+            // Add saved events
+            events.forEach(eventData => {
+                try {
+                    window.calendar.addEvent({
+                        id: eventData.id,
+                        title: eventData.title,
+                        start: eventData.start,
+                        end: eventData.end,
+                        allDay: false,
+                        extendedProps: eventData.extendedProps || {}
+                    });
+                } catch (error) {
+                    console.error('Error loading event:', error);
+                }
+            });
+
+            console.log('📅 Loaded calendar events:', events.length);
+        }
+
+        // Fungsi untuk mengisi form dengan data yang tersimpan
+        function populateFormWithSavedData() {
+            // Step 2 data - Calendar events
+            if (formData.bookingDate) {
+                document.getElementById('summary-booking-date').textContent = formData.bookingDate;
+            }
+            if (formData.startTime && formData.endTime) {
+                document.getElementById('summary-booking-time').textContent = `${formData.startTime} - ${formData.endTime}`;
+            }
+            if (formData.duration) {
+                document.getElementById('summary-duration').textContent = formData.duration;
+            }
+            if (formData.totalPrice) {
+                document.getElementById('summary-total-price').textContent = formData.totalPrice;
+            }
+
+            // Step 3 data - Equipment
+            if (formData.selectedEquipment && formData.selectedEquipment.length > 0) {
+                // Update equipment summary di step 2
+                updateEquipmentSummary(formData.selectedEquipment);
+            }
+        }
+
+        // Fungsi untuk update equipment summary di step 2
+        function updateEquipmentSummary(equipment) {
+            const equipmentSummary = document.getElementById('summary-studio-equipment');
+            if (equipmentSummary && equipment.length > 0) {
+                const equipmentText = equipment.map(item =>
+                    `${item.name} (${item.quantity})`
+                ).join(', ');
+                equipmentSummary.innerHTML = `<span class="text-white">${equipmentText}</span>`;
+            }
+        }
+
+        // Fungsi untuk menghapus state (dipanggil saat form berhasil submit)
+        function clearFormState() {
+            localStorage.removeItem('bookingFormState');
+            currentStep = 1;
+            // Reset formData object
+            Object.keys(formData).forEach(key => delete formData[key]);
+            console.log('🧹 Form state cleared');
+        }
+
         let currentStep = 1;
 
         // Update step indicators
@@ -543,39 +697,34 @@
 
             // Update progress bar
             progressBar.style.width = `${((currentStep - 1) / (steps.length - 1)) * 100}%`;
+
+            // Simpan state setiap kali step berubah
+            saveFormState();
         }
 
         // Show current step
         function showStep(stepNumber) {
             function updateConfirmation() {
-                // document.getElementById('confirm-nama').textContent = formData.nama_lengkap || '';
-                // document.getElementById('confirm-tempat_lahir').textContent = formData.tempat_lahir || '';
-                // document.getElementById('confirm-tanggal_lahir').textContent = formData.tanggal_lahir || '';
-                // document.getElementById('confirm-jenis_kelamin').textContent = formData.jenis_kelamin === 'L' ? 'Laki-laki' : 'Perempuan';
-                // document.getElementById('confirm-alamat').textContent = formData.alamat || '';
-                // document.getElementById('confirm-no_hp').textContent = formData.no_hp || '';
-                // document.getElementById('confirm-email').textContent = formData.email || '';
+                // Update data konfirmasi dari formData
+                document.getElementById('confirm-duration').textContent = formData.duration || '';
+                document.getElementById('confirm-total-price').textContent = formData.totalPrice || '';
+                document.getElementById('confirm-booking-date').textContent = formData.bookingDate || '';
+                document.getElementById('confirm-time-slot').textContent =
+                    (formData.startTime && formData.endTime) ?
+                    `${formData.startTime} - ${formData.endTime}` : '';
 
-                // document.getElementById('confirm-sekolah').textContent = formData.sekolah || '';
-                // document.getElementById('confirm-nama_ortu').textContent = formData.nama_ortu || '';
-                // document.getElementById('confirm-pekerjaan_ortu').textContent = formData.pekerjaan_ortu || '';
-
-                // document.getElementById('confirm-hobi').textContent = formData.hobi || '-';
-                // document.getElementById('confirm-tinggi_badan').textContent = formData.tinggi_badan ? formData.tinggi_badan + ' cm' : '';
-                // document.getElementById('confirm-berat_badan').textContent = formData.berat_badan ? formData.berat_badan + ' kg' : '';
-                // document.getElementById('confirm-golongan_darah').textContent = formData.golongan_darah || '';
-
-                // // File preview
-                // const fotoFile = formData.foto;
-                // if (fotoFile) {
-                //     const reader = new FileReader();
-                //     reader.onload = function (e) {
-                //         document.getElementById('confirm-foto-preview').src = e.target.result;
-                //     };
-                //     reader.readAsDataURL(fotoFile);
-                // }
-
-                // document.getElementById('confirm-file_pernyataan').textContent = formData.file_pernyataan?.name || '';
+                // Update equipment di konfirmasi
+                if (formData.selectedEquipment && formData.selectedEquipment.length > 0) {
+                    const equipmentList = document.getElementById('confirm-equipment-list');
+                    if (equipmentList) {
+                        equipmentList.innerHTML = formData.selectedEquipment.map(item =>
+                            `<div class="equipment-item d-flex justify-content-between mb-2">
+                                <span>${item.name}</span>
+                                <span class="badge bg-primary">${item.quantity}x</span>
+                            </div>`
+                        ).join('');
+                    }
+                }
             }
 
             steps.forEach(step => {
@@ -585,6 +734,7 @@
                     step.classList.remove('active');
                 }
             });
+
             if (stepNumber === 5) {
                 updateConfirmation();
             }
@@ -598,7 +748,6 @@
                 const currentStepForm = this.closest('.step');
                 const inputs = currentStepForm.querySelectorAll('input[required], select[required]');
                 let isValid = true;
-
 
                 inputs.forEach(input => {
                     if (!input.checkValidity()) {
@@ -616,34 +765,21 @@
 
                 // Simpan data ke formData sesuai step
                 if (currentStep === 1) {
-                    // formData.nama_lengkap = document.getElementById('nama_lengkap').value;
-                    // formData.tempat_lahir = document.getElementById('tempat_lahir').value;
-                    // formData.tanggal_lahir = document.getElementById('tanggal_lahir').value;
-                    // formData.jenis_kelamin = document.querySelector('input[name="jenis_kelamin"]:checked')?.value;
-                    // formData.alamat = document.getElementById('alamat').value;
-                    // formData.no_hp = document.getElementById('no_hp').value;
-                    // formData.email = document.getElementById('email').value;
+                    // Data step 1 jika ada
                 } else if (currentStep === 2) {
-                    // formData.sekolah = document.getElementById('sekolah').value;
-                    // formData.nama_ortu = document.getElementById('nama_ortu').value;
-                    // formData.pekerjaan_ortu = document.getElementById('pekerjaan_ortu').value;
+                    // Simpan data dari calendar summary
+                    saveCalendarDataToFormData();
                 } else if (currentStep === 3) {
-                    // formData.hobi = document.getElementById('hobi').value;
-                    // formData.tinggi_badan = document.getElementById('tinggi_badan').value;
-                    // formData.berat_badan = document.getElementById('berat_badan').value;
-                    // formData.golongan_darah = document.getElementById('golongan_darah').value;
+                    // Simpan data equipment
+                    saveEquipmentDataToFormData();
                 } else if (currentStep === 4) {
-                    // formData.foto = document.getElementById('foto').files[0];
-                    // formData.file_pernyataan = document.getElementById('file_pernyataan').files[0];
+                    // Data step 4 jika ada
                 }
 
                 if (currentStep < steps.length) {
                     currentStep++;
                     updateStepIndicators();
                     showStep(currentStep);
-                    if (currentStep === 5) {
-                        updateConfirmation();
-                    }
                 }
             });
         });
@@ -659,18 +795,138 @@
             });
         });
 
+        // Fungsi untuk menyimpan data calendar ke formData
+        function saveCalendarDataToFormData() {
+            // Ambil data dari summary
+            formData.duration = document.getElementById('summary-duration').textContent;
+            formData.totalPrice = document.getElementById('summary-total-price').textContent;
+            formData.pricePerHour = document.getElementById('summary-price-per-hour').textContent;
+            formData.bookingDate = document.getElementById('summary-booking-date').textContent;
+            formData.bookingTime = document.getElementById('summary-booking-time').textContent;
+
+            // Simpan juga data jadwal jika ada event yang dipilih
+            if (window.calendar) {
+                const events = window.calendar.getEvents();
+                if (events.length > 0) {
+                    const latestEvent = events[events.length - 1];
+                    formData.bookingDate = latestEvent.startStr.split('T')[0];
+                    formData.startTime = latestEvent.start.getHours().toString().padStart(2, '0') + ':00';
+                    formData.endTime = latestEvent.end ? latestEvent.end.getHours().toString().padStart(2, '0') + ':00' : '';
+                }
+            }
+
+            console.log('💾 Saved calendar data:', formData);
+        }
+
+        // Fungsi untuk menyimpan data equipment ke formData
+        // Di dalam fungsi saveEquipmentDataToFormData(), perbaiki menjadi:
+        function saveEquipmentDataToFormData() {
+            // Ambil data equipment dari localStorage atau window
+            try {
+                const savedState = localStorage.getItem('bookingFormState');
+                if (savedState) {
+                    const state = JSON.parse(savedState);
+                    if (state.equipmentData?.selectedEquipment) {
+                        formData.selectedEquipment = state.equipmentData.selectedEquipment;
+                        formData.equipmentSubtotal = calculateEquipmentSubtotal();
+                        formData.grandTotal = calculateGrandTotal();
+                        console.log('💾 Equipment data saved to formData:', formData.selectedEquipment);
+                        return;
+                    }
+                }
+            } catch (error) {
+                console.error('Error loading equipment data for form submission:', error);
+            }
+
+            // Fallback
+            formData.selectedEquipment = window.selectedEquipment || [];
+        }
+
+        // Helper functions untuk calculations
+        function calculateEquipmentSubtotal() {
+            const equipment = formData.selectedEquipment || [];
+            const duration = parseInt(formData.duration) || 1;
+
+            return equipment.reduce((total, item) => {
+                return total + (item.price * item.quantity * duration);
+            }, 0);
+        }
+
+        function calculateGrandTotal() {
+            const studioSubtotal = (parseInt(formData.studioPrice) || {{ $studio->price_per_hour }}) * (parseInt(formData.duration) || 1);
+            const equipmentSubtotal = calculateEquipmentSubtotal();
+            return studioSubtotal + equipmentSubtotal;
+        }
+
+        // Event listener untuk input changes (auto-save)
+        document.addEventListener('input', function(e) {
+            if (e.target.type !== 'file') {
+                saveFormState();
+            }
+        });
+
+        document.addEventListener('change', function(e) {
+            if (e.target.type === 'file') {
+                // Untuk file, simpan nama file saja
+                const fileInput = e.target;
+                if (fileInput.files.length > 0) {
+                    formData[fileInput.name] = fileInput.files[0].name;
+                }
+                saveFormState();
+            }
+        });
+
+        // Backup data saat user meninggalkan halaman
+        window.addEventListener('beforeunload', saveFormState);
+
+        // Global function untuk diakses dari calendar
+        window.setBookingDataFromStep2 = function(bookingData) {
+            formData.duration = bookingData.duration + ' Jam';
+            formData.studioPrice = bookingData.studioPrice;
+            formData.startDate = bookingData.startDate;
+            formData.startTime = bookingData.startTime;
+            formData.endDate = bookingData.endDate;
+            formData.endTime = bookingData.endTime;
+
+            // Format tanggal untuk display
+            if (bookingData.startDate) {
+                const formattedDate = new Date(bookingData.startDate).toLocaleDateString('id-ID', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+                formData.bookingDate = formattedDate;
+            }
+
+            saveFormState();
+            console.log('📅 Booking data saved from calendar:', bookingData);
+        }
+
         // Optional: handle form submit
         registrationForm.addEventListener('submit', function (e) {
             // Validasi final sebelum submit
             if (!registrationForm.checkValidity()) {
                 e.preventDefault();
                 registrationForm.reportValidity();
+                return;
             }
+
+            // Jika form berhasil disubmit, hapus state dari localStorage
+            clearFormState();
+
             // Jika ingin submit via AJAX, tambahkan kode di sini
         });
-        // Initialize
-        updateStepIndicators();
 
+        // Initialize dengan memuat state yang tersimpan
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                loadFormState();
+                updateStepIndicators();
+                showStep(currentStep);
+                console.log('🚀 Application initialized with step:', currentStep);
+            }, 100);
+        });
 
     </script>
 </body>

@@ -1,1 +1,789 @@
-"use strict";var KTAppCalendar=function(){var e,t,n,a,o,r,i,l,d,c,s,m,u,v,f,p,y,D,k,_,b,g,S,h,T,Y,w,x,L,E={id:"",eventName:"",eventDescription:"",eventLocation:"",startDate:"",endDate:"",allDay:!1};const M=()=>{v.innerText="Add a New Event",u.show();const o=f.querySelectorAll('[data-kt-calendar="datepicker"]'),i=f.querySelector("#kt_calendar_datepicker_allday");i.addEventListener("click",(e=>{e.target.checked?o.forEach((e=>{e.classList.add("d-none")})):(l.setDate(E.startDate,!0,"Y-m-d"),o.forEach((e=>{e.classList.remove("d-none")})))})),C(E),D.addEventListener("click",(function(o){o.preventDefault(),p&&p.validate().then((function(o){console.log("validated!"),"Valid"==o?(D.setAttribute("data-kt-indicator","on"),D.disabled=!0,setTimeout((function(){D.removeAttribute("data-kt-indicator"),Swal.fire({text:"New event added to calendar!",icon:"success",buttonsStyling:!1,confirmButtonText:"Ok, got it!",customClass:{confirmButton:"btn btn-primary"}}).then((function(o){if(o.isConfirmed){u.hide(),D.disabled=!1;let o=!1;i.checked&&(o=!0),0===c.selectedDates.length&&(o=!0);var d=moment(r.selectedDates[0]).format(),s=moment(l.selectedDates[l.selectedDates.length-1]).format();if(!o){const e=moment(r.selectedDates[0]).format("YYYY-MM-DD"),t=e;d=e+"T"+moment(c.selectedDates[0]).format("HH:mm:ss"),s=t+"T"+moment(m.selectedDates[0]).format("HH:mm:ss")}e.addEvent({id:A(),title:t.value,description:n.value,location:a.value,start:d,end:s,allDay:o}),e.render(),f.reset()}}))}),2e3)):Swal.fire({text:"Sorry, looks like there are some errors detected, please try again.",icon:"error",buttonsStyling:!1,confirmButtonText:"Ok, got it!",customClass:{confirmButton:"btn btn-primary"}})}))}))},B=()=>{var e,t,n;w.show(),E.allDay?(e="All Day",t=moment(E.startDate).format("Do MMM, YYYY"),n=moment(E.endDate).format("Do MMM, YYYY")):(e="",t=moment(E.startDate).format("Do MMM, YYYY - h:mm a"),n=moment(E.endDate).format("Do MMM, YYYY - h:mm a")),b.innerText=E.eventName,g.innerText=e,S.innerText=E.eventDescription?E.eventDescription:"--",h.innerText=E.eventLocation?E.eventLocation:"--",T.innerText=t,Y.innerText=n},q=()=>{x.addEventListener("click",(o=>{o.preventDefault(),w.hide(),(()=>{v.innerText="Edit an Event",u.show();const o=f.querySelectorAll('[data-kt-calendar="datepicker"]'),i=f.querySelector("#kt_calendar_datepicker_allday");i.addEventListener("click",(e=>{e.target.checked?o.forEach((e=>{e.classList.add("d-none")})):(l.setDate(E.startDate,!0,"Y-m-d"),o.forEach((e=>{e.classList.remove("d-none")})))})),C(E),D.addEventListener("click",(function(o){o.preventDefault(),p&&p.validate().then((function(o){console.log("validated!"),"Valid"==o?(D.setAttribute("data-kt-indicator","on"),D.disabled=!0,setTimeout((function(){D.removeAttribute("data-kt-indicator"),Swal.fire({text:"New event added to calendar!",icon:"success",buttonsStyling:!1,confirmButtonText:"Ok, got it!",customClass:{confirmButton:"btn btn-primary"}}).then((function(o){if(o.isConfirmed){u.hide(),D.disabled=!1,e.getEventById(E.id).remove();let o=!1;i.checked&&(o=!0),0===c.selectedDates.length&&(o=!0);var d=moment(r.selectedDates[0]).format(),s=moment(l.selectedDates[l.selectedDates.length-1]).format();if(!o){const e=moment(r.selectedDates[0]).format("YYYY-MM-DD"),t=e;d=e+"T"+moment(c.selectedDates[0]).format("HH:mm:ss"),s=t+"T"+moment(m.selectedDates[0]).format("HH:mm:ss")}e.addEvent({id:A(),title:t.value,description:n.value,location:a.value,start:d,end:s,allDay:o}),e.render(),f.reset()}}))}),2e3)):Swal.fire({text:"Sorry, looks like there are some errors detected, please try again.",icon:"error",buttonsStyling:!1,confirmButtonText:"Ok, got it!",customClass:{confirmButton:"btn btn-primary"}})}))}))})()}))},C=()=>{t.value=E.eventName?E.eventName:"",n.value=E.eventDescription?E.eventDescription:"",a.value=E.eventLocation?E.eventLocation:"",r.setDate(E.startDate,!0,"Y-m-d");const e=E.endDate?E.endDate:moment(E.startDate).format();l.setDate(e,!0,"Y-m-d");const o=f.querySelector("#kt_calendar_datepicker_allday"),i=f.querySelectorAll('[data-kt-calendar="datepicker"]');E.allDay?(o.checked=!0,i.forEach((e=>{e.classList.add("d-none")}))):(c.setDate(E.startDate,!0,"Y-m-d H:i"),m.setDate(E.endDate,!0,"Y-m-d H:i"),l.setDate(E.startDate,!0,"Y-m-d"),o.checked=!1,i.forEach((e=>{e.classList.remove("d-none")})))},N=e=>{E.id=e.id,E.eventName=e.title,E.eventDescription=e.description,E.eventLocation=e.location,E.startDate=e.startStr,E.endDate=e.endStr,E.allDay=e.allDay},A=()=>Date.now().toString()+Math.floor(1e3*Math.random()).toString();return{init:function(){const C=document.getElementById("kt_modal_add_event");f=C.querySelector("#kt_modal_add_event_form"),t=f.querySelector('[name="calendar_event_name"]'),n=f.querySelector('[name="calendar_event_description"]'),a=f.querySelector('[name="calendar_event_location"]'),o=f.querySelector("#kt_calendar_datepicker_start_date"),i=f.querySelector("#kt_calendar_datepicker_end_date"),d=f.querySelector("#kt_calendar_datepicker_start_time"),s=f.querySelector("#kt_calendar_datepicker_end_time"),y=document.querySelector('[data-kt-calendar="add"]'),D=f.querySelector("#kt_modal_add_event_submit"),k=f.querySelector("#kt_modal_add_event_cancel"),_=C.querySelector("#kt_modal_add_event_close"),v=f.querySelector('[data-kt-calendar="title"]'),u=new bootstrap.Modal(C);const H=document.getElementById("kt_modal_view_event");var F,O,I,R,V,P;w=new bootstrap.Modal(H),b=H.querySelector('[data-kt-calendar="event_name"]'),g=H.querySelector('[data-kt-calendar="all_day"]'),S=H.querySelector('[data-kt-calendar="event_description"]'),h=H.querySelector('[data-kt-calendar="event_location"]'),T=H.querySelector('[data-kt-calendar="event_start_date"]'),Y=H.querySelector('[data-kt-calendar="event_end_date"]'),x=H.querySelector("#kt_modal_view_event_edit"),L=H.querySelector("#kt_modal_view_event_delete"),F=document.getElementById("kt_calendar_app"),O=moment().startOf("day"),I=O.format("YYYY-MM"),R=O.clone().subtract(1,"day").format("YYYY-MM-DD"),V=O.format("YYYY-MM-DD"),P=O.clone().add(1,"day").format("YYYY-MM-DD"),(e=new FullCalendar.Calendar(F,{headerToolbar:{left:"prev,next today",center:"title",right:"dayGridMonth,timeGridWeek,timeGridDay"},initialDate:V,navLinks:!0,selectable:!0,selectMirror:!0,select:function(e){N(e),M()},eventClick:function(e){N({id:e.event.id,title:e.event.title,description:e.event.extendedProps.description,location:e.event.extendedProps.location,startStr:e.event.startStr,endStr:e.event.endStr,allDay:e.event.allDay}),B()},editable:!0,dayMaxEvents:!0,events:[{id:A(),title:"All Day Event",start:I+"-01",end:I+"-02",description:"Toto lorem ipsum dolor sit incid idunt ut",className:"border-success bg-success text-inverse-success",location:"Federation Square"},{id:A(),title:"Reporting",start:I+"-14T13:30:00",description:"Lorem ipsum dolor incid idunt ut labore",end:I+"-14T14:30:00",className:"border-warning bg-warning text-inverse-success",location:"Meeting Room 7.03"},{id:A(),title:"Company Trip",start:I+"-02",description:"Lorem ipsum dolor sit tempor incid",end:I+"-03",className:"border-info bg-info text-info-success",location:"Seoul, Korea"},{id:A(),title:"ICT Expo 2021 - Product Release",start:I+"-03",description:"Lorem ipsum dolor sit tempor inci",end:I+"-05",className:"fc-event-light fc-event-solid-primary",location:"Melbourne Exhibition Hall"},{id:A(),title:"Dinner",start:I+"-12",description:"Lorem ipsum dolor sit amet, conse ctetur",end:I+"-13",location:"Squire's Loft"},{id:A(),title:"Repeating Event",start:I+"-09T16:00:00",end:I+"-09T17:00:00",description:"Lorem ipsum dolor sit ncididunt ut labore",className:"fc-event-danger",location:"General Area"},{id:A(),title:"Repeating Event",description:"Lorem ipsum dolor sit amet, labore",start:I+"-16T16:00:00",end:I+"-16T17:00:00",location:"General Area"},{id:A(),title:"Conference",start:R,end:P,description:"Lorem ipsum dolor eius mod tempor labore",className:"fc-event-primary",location:"Conference Hall A"},{id:A(),title:"Meeting",start:V+"T10:30:00",end:V+"T12:30:00",description:"Lorem ipsum dolor eiu idunt ut labore",location:"Meeting Room 11.06"},{id:A(),title:"Lunch",start:V+"T12:00:00",end:V+"T14:00:00",className:"fc-event-info",description:"Lorem ipsum dolor sit amet, ut labore",location:"Cafeteria"},{id:A(),title:"Meeting",start:V+"T14:30:00",end:V+"T15:30:00",className:"fc-event-warning",description:"Lorem ipsum conse ctetur adipi scing",location:"Meeting Room 11.10"},{id:A(),title:"Happy Hour",start:V+"T17:30:00",end:V+"T21:30:00",className:"fc-event-info",description:"Lorem ipsum dolor sit amet, conse ctetur",location:"The English Pub"},{id:A(),title:"Dinner",start:P+"T18:00:00",end:P+"T21:00:00",className:"fc-event-solid-danger fc-event-light",description:"Lorem ipsum dolor sit ctetur adipi scing",location:"New York Steakhouse"},{id:A(),title:"Birthday Party",start:P+"T12:00:00",end:P+"T14:00:00",className:"fc-event-primary",description:"Lorem ipsum dolor sit amet, scing",location:"The English Pub"},{id:A(),title:"Site visit",start:I+"-28",end:I+"-29",className:"fc-event-solid-info fc-event-light",description:"Lorem ipsum dolor sit amet, labore",location:"271, Spring Street"}],datesSet:function(){}})).render(),p=FormValidation.formValidation(f,{fields:{calendar_event_name:{validators:{notEmpty:{message:"Event name is required"}}},calendar_event_start_date:{validators:{notEmpty:{message:"Start date is required"}}},calendar_event_end_date:{validators:{notEmpty:{message:"End date is required"}}}},plugins:{trigger:new FormValidation.plugins.Trigger,bootstrap:new FormValidation.plugins.Bootstrap5({rowSelector:".fv-row",eleInvalidClass:"",eleValidClass:""})}}),r=flatpickr(o,{enableTime:!1,dateFormat:"Y-m-d"}),l=flatpickr(i,{enableTime:!1,dateFormat:"Y-m-d"}),c=flatpickr(d,{enableTime:!0,noCalendar:!0,dateFormat:"H:i"}),m=flatpickr(s,{enableTime:!0,noCalendar:!0,dateFormat:"H:i"}),q(),y.addEventListener("click",(e=>{E={id:"",eventName:"",eventDescription:"",startDate:new Date,endDate:new Date,allDay:!1},M()})),L.addEventListener("click",(t=>{t.preventDefault(),Swal.fire({text:"Are you sure you would like to delete this event?",icon:"warning",showCancelButton:!0,buttonsStyling:!1,confirmButtonText:"Yes, delete it!",cancelButtonText:"No, return",customClass:{confirmButton:"btn btn-primary",cancelButton:"btn btn-active-light"}}).then((function(t){t.value?(e.getEventById(E.id).remove(),w.hide()):"cancel"===t.dismiss&&Swal.fire({text:"Your event was not deleted!.",icon:"error",buttonsStyling:!1,confirmButtonText:"Ok, got it!",customClass:{confirmButton:"btn btn-primary"}})}))})),k.addEventListener("click",(function(e){e.preventDefault(),Swal.fire({text:"Are you sure you would like to cancel?",icon:"warning",showCancelButton:!0,buttonsStyling:!1,confirmButtonText:"Yes, cancel it!",cancelButtonText:"No, return",customClass:{confirmButton:"btn btn-primary",cancelButton:"btn btn-active-light"}}).then((function(e){e.value?(f.reset(),u.hide()):"cancel"===e.dismiss&&Swal.fire({text:"Your form has not been cancelled!.",icon:"error",buttonsStyling:!1,confirmButtonText:"Ok, got it!",customClass:{confirmButton:"btn btn-primary"}})}))})),_.addEventListener("click",(function(e){e.preventDefault(),Swal.fire({text:"Are you sure you would like to cancel?",icon:"warning",showCancelButton:!0,buttonsStyling:!1,confirmButtonText:"Yes, cancel it!",cancelButtonText:"No, return",customClass:{confirmButton:"btn btn-primary",cancelButton:"btn btn-active-light"}}).then((function(e){e.value?(f.reset(),u.hide()):"cancel"===e.dismiss&&Swal.fire({text:"Your form has not been cancelled!.",icon:"error",buttonsStyling:!1,confirmButtonText:"Ok, got it!",customClass:{confirmButton:"btn btn-primary"}})}))})),(e=>{e.addEventListener("hidden.bs.modal",(e=>{p&&p.resetForm(!0)}))})(C)}}}();KTUtil.onDOMContentLoaded((function(){KTAppCalendar.init()}));
+"use strict";
+
+// Class definition
+var KTGeneralFullCalendarSelectDemos = function () {
+    // Helper function untuk format Rupiah
+    var formatRupiah = function(angka) {
+        var number_string = angka.toString().replace(/[^,\d]/g, '');
+        var split = number_string.split(',');
+        var sisa = split[0].length % 3;
+        var rupiah = split[0].substr(0, sisa);
+        var ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+        if (ribuan) {
+            var separator = sisa ? '.' : '';
+            rupiah += separator + ribuan.join('.');
+        }
+
+        rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+        return 'Rp ' + rupiah;
+    }
+
+    // Function to save calendar state to localStorage
+    var saveCalendarState = function(calendar) {
+        if (!calendar) return;
+
+        const events = calendar.getEvents().map(event => ({
+            id: event.id,
+            title: event.title,
+            start: event.start ? event.start.toISOString() : null,
+            end: event.end ? event.end.toISOString() : null,
+            extendedProps: event.extendedProps || {}
+        }));
+
+        const state = {
+            events: events,
+            currentDate: calendar.getDate().toISOString(),
+            currentView: calendar.view?.type || 'timeGridDay',
+            lastUpdated: new Date().toISOString()
+        };
+
+        localStorage.setItem('calendarState', JSON.stringify(state));
+        console.log('💾 Calendar state saved:', state.events.length + ' events');
+    }
+
+    // Function to load calendar state from localStorage
+    var loadCalendarState = function(calendar) {
+        try {
+            const savedState = localStorage.getItem('calendarState');
+            if (savedState) {
+                const state = JSON.parse(savedState);
+
+                // Load events
+                if (state.events && state.events.length > 0) {
+                    state.events.forEach(eventData => {
+                        try {
+                            calendar.addEvent({
+                                id: eventData.id,
+                                title: eventData.title,
+                                start: eventData.start,
+                                end: eventData.end,
+                                allDay: false,
+                                extendedProps: eventData.extendedProps || {}
+                            });
+                        } catch (error) {
+                            console.error('Error loading event:', error);
+                        }
+                    });
+                    console.log('📥 Calendar events loaded:', state.events.length);
+                }
+
+                // Set current date if available
+                if (state.currentDate) {
+                    calendar.gotoDate(state.currentDate);
+                }
+
+                return true;
+            }
+        } catch (error) {
+            console.error('Error loading calendar state:', error);
+        }
+        return false;
+    }
+
+    // Function to clear calendar state
+    var clearCalendarState = function() {
+        localStorage.removeItem('calendarState');
+        console.log('🧹 Calendar state cleared');
+    }
+
+    // Function to update booking summary - DIPERBAIKI
+    var updateBookingSummary = function(startDate, startTime, endDate, endTime) {
+        console.log('=== updateBookingSummary called ===');
+        console.log('Input:', {startDate, startTime, endDate, endTime});
+
+        try {
+            // Gunakan variable global dari window
+            var basePrice = window.studioBasePrice || 0;
+
+            console.log('Using studioBasePrice from window:', basePrice);
+
+            if (basePrice === 0) {
+                console.error('⚠️ studioBasePrice is 0! Check if variable is defined in HTML');
+                return 0;
+            }
+
+            // Parse datetime
+            var startDateTime = new Date(startDate + 'T' + startTime + ':00');
+            var endDateTime = new Date(endDate + 'T' + endTime + ':00');
+
+            console.log('Parsed dates:', {
+                start: startDateTime.toString(),
+                end: endDateTime.toString()
+            });
+
+            // Validasi tanggal
+            if (isNaN(startDateTime.getTime()) || isNaN(endDateTime.getTime())) {
+                console.error('Invalid date/time format');
+                return 0;
+            }
+
+            // Hitung durasi dalam jam
+            var durationMilliseconds = endDateTime - startDateTime;
+            var durationHours = durationMilliseconds / (1000 * 60 * 60);
+
+            console.log('Duration calculated:', durationHours, 'hours');
+
+            // Hitung total harga
+            var totalPrice = basePrice * durationHours;
+            console.log('Calculation:', basePrice, 'x', durationHours, '=', totalPrice);
+
+            // Format harga
+            var formattedPrice = formatRupiah(Math.round(totalPrice));
+            console.log('Formatted price:', formattedPrice);
+
+            // Update tampilan - dengan error handling
+            var durationElement = document.getElementById('summary-duration');
+            var totalPriceElement = document.getElementById('summary-total-price');
+            var bookingDateElement = document.getElementById('summary-booking-date');
+            var bookingTimeElement = document.getElementById('summary-booking-time');
+
+            if (durationElement) {
+                durationElement.textContent = durationHours + ' Jam';
+                console.log('✓ Duration updated:', durationElement.textContent);
+            } else {
+                console.error('✗ Duration element not found!');
+            }
+
+            if (totalPriceElement) {
+                totalPriceElement.textContent = formattedPrice;
+                console.log('✓ Total price updated:', totalPriceElement.textContent);
+            } else {
+                console.error('✗ Total price element not found!');
+            }
+
+            // Update tanggal booking di summary
+            if (bookingDateElement) {
+                const formattedDate = new Date(startDate).toLocaleDateString('id-ID', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+                bookingDateElement.textContent = formattedDate;
+                console.log('✓ Booking date updated:', bookingDateElement.textContent);
+            }
+
+            // Update waktu booking di summary
+            if (bookingTimeElement) {
+                bookingTimeElement.textContent = `${startTime} - ${endTime}`;
+                console.log('✓ Booking time updated:', bookingTimeElement.textContent);
+            }
+
+            // Simpan data booking ke localStorage untuk step 3
+            saveBookingDataToLocalStorage({
+                duration: durationHours,
+                studioPrice: basePrice,
+                startDate: startDate,
+                startTime: startTime,
+                endDate: endDate,
+                endTime: endTime,
+                totalPrice: formattedPrice
+            });
+
+            console.log('=== updateBookingSummary completed ===\n');
+            return durationHours;
+
+        } catch (error) {
+            console.error('❌ Error in updateBookingSummary:', error);
+            return 0;
+        }
+    }
+
+    // Function to save booking data to localStorage for step 3
+    var saveBookingDataToLocalStorage = function(bookingData) {
+        const bookingState = {
+            duration: bookingData.duration,
+            studioPrice: bookingData.studioPrice,
+            startDate: bookingData.startDate,
+            startTime: bookingData.startTime,
+            endDate: bookingData.endDate,
+            endTime: bookingData.endTime,
+            totalPrice: bookingData.totalPrice,
+            lastUpdated: new Date().toISOString()
+        };
+
+        localStorage.setItem('bookingDataStep2', JSON.stringify(bookingState));
+        console.log('💾 Booking data saved for step 3:', bookingState);
+    }
+
+    // Function to load booking data from localStorage
+    var loadBookingDataFromLocalStorage = function() {
+        try {
+            const savedData = localStorage.getItem('bookingDataStep2');
+            if (savedData) {
+                const bookingData = JSON.parse(savedData);
+
+                // Update summary display
+                const durationElement = document.getElementById('summary-duration');
+                const totalPriceElement = document.getElementById('summary-total-price');
+                const bookingDateElement = document.getElementById('summary-booking-date');
+                const bookingTimeElement = document.getElementById('summary-booking-time');
+
+                if (durationElement && bookingData.duration) {
+                    durationElement.textContent = bookingData.duration + ' Jam';
+                }
+
+                if (totalPriceElement && bookingData.totalPrice) {
+                    totalPriceElement.textContent = bookingData.totalPrice;
+                }
+
+                if (bookingDateElement && bookingData.startDate) {
+                    try {
+                        const formattedDate = new Date(bookingData.startDate).toLocaleDateString('id-ID', {
+                            weekday: 'long',
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric'
+                        });
+                        bookingDateElement.textContent = formattedDate;
+                    } catch (error) {
+                        bookingDateElement.textContent = bookingData.startDate;
+                    }
+                }
+
+                if (bookingTimeElement && bookingData.startTime && bookingData.endTime) {
+                    bookingTimeElement.textContent = `${bookingData.startTime} - ${bookingData.endTime}`;
+                }
+
+                console.log('📥 Booking data loaded from localStorage:', bookingData);
+                return bookingData;
+            }
+        } catch (error) {
+            console.error('Error loading booking data:', error);
+        }
+        return null;
+    }
+
+    // Function to calculate duration from form inputs
+    var calculateDurationFromForm = function() {
+        console.log('--- calculateDurationFromForm called ---');
+
+        var startDate = document.querySelector('input[name="calendar_event_start_date"]').value;
+        var startTime = document.querySelector('input[name="calendar_event_start_time"]').value;
+        var endDate = document.querySelector('input[name="calendar_event_end_date"]').value;
+        var endTime = document.querySelector('input[name="calendar_event_end_time"]').value;
+
+        console.log('Form values:', {startDate, startTime, endDate, endTime});
+
+        if (startDate && startTime && endDate && endTime) {
+            return updateBookingSummary(startDate, startTime, endDate, endTime);
+        } else {
+            console.log('Not all fields filled yet');
+            return 0;
+        }
+    }
+
+    // Function to validate booking time
+    var validateBookingTime = function(startDate, startTime, endDate, endTime) {
+        var startDateTime = new Date(startDate + 'T' + startTime);
+        var endDateTime = new Date(endDate + 'T' + endTime);
+
+        if (endDateTime <= startDateTime) {
+            return {
+                valid: false,
+                message: "Waktu selesai harus setelah waktu mulai"
+            };
+        }
+
+        var durationHours = (endDateTime - startDateTime) / (1000 * 60 * 60);
+        if (durationHours > 8) {
+            return {
+                valid: false,
+                message: "Maksimal booking adalah 8 jam"
+            };
+        }
+
+        if (durationHours < 1) {
+            return {
+                valid: false,
+                message: "Minimal booking adalah 1 jam"
+            };
+        }
+
+        var startHour = startDateTime.getHours();
+        var endHour = endDateTime.getHours();
+
+        if (startHour < 8 || endHour > 22 || (endHour === 22 && endDateTime.getMinutes() > 0)) {
+            return {
+                valid: false,
+                message: "Studio hanya buka dari jam 08:00 hingga 22:00"
+            };
+        }
+
+        if (startDateTime.getMinutes() !== 0 || endDateTime.getMinutes() !== 0) {
+            return {
+                valid: false,
+                message: "Booking harus dalam kelipatan jam penuh (contoh: 08:00, 09:00, dst.)"
+            };
+        }
+
+        return {
+            valid: true,
+            duration: durationHours
+        };
+    }
+
+    // Function to check availability
+    var checkAvailability = function(calendar, startDateTime, endDateTime, excludeEventId = null) {
+        var events = calendar.getEvents();
+        for (var event of events) {
+            if (excludeEventId && event.id === excludeEventId) {
+                continue;
+            }
+
+            var eventStart = event.start;
+            var eventEnd = event.end || eventStart;
+
+            if (
+                (startDateTime >= eventStart && startDateTime < eventEnd) ||
+                (endDateTime > eventStart && endDateTime <= eventEnd) ||
+                (startDateTime <= eventStart && endDateTime >= eventEnd)
+            ) {
+                return {
+                    available: false,
+                    conflictingEvent: event
+                };
+            }
+        }
+
+        return {
+            available: true
+        };
+    }
+
+    // Reset form function
+    var resetForm = function() {
+        document.getElementById('kt_modal_add_event_form').reset();
+        document.getElementById('kt_modal_add_event_form').removeAttribute('data-mode');
+        document.getElementById('kt_modal_add_event_form').removeAttribute('data-event-id');
+        document.getElementById('kt_modal_add_event_delete').style.display = 'none';
+
+        // Reset summary ke default hanya jika tidak ada data tersimpan
+        const savedData = loadBookingDataFromLocalStorage();
+        if (!savedData) {
+            document.getElementById('summary-duration').textContent = '1 Jam';
+            var originalPrice = window.studioBasePrice || 0;
+            document.getElementById('summary-total-price').textContent = formatRupiah(originalPrice);
+        }
+
+        loadCurrentUserData();
+    }
+
+    // Function to load current user data
+    var loadCurrentUserData = function() {
+        if (typeof currentUser !== 'undefined' && currentUser) {
+            document.querySelector('input[name="calendar_event_name"]').value = currentUser.name || '';
+            document.querySelector('input[name="calendar_event_description"]').value = currentUser.phone || currentUser.handphone || '';
+            return;
+        }
+
+        var userData = localStorage.getItem('currentUser');
+        if (userData) {
+            try {
+                var user = JSON.parse(userData);
+                document.querySelector('input[name="calendar_event_name"]').value = user.name || '';
+                document.querySelector('input[name="calendar_event_description"]').value = user.phone || user.handphone || '';
+                return;
+            } catch (e) {
+                console.error('Error parsing user data:', e);
+            }
+        }
+
+        var userNameMeta = document.querySelector('meta[name="current-user-name"]');
+        var userPhoneMeta = document.querySelector('meta[name="current-user-phone"]');
+
+        if (userNameMeta) {
+            document.querySelector('input[name="calendar_event_name"]').value = userNameMeta.getAttribute('content') || '';
+        }
+        if (userPhoneMeta) {
+            document.querySelector('input[name="calendar_event_description"]').value = userPhoneMeta.getAttribute('content') || '';
+        }
+    }
+
+    var exampleSelect = function () {
+        var date = new Date();
+        var formattedDate = date.toISOString().split('T')[0];
+
+        var calendarEl = document.getElementById('kt_docs_fullcalendar_selectable');
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'timeGridDay'
+            },
+            initialDate: formattedDate,
+            initialView: 'timeGridDay',
+            navLinks: true,
+            selectable: true,
+            selectMirror: true,
+            selectOverlap: false,
+            slotMinTime: '08:00:00',
+            slotMaxTime: '22:00:00',
+            slotDuration: '01:00:00',
+            slotLabelInterval: '01:00:00',
+            slotLabelFormat: {
+                hour: 'numeric',
+                minute: '2-digit',
+                meridiem: false,
+                hour12: false
+            },
+            allDaySlot: false,
+            slotEventOverlap: false,
+
+            // Event ketika calendar selesai render
+            datesSet: function(info) {
+                // Simpan state calendar ketika view berubah
+                setTimeout(() => {
+                    saveCalendarState(calendar);
+                }, 100);
+            },
+
+            // Event ketika event berubah
+            eventChange: function(info) {
+                saveCalendarState(calendar);
+            },
+
+            // Event ketika event dihapus
+            eventRemove: function(info) {
+                saveCalendarState(calendar);
+            },
+
+            select: function (arg) {
+                console.log('\n=== Calendar Selection ===');
+
+                resetForm();
+                document.getElementById('kt_modal_add_event_form').setAttribute('data-mode', 'create');
+                document.querySelector('[data-kt-calendar="title"]').textContent = 'Pilih Jadwal Booking';
+                document.getElementById('kt_modal_add_event_delete').style.display = 'none';
+
+                loadCurrentUserData();
+
+                var startHour = arg.start.getHours().toString().padStart(2, '0') + ':00';
+                var endHour = arg.end.getHours().toString().padStart(2, '0') + ':00';
+                var startDateStr = arg.startStr.split('T')[0];
+                var endDateStr = arg.endStr.split('T')[0];
+
+                console.log('Selection:', {startDateStr, startHour, endDateStr, endHour});
+
+                document.querySelector('input[name="calendar_event_start_date"]').value = startDateStr;
+                document.querySelector('input[name="calendar_event_start_time"]').value = startHour;
+                document.querySelector('input[name="calendar_event_end_date"]').value = endDateStr;
+                document.querySelector('input[name="calendar_event_end_time"]').value = endHour;
+
+                // Langsung update summary
+                setTimeout(function() {
+                    console.log('Triggering immediate update...');
+                    updateBookingSummary(startDateStr, startHour, endDateStr, endHour);
+                }, 100);
+
+                var modal = new bootstrap.Modal(document.getElementById('kt_modal_add_event'));
+                modal.show();
+                modal._selectionData = arg;
+
+                calendar.unselect();
+            },
+
+            eventClick: function (arg) {
+                resetForm();
+                document.getElementById('kt_modal_add_event_form').setAttribute('data-mode', 'edit');
+                document.getElementById('kt_modal_add_event_form').setAttribute('data-event-id', arg.event.id);
+                document.querySelector('[data-kt-calendar="title"]').textContent = 'Edit Jadwal Booking';
+                document.getElementById('kt_modal_add_event_delete').style.display = 'block';
+
+                document.querySelector('input[name="calendar_event_name"]').value = arg.event.title || '';
+                document.querySelector('input[name="calendar_event_description"]').value = arg.event.extendedProps.description || '';
+
+                var startHour = arg.event.start.getHours().toString().padStart(2, '0') + ':00';
+                var endHour = arg.event.end ? arg.event.end.getHours().toString().padStart(2, '0') + ':00' : '';
+                var startDateStr = arg.event.startStr.split('T')[0];
+                var endDateStr = arg.event.end ? arg.event.endStr.split('T')[0] : '';
+
+                document.querySelector('input[name="calendar_event_start_date"]').value = startDateStr;
+                document.querySelector('input[name="calendar_event_start_time"]').value = startHour;
+
+                if (arg.event.end) {
+                    document.querySelector('input[name="calendar_event_end_date"]').value = endDateStr;
+                    document.querySelector('input[name="calendar_event_end_time"]').value = endHour;
+                } else {
+                    var endTime = new Date(arg.event.start);
+                    endTime.setHours(endTime.getHours() + 1);
+                    var defaultEndHour = endTime.getHours().toString().padStart(2, '0') + ':00';
+                    var defaultEndDate = endTime.toISOString().split('T')[0];
+
+                    document.querySelector('input[name="calendar_event_end_date"]').value = defaultEndDate;
+                    document.querySelector('input[name="calendar_event_end_time"]').value = defaultEndHour;
+                    endDateStr = defaultEndDate;
+                    endHour = defaultEndHour;
+                }
+
+                setTimeout(function() {
+                    updateBookingSummary(startDateStr, startHour, endDateStr, endHour);
+                }, 100);
+
+                var modal = new bootstrap.Modal(document.getElementById('kt_modal_add_event'));
+                modal.show();
+                modal._eventData = arg.event;
+            },
+
+            dayMaxEvents: true,
+            events: [] // Events akan dimuat dari localStorage
+        });
+
+        calendar.render();
+
+        // Load saved calendar state
+        setTimeout(() => {
+            loadCalendarState(calendar);
+            loadBookingDataFromLocalStorage();
+        }, 500);
+
+        // Expose calendar to window for access in form handler
+        window.calendar = calendar;
+
+        initModalHandlers(calendar);
+    }
+
+    var initModalHandlers = function(calendar) {
+        var startDateInput = document.querySelector('input[name="calendar_event_start_date"]');
+        var startTimeInput = document.querySelector('input[name="calendar_event_start_time"]');
+        var endDateInput = document.querySelector('input[name="calendar_event_end_date"]');
+        var endTimeInput = document.querySelector('input[name="calendar_event_end_time"]');
+
+        // Real-time calculation dengan debounce
+        var debounceTimer;
+        var debounceCalculate = function() {
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(function() {
+                calculateDurationFromForm();
+            }, 100);
+        };
+
+        [startDateInput, startTimeInput, endDateInput, endTimeInput].forEach(function(input) {
+            input.addEventListener('change', debounceCalculate);
+            input.addEventListener('input', debounceCalculate);
+        });
+
+        document.getElementById('kt_modal_add_event_close').addEventListener('click', function() {
+            var modal = bootstrap.Modal.getInstance(document.getElementById('kt_modal_add_event'));
+            modal.hide();
+        });
+
+        document.getElementById('kt_modal_add_event_cancel').addEventListener('click', function() {
+            var modal = bootstrap.Modal.getInstance(document.getElementById('kt_modal_add_event'));
+            modal.hide();
+        });
+
+        document.getElementById('kt_modal_add_event_delete').addEventListener('click', function() {
+            var modal = bootstrap.Modal.getInstance(document.getElementById('kt_modal_add_event'));
+            var eventId = document.getElementById('kt_modal_add_event_form').getAttribute('data-event-id');
+
+            if (eventId && modal._eventData) {
+                Swal.fire({
+                    text: 'Apakah Anda yakin ingin membatalkan booking ini?',
+                    icon: "warning",
+                    showCancelButton: true,
+                    buttonsStyling: false,
+                    confirmButtonText: "Ya, Batalkan!",
+                    cancelButtonText: "Tidak",
+                    customClass: {
+                        confirmButton: "btn btn-danger",
+                        cancelButton: "btn btn-active-light"
+                    }
+                }).then(function (result) {
+                    if (result.isConfirmed) {
+                        modal._eventData.remove();
+                        modal.hide();
+                        resetForm();
+
+                        // Clear booking data jika event dihapus
+                        localStorage.removeItem('bookingDataStep2');
+
+                        Swal.fire({
+                            text: "Booking berhasil dibatalkan!",
+                            icon: "success",
+                            buttonsStyling: false,
+                            confirmButtonText: "OK",
+                            customClass: {
+                                confirmButton: "btn btn-primary",
+                            }
+                        });
+                    }
+                });
+            }
+        });
+
+        document.getElementById('kt_modal_add_event_submit').addEventListener('click', function() {
+            var submitButton = this;
+            var modal = bootstrap.Modal.getInstance(document.getElementById('kt_modal_add_event'));
+            var mode = document.getElementById('kt_modal_add_event_form').getAttribute('data-mode');
+            var eventId = document.getElementById('kt_modal_add_event_form').getAttribute('data-event-id');
+
+            var eventName = document.querySelector('input[name="calendar_event_name"]').value;
+            var eventDescription = document.querySelector('input[name="calendar_event_description"]').value;
+            var startDate = document.querySelector('input[name="calendar_event_start_date"]').value;
+            var startTime = document.querySelector('input[name="calendar_event_start_time"]').value;
+            var endDate = document.querySelector('input[name="calendar_event_end_date"]').value;
+            var endTime = document.querySelector('input[name="calendar_event_end_time"]').value;
+
+            if (!eventName) {
+                Swal.fire({
+                    text: "Nama User harus diisi!",
+                    icon: "error",
+                    buttonsStyling: false,
+                    confirmButtonText: "OK",
+                    customClass: {
+                        confirmButton: "btn btn-primary",
+                    }
+                });
+                return;
+            }
+
+            if (!startDate || !endDate || !startTime || !endTime) {
+                Swal.fire({
+                    text: "Tanggal dan waktu harus diisi!",
+                    icon: "error",
+                    buttonsStyling: false,
+                    confirmButtonText: "OK",
+                    customClass: {
+                        confirmButton: "btn btn-primary",
+                    }
+                });
+                return;
+            }
+
+            var timeValidation = validateBookingTime(startDate, startTime, endDate, endTime);
+            if (!timeValidation.valid) {
+                Swal.fire({
+                    text: timeValidation.message,
+                    icon: "error",
+                    buttonsStyling: false,
+                    confirmButtonText: "OK",
+                    customClass: {
+                        confirmButton: "btn btn-primary",
+                    }
+                });
+                return;
+            }
+
+            var startDateTime = new Date(startDate + 'T' + startTime);
+            var endDateTime = new Date(endDate + 'T' + endTime);
+            var availability = checkAvailability(calendar, startDateTime, endDateTime, eventId);
+
+            if (!availability.available) {
+                Swal.fire({
+                    text: "Waktu booking sudah dipesan! Silakan pilih waktu lain.",
+                    icon: "error",
+                    buttonsStyling: false,
+                    confirmButtonText: "OK",
+                    customClass: {
+                        confirmButton: "btn btn-primary",
+                    }
+                });
+                return;
+            }
+
+            submitButton.setAttribute("data-kt-indicator", "on");
+            submitButton.disabled = true;
+
+            setTimeout(function() {
+                var finalDuration = updateBookingSummary(startDate, startTime, endDate, endTime);
+
+                // Kirim data ke step 3
+                if (typeof setBookingDataFromStep2 === 'function') {
+                    setBookingDataFromStep2({
+                        duration: finalDuration,
+                        studioPrice: window.studioBasePrice,
+                        startDate: startDate,
+                        startTime: startTime,
+                        endDate: endDate,
+                        endTime: endTime
+                    });
+                }
+
+                var eventData = {
+                    title: eventName,
+                    start: startDate + 'T' + startTime,
+                    end: endDate + 'T' + endTime,
+                    allDay: false,
+                    extendedProps: {
+                        description: eventDescription,
+                        duration: finalDuration,
+                        totalPrice: document.getElementById('summary-total-price').textContent
+                    }
+                };
+
+                if (mode === 'edit' && eventId) {
+                    var existingEvent = calendar.getEventById(eventId);
+                    if (existingEvent) {
+                        existingEvent.setProp('title', eventData.title);
+                        existingEvent.setStart(eventData.start);
+                        existingEvent.setEnd(eventData.end);
+                        existingEvent.setExtendedProp('description', eventData.extendedProps.description);
+                        existingEvent.setExtendedProp('duration', eventData.extendedProps.duration);
+                        existingEvent.setExtendedProp('totalPrice', eventData.extendedProps.totalPrice);
+                    }
+                } else {
+                    eventData.id = 'event_' + Date.now();
+                    calendar.addEvent(eventData);
+                }
+
+                modal.hide();
+                submitButton.removeAttribute("data-kt-indicator");
+                submitButton.disabled = false;
+
+                // Simpan state calendar setelah perubahan
+                saveCalendarState(calendar);
+
+                Swal.fire({
+                    text: mode === 'edit' ? "Booking berhasil diupdate!" : "Booking berhasil dibuat!",
+                    icon: "success",
+                    buttonsStyling: false,
+                    confirmButtonText: "OK",
+                    customClass: {
+                        confirmButton: "btn btn-primary",
+                    }
+                });
+            }, 1000);
+        });
+    }
+
+    return {
+        init: function () {
+            console.log('=== Initializing FullCalendar ===');
+            console.log('Studio base price from window:', window.studioBasePrice);
+
+            if (typeof window.studioBasePrice === 'undefined' || window.studioBasePrice === 0) {
+                console.error('⚠️ WARNING: studioBasePrice not defined in window or is 0!');
+            }
+
+            exampleSelect();
+            console.log('✓ Initialization complete');
+        },
+
+        // Expose functions untuk diakses dari luar
+        saveCalendarState: saveCalendarState,
+        loadCalendarState: loadCalendarState,
+        clearCalendarState: clearCalendarState
+    };
+}();
+
+// On document ready
+KTUtil.onDOMContentLoaded(function () {
+    KTGeneralFullCalendarSelectDemos.init();
+});
+
+// Global function untuk clear semua data saat form submit
+window.clearAllBookingData = function() {
+    // Clear calendar state
+    if (typeof KTGeneralFullCalendarSelectDemos.clearCalendarState === 'function') {
+        KTGeneralFullCalendarSelectDemos.clearCalendarState();
+    }
+
+    // Clear booking data
+    localStorage.removeItem('bookingDataStep2');
+    localStorage.removeItem('calendarState');
+
+    console.log('🧹 All booking data cleared');
+};

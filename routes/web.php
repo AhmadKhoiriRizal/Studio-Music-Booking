@@ -51,9 +51,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 // Public Routes (bisa diakses tanpa login)
-Route::get('/', function () {
-    return view('user.dashboard');
-})->name('home');
+Route::get('/', [UserController::class, 'home'])->name('home');
 
 Route::get('/signin', function () {
     return view('signin');
@@ -79,6 +77,7 @@ Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallb
 // Route::post('/auth/google/register', [GoogleController::class, 'registerWithGoogle'])->nam   e('google.register');
 
 // User Routes (harus login sebagai user)
+// User Routes (harus login sebagai user)
 Route::middleware(['auth', 'user'])->prefix('user')->name('user.')->group(function () {
 
     // Dashboard User
@@ -90,6 +89,11 @@ Route::middleware(['auth', 'user'])->prefix('user')->name('user.')->group(functi
         Route::get('/create', [BookingController::class, 'create'])->name('create');
         Route::get('/detail-paket', [BookingController::class, 'detail'])->name('detail');
         Route::get('/riwayat', [BookingController::class, 'riwayat'])->name('riwayat');
+
+        // Tambahan routes untuk equipment
+        Route::get('/equipment', [BookingController::class, 'getEquipment'])->name('equipment');
+        Route::get('/equipment/categories', [BookingController::class, 'getEquipmentCategories'])->name('equipment.categories');
+        Route::get('/equipment/category/{category}', [BookingController::class, 'getEquipmentByCategory'])->name('equipment.by-category');
     });
 
     // Profile
@@ -118,9 +122,13 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
         Route::post('/store', [StudioController::class, 'store'])->name('store');
         Route::get('/create', [StudioController::class, 'create'])->name('create');
         Route::get('/edit/{id}', [StudioController::class, 'edit'])->name('edit');
-        Route::get('/edit-data/{id}', [StudioController::class, 'getEditData'])->name('edit.data'); // Route baru
+        Route::get('/edit-data/{id}', [StudioController::class, 'getEditData'])->name('edit.data');
         Route::put('/update/{id}', [StudioController::class, 'update'])->name('update');
         Route::delete('/destroy/{id}', [StudioController::class, 'destroy'])->name('destroy');
+
+        // TAMBAHKAN ROUTE INI untuk equipment stock
+        Route::get('/equipment-stock', [StudioController::class, 'getEquipmentStock'])->name('equipment-stock');
+        Route::post('/check-equipment-availability', [StudioController::class, 'checkEquipmentAvailability'])->name('check-equipment-availability');
     });
 
     // Data Akun Management
